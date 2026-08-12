@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>.NET / ASP.NET Core Interview — 1-Day Rapid Revision Dashboard</title>
+    <title>🔥 High Priority Must-Knows — .NET / ASP.NET Core Interview Revision</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,6 +136,40 @@
             position: relative;
         }
 
+        /* Page Switcher Navigation Bar */
+        .page-switcher-bar {
+            background-color: var(--bg-tertiary);
+            padding: 8px 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .page-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-secondary);
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .page-tab.active {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px var(--accent-purple-glow);
+        }
+
         /* Mobile Sidebar Overlay Backdrop */
         .sidebar-overlay {
             display: none;
@@ -188,7 +222,7 @@
         .brand-icon {
             width: 38px;
             height: 38px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -196,7 +230,7 @@
             color: #fff;
             font-weight: 800;
             font-size: 18px;
-            box-shadow: 0 4px 12px var(--accent-purple-glow);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
             flex-shrink: 0;
         }
 
@@ -209,8 +243,8 @@
 
         .brand-subtitle {
             font-size: 11px;
-            color: var(--accent-purple);
-            font-weight: 600;
+            color: var(--accent-red);
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -299,25 +333,15 @@
         }
 
         .menu-item.active {
-            border-left: 3px solid var(--accent-purple);
+            border-left: 3px solid var(--accent-red);
             font-weight: 600;
-            color: var(--accent-purple);
-        }
-
-        .menu-item .badge-star {
-            margin-left: auto;
-            font-size: 10px;
-            color: var(--accent-yellow);
+            color: var(--accent-red);
         }
 
         .sidebar-footer {
             padding: 14px;
             border-top: 1px solid var(--border-color);
             background-color: var(--bg-secondary);
-        }
-
-        .mini-progress {
-            margin-bottom: 4px;
         }
 
         .mini-progress-label {
@@ -340,7 +364,7 @@
         .progress-bar-fill {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-purple));
             transition: width 0.4s ease;
         }
 
@@ -383,14 +407,10 @@
             min-width: 0;
         }
 
-        .header-title-group {
-            min-width: 0;
-        }
-
         .header-title-group h1 {
             font-size: 16px;
             font-weight: 700;
-            color: var(--text-primary);
+            color: var(--accent-red);
             line-height: 1.2;
             white-space: nowrap;
             overflow: hidden;
@@ -414,23 +434,21 @@
             flex-shrink: 0;
         }
 
-        /* Mobile Hamburger Toggle Button */
         .mobile-toggle {
             display: none;
             width: 40px;
             height: 40px;
             border-radius: var(--radius-md);
-            background-color: var(--accent-purple);
+            background-color: var(--accent-red);
             color: #ffffff;
             border: none;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 10px var(--accent-purple-glow);
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
             flex-shrink: 0;
         }
 
-        /* Language Switcher Segmented Control */
         .lang-switcher {
             display: inline-flex;
             background-color: var(--bg-tertiary);
@@ -452,9 +470,9 @@
         }
 
         .lang-btn.active {
-            background-color: var(--accent-purple);
+            background-color: var(--accent-red);
             color: #ffffff;
-            box-shadow: 0 2px 6px var(--accent-purple-glow);
+            box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
         }
 
         .btn {
@@ -473,34 +491,6 @@
             white-space: nowrap;
         }
 
-        .btn-primary {
-            background-color: var(--accent-purple);
-            color: #ffffff;
-            box-shadow: 0 4px 10px var(--accent-purple-glow);
-        }
-        .btn-primary:hover {
-            background-color: #7c3aed;
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background-color: var(--bg-tertiary);
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-        .btn-secondary:hover {
-            background-color: var(--border-color);
-        }
-
-        .btn-outline-danger {
-            background-color: transparent;
-            color: var(--accent-red);
-            border-color: rgba(239, 68, 68, 0.3);
-        }
-        .btn-outline-danger:hover {
-            background-color: rgba(239, 68, 68, 0.1);
-        }
-
         .btn-icon {
             padding: 8px;
             width: 36px;
@@ -511,11 +501,7 @@
             border: 1px solid var(--border-color);
             flex-shrink: 0;
         }
-        .btn-icon:hover {
-            background-color: var(--border-color);
-        }
 
-        /* Floating Mobile Floating Menu Button for Instant Access */
         .floating-menu-btn {
             display: none;
             position: fixed;
@@ -525,20 +511,15 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
             color: #ffffff;
             border: none;
-            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.5);
+            box-shadow: 0 6px 16px rgba(239, 68, 68, 0.5);
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .floating-menu-btn:active {
-            transform: scale(0.92);
         }
 
-        /* Content Container */
         .content-body {
             padding: 24px;
             max-width: 1400px;
@@ -546,34 +527,6 @@
             width: 100%;
         }
 
-        /* Alert Warning Header Box */
-        .warning-box {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.03));
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: var(--radius-lg);
-            padding: 14px 20px;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .warning-icon {
-            color: var(--accent-yellow);
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .warning-text {
-            font-size: 13px;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-        .warning-text strong {
-            color: var(--accent-yellow);
-        }
-
-        /* Card Component */
         .card {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -581,7 +534,6 @@
             padding: 24px;
             margin-bottom: 28px;
             box-shadow: var(--card-shadow);
-            transition: var(--transition);
         }
 
         .card-header-flex {
@@ -605,7 +557,7 @@
         }
 
         .card-title svg {
-            color: var(--accent-purple);
+            color: var(--accent-red);
             flex-shrink: 0;
         }
 
@@ -627,18 +579,7 @@
             color: var(--priority-high);
             border: 1px solid rgba(239, 68, 68, 0.3);
         }
-        .priority-badge.medium {
-            background-color: var(--priority-medium-bg);
-            color: var(--priority-medium);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-        .priority-badge.standard {
-            background-color: var(--priority-standard-bg);
-            color: var(--priority-standard);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
 
-        /* Strategy Grid */
         .strategy-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -649,7 +590,7 @@
             background-color: var(--bg-tertiary);
             border-radius: var(--radius-md);
             padding: 14px 16px;
-            border-left: 4px solid var(--accent-purple);
+            border-left: 4px solid var(--accent-red);
             display: flex;
             gap: 12px;
             align-items: flex-start;
@@ -658,7 +599,7 @@
         .strategy-number {
             width: 24px;
             height: 24px;
-            background-color: var(--accent-purple);
+            background-color: var(--accent-red);
             color: #fff;
             border-radius: 50%;
             display: flex;
@@ -669,13 +610,6 @@
             flex-shrink: 0;
         }
 
-        .strategy-text {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        /* Candidate Position Card */
         .position-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -690,31 +624,11 @@
             padding: 18px;
         }
 
-        .box-advantage h4 {
-            color: var(--accent-green);
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         .box-gap {
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(239, 68, 68, 0.02));
             border: 1px solid rgba(239, 68, 68, 0.3);
             border-radius: var(--radius-md);
             padding: 18px;
-        }
-
-        .box-gap h4 {
-            color: var(--accent-red);
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .check-list {
@@ -745,130 +659,6 @@
             border-left: 4px solid var(--accent-blue);
         }
 
-        .script-dont {
-            color: var(--accent-red);
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 12.5px;
-        }
-
-        .script-do {
-            color: var(--accent-green);
-            font-weight: 600;
-            margin-top: 10px;
-            margin-bottom: 6px;
-            font-size: 12.5px;
-        }
-
-        .script-quote {
-            font-style: italic;
-            color: var(--text-secondary);
-            font-size: 13px;
-            background-color: var(--bg-primary);
-            padding: 12px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-color);
-        }
-
-        /* Study Plan Timeline */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 14px;
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background-color: var(--bg-tertiary);
-            padding: 12px 16px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .timeline-item:hover {
-            border-color: var(--accent-purple);
-        }
-
-        .timeline-time {
-            font-family: 'Fira Code', monospace;
-            font-weight: 600;
-            font-size: 11.5px;
-            color: var(--accent-purple);
-            background-color: var(--bg-primary);
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            flex-shrink: 0;
-            width: 105px;
-            text-align: center;
-        }
-
-        .timeline-content {
-            flex: 1;
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--text-primary);
-        }
-
-        .timeline-check {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: var(--accent-purple);
-            flex-shrink: 0;
-        }
-
-        /* 2-Column Comparison Table */
-        .comparison-table-wrapper {
-            overflow-x: auto;
-            margin-top: 14px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 13px;
-            min-width: 600px;
-        }
-
-        .comparison-table th {
-            background-color: var(--bg-tertiary);
-            color: var(--text-primary);
-            padding: 12px 16px;
-            font-weight: 700;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .comparison-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        .comparison-table tr:hover td {
-            background-color: rgba(139, 92, 246, 0.04);
-            color: var(--text-primary);
-        }
-
-        .comparison-table code {
-            font-family: 'Fira Code', monospace;
-            font-size: 12px;
-            background-color: var(--bg-primary);
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: var(--accent-cyan);
-            border: 1px solid var(--border-color);
-        }
-
-        /* Accordions for Concepts */
         .accordion-group {
             display: flex;
             flex-direction: column;
@@ -881,11 +671,6 @@
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .accordion-item.completed {
-            border-left: 4px solid var(--accent-green);
         }
 
         .accordion-header {
@@ -894,43 +679,7 @@
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            user-select: none;
-            transition: var(--transition);
             gap: 10px;
-        }
-
-        .accordion-header:hover {
-            background-color: rgba(255, 255, 255, 0.03);
-        }
-
-        .accordion-title-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .accordion-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .accordion-icon {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s ease;
-            color: var(--text-muted);
-            flex-shrink: 0;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-            color: var(--accent-purple);
         }
 
         .accordion-body {
@@ -944,29 +693,6 @@
             display: block;
         }
 
-        .concept-section {
-            margin-bottom: 14px;
-        }
-
-        .concept-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .concept-label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--accent-purple);
-            margin-bottom: 4px;
-        }
-
-        .concept-val {
-            font-size: 13px;
-            color: var(--text-primary);
-        }
-
-        /* Code Block Styling */
         pre {
             background-color: var(--bg-primary);
             border: 1px solid var(--border-color);
@@ -976,9 +702,6 @@
             font-size: 12px;
             color: #38bdf8;
             overflow-x: auto;
-            margin-top: 6px;
-            margin-bottom: 8px;
-            -webkit-overflow-scrolling: touch;
         }
 
         .interview-q-box {
@@ -989,20 +712,6 @@
             margin-top: 10px;
         }
 
-        .interview-q {
-            font-weight: 700;
-            color: var(--accent-blue);
-            font-size: 12.5px;
-            margin-bottom: 4px;
-        }
-
-        .interview-a {
-            font-size: 13px;
-            color: var(--text-primary);
-            line-height: 1.5;
-        }
-
-        /* Middleware Diagram Component */
         .pipeline-flow {
             display: flex;
             align-items: center;
@@ -1023,110 +732,10 @@
             border-radius: var(--radius-sm);
             font-size: 12px;
             font-weight: 600;
-            color: var(--text-primary);
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .flow-node.highlight {
-            border-color: var(--accent-purple);
-            color: var(--accent-purple);
-            background-color: rgba(139, 92, 246, 0.1);
-        }
-
-        .flow-arrow {
-            color: var(--accent-purple);
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        /* Interactive Modes */
-        .interactive-section {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(6, 182, 212, 0.05));
-            border: 1px solid rgba(139, 92, 246, 0.3);
-        }
-
-        .flashcard-wrapper {
-            perspective: 1000px;
-            width: 100%;
-            max-width: 650px;
-            margin: 20px auto;
-            height: 280px;
-        }
-
-        .flashcard {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .flashcard.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .flashcard-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow);
-            overflow-y: auto;
-        }
-
-        .flashcard-front {
-            background-color: var(--bg-secondary);
-            color: var(--text-primary);
-        }
-
-        .flashcard-back {
-            background-color: var(--bg-tertiary);
-            color: var(--text-primary);
-            transform: rotateY(180deg);
-            border-color: var(--accent-purple);
-        }
-
-        .flashcard-q {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .flashcard-a {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .flashcard-controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 16px;
         }
 
         .section-anchor {
-            scroll-margin-top: 90px;
-        }
-
-        /* RESPONSIVE MEDIA QUERIES */
-        @media (max-width: 1024px) {
-            .content-body {
-                padding: 18px;
-            }
-            .position-grid {
-                grid-template-columns: 1fr;
-            }
+            scroll-margin-top: 120px;
         }
 
         @media (max-width: 992px) {
@@ -1145,76 +754,10 @@
             #main {
                 margin-left: 0;
             }
-            .mobile-toggle {
+            .mobile-toggle, .floating-menu-btn {
                 display: inline-flex;
             }
-            .floating-menu-btn {
-                display: flex;
-            }
-            .pipeline-flow {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .flow-arrow {
-                text-align: center;
-                transform: rotate(90deg);
-                margin: 4px 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #header {
-                padding: 10px 14px;
-            }
-            .btn-desktop-only {
-                display: none;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .header-title-group h1 {
-                font-size: 13.5px;
-            }
-            .header-title-group p {
-                display: none;
-            }
-            .content-body {
-                padding: 12px;
-            }
-            .card {
-                padding: 16px;
-                border-radius: var(--radius-md);
-                margin-bottom: 18px;
-            }
-            .card-title {
-                font-size: 15px;
-            }
-            .btn {
-                padding: 6px 10px;
-                font-size: 11px;
-            }
-            .timeline-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            .timeline-time {
-                width: 100%;
-            }
-            .timeline-check {
-                align-self: flex-end;
-                margin-top: -24px;
-            }
-            .flashcard-wrapper {
-                height: 320px;
-            }
-            .flashcard-face {
-                padding: 16px;
-            }
-            .flashcard-q {
-                font-size: 15px;
-            }
-            .strategy-grid {
+            .position-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1234,10 +777,10 @@
         <aside id="sidebar">
             <div class="sidebar-header">
                 <div class="brand">
-                    <div class="brand-icon">.NET</div>
+                    <div class="brand-icon">★</div>
                     <div>
-                        <div class="brand-title">1-Day Revision</div>
-                        <div class="brand-subtitle">ASP.NET Core 8-10</div>
+                        <div class="brand-title">HIGH-PRIORITY</div>
+                        <div class="brand-subtitle">Must-Know Topics</div>
                     </div>
                 </div>
                 <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
@@ -1248,54 +791,34 @@
             <div class="sidebar-search">
                 <div class="search-box">
                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    <input type="text" id="searchInput" placeholder="Search concept, keyword...">
+                    <input type="text" id="searchInput" placeholder="Search high-priority concepts...">
                 </div>
             </div>
 
             <nav class="sidebar-menu">
-                <div class="menu-category">Overview & Strategy</div>
-                <a href="#sec-strategy" class="menu-item active">Your Strategy Tomorrow <span class="badge-star">★</span></a>
-                <a href="#sec-position" class="menu-item">My Position & Advantage</a>
-                <a href="#sec-plan" class="menu-item">1-Day Hour-by-Hour Plan</a>
-                <a href="#sec-java-cheatsheet" class="menu-item">Java → C# Cheat Sheet</a>
+                <div class="menu-category">Essential Strategy</div>
+                <a href="#sec-strategy" class="menu-item active">Your Strategy Tomorrow ★</a>
+                <a href="#sec-position" class="menu-item">My Position & Advantage Script</a>
 
-                <div class="menu-category">Core Technical Modules</div>
-                <a href="#sec-csharp" class="menu-item">C# & OOP Fundamentals <span class="badge-star">★★★★★</span></a>
-                <a href="#sec-aspnet" class="menu-item">ASP.NET Core Core <span class="badge-star">★★★★★</span></a>
-                <a href="#sec-di" class="menu-item">Dependency Injection <span class="badge-star">★★★★★</span></a>
-                <a href="#sec-lifecycle" class="menu-item">Request Lifecycle</a>
-                <a href="#sec-rest" class="menu-item">REST API & HTTP</a>
-                <a href="#sec-efcore" class="menu-item">EF Core <span class="badge-star">★★★★★</span></a>
-                <a href="#sec-adonet" class="menu-item">ADO.NET <span class="badge-star">★★★★★</span></a>
-                <a href="#sec-sql" class="menu-item">Database & SQL Tuning <span class="badge-star">★★★★★</span></a>
-                <a href="#sec-architecture" class="menu-item">Architecture & SOLID <span class="badge-star">★★★★★</span></a>
+                <div class="menu-category">High-Priority Technicals</div>
+                <a href="#sec-aspnet" class="menu-item">ASP.NET Core Architecture ★★★★★</a>
+                <a href="#sec-di" class="menu-item">Dependency Injection Lifetimes ★★★★★</a>
+                <a href="#sec-csharp-high" class="menu-item">High-Priority C# & OOP ★★★★★</a>
+                <a href="#sec-efcore" class="menu-item">EF Core AsNoTracking ★★★★★</a>
+                <a href="#sec-adonet" class="menu-item">ADO.NET Raw Data Access ★★★★★</a>
+                <a href="#sec-sql-tuning" class="menu-item">SQL Performance & 12-Step Tuning ★★★★★</a>
+                <a href="#sec-architecture" class="menu-item">SOLID & Clean Architecture ★★★★★</a>
+                <a href="#sec-config" class="menu-item">Environment Secrets & Key Vault ★★★★★</a>
 
-                <div class="menu-category">Enterprise Ecosystem</div>
-                <a href="#sec-kafka" class="menu-item">Kafka Event Streaming</a>
-                <a href="#sec-redis" class="menu-item">Redis Distributed Cache</a>
-                <a href="#sec-airflow" class="menu-item">Apache Airflow</a>
-                <a href="#sec-testing" class="menu-item">Testing (xUnit / Moq)</a>
-                <a href="#sec-devops" class="menu-item">DevOps & CI/CD</a>
-                <a href="#sec-config" class="menu-item">Environments & Secrets <span class="badge-star">★★★★★</span></a>
-                <a href="#sec-security" class="menu-item">API Security & JWT</a>
-                <a href="#sec-performance" class="menu-item">API Performance Tuning</a>
-                <a href="#sec-agile" class="menu-item">Agile & Scrum</a>
-                <a href="#sec-incident" class="menu-item">Production Incidents</a>
-
-                <div class="menu-category">Interview Practice</div>
-                <a href="#sec-behavioral" class="menu-item">Behavioral & ERP Story</a>
-                <a href="#sec-self" class="menu-item">Tell Me About Yourself</a>
-                <a href="#sec-rapidfire" class="menu-item">50+ Rapid Fire Q&A</a>
-                <a href="#sec-idontknow" class="menu-item">If I Don't Know Strategy</a>
-                <a href="#sec-mock" class="menu-item">Interactive Mock Interview</a>
-                <a href="#sec-flashcards" class="menu-item">Interactive Flashcards</a>
+                <div class="menu-category">Behavioral & Summary</div>
+                <a href="#sec-story" class="menu-item">Candidate Script & KGDCL Story</a>
                 <a href="#sec-cheatsheet10" class="menu-item">Final 10-Min Cheat Sheet</a>
             </nav>
 
             <div class="sidebar-footer">
                 <div class="mini-progress">
                     <div class="mini-progress-label">
-                        <span>Revision Completed</span>
+                        <span>High Priority Completed</span>
                         <span id="progressPercent">0%</span>
                     </div>
                     <div class="progress-bar-bg">
@@ -1307,7 +830,13 @@
 
         <!-- Main Workspace -->
         <main id="main">
-            <!-- Top Sticky Header -->
+            <!-- Global Top Page Switcher Bar -->
+            <div class="page-switcher-bar">
+                <a href="index.html" class="page-tab active">🔥 HIGH PRIORITY (PAGE 1)</a>
+                <a href="ecosystem.html" class="page-tab">🌐 ECOSYSTEM & TOOLS (PAGE 2)</a>
+            </div>
+
+            <!-- Sticky Header -->
             <header id="header">
                 <div class="header-left">
                     <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
@@ -1315,26 +844,23 @@
                     </button>
                     <div class="header-title-group">
                         <h1>
-                            <span class="en-text">.NET / ASP.NET Core Revision</span>
-                            <span class="bn-sub">.NET এবং ASP.NET Core র‍্যাপিড রিভিশন</span>
+                            <span class="en-text">🔥 High-Priority Must-Knows — .NET Interview</span>
+                            <span class="bn-sub">🔥 আবশ্যক হাই-প্রায়োরিটি বিষয়সমূহ — .NET ইন্টারভিউ</span>
                         </h1>
                         <p>
-                            <span class="en-text">Enterprise Application Development • C# • ASP.NET Core • SQL</span>
-                            <span class="bn-sub">এন্টারপ্রাইজ ডেভেলপমেন্ট • C# • ASP.NET Core • SQL</span>
+                            <span class="en-text">Essential C# • ASP.NET Core • SQL Tuning • DI • EF Core • Architecture</span>
+                            <span class="bn-sub">জরুরী C# • ASP.NET Core • SQL টিউনিং • DI • EF Core • আর্কিটেকচার</span>
                         </p>
                     </div>
                 </div>
 
                 <div class="header-actions">
-                    <!-- Language Selection Button Group -->
                     <div class="lang-switcher">
                         <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH</button>
                         <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
                         <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
                     </div>
 
-                    <button class="btn btn-secondary btn-desktop-only" id="btnMarkAllComplete">Complete All</button>
-                    <button class="btn btn-outline-danger btn-desktop-only" id="btnResetProgress">Reset</button>
                     <button class="btn btn-icon" id="btnThemeToggle" title="Toggle Light/Dark Theme">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                     </button>
@@ -1344,21 +870,12 @@
             <!-- Dashboard Content Body -->
             <div class="content-body">
 
-                <!-- Warning Banner -->
-                <div class="warning-box">
-                    <div class="warning-icon">⚠️</div>
-                    <div class="warning-text">
-                        <strong>Important Interview Strategy:</strong> Focus on understanding architectural concepts, trade-offs, and explaining them with real-world enterprise context—not memorizing verbatim definitions.
-                        <span class="bn-sub">মূল কনসেপ্ট এবং আর্কিটেকচার বোঝা ও ইন্টারভিউতে বাস্তব অভিজ্ঞতার আলোকে ব্যাখ্যা করার ওপর জোর দিন, মুখস্থ করার প্রয়োজন নেই।</span>
-                    </div>
-                </div>
-
-                <!-- SECTION 38 & TOP: YOUR STRATEGY TOMORROW -->
+                <!-- 1. STRATEGY TOMORROW -->
                 <section id="sec-strategy" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            YOUR STRATEGY TOMORROW
+                            YOUR STRATEGY TOMORROW (10 GOLDEN RULES)
                         </h2>
                         <span class="priority-badge high">★ High Priority Rules</span>
                     </div>
@@ -1437,7 +954,7 @@
                     </div>
                 </section>
 
-                <!-- SECTION 2: MY INTERVIEW POSITION -->
+                <!-- 2. POSITION & ADVANTAGE -->
                 <section id="sec-position" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
@@ -1446,50 +963,20 @@
                         </h2>
                     </div>
 
-                    <p style="color: var(--text-secondary); margin-bottom: 16px;">
-                        Candidate Profile: 4.5+ years enterprise software experience (Java / Spring Boot / Grails, Oracle / PL/SQL, SQL Server / T-SQL, C# / .NET, REST APIs, Angular, Git, Linux deployment, Production support, ERP & billing systems).
-                        <span class="bn-sub">ক্যান্ডিডেট প্রোফাইল: ৪.৫+ বছরের এন্টারপ্রাইজ সফটওয়্যার ডেভেলপমেন্ট অভিজ্ঞতা (Java/Spring Boot, Oracle, SQL Server, C#/.NET, REST APIs, Angular, Linux, Production Support)।</span>
-                    </p>
-
                     <div class="position-grid">
                         <div class="box-advantage">
                             <h4>YOUR ADVANTAGES (Highlight These!)</h4>
                             <span class="bn-sub" style="margin-bottom: 8px;">আপনার প্রধান সুবিধাসমূহ (ইন্টারভিউতে এগুলো তুলে ধরুন)</span>
                             <ul class="check-list">
-                                <li>
-                                    <strong>Enterprise Application Experience:</strong> Proven track record in complex ERP, billing, and financial workflows.
-                                    <span class="bn-sub">জটিল ERP, বিলিং এবং আর্থিক প্রক্রিয়ার বাস্তব এন্টারপ্রাইজ অভিজ্ঞতা।</span>
-                                </li>
-                                <li>
-                                    <strong>Strong Database Depth:</strong> Advanced SQL, indexing, stored procedures, transactions, and execution plan tuning.
-                                    <span class="bn-sub">উন্নত SQL, ইনডেক্সিং, স্টোরড প্রসিডিউর এবং কুয়েরি এক্সিকিউশন প্ল্যান টিউনিং দক্ষতা।</span>
-                                </li>
-                                <li>
-                                    <strong>Robust Backend API Design:</strong> RESTful resource modeling, HTTP standards, status codes, and JSON DTOs.
-                                    <span class="bn-sub">RESTful API ডিজাইন, HTTP স্ট্যান্ডার্ড এবং DTO প্যাটার্নে পারদর্শিতা।</span>
-                                </li>
-                                <li>
-                                    <strong>Production Troubleshooting:</strong> Experienced in debugging live incidents, analyzing logs, and fixing root causes.
-                                    <span class="bn-sub">লাইভ প্রবলেম ট্রাবলশুটিং, লগ অ্যানালাইসিস এবং প্রোডাকশন ইস্যু সমাধানের অভিজ্ঞতা।</span>
-                                </li>
-                                <li>
-                                    <strong>Business Alignment:</strong> Skilled in client collaboration, requirements gathering, and reporting.
-                                    <span class="bn-sub">ক্লায়েন্ট কোলাবরেশন এবং বিজনেস রিকোয়ারমেন্ট বোঝার দারুণ দক্ষতা।</span>
-                                </li>
-                                <li>
-                                    <strong>Existing C# / .NET & ASP Exposure:</strong> Familiarity with C# syntax, object-oriented concepts, and ASP.NET patterns.
-                                    <span class="bn-sub">C# সিনট্যাক্স, OOP কনসেপ্ট এবং ASP.NET ফ্রেমওয়ার্কের ভালো কাজের ধারণা।</span>
-                                </li>
+                                <li><strong>Enterprise Experience:</strong> Proven track record in complex ERP, billing, and financial workflows.</li>
+                                <li><strong>Strong Database Depth:</strong> Advanced SQL, indexing, stored procedures, transactions, and execution plan tuning.</li>
+                                <li><strong>Robust Backend API Design:</strong> RESTful resource modeling, HTTP standards, status codes, and JSON DTOs.</li>
+                                <li><strong>Production Troubleshooting:</strong> Experienced in debugging live incidents, analyzing logs, and fixing root causes.</li>
                             </ul>
                         </div>
 
                         <div class="box-gap">
-                            <h4>YOUR HIGH-PRIORITY GAP & MITIGATION</h4>
-                            <span class="bn-sub" style="margin-bottom: 8px;">আপনার মূল গ্যাপ এবং কীভাবে এর সঠিক উত্তর দেবেন</span>
-                            <p style="font-size: 13px; color: var(--text-primary); margin-bottom: 12px;">
-                                <strong>The Gap:</strong> Years of production ASP.NET Core 8–10 specific framework details.
-                                <span class="bn-sub">গ্যাপ: বহু বছরের পিওর ASP.NET Core 8-10 প্রোডাকশন অভিজ্ঞতা না থাকা।</span>
-                            </p>
+                            <h4>YOUR HIGH-PRIORITY GAP & MITIGATION SCRIPT</h4>
                             <div class="script-box">
                                 <div class="script-dont">❌ DO NOT SAY:</div>
                                 <div class="script-quote">"I have 5 years of production experience in ASP.NET Core."</div>
@@ -1497,176 +984,18 @@
                                 <div class="script-do">✅ INSTEAD SAY (উত্তর যেভাবে দেবেন):</div>
                                 <div class="script-quote">
                                     "My core enterprise background is in Java/Spring Boot and complex database systems, but I also have hands-on C#/.NET experience and ASP.NET Core training. The fundamental architecture—Dependency Injection, REST APIs, ORMs, layered architecture, database optimization, testing, and CI/CD—is completely familiar to me, and I have been actively applying my skills to the modern .NET ecosystem."
-                                    <span class="bn-sub" style="color: #94a3b8; font-style: normal; margin-top: 6px;">
-                                        "আমার মূল এন্টারপ্রাইজ ব্যাকগ্রাউন্ড হলো Java/Spring Boot এবং বড় ডাটাবেজ সিস্টেমে, তবে আমার C#/.NET এবং ASP.NET Core ট্রেনিং ও কাজের অভিজ্ঞতা রয়েছে। মূল আর্কিটেকচারাল কনসেপ্টগুলো—Dependency Injection, REST APIs, ORMs, ডাটাবেজ অপ্টিমাইজেশন—আমার পুরোপুরি জানা এবং আমি খুব দ্রুত .NET ইকোটকোসিস্টেমে কাজ করতে স্বাচ্ছন্দ্যবোধ করি।"
-                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- SECTION 3: ONE-DAY STUDY PLAN -->
-                <section id="sec-plan" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            ONE-DAY RAPID STUDY PLAN TIMELINE
-                        </h2>
-                        <span style="font-size: 12px; color: var(--text-muted);">Check off blocks as you revise</span>
-                    </div>
-
-                    <div class="timeline" id="timelineContainer">
-                        <!-- Rendered dynamically by JS -->
-                    </div>
-                </section>
-
-                <!-- SECTION 5: JAVA -> C# CHEAT SHEET -->
-                <section id="sec-java-cheatsheet" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
-                            JAVA / SPRING BOOT → C# / ASP.NET CORE CHEAT SHEET
-                        </h2>
-                        <span class="priority-badge high">★ Knowledge Bridge</span>
-                    </div>
-
-                    <p style="color: var(--text-secondary); margin-bottom: 14px;">
-                        Use your existing Java/Spring Boot knowledge to rapidly master .NET concepts. Framework architectures are 90% identical!
-                        <span class="bn-sub">আপনার বিদ্যমান Java/Spring Boot অভিজ্ঞতা দিয়ে খুব দ্রুত .NET শিখুন। দুটি ফ্রেমওয়ার্কের আর্কিটেকচার ৯০% হুবহু একই!</span>
-                    </p>
-
-                    <div class="comparison-table-wrapper">
-                        <table class="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>Concept Domain</th>
-                                    <th>Java / Spring Boot Ecosystem</th>
-                                    <th>C# / ASP.NET Core Ecosystem</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Framework</strong></td>
-                                    <td><code>Spring Boot Framework</code></td>
-                                    <td><code>ASP.NET Core (.NET 8/9/10)</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>API Controller</strong></td>
-                                    <td><code>@RestController</code> + <code>@RequestMapping</code></td>
-                                    <td><code>[ApiController]</code> + <code>ControllerBase</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Business Layer</strong></td>
-                                    <td><code>@Service</code> class</td>
-                                    <td>Service class registered in <code>Program.cs</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Data Access</strong></td>
-                                    <td><code>@Repository</code> / Spring Data JPA</td>
-                                    <td>Repository class / <code>DbSet&lt;T&gt;</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Dependency Injection</strong></td>
-                                    <td><code>@Autowired</code> or Constructor DI</td>
-                                    <td>Constructor DI (Native Built-in IoC Container)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ORM Framework</strong></td>
-                                    <td><code>JPA / Hibernate</code></td>
-                                    <td><code>Entity Framework Core (EF Core)</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Data Repository</strong></td>
-                                    <td><code>JpaRepository&lt;Entity, ID&gt;</code></td>
-                                    <td><code>DbSet&lt;T&gt;</code> / Generic Repository</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Configuration</strong></td>
-                                    <td><code>application.properties / application.yml</code></td>
-                                    <td><code>appsettings.json</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Build & Package</strong></td>
-                                    <td><code>Maven (pom.xml) / Gradle</code></td>
-                                    <td><code>dotnet CLI / NuGet (.csproj)</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Web Server</strong></td>
-                                    <td><code>Embedded Tomcat / Jetty</code></td>
-                                    <td><code>Kestrel Web Server</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>HTTP Request Pipeline</strong></td>
-                                    <td><code>Servlet Filter / HandlerInterceptor</code></td>
-                                    <td><code>Middleware / Action Filter</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Component Bean</strong></td>
-                                    <td><code>@Component / @Bean</code></td>
-                                    <td>Registered Service (<code>AddScoped</code>, etc.)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Async Programming</strong></td>
-                                    <td><code>CompletableFuture&lt;T&gt;</code> / <code>@Async</code></td>
-                                    <td><code>Task&lt;T&gt;</code> / <code>async & await</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Collections / Processing</strong></td>
-                                    <td><code>Java Streams API (.stream().filter()...)</code></td>
-                                    <td><code>LINQ (.Where().Select().ToList())</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Null Safety</strong></td>
-                                    <td><code>Optional&lt;T&gt;</code></td>
-                                    <td>Nullable reference types (<code>string?</code>, <code>int?</code>)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Raw Database Access</strong></td>
-                                    <td><code>JDBC / JdbcTemplate</code></td>
-                                    <td><code>ADO.NET (SqlConnection, SqlCommand)</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Unit Testing</strong></td>
-                                    <td><code>JUnit 5</code></td>
-                                    <td><code>xUnit / NUnit</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Mocking Framework</strong></td>
-                                    <td><code>Mockito</code></td>
-                                    <td><code>Moq / NSubstitute</code></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Security Framework</strong></td>
-                                    <td><code>Spring Security</code></td>
-                                    <td><code>ASP.NET Core Authentication / Authorization</code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- SECTION 4: C# FUNDAMENTALS -->
-                <section id="sec-csharp" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4 7.55 4.24a2.26 2.26 0 0 0-3.23 2l-.02 11.52a2.26 2.26 0 0 0 3.25 2l8.95-5.16a2.26 2.26 0 0 0 0-3.92z"/></svg>
-                            C# & OBJECT-ORIENTED PROGRAMMING (30 KEY CONCEPTS)
-                        </h2>
-                        <span class="priority-badge high">★★★★★ High Priority</span>
-                    </div>
-
-                    <div class="accordion-group" id="csharpAccordions">
-                        <!-- Dynamically filled by JS -->
-                    </div>
-                </section>
-
-                <!-- SECTION 6: ASP.NET CORE FUNDAMENTALS -->
+                <!-- 3. ASP.NET CORE CORE -->
                 <section id="sec-aspnet" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                            ASP.NET CORE FUNDAMENTALS & ARCHITECTURE
+                            ASP.NET CORE FUNDAMENTALS & MIDDLEWARE
                         </h2>
                         <span class="priority-badge high">★★★★★ Critical Interview Core</span>
                     </div>
@@ -1674,30 +1003,13 @@
                     <div class="concept-section">
                         <div class="concept-label">What is ASP.NET Core?</div>
                         <p class="concept-val">
-                            ASP.NET Core is a modern, cross-platform, open-source, high-performance web framework for building cloud-connected, internet-connected applications (RESTful Web APIs, Web Apps, Microservices). Unlike legacy .NET Framework, it runs on Windows, Linux, and macOS, and features a built-in lightweight web server (Kestrel) and native Dependency Injection.
+                            ASP.NET Core is a modern, cross-platform, open-source, high-performance web framework for building cloud-connected, internet-connected applications. Unlike legacy .NET Framework, it runs on Windows, Linux, and macOS, and features Kestrel web server and native Dependency Injection.
                             <span class="bn-sub">ASP.NET Core হলো ওপেন সোর্স, ক্রস-প্ল্যাটফর্ম ও উচ্চ পারফরম্যান্সের ওয়েব ফ্রেমওয়ার্ক। এটি Windows, Linux ও macOS সব প্ল্যাটফর্মেই রান করে।</span>
                         </p>
                     </div>
 
                     <div class="concept-section" style="margin-top: 14px;">
-                        <div class="concept-label">.NET Framework vs Modern .NET (.NET 8 / 9 / 10)</div>
-                        <p class="concept-val">
-                            <strong>.NET Framework (legacy 4.x):</strong> Windows-only, tied to IIS, heavy System.Web assembly.<br>
-                            <strong>Modern .NET (.NET 8/9/10):</strong> Unified, modular, cross-platform, fast, lightweight, runs natively on Linux containers.
-                            <span class="bn-sub">পুরাতন .NET Framework শুধুমাত্র Windows নির্ভর ছিল, পক্ষান্তরে আধুনিক .NET 8/9/10 সম্পূর্ণ ক্রস-প্ল্যাটফর্ম, দ্রুত ও কন্টেইনার-ফ্রেন্ডলি।</span>
-                        </p>
-                    </div>
-
-                    <div class="concept-section" style="margin-top: 14px;">
-                        <div class="concept-label">Kestrel Web Server</div>
-                        <p class="concept-val">
-                            Kestrel is the default cross-platform HTTP web server in ASP.NET Core. It is asynchronous, highly optimized for I/O performance, and handles raw HTTP requests before passing them to the middleware pipeline. In enterprise production, Kestrel is usually deployed behind a reverse proxy like NGINX, Apache, or IIS for security and SSL termination.
-                            <span class="bn-sub">Kestrel হলো ASP.NET Core এর বিল্ট-ইন ক্রস-প্ল্যাটফর্ম ওয়েব সার্ভার। প্রোডাকশনে সাধারণত NGINX বা IIS এর পেছনে Reverse Proxy হিসেবে ব্যবহৃত হয়।</span>
-                        </p>
-                    </div>
-
-                    <div class="concept-section" style="margin-top: 16px;">
-                        <div class="concept-label">Middleware Pipeline Flow Diagram</div>
+                        <div class="concept-label">Middleware Pipeline Flow</div>
                         <div class="pipeline-flow">
                             <div class="flow-node">HTTP Request</div>
                             <div class="flow-arrow">→</div>
@@ -1718,13 +1030,12 @@
                     <div class="interview-q-box">
                         <div class="interview-q">Q: What is middleware in ASP.NET Core?</div>
                         <div class="interview-a">
-                            "Middleware is software components assembled into an application pipeline to handle requests and responses. Each component can inspect, modify, or handle incoming HTTP requests and can either pass control to the next middleware in the pipeline via <code>next()</code> or short-circuit the pipeline (e.g., returning 401 Unauthorized immediately)."
-                            <span class="bn-sub">মিডলওয়্যার হলো রিকোয়েস্ট প্রসেসিং পাইপলাইনের উপাদান। প্রতিটি মিডলওয়্যার HTTP রিকোয়েস্ট ও রেসপন্স ইনসপেক্ট করে পরবর্তী মিডলওয়্যারে পাঠায় অথবা Short-circuit করে থামিয়ে দেয়।</span>
+                            "Middleware is software components assembled into an application pipeline to handle requests and responses. Each component can inspect, modify, or handle incoming HTTP requests and can either pass control to the next middleware in the pipeline via <code>next()</code> or short-circuit the pipeline."
                         </div>
                     </div>
                 </section>
 
-                <!-- SECTION 7: DEPENDENCY INJECTION -->
+                <!-- 4. DEPENDENCY INJECTION -->
                 <section id="sec-di" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
@@ -1734,322 +1045,95 @@
                         <span class="priority-badge high">★★★★★ High Priority</span>
                     </div>
 
-                    <p style="color: var(--text-secondary); margin-bottom: 14px;">
-                        ASP.NET Core has a built-in IoC container. Dependencies are registered in <code>Program.cs</code> and injected via constructor injection.
-                        <span class="bn-sub">ASP.NET Core এ বিল্ট-ইন IoC কন্টেইনার রয়েছে। ডিপেন্ডেন্সি <code>Program.cs</code> এ রেজিস্টার করা হয় এবং Constructor DI দিয়ে ইনজেক্ট করা হয়।</span>
-                    </p>
-
-                    <div class="comparison-table-wrapper">
-                        <table class="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>Lifetime Method</th>
-                                    <th>Instance Creation Rule</th>
-                                    <th>Common Use Case Example</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>builder.Services.AddTransient&lt;IService, Service&gt;()</code></td>
-                                    <td><strong>Transient:</strong> Created every time they are requested from the container.</td>
-                                    <td>Lightweight, stateless utility services (e.g., calculation helper, mapper).</td>
-                                </tr>
-                                <tr>
-                                    <td><code>builder.Services.AddScoped&lt;IService, Service&gt;()</code></td>
-                                    <td><strong>Scoped:</strong> Created once per client HTTP request lifetime. Shared across request.</td>
-                                    <td><code>DbContext</code>, unit of work, repository classes, current user context.</td>
-                                </tr>
-                                <tr>
-                                    <td><code>builder.Services.AddSingleton&lt;IService, Service&gt;()</code></td>
-                                    <td><strong>Singleton:</strong> Created first time requested and lives for application lifetime.</td>
-                                    <td>In-memory caching, app configuration settings, background queue processor.</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 10px;">
+                        <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
+                            <strong>Transient:</strong> Created every time requested from container.
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
+                            <strong>Scoped:</strong> Created once per client HTTP request lifetime.
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
+                            <strong>Singleton:</strong> Created once for application lifetime.
+                        </div>
                     </div>
 
-                    <div class="interview-q-box">
-                        <div class="interview-q">Q: What is a "Captive Dependency" and what happens if you inject a Scoped service into a Singleton?</div>
+                    <div class="interview-q-box" style="margin-top: 14px;">
+                        <div class="interview-q">Q: What is a "Captive Dependency"?</div>
                         <div class="interview-a">
-                            "Injecting a Scoped service into a Singleton creates a <strong>Captive Dependency</strong> bug. The Scoped service becomes trapped inside the Singleton's application-wide lifetime. This leads to severe issues such as DbContext thread safety violations, memory leaks, and stale data because the Scoped instance is never disposed between HTTP requests!"
-                            <span class="bn-sub">Singleton এর মধ্যে Scoped সার্ভিস ইনজেক্ট করলে Captive Dependency তৈরি হয়। এর ফলে DbContext কনকারেন্সি ত্রুটি, মেমরি লিক এবং পুরোনো ডেটার বাগ তৈরি হয়।</span>
+                            "Injecting a Scoped service (like DbContext) into a Singleton creates a Captive Dependency bug, trapping the Scoped instance forever and causing thread concurrency violations and memory leaks!"
                         </div>
                     </div>
                 </section>
 
-                <!-- SECTION 8: REQUEST LIFECYCLE -->
-                <section id="sec-lifecycle" class="card section-anchor">
+                <!-- 5. HIGH PRIORITY C# ACCORDIONS -->
+                <section id="sec-csharp-high" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                            ASP.NET CORE REQUEST LIFECYCLE (12 STAGES)
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4 7.55 4.24a2.26 2.26 0 0 0-3.23 2l-.02 11.52a2.26 2.26 0 0 0 3.25 2l8.95-5.16a2.26 2.26 0 0 0 0-3.92z"/></svg>
+                            HIGH-PRIORITY C# & OOP CONCEPTS
                         </h2>
+                        <span class="priority-badge high">★★★★★ High Priority Only</span>
                     </div>
 
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 1</div>
-                            <div class="timeline-content">Client initiates HTTP Request → Arrives at Kestrel Web Server</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 2</div>
-                            <div class="timeline-content">Kestrel passes request into Middleware Pipeline (Global Exception Handling)</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 3</div>
-                            <div class="timeline-content">Routing Middleware matches URL path to Endpoint route template</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 4</div>
-                            <div class="timeline-content">Authentication Middleware validates credentials / JWT bearer token & populates ClaimsPrincipal</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 5</div>
-                            <div class="timeline-content">Authorization Middleware checks user Roles & Policies</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 6</div>
-                            <div class="timeline-content">Action Filter (Executing) runs pre-action logic</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 7</div>
-                            <div class="timeline-content">Model Binding maps HTTP request body/query parameters into C# DTO objects</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 8</div>
-                            <div class="timeline-content">Model Validation checks Data Annotations (ModelState.IsValid)</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 9</div>
-                            <div class="timeline-content">Controller Action method executes business logic / invokes Services & EF Core</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 10</div>
-                            <div class="timeline-content">Action Filter (Executed) runs post-action logic</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 11</div>
-                            <div class="timeline-content">IActionResult serializes response object into JSON HTTP response body</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-time">Stage 12</div>
-                            <div class="timeline-content">Response flows back through middleware pipeline to Client (200 OK / Error)</div>
-                        </div>
+                    <div class="accordion-group" id="csharpHighAccordions">
+                        <!-- Filled by JS -->
                     </div>
                 </section>
 
-                <!-- SECTION 9: WEB API / REST -->
-                <section id="sec-rest" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                            REST API DESIGN & HTTP STATUS CODES
-                        </h2>
-                    </div>
-
-                    <div class="concept-section">
-                        <div class="concept-label">HTTP Methods & Idempotency</div>
-                        <div class="comparison-table-wrapper">
-                            <table class="comparison-table">
-                                <thead>
-                                    <tr>
-                                        <th>Method</th>
-                                        <th>Purpose</th>
-                                        <th>Idempotent?</th>
-                                        <th>Safe?</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>GET</code></td>
-                                        <td>Retrieve resource representations</td>
-                                        <td>Yes</td>
-                                        <td>Yes</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>POST</code></td>
-                                        <td>Create a new resource</td>
-                                        <td>No</td>
-                                        <td>No</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>PUT</code></td>
-                                        <td>Replace/update an entire existing resource</td>
-                                        <td>Yes</td>
-                                        <td>No</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>PATCH</code></td>
-                                        <td>Apply partial modification to a resource</td>
-                                        <td>No (usually)</td>
-                                        <td>No</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>DELETE</code></td>
-                                        <td>Delete a specified resource</td>
-                                        <td>Yes</td>
-                                        <td>No</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="concept-section" style="margin-top: 16px;">
-                        <div class="concept-label">Core HTTP Status Codes to Master</div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 8px;">
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>200 OK</code> — Successful request</div>
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>201 Created</code> — Resource created (POST)</div>
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>204 No Content</code> — Success, no response body (DELETE)</div>
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>400 Bad Request</code> — Invalid client validation/payload</div>
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>401 Unauthorized</code> — Missing or invalid authentication token</div>
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>403 Forbidden</code> — Authenticated but lacking permission role</div>
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>404 Not Found</code> — Requested resource ID does not exist</div>
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>409 Conflict</code> — Duplicate key / concurrency conflict</div>
-                            <div style="background-color: var(--bg-tertiary); padding: 8px 12px; border-radius: 6px;"><code>500 Server Error</code> — Unhandled backend exception</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECTION 10: EF CORE -->
+                <!-- 6. EF CORE & ADO.NET -->
                 <section id="sec-efcore" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                            ENTITY FRAMEWORK CORE (EF CORE)
+                            EF CORE (.AsNoTracking) & ADO.NET REVISION
                         </h2>
                         <span class="priority-badge high">★★★★★ High Priority</span>
                     </div>
 
-                    <div class="concept-section">
-                        <div class="concept-label">Core Building Blocks</div>
-                        <p class="concept-val">
-                            <strong>DbContext:</strong> The primary class representing a session with the database. Combines Unit of Work and Repository patterns.<br>
-                            <strong>DbSet&lt;TEntity&gt;:</strong> Represents a database table set for querying and saving entities.<br>
-                            <strong>Migrations:</strong> Code-first incremental schema synchronization tool (<code>dotnet ef migrations add</code>).
-                        </p>
-                    </div>
-
-                    <div class="interview-q-box" style="margin-top: 14px;">
-                        <div class="interview-q">Q: What is the difference between Tracking and AsNoTracking queries in EF Core?</div>
-                        <div class="interview-a">
-                            "By default, EF Core tracks changes for all returned entities in its Change Tracker. When <code>SaveChangesAsync()</code> is called, modified tracked entities generate UPDATE statements. <br>
-                            When executing read-only queries (e.g., retrieving lists for API GET requests), using <code>.AsNoTracking()</code> bypasses change tracking overhead. This significantly speeds up query execution and reduces memory allocation."
-                            <span class="bn-sub">ডিফল্টভাবে EF Core সব এনটিটি ট্র্যাক করে। কেবল রিড-অনলি GET কুয়েরির ক্ষেত্রে <code>.AsNoTracking()</code> ব্যবহার করলে Change Tracker বাইপাস হয়, যার ফলে কুয়েরি দ্রুত এক্সিকিউট হয় এবং মেমোরি বাঁচে।</span>
-                        </div>
-                    </div>
-
-<pre><code>// Example Read-Only Query (Fast, Low Memory)
-var activeCustomers = await _context.Customers
-    .AsNoTracking()
-    .Where(c => c.IsActive)
-    .Include(c => c.Orders)
-    .ToListAsync();</code></pre>
-                </section>
-
-                <!-- SECTION 11: ADO.NET -->
-                <section id="sec-adonet" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                            ADO.NET HIGH-PRIORITY REVISION
-                        </h2>
-                        <span class="priority-badge high">★★★★★ Job Spec Focus</span>
-                    </div>
-
-                    <p style="color: var(--text-secondary); margin-bottom: 14px;">
-                        ADO.NET is the low-level data access architecture in .NET for direct SQL execution.
-                        <span class="bn-sub">ADO.NET হলো .NET এর সরাসরি SQL এক্সিকিউশনের জন্য তৈরি লো-লেভেল ডাটা এক্সেস প্রযুক্তি।</span>
-                    </p>
-
-                    <div class="comparison-table-wrapper">
-                        <table class="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>ADO.NET Component</th>
-                                    <th>Role & Responsibilities</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>SqlConnection</code></td>
-                                    <td>Manages connection pooling and active database session stream.</td>
-                                </tr>
-                                <tr>
-                                    <td><code>SqlCommand</code></td>
-                                    <td>Executes T-SQL query string or Stored Procedure against database connection.</td>
-                                </tr>
-                                <tr>
-                                    <td><code>SqlDataReader</code></td>
-                                    <td>High-performance, forward-only, read-only stream of query results. Extremely fast.</td>
-                                </tr>
-                                <tr>
-                                    <td><code>SqlDataAdapter / DataSet</code></td>
-                                    <td>Disconnected data architecture to populate in-memory DataTables.</td>
-                                </tr>
-                                <tr>
-                                    <td><code>ExecuteScalar()</code></td>
-                                    <td>Returns the first column of the first row (ideal for COUNT or inserted Identity ID).</td>
-                                </tr>
-                                <tr>
-                                    <td><code>ExecuteNonQuery()</code></td>
-                                    <td>Executes INSERT, UPDATE, DELETE and returns number of affected rows.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
                     <div class="interview-q-box">
-                        <div class="interview-q">Q: When would you choose ADO.NET over EF Core in an enterprise project?</div>
+                        <div class="interview-q">Q: Tracking vs AsNoTracking in EF Core?</div>
                         <div class="interview-a">
-                            "EF Core provides immense developer productivity, but ADO.NET is chosen when: <br>
-                            1. High-throughput bulk data insertions or processing where ORM tracking overhead is unacceptable.<br>
-                            2. Invoking complex legacy database Stored Procedures with dynamic SQL or multiple result sets.<br>
-                            3. Fine-grained performance tuning where raw SQL execution plans need strict control."
-                            <span class="bn-sub">বাল্ক ডেটা ইনসার্ট, জটিল লিগ্যাসি Stored Procedure কল করা অথবা সরাসরি হাই-পারফরম্যান্স SQL কুয়েরি টিউনিংয়ের জন্য EF Core এর বদলে ADO.NET ব্যবহৃত হয়।</span>
+                            "By default, EF Core tracks changes for all returned entities in Change Tracker. Using <code>.AsNoTracking()</code> on read-only queries bypasses change tracking overhead, significantly speeding up query execution and lowering memory allocation."
+                        </div>
+                    </div>
+
+                    <div class="interview-q-box" id="sec-adonet" style="margin-top: 14px;">
+                        <div class="interview-q">Q: When to use ADO.NET over EF Core?</div>
+                        <div class="interview-a">
+                            "Use ADO.NET for high-throughput bulk data insertions, complex legacy Stored Procedures with multiple result sets, or fine-grained raw SQL performance tuning."
                         </div>
                     </div>
                 </section>
 
-                <!-- SECTION 12 & 13: DATABASE & SQL OPTIMIZATION -->
-                <section id="sec-sql" class="card section-anchor">
+                <!-- 7. SQL TUNING -->
+                <section id="sec-sql-tuning" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                            DATABASE, SQL TUNING & PRODUCTION QUERY OPTIMIZATION
+                            SQL PERFORMANCE OPTIMIZATION (12-STEP CHECKLIST)
                         </h2>
                         <span class="priority-badge high">★★★★★ Core Database Strength</span>
                     </div>
 
-                    <div class="box-advantage" style="margin-bottom: 16px;">
-                        <h4>"HOW I WOULD OPTIMIZE A SLOW PRODUCTION QUERY" (12-STEP CHECKLIST)</h4>
-                        <span class="bn-sub" style="margin-bottom: 10px;">ধীরগতির প্রোডাকশন কুয়েরি অপ্টিমাইজ করার ১২-ধাপের চেকলিস্ট</span>
+                    <div class="box-advantage">
                         <ol class="check-list" style="padding-left: 10px;">
-                            <li>1. Reproduce query execution in non-prod with identical database volume. <span class="bn-sub">নন-প্রোডাকশনে একই পরিমাণ ডেটা নিয়ে কুয়েরিটি রান করে দেখুন।</span></li>
-                            <li>2. Analyze Execution Plan (look for Index Scans vs Index Seeks, Key Lookups, Heavy Sorting). <span class="bn-sub">Execution Plan চেক করুন (Index Scan নাকি Seek হচ্ছে, Key Lookup আছে কিনা দেখুন)।</span></li>
-                            <li>3. Verify Indexes (ensure filtering/joining columns are indexed correctly). <span class="bn-sub">যেসব কলাম দিয়ে filtering/joining হচ্ছে সেগুলোতে সঠিক Index আছে কিনা নিশ্চিত করুন।</span></li>
-                            <li>4. Evaluate Covered Indexes to eliminate Key Lookups. <span class="bn-sub">Key Lookup বন্ধ করতে Covering Index যোগ করুন।</span></li>
-                            <li>5. Replace SELECT * with explicit required columns only. <span class="bn-sub">SELECT * বাদ দিয়ে প্রয়োজনীয় নির্দিষ্ট কলাম নাম দিন।</span></li>
-                            <li>6. Check SARGability (avoid wrapping indexed columns in functions). <span class="bn-sub">ইনডেক্সড কলামের ওপর ফাংশন ব্যবহার করা থেকে বিরত থাকুন (SARGability)।</span></li>
-                            <li>7. Inspect Joins (prefer INNER JOINs where possible). <span class="bn-sub">সম্ভব হলে INNER JOIN ব্যবহার করুন।</span></li>
-                            <li>8. Check for N+1 Query Patterns from ORMs (ensure eager loading via <code>Include</code>). <span class="bn-sub">ORM এ N+1 প্রবলেম এড়াতে eager loading (Include) ব্যবহার করুন।</span></li>
-                            <li>9. Update Database Statistics (outdated statistics lead to wrong query optimizer plans). <span class="bn-sub">ডাটাবেজ স্ট্যাটিস্টিক্স আপডেট করুন।</span></li>
-                            <li>10. Evaluate Parameter Sniffing issues in Stored Procedures. <span class="bn-sub">Stored Procedure এ Parameter Sniffing আছে কিনা পরীক্ষা করুন।</span></li>
-                            <li>11. Check Blocking/Locking Contention (evaluate <code>READ COMMITTED SNAPSHOT</code>). <span class="bn-sub">ব্লকিং ও লকিং এড়াতে READ COMMITTED SNAPSHOT বিবেচনা করুন।</span></li>
-                            <li>12. Benchmark execution time and logical reads before and after. <span class="bn-sub">অপ্টিমাইজেশনের আগে ও পরে পারফরম্যান্স বেঞ্চমার্ক করুন।</span></li>
+                            <li>1. Reproduce query execution in non-prod with identical database volume.</li>
+                            <li>2. Analyze Execution Plan (Index Scans vs Index Seeks, Key Lookups).</li>
+                            <li>3. Verify Indexes on filtering/joining columns.</li>
+                            <li>4. Add Covered Indexes to eliminate Key Lookups.</li>
+                            <li>5. Replace SELECT * with explicit required columns.</li>
+                            <li>6. Check SARGability (avoid wrapping indexed columns in functions).</li>
+                            <li>7. Inspect Joins (prefer INNER JOINs where possible).</li>
+                            <li>8. Avoid ORM N+1 queries using Include.</li>
+                            <li>9. Update Database Statistics.</li>
+                            <li>10. Fix Parameter Sniffing issues in Stored Procedures.</li>
+                            <li>11. Evaluate READ COMMITTED SNAPSHOT for blocking.</li>
+                            <li>12. Benchmark execution time before and after.</li>
                         </ol>
-                    </div>
-
-                    <div class="interview-q-box">
-                        <div class="interview-q">Q: Oracle → SQL Server Transition (How to leverage your Oracle PL/SQL depth)</div>
-                        <div class="interview-a">
-                            "In Oracle PL/SQL, I worked extensively with Packages, Triggers, Sequences, and Autonomous Transactions. In SQL Server, the concepts map directly to T-SQL Stored Procedures, Schemas, IDENTITY columns, and Transactions with Savepoints. The relational engine principles—indexes, execution plan cost analysis, locks, and ACID properties—are universal across database platforms."
-                            <span class="bn-sub">Oracle PL/SQL এর অভিজ্ঞতা সরাসরি SQL Server T-SQL এ রূপান্তর করা যায়। রিলেশনাল ডাটাবেজের মূল উপাদান—ইনডেক্সিং, লকিং, এক্সিকিউশন প্ল্যান ও ACID প্রপার্টি—সব প্ল্যাটফর্মে একই।</span>
-                        </div>
                     </div>
                 </section>
 
-                <!-- SECTION 15 & 16: ARCHITECTURE & SOLID -->
+                <!-- 8. ARCHITECTURE & SOLID -->
                 <section id="sec-architecture" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
@@ -2059,283 +1143,64 @@ var activeCustomers = await _context.Customers
                         <span class="priority-badge high">★★★★★ High Priority</span>
                     </div>
 
-                    <div class="concept-section">
-                        <div class="concept-label">SOLID Principles Summary</div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 8px;">
-                            <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
-                                <strong>S — Single Responsibility:</strong> A class should have only one reason to change.
-                                <span class="bn-sub">একটি ক্লাসের শুধুমাত্র একটি দায়িত্ব থাকা উচিত।</span>
-                            </div>
-                            <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
-                                <strong>O — Open/Closed:</strong> Software entities should be open for extension, but closed for modification.
-                                <span class="bn-sub">কোড এক্সটেনশনের জন্য উন্মুক্ত কিন্তু মডিফিকেশনের জন্য বন্ধ থাকা উচিত।</span>
-                            </div>
-                            <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
-                                <strong>L — Liskov Substitution:</strong> Derived classes must be substitutable for their base classes.
-                                <span class="bn-sub">চাইল্ড ক্লাসগুলো বেস ক্লাসের পরিবর্তে ব্যবহারযোগ্য হতে হবে।</span>
-                            </div>
-                            <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
-                                <strong>I — Interface Segregation:</strong> Clients shouldn't be forced to depend on methods they don't use.
-                                <span class="bn-sub">প্রয়োজনহীন মেথড ইন্টারফেসে রাখা উচিত নয়।</span>
-                            </div>
-                            <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
-                                <strong>D — Dependency Inversion:</strong> Depend on abstractions, not on concrete implementations.
-                                <span class="bn-sub">কনক্রিট ক্লাসের ওপর নির্ভর না করে অ্যাবস্ট্রাকশনের (Interface) ওপর নির্ভর করতে হবে।</span>
-                            </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
+                        <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px; border-left: 3px solid var(--accent-red);">
+                            <strong>S — Single Responsibility:</strong> One reason to change.
                         </div>
-                    </div>
-
-                    <div class="interview-q-box" style="margin-top: 14px;">
-                        <div class="interview-q">Q: Monolith vs Microservices: When would you choose Microservices?</div>
-                        <div class="interview-a">
-                            "Microservices should NOT be the default choice due to operational complexity, distributed transactions, and network overhead. Microservices are justified when: <br>
-                            1. Independent Deployment & Scaling requirements across distinct domain boundaries.<br>
-                            2. Autonomous Engineering Teams needing clear codebase isolation.<br>
-                            3. Heterogeneous Technology requirements.<br>
-                            For most applications, a well-structured **Modular Monolith** is simpler to build, test, monitor, and deploy."
-                            <span class="bn-sub">অহেতুক জটিলতা বাড়াতে Microservices ব্যবহার করা উচিত নয়। স্বাধীন ডেপ্লয়মেন্ট, বড় টিম ও আলাদা টেকনোলজির প্রয়োজন হলেই কেবল Microservices নির্বাচন করা উচিত।</span>
+                        <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px; border-left: 3px solid var(--accent-red);">
+                            <strong>O — Open/Closed:</strong> Open for extension, closed for modification.
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px; border-left: 3px solid var(--accent-red);">
+                            <strong>L — Liskov Substitution:</strong> Derived classes substitutable for base.
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px; border-left: 3px solid var(--accent-red);">
+                            <strong>I — Interface Segregation:</strong> Don't force unused methods.
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px; border-left: 3px solid var(--accent-red);">
+                            <strong>D — Dependency Inversion:</strong> Depend on abstractions (interfaces).
                         </div>
                     </div>
                 </section>
 
-                <!-- SECTION 17, 18, 19: KAFKA, REDIS, AIRFLOW -->
-                <section id="sec-kafka" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
-                            ENTERPRISE ECOSYSTEM: KAFKA, REDIS & AIRFLOW
-                        </h2>
-                        <span class="priority-badge medium">★★★★ High Value</span>
-                    </div>
-
-                    <div class="comparison-table-wrapper">
-                        <table class="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>Technology</th>
-                                    <th>Primary Purpose</th>
-                                    <th>Key Architectural Terms</th>
-                                    <th>Real-World Scenario Use Case</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Apache Kafka</strong></td>
-                                    <td>Distributed Event Streaming & Message Bus Platform</td>
-                                    <td><code>Producer, Topic, Partition, Consumer Group, Offset</code></td>
-                                    <td>Asynchronous decoupling of billing events (Customer Created → Billing Service).</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Redis</strong></td>
-                                    <td>In-Memory Key-Value Data Store & Cache</td>
-                                    <td><code>In-Memory, Cache Stampede, TTL, Pub/Sub, Distributed Lock</code></td>
-                                    <td>Caching customer profile lookups & storing distributed session states.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Apache Airflow</strong></td>
-                                    <td>Workflow Orchestration & Batch Job Scheduler</td>
-                                    <td><code>DAG (Directed Acyclic Graph), Operator, Task, Scheduler</code></td>
-                                    <td>Nightly ETL batch extraction of gas billing data & report rendering.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- SECTION 20 & 21: TESTING & DEVOPS -->
-                <section id="sec-testing" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                            TESTING (xUnit / Moq) & DEVOPS CI/CD PIPELINES
-                        </h2>
-                    </div>
-
-                    <div class="concept-section">
-                        <div class="concept-label">AAA Testing Pattern (Arrange, Act, Assert)</div>
-<pre><code>[Fact]
-public async Task GetCustomer_WhenExists_ReturnsOkResult()
-{
-    // 1. Arrange: Setup mocks and inputs
-    var mockRepo = new Mock&lt;ICustomerRepository&gt;();
-    mockRepo.Setup(r => r.GetByIdAsync(10)).ReturnsAsync(new Customer { Id = 10, Name = "KGDCL Gas" });
-    var controller = new CustomerController(mockRepo.Object);
-
-    // 2. Act: Call the method under test
-    var result = await controller.GetCustomer(10);
-
-    // 3. Assert: Verify outcome
-    var okResult = Assert.IsType&lt;OkObjectResult&gt;(result);
-    Assert.NotNull(okResult.Value);
-}</code></pre>
-                    </div>
-
-                    <div class="concept-section" style="margin-top: 14px;" id="sec-devops">
-                        <div class="concept-label">CI/CD Deployment Pipeline Steps</div>
-                        <p class="concept-val">
-                            Developer Commit → Git PR → Trigger GitHub Actions / Azure DevOps Pipeline → Build dotnet solution → Execute xUnit Unit Tests → Run SonarQube Code Analysis → Package Docker Container → Deploy to Staging/Prod → Smoke Tests.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- SECTION 22: CONFIGURATION & ENVIRONMENTS -->
+                <!-- 9. SECRETS -->
                 <section id="sec-config" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            ENVIRONMENT CONFIGURATION & SECRETS MANAGEMENT
+                            ENVIRONMENT CONFIGURATION & SECRETS
                         </h2>
-                        <span class="priority-badge high">★★★★★ High Priority Requirement</span>
                     </div>
 
                     <div class="interview-q-box">
-                        <div class="interview-q">Q: How do you manage configuration across Dev, Staging, and Production environments in ASP.NET Core?</div>
+                        <div class="interview-q">Q: How to manage environment configuration?</div>
                         <div class="interview-a">
-                            "ASP.NET Core uses a hierarchical configuration system that loads settings in sequence:<br>
-                            1. <code>appsettings.json</code> (Base global defaults)<br>
-                            2. <code>appsettings.{Environment}.json</code> (e.g. <code>appsettings.Development.json</code>)<br>
-                            3. Secret Manager (for local development secret storage)<br>
-                            4. Environment Variables / Azure Key Vault (overrides settings in production CI/CD).<br><br>
-                            <strong>Golden Rule:</strong> Never hardcode database connection strings, passwords, or JWT secret keys in repository code!"
-                            <span class="bn-sub">ASP.NET Core কনফিগারেশন হায়ারার্কিক্যাল উপায়ে লোড করে। পাসওয়ার্ড বা কানেকশন স্ট্রিং কখনোই কোডে হার্ডকোড করা যাবে না; Secret Manager বা Azure Key Vault ব্যবহার করতে হবে।</span>
+                            "ASP.NET Core loads appsettings.json → appsettings.Development.json → Secret Manager → Environment Variables / Azure Key Vault. Never hardcode connection strings or keys in repository code!"
                         </div>
                     </div>
                 </section>
 
-                <!-- SECTION 28 & 29: BEHAVIORAL & ERP STORY -->
-                <section id="sec-self" class="card section-anchor">
+                <!-- 10. STORY & CHEATSHEET -->
+                <section id="sec-story" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            "TELL ME ABOUT YOURSELF" & PRIMARY PROJECT STORY
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                            PRIMARY PROJECT STORY (KGDCL ERP)
                         </h2>
-                        <span class="priority-badge high">★ Essential Opening Script</span>
                     </div>
 
-                    <div class="script-box">
-                        <div class="script-do">TALKING SCRIPT: "TELL ME ABOUT YOURSELF"</div>
-                        <div class="script-quote">
-                            "I am a Software Engineer with over 4.5 years of enterprise application development experience. My primary background is in designing and delivering mission-critical enterprise systems—including large-scale ERP, gas billing, customer management, and financial reporting applications.<br><br>
-                            Technically, my core strength lies in backend architecture, RESTful API design, complex database modeling, SQL performance tuning, and production support. While much of my recent work involved Java, Spring Boot, Grails, and Oracle, I have extensive exposure to C#, SQL Server, and object-oriented architecture.<br><br>
-                            I am now transitioning my strong enterprise foundation into modern .NET 8/9/10 and ASP.NET Core, where all my architectural, database, and backend skills transfer directly."
-                            <span class="bn-sub" style="color: #94a3b8; font-style: normal; margin-top: 8px;">
-                                "আমি একজন সফটওয়্যার প্রকৌশলী যার ৪.৫+ বছরের এন্টারপ্রাইজ অ্যাপ্লিকেশন ডেভেলপমেন্ট অভিজ্ঞতা রয়েছে। আমার প্রধান কাজ ছিল বৃহৎ স্কেলের ERP, গ্যাস বিলিং এবং রির্পোটিং সিস্টেমে। ব্যাকএন্ড আর্কিটেকচার, REST API এবং ডাটাবেজ অপ্টিমাইজেশনে আমার মূল দক্ষতা। আমার Java ও Oracle অভিজ্ঞতা রয়েছে এবং C#/.NET এর মূল ধারণা দিয়ে আমি আধুনিক ASP.NET Core এ কাজ করতে পুরোপুরি প্রস্তুত।"
-                            </span>
-                        </div>
-                    </div>
-
-                    <div id="sec-behavioral" style="margin-top: 24px;">
-                        <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text-primary);">
-                            Anchor Project Story: KGDCL Enterprise ERP System (STAR Format)
-                        </h3>
-
-                        <div style="background-color: var(--bg-tertiary); border-radius: var(--radius-md); padding: 18px; border: 1px solid var(--border-color);">
-                            <p><strong>Situation:</strong> KGDCL is a major utility company managing gas distribution, customer billing, disconnection/reconnection workflows, legal lawsuit tracking, and reporting for millions of accounts.</p>
-                            <p style="margin-top: 8px;"><strong>Task:</strong> Design, develop, and maintain core billing modules, REST APIs, Oracle/SQL database schema, and reporting engines while providing 24/7 production support.</p>
-                            <p style="margin-top: 8px;"><strong>Action:</strong> Implemented modular backend services, optimized slow database stored procedures, handled Linux server deployments, and resolved production incidents.</p>
-                            <p style="margin-top: 8px;"><strong>Result:</strong> Reduced billing calculation execution time by 40%, streamlined customer account tracking, and maintained 99.9% uptime for core billing services.</p>
-                        </div>
+                    <div style="background-color: var(--bg-tertiary); padding: 16px; border-radius: var(--radius-md);">
+                        <p><strong>Situation:</strong> Gas utility company managing billing and accounts for millions of customers.</p>
+                        <p style="margin-top: 6px;"><strong>Task:</strong> Maintain billing REST APIs, Oracle/SQL database schema, and reporting.</p>
+                        <p style="margin-top: 6px;"><strong>Action:</strong> Optimized slow stored procedures and deployed modular backend services.</p>
+                        <p style="margin-top: 6px;"><strong>Result:</strong> Reduced billing execution time by 40% and ensured 99.9% service uptime.</p>
                     </div>
                 </section>
 
-                <!-- SECTION 31: IF I DON'T KNOW SECTION -->
-                <section id="sec-idontknow" class="card section-anchor">
+                <section id="sec-cheatsheet10" class="card section-anchor" style="border-color: var(--accent-red);">
                     <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                            "IF I DON'T KNOW" PROFESSIONAL RESPONSE TEMPLATES
+                        <h2 class="card-title" style="color: var(--accent-red);">
+                            ⚡ FINAL 10-MINUTE HIGH-PRIORITY CHEAT SHEET
                         </h2>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
-                        <div class="script-box">
-                            <div class="script-do">Template 1 (Framework Specific Syntax)</div>
-                            <div class="script-quote">
-                                "I haven't implemented that specific ASP.NET syntax in a production environment yet, but conceptually I understand that it addresses [explain concept]. In my production experience with Spring, we solved it by [explain equivalent pattern]."
-                            </div>
-                        </div>
-
-                        <div class="script-box">
-                            <div class="script-do">Template 2 (Unfamiliar Tool / Feature)</div>
-                            <div class="script-quote">
-                                "That specific feature isn't something I have used directly in production, but my approach would be to first review the Microsoft documentation, create a small proof-of-concept, and evaluate its performance impact before deploying."
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECTION 33: MOCK INTERVIEW MODE -->
-                <section id="sec-mock" class="card section-anchor interactive-section">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                            INTERACTIVE MOCK INTERVIEW MODE
-                        </h2>
-                        <button class="btn btn-primary" id="btnStartMock">Start Mock Interview</button>
-                    </div>
-
-                    <div id="mockContainer" style="display: none; margin-top: 14px;">
-                        <div style="background-color: var(--bg-secondary); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; color: var(--accent-purple);">
-                                <span id="mockCounter">Question 1 of 10</span>
-                                <span id="mockScore">Score: 0 Known</span>
-                            </div>
-
-                            <h3 id="mockQuestion" style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 14px;">
-                                Click Start to begin...
-                            </h3>
-
-                            <div id="mockAnswerBox" style="display: none; background-color: var(--bg-tertiary); padding: 14px; border-radius: var(--radius-sm); margin-bottom: 16px; border-left: 3px solid var(--accent-green);">
-                                <p id="mockAnswer" style="font-size: 13.5px; color: var(--text-primary);"></p>
-                            </div>
-
-                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                <button class="btn btn-secondary" id="btnShowAnswer">Show Answer</button>
-                                <button class="btn btn-primary" id="btnKnowIt" style="background-color: var(--accent-green);">I Know This (+1)</button>
-                                <button class="btn btn-outline-danger" id="btnNeedRev">Need Revision</button>
-                                <button class="btn btn-secondary" id="btnNextQ">Next Question →</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECTION 34: FLASHCARD MODE -->
-                <section id="sec-flashcards" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                            INTERACTIVE REVISION FLASHCARDS
-                        </h2>
-                        <span style="font-size: 12px; color: var(--text-muted);">Click card to flip</span>
-                    </div>
-
-                    <div class="flashcard-wrapper">
-                        <div class="flashcard" id="flashcardElement">
-                            <div class="flashcard-face flashcard-front">
-                                <div class="flashcard-q" id="fcQuestion">What is Dependency Injection?</div>
-                                <div style="font-size: 11px; color: var(--accent-purple); font-weight: 600;">(Click to flip answer)</div>
-                            </div>
-                            <div class="flashcard-face flashcard-back">
-                                <div class="flashcard-a" id="fcAnswer">
-                                    "DI is a design pattern where objects receive their dependencies from an external container rather than creating them directly. Promotes loose coupling, testability, and maintainability."
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flashcard-controls">
-                        <button class="btn btn-secondary" id="btnFcPrev">← Previous</button>
-                        <button class="btn btn-secondary" id="btnFcNext">Next Card →</button>
-                    </div>
-                </section>
-
-                <!-- SECTION 39 & 40: FINAL 10-MINUTE CHEAT SHEET -->
-                <section id="sec-cheatsheet10" class="card section-anchor" style="border-color: var(--accent-purple);">
-                    <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-purple);">
-                            ⚡ FINAL 10-MINUTE REVISION CHEAT SHEET
-                        </h2>
-                        <span class="priority-badge high">Read Right Before Interview</span>
                     </div>
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; font-size: 12.5px;">
@@ -2346,22 +1211,16 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                             <strong>SOLID:</strong> Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion.
                         </div>
                         <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px;">
-                            <strong>DI Lifetimes:</strong> Singleton (1 forever), Scoped (1 per HTTP request), Transient (new every time).
+                            <strong>DI:</strong> Singleton (1 forever), Scoped (1 per HTTP request), Transient (new every time).
                         </div>
                         <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px;">
-                            <strong>Middleware:</strong> Request pipeline components executing sequentially via <code>next()</code>.
+                            <strong>Middleware:</strong> Request pipeline executing sequentially via <code>next()</code>.
                         </div>
                         <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px;">
-                            <strong>EF Core:</strong> <code>.AsNoTracking()</code> speeds up read-only queries by skipping Change Tracker.
+                            <strong>EF Core:</strong> <code>.AsNoTracking()</code> speeds up read-only queries.
                         </div>
                         <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px;">
-                            <strong>ADO.NET:</strong> Raw SQL execution via <code>SqlConnection</code>, <code>SqlCommand</code>, <code>SqlDataReader</code>.
-                        </div>
-                        <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px;">
-                            <strong>Kafka:</strong> Producer → Topic → Partition → Consumer Group → Offset.
-                        </div>
-                        <div style="background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px;">
-                            <strong>Redis:</strong> In-memory key-value cache; handle cache invalidation & stampedes.
+                            <strong>ADO.NET:</strong> Raw SQL execution via SqlConnection, SqlCommand, SqlDataReader.
                         </div>
                     </div>
                 </section>
@@ -2370,447 +1229,68 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
         </main>
     </div>
 
-    <!-- JavaScript Application Logic -->
     <script>
-        // Data Bank for 30 C# Concepts with English & Bangla Subtitles
-        const csharpConcepts = [
-            { 
-                id: "c1", title: "Class vs Object", priority: "high", 
-                def: "A Class is a blueprint/template. An Object is an instance of a class in memory.", 
-                defBn: "Class হলো ব্লুপ্রিন্ট/টেমপ্লেট। Object হলো মেমরিতে উক্ত ক্লাসের একটি ইনস্ট্যান্স।",
-                eg: "Car class vs myRedCar object instance.", 
-                egBn: "Car ক্লাস বনাম myRedCar অবজেক্ট ইনস্ট্যান্স।",
-                code: "public class Car { public string Model { get; set; }; }\nCar myCar = new Car();", 
-                q: "What is the difference between a class and an object?", 
-                qBn: "Class এবং Object এর মধ্যে পার্থক্য কী?",
-                a: "A class defines types and structures; an object allocates memory for state at runtime.",
-                aBn: "Class ডাটা টাইপ ও স্ট্রাকচার সংজ্ঞায়িত করে; Object রানটাইমে স্টেট সংরক্ষণের জন্য মেমোরি বরাদ্দ করে।"
-            },
-            { 
-                id: "c2", title: "Interface vs Abstract Class", priority: "high", 
-                def: "Interface defines contract (what). Abstract Class provides partial implementation (how).", 
-                defBn: "Interface কেবল কন্ট্রাক্ট (কী করবে) নির্ধারণ করে। Abstract Class আংশিক ইমপ্লিমেন্টেশন দেয়।",
-                eg: "IDbConnection vs DbConnection base class.", 
-                egBn: "IDbConnection ইন্টারফেস বনাম DbConnection বেস ক্লাস।",
-                code: "public interface IRepository { Task SaveAsync(); }\npublic abstract class BaseRepo { public virtual void Log() {} }", 
-                q: "When do you use an Interface over an Abstract Class?", 
-                qBn: "কখন Abstract Class এর বদলে Interface ব্যবহার করবেন?",
-                a: "Use Interfaces for multiple inheritance of contract; use Abstract classes for sharing code implementation across related classes.",
-                aBn: "একাধিক কন্ট্রাক্ট ইনহেরিট করার জন্য Interface; আর একাধিক ক্লাসের মধ্যে শেয়ার্ড কোড রাখার জন্য Abstract class ব্যবহার করুন।"
-            },
-            { 
-                id: "c3", title: "Inheritance", priority: "standard", 
-                def: "Mechanism where a child class acquires properties and behavior of a parent class.", 
-                defBn: "যে প্রক্রিয়ায় চাইল্ড ক্লাস প্যারেন্ট ক্লাসের প্রপার্টি ও মেথড লাভ করে।",
-                eg: "Customer inheriting from User base class.", 
-                egBn: "User বেস ক্লাস থেকে Customer ক্লাসের ইনহেরিট করা।",
-                code: "public class Customer : User { public int OrderCount { get; set; } }", 
-                q: "Does C# support multiple class inheritance?", 
-                qBn: "C# কি মাল্টিপল ক্লাস ইনহেরিটেন্স সাপোর্ট করে?",
-                a: "No, C# supports single class inheritance but multiple interface implementation.",
-                aBn: "না, C# সিঙ্গেল ক্লাস ইনহেরিটেন্স সাপোর্ট করে কিন্তু একাধিক ইন্টারফেস বাস্তবায়ন করা যায়।"
-            },
-            { 
-                id: "c4", title: "Encapsulation", priority: "high", 
-                def: "Bundling data and methods operating on that data into a single unit while restricting direct access.", 
-                defBn: "ডেটা ও মেথডকে এক ক্যাপসুলে আবৃত রাখা এবং বাইরের সরাসরি এক্সেস রুদ্ধ রাখা।",
-                eg: "Private fields exposed via public properties.", 
-                egBn: "Private ফিল্ডকে Public প্রপার্টি মাধ্যমে প্রকাশ করা।",
-                code: "private decimal _balance;\npublic decimal Balance { get => _balance; }", 
-                q: "How is encapsulation achieved in C#?", 
-                qBn: "C# এ এনক্যাপসুলেশন কীভাবে অর্জিত হয়?",
-                a: "Using access modifiers (private, protected, public) and properties with getters/setters.",
-                aBn: "Access Modifiers (private, protected) এবং Properties ব্যবহার করে।"
-            },
-            { 
-                id: "c5", title: "Polymorphism", priority: "high", 
-                def: "Ability of different objects to respond to the same method call in their own specific way.", 
-                defBn: "একই মেথড কলে বিভিন্ন অবজেক্টের নিজ নিজ উপায়ে সাড়া দেওয়ার ক্ষমতা।",
-                eg: "Method overriding in shape rendering.", 
-                egBn: "শেপ রেন্ডারিংয়ে মেথড ওভাররাইডিং।",
-                code: "public override void Draw() { Console.WriteLine(\"Circle\"); }", 
-                q: "What are compile-time vs runtime polymorphism?", 
-                qBn: "কম্পাইল-টাইম বনাম রানটাইম পলিমরফিজম কী?",
-                a: "Compile-time is method overloading; Runtime is method overriding via virtual/override.",
-                aBn: "কম্পাইল-টাইম হলো Method Overloading; আর রানটাইম হলো virtual/override দিয়ে Method Overriding।"
-            },
-            { 
-                id: "c6", title: "Abstraction", priority: "standard", 
-                def: "Hiding internal complexity and showing only essential functionality to the user.", 
-                defBn: "আভ্যন্তরীণ জটিলতা লুকিয়ে রেখে ব্যবহারকারীর সামনে কেবল প্রয়োজনীয় অংশ প্রকাশ করা।",
-                eg: "Calling _repository.Save() without knowing underlying SQL.", 
-                egBn: "ভেতরের SQL না জেনে সরাসরি _repository.Save() কল করা।",
-                code: "public interface IEmailService { Task SendAsync(string to, string body); }", 
-                q: "How does Abstraction differ from Encapsulation?", 
-                qBn: "Abstraction ও Encapsulation এর পার্থক্য কী?",
-                a: "Abstraction focuses on hiding implementation complexity; Encapsulation focuses on restricting access to internal state.",
-                aBn: "Abstraction ভেতরের জটিলতা লুকায়; Encapsulation ইন্টারনাল স্টেট সুরক্ষিত রাখে।"
-            },
-            { 
-                id: "c7", title: "Method Overloading", priority: "standard", 
-                def: "Same method name in the same class with different parameter signatures.", 
-                defBn: "একই ক্লাসে একই নামের মেথড কিন্তু প্যারামিটার সংখ্যা বা টাইপ ভিন্ন।",
-                eg: "CalculateInterest(decimal) vs CalculateInterest(decimal, int).", 
-                egBn: "CalculateInterest(decimal) বনাম CalculateInterest(decimal, int)।",
-                code: "public int Add(int a, int b) => a + b;\npublic double Add(double a, double b) => a + b;", 
-                q: "Does changing return type alone overload a method?", 
-                qBn: "শুধু রিটার্ন টাইপ পরিবর্তন করলে কি Overloading হবে?",
-                a: "No, method signature must differ in parameter types or count.",
-                aBn: "না, অবশ্যই মেথডের প্যারামিটার সংখ্যা বা টাইপে পার্থক্য থাকতে হবে।"
-            },
-            { 
-                id: "c8", title: "Method Overriding", priority: "high", 
-                def: "Redefining a base class virtual method in a derived class using override keyword.", 
-                defBn: "প্যারেন্ট ক্লাসের virtual মেথডকে চাইল্ড ক্লাসে override দিয়ে পুনঃসংজ্ঞায়িত করা।",
-                eg: "Customizing CalculateTax() for overseas customer.", 
-                egBn: "বিদেশি কাস্টমারের জন্য CalculateTax() কাস্টমাইজ করা।",
-                code: "public override decimal CalculateTax() => BaseAmount * 0.15m;", 
-                q: "What keywords are required for method overriding?", 
-                qBn: "মেথড ওভাররাইডিং এর জন্য কী কী কি-ওয়ার্ড লাগে?",
-                a: "virtual in base class and override in child class.",
-                aBn: "প্যারেন্ট ক্লাসে virtual এবং চাইল্ড ক্লাসে override কি-ওয়ার্ড।"
-            },
-            { 
-                id: "c9", title: "Virtual vs Override", priority: "high", 
-                def: "virtual allows a method to be overridden. override provides the new implementation.", 
-                defBn: "virtual মেথডকে পরিবর্তনযোগ্য করে; override নতুন কোড বাস্তবায়ন করে।",
-                eg: "Base class default processing overrideable by child.", 
-                egBn: "বেস ক্লাসের প্রসেসিং চাইল্ড ক্লাস দ্বারা পরিবর্তন করা।",
-                code: "public virtual void Process() {}\npublic override void Process() {}", 
-                q: "Can you override a non-virtual method?", 
-                qBn: "non-virtual মেথড কি ওভাররাইড করা যায়?",
-                a: "No, methods must be explicitly marked virtual, abstract, or override.",
-                aBn: "না, মেথডকে অবশ্যই virtual, abstract অথবা override হতে হবে।"
-            },
-            { 
-                id: "c10", title: "Sealed Keyword", priority: "standard", 
-                def: "Prevents a class from being inherited or a method from being further overridden.", 
-                defBn: "কোনো ক্লাসকে ইনহেরিট করা অথবা মেথডকে আর ওভাররাইড করা বন্ধ করে।",
-                eg: "Security or core framework utility classes.", 
-                egBn: "সিকিউরিটি বা ফ্রেমওয়ার্ক ইউটিলিটি ক্লাস।",
-                code: "public sealed class SecurityProvider { }", 
-                q: "Why mark a class as sealed?", 
-                qBn: "একটি ক্লাসকে sealed করার কারণ কী?",
-                a: "To prevent unauthorized subclassing and enable runtime performance optimizations.",
-                aBn: "অনাকাঙ্ক্ষিত ইনহেরিটেন্স রোধ এবং রানটাইম অপ্টিমাইজেশনের জন্য।"
-            },
-            { 
-                id: "c11", title: "Static Keyword", priority: "high", 
-                def: "Belongs to the class type itself rather than any specific object instance.", 
-                defBn: "অবজেক্ট ইনস্ট্যান্সের বদলে সরাসরি ক্লাসের সাথে সম্পর্কিত।",
-                eg: "Math.Abs() utility function.", 
-                egBn: "Math.Abs() ইউটিলিটি ফাংশন।",
-                code: "public static class Logger { public static void Log(string msg) {} }", 
-                q: "When is a static constructor called?", 
-                qBn: "Static Constructor কখন কল হয়?",
-                a: "Automatically called once before the first instance is created or static member accessed.",
-                aBn: "প্রথম অবজেক্ট তৈরি বা স্ট্যাটিক মেম্বার এক্সেস হওয়ার ঠিক পূর্বে স্বয়ংক্রিয়ভাবে একবারই কল হয়।"
-            },
-            { 
-                id: "c12", title: "Readonly vs Const", priority: "high", 
-                def: "const is compile-time constant. readonly is runtime constant set in constructor.", 
-                defBn: "const কম্পাইল-টাইমে মান পায়; readonly কনস্ট্রাক্টরে রানটাইমে মান পায়।",
-                eg: "const double Pi = 3.14 vs readonly DateTime CreatedAt.", 
-                egBn: "const double Pi = 3.14 বনাম readonly DateTime CreatedAt।",
-                code: "public const int MaxSize = 100;\npublic readonly string ConnectionString;", 
-                q: "Difference between readonly and const?", 
-                qBn: "readonly এবং const এর মধ্যে মূল পার্থক্য কী?",
-                a: "const is resolved at compilation; readonly is resolved at runtime during object construction.",
-                aBn: "const কম্পাইল টাইমে ফিক্সড হয়; readonly অবজেক্ট তৈরির সময় কনস্ট্রাক্টরে সেট করা যায়।"
-            },
-            { 
-                id: "c13", title: "Ref vs Out Parameters", priority: "high", 
-                def: "ref passes existing variable by reference (must be initialized). out passes uninitialized output.", 
-                defBn: "ref ভ্যারিয়েবল রেফারেন্স হিসেবে পাঠায় (আগে ইনিশিয়ালাইজ থাকতে হবে); out মেথড থেকে মান বের করে আনে।",
-                eg: "int.TryParse(val, out int num).", 
-                egBn: "int.TryParse(val, out int num)।",
-                code: "public void GetValues(out int x) { x = 10; }", 
-                q: "What is the key difference between ref and out?", 
-                qBn: "ref এবং out এর মধ্যে প্রধান পার্থক্য কী?",
-                a: "ref variable must be initialized before passing; out variable must be assigned before method returns.",
-                aBn: "ref ভ্যারিয়েবলে আগেই মান থাকতে হয়; out ভ্যারিয়েবলে মেথড রিটার্ন করার আগে মান অ্যাসাইন করতে হয়।"
-            },
-            { 
-                id: "c14", title: "Value Type vs Reference Type", priority: "high", 
-                def: "Value types store data directly on Stack (int, struct). Reference types store memory address on Heap (class, string).", 
-                defBn: "Value Type সরাসরি স্ট্যাকে ডেটা রাখে (int, struct); Reference Type হিফে মেমোরি এড্রেস রাখে (class, string)।",
-                eg: "struct Point vs class Customer.", 
-                egBn: "struct Point বনাম class Customer।",
-                code: "int a = 10; // Stack\nCustomer c = new Customer(); // Heap", 
-                q: "Where are value types and reference types allocated?", 
-                qBn: "Value টাইপ এবং Reference টাইপ কোথায় সংরক্ষিত হয়?",
-                a: "Value types on Stack (or inline in Heap objects); Reference types allocated on Garbage-Collected Heap.",
-                aBn: "Value Type স্ট্যাকে; আর Reference Type গারবেজ-কালেক্টেড হিফে।"
-            },
-            { 
-                id: "c15", title: "Nullable Types", priority: "standard", 
-                def: "Allows value types to represent null (e.g. int?).", 
-                defBn: "Value টাইপে null মান রাখার সুযোগ দেয় (যেমন int?)।",
-                eg: "Database NULL column mapping.", 
-                egBn: "ডাটাবেজের NULL কলাম ম্যাপিং।",
-                code: "int? nullableAge = null;", 
-                q: "How to safely extract a nullable value?", 
-                qBn: "কীভাবে নিরাপদে Nullable মান পড়া যায়?",
-                a: "Use .HasValue, .Value, or null-coalescing operator ??",
-                aBn: ".HasValue, .Value অথবা null-coalescing অপারেটর (??) ব্যবহার করে।"
-            },
-            { 
-                id: "c16", title: "Exception Handling", priority: "standard", 
-                def: "Structured error handling using try-catch-finally blocks.", 
-                defBn: "try-catch-finally ব্লক দিয়ে সুশৃঙ্খল ত্রুটি ব্যবস্থাপনা।",
-                eg: "Catching SqlException during DB call.", 
-                egBn: "DB কলের সময় SqlException ধরা।",
-                code: "try { } catch (SqlException ex) { } finally { }", 
-                q: "Difference between throw and throw ex?", 
-                qBn: "throw এবং throw ex এর পার্থক্য কী?",
-                a: "throw preserves original call stack trace; throw ex resets stack trace to current line.",
-                aBn: "throw মূল কল স্ট্যাক হুবহু বজায় রাখে; throw ex স্ট্যাক ট্রেস রিসেট করে ফেলে।"
-            },
-            { 
-                id: "c17", title: "Delegates", priority: "high", 
-                def: "Type-safe function pointer pointing to methods with matching signature.", 
-                defBn: "টাইপ-সেফ ফাংশন পয়েন্টার যা নির্দিষ্ট মেথডকে পয়েন্ট করে।",
-                eg: "Event handlers and callbacks.", 
-                egBn: "ইভেন্ট হ্যান্ডলার এবং কলব্যাক।",
-                code: "public delegate void Notify(string msg);", 
-                q: "What is a multicast delegate?", 
-                qBn: "Multicast Delegate কী?",
-                a: "A delegate holding references to multiple methods invoked sequentially using += operator.",
-                aBn: "যে ডেলিগেট একের অধিক মেথডের রেফারেন্স ধরে রাখে এবং পরপর এক্সিকিউট করে।"
-            },
-            { 
-                id: "c18", title: "Events", priority: "standard", 
-                def: "Encapsulated multicast delegate used for publisher-subscriber messaging.", 
-                defBn: "Publisher-Subscriber মেসেজিংয়ের জন্য এনক্যাপসুলেটেড ডেলিগেট।",
-                eg: "Button click or order placed notification.", 
-                egBn: "বাটন ক্লিক বা অর্ডার সম্পন্ন হওয়ার নোটিফিকেশন।",
-                code: "public event EventHandler OnOrderCompleted;", 
-                q: "How do events differ from delegates?", 
-                qBn: "Event কীভাবে Delegate থেকে আলাদা?",
-                a: "Events restrict direct invocation from outside the declaring class.",
-                aBn: "Event ক্লাসের বাইরে থেকে সরাসরি ইনভোক করা যায় না।"
-            },
-            { 
-                id: "c19", title: "Lambda Expressions", priority: "standard", 
-                def: "Anonymous inline function syntax using => operator.", 
-                defBn: "=> অপারেটর দিয়ে সংক্ষেপে ইনলাইন অ্যানোনিমাস মেথড লেখার পদ্ধতি।",
-                eg: "LINQ inline filter predicate.", 
-                egBn: "LINQ ফিল্টারিং প্রেডিকেট।",
-                code: "x => x.IsActive == true", 
-                q: "What is a lambda expression?", 
-                qBn: "Lambda Expression কী?",
-                a: "A concise syntax for writing inline anonymous methods.",
-                aBn: "ইনলাইন অ্যানোনিমাস মেথড লেখার সংক্ষিপ্ত সিনট্যাক্স।"
-            },
-            { 
-                id: "c20", title: "LINQ (Language Integrated Query)", priority: "high", 
-                def: "Native declarative query syntax for querying collections, DBs, XML.", 
-                defBn: "কলেকশন, ডাটাবেজ বা XML থেকে ডাটা কোয়েরি করার বিল্ট-ইন ল্যাঙ্গুয়েজ ফিচার।",
-                eg: "Filtering active customer list.", 
-                egBn: "সক্রিয় কাস্টমার লিস্ট ফিল্টার করা।",
-                code: "var list = customers.Where(c => c.Age > 18).ToList();", 
-                q: "What is Deferred Execution in LINQ?", 
-                qBn: "LINQ এ Deferred Execution কী?",
-                a: "Execution is delayed until query is iterated over (e.g. via foreach or ToList()).",
-                aBn: "কোয়েরি যতক্ষণ পর্যন্ত ইটারেট (যেমন ToList() বা foreach) না করা হয়, ততক্ষণ পর্যন্ত রানিং বিলম্বিত থাকে।"
-            },
-            { 
-                id: "c21", title: "Async / Await", priority: "high", 
-                def: "Asynchronous programming model yielding thread back to pool during I/O.", 
-                defBn: "I/O অপারেশনের সময় থ্রেড ফ্রি করে দিয়ে অ্যাসিনক্রোনাস কাজ সম্পাদনের মডেল।",
-                eg: "Non-blocking database query.", 
-                egBn: "নন-ব্লকিং ডাটাবেজ কোয়েরি।",
-                code: "public async Task<Customer> GetAsync(int id) => await _db.Customers.FindAsync(id);", 
-                q: "Why use async/await in Web APIs?", 
-                qBn: "Web API তে কেন async/await ব্যবহার করবেন?",
-                a: "Prevents thread starvation under heavy concurrent load by releasing request threads during I/O.",
-                aBn: "অতিরিক্ত কনকারেন্ট ইউজারের সময় I/O চলাকালে থ্রেড মুক্ত রেখে Thread Starvation প্রতিরোধ করে।"
-            },
-            { 
-                id: "c22", title: "Task & Task<T>", priority: "high", 
-                def: "Represents an ongoing asynchronous operation returning void or T.", 
-                defBn: "অ্যাসিনক্রোনাস কাজের নির্দেশক যা void বা T মান রিটার্ন করে।",
-                eg: "CompletableFuture equivalent.", 
-                egBn: "Java CompletableFuture এর সমতুল্য।",
-                code: "Task<int> countTask = _db.CountAsync();", 
-                q: "Task.Wait() vs await Task?", 
-                qBn: "Task.Wait() এবং await Task এর পার্থক্য কী?",
-                a: "Task.Wait() blocks current thread synchronously causing deadlocks; await yields non-blockingly.",
-                aBn: "Task.Wait() বর্তমান থ্রেডকে ব্লক করে ডেডলক ঘটায়; আর await থ্রেডকে মুক্ত রাখে।"
-            },
-            { 
-                id: "c23", title: "IEnumerable vs IQueryable", priority: "high", 
-                def: "IEnumerable queries in-memory (LINQ to Objects). IQueryable executes SQL on DB server (LINQ to Entities).", 
-                defBn: "IEnumerable মেমোরিতে ফিল্টার করে; IQueryable ডাটাবেজ সার্ভারে SQL বানিয়ে পাঠায়।",
-                eg: "InMemory list vs Database query.", 
-                egBn: "ইন-মেমোরি লিস্ট বনাম ডাটাবেজ কুয়েরি।",
-                code: "IQueryable<Customer> q = _db.Customers.Where(c => c.Active);", 
-                q: "Difference between IEnumerable and IQueryable?", 
-                qBn: "IEnumerable এবং IQueryable এর প্রধান পার্থক্য কী?",
-                a: "IEnumerable filters in client app memory; IQueryable translates expressions to server-side SQL.",
-                aBn: "IEnumerable অ্যাপের মেমোরিতে ফিল্টার করে; আর IQueryable সার্ভার-সাইড SQL তৈরি করে ডাটা আনে।"
-            },
-            { 
-                id: "c24", title: "IDisposable & Using Statement", priority: "high", 
-                def: "IDisposable releases unmanaged resources (DB connections, files). using auto-calls Dispose().", 
-                defBn: "IDisposable আনম্যানেজড রিসোর্স (DB সংযোগ, ফাইল) মুক্ত করে; using অটো Dispose() কল করে।",
-                eg: "SqlConnection cleanup.", 
-                egBn: "SqlConnection কানেকশন রিলিজ করা।",
-                code: "using (var conn = new SqlConnection()) { }", 
-                q: "How does the using statement work under the hood?", 
-                qBn: "using স্টেটমেন্ট কীভাবে কাজ করে?",
-                a: "Translates to a try-finally block where Dispose() is called in finally.",
-                aBn: "এটি একটি try-finally ব্লকে রূপান্তরিত হয় যেখানে finally তে Dispose() কল করা হয়।"
-            },
-            { 
-                id: "c25", title: "Garbage Collection (GC)", priority: "high", 
-                def: "Automatic memory manager managing heap memory via Generations (Gen 0, 1, 2).", 
-                defBn: "স্বয়ংক্রিয় মেমোরি ম্যানেজার যা Gen 0, 1, 2 জেনারেশনের মাধ্যমে হিফ মেমোরি পরিষ্কার করে।",
-                eg: "Reclaiming short-lived objects.", 
-                egBn: "স্বল্পমেয়াদী অবজেক্ট মুছে ফেলা।",
-                code: "// Managed automatically by CLR GC", 
-                q: "What are GC Generations 0, 1, 2?", 
-                qBn: "GC Generations 0, 1, 2 কী?",
-                a: "Gen 0: Short-lived objects; Gen 1: Buffer zone; Gen 2: Long-lived objects (e.g. singletons).",
-                aBn: "Gen 0: স্বল্পমেয়াদী অবজেক্ট; Gen 1: বাফার জোন; Gen 2: দীর্ঘমেয়াদী অবজেক্ট (যেমন Singleton)।"
-            }
+        const csharpHighConcepts = [
+            { id: "c1", title: "Class vs Object", priority: "high", def: "A Class is a blueprint. An Object is an instance in memory.", defBn: "Class হলো টেমপ্লেট; Object হলো মেমরিতে মান সহ ইনস্ট্যান্স।", code: "Car myCar = new Car();", q: "Difference between Class & Object?", qBn: "Class এবং Object এর পার্থক্য কী?", a: "Class defines structure; Object allocates memory for state at runtime.", aBn: "Class স্ট্রাকচার সংজ্ঞায়িত করে; Object মেমোরি বরাদ্দ করে।" },
+            { id: "c2", title: "Interface vs Abstract Class", priority: "high", def: "Interface defines contract. Abstract Class provides partial implementation.", defBn: "Interface কেবল কন্ট্রাক্ট; Abstract Class আংশিক কোড দেয়।", code: "public interface IRepo { Task Save(); }", q: "When to use Interface over Abstract Class?", qBn: "কখন Interface ব্যবহার করবেন?", a: "Interface for multiple inheritance of contract; Abstract class for code sharing.", aBn: "একাধিক ইনহেরিটেন্সের জন্য Interface।" },
+            { id: "c4", title: "Encapsulation", priority: "high", def: "Bundling data and restricting direct access.", defBn: "ডেটা ও মেথড একসাথে আবদ্ধ রাখা।", code: "private decimal _bal;\npublic decimal Bal => _bal;", q: "How is Encapsulation achieved?", qBn: "কীভাবে এনক্যাপসুলেশন করা হয়?", a: "Using access modifiers and properties.", aBn: "private/public ও properties ব্যবহার করে।" },
+            { id: "c5", title: "Polymorphism", priority: "high", def: "Same method responding in specific ways.", defBn: "একই মেথডের বিভিন্ন উপায়ে কাজ করা।", code: "public override void Draw() {}", q: "Compile-time vs Runtime polymorphism?", qBn: "কম্পাইল বনাম রানটাইম পলিমরফিজম?", a: "Overloading is compile-time; Overriding is runtime.", aBn: "Overloading হলো কম্পাইল-টাইম; Overriding হলো রানটাইম।" },
+            { id: "c8", title: "Method Overriding", priority: "high", def: "Redefining virtual method using override.", defBn: "প্যারেন্ট ক্লাসের virtual মেথডকে override করা।", code: "public override decimal Calculate() => 10;", q: "Keywords for overriding?", qBn: "ওভাররাইডিং এর কি-ওয়ার্ড কী?", a: "virtual in base and override in child.", aBn: "virtual এবং override।" },
+            { id: "c14", title: "Value Type vs Reference Type", priority: "high", def: "Value type on Stack; Reference type memory on Heap.", defBn: "Value Type স্ট্যাকে; Reference Type হিফে।", code: "int a = 10; // Stack", q: "Where are value and reference types stored?", qBn: "কোথায় সংরক্ষিত হয়?", a: "Value on Stack; Reference on Heap.", aBn: "Value টাইপ স্ট্যাকে, Reference টাইপ হিফে।" },
+            { id: "c21", title: "Async / Await", priority: "high", def: "Asynchronous I/O model yielding thread back to pool.", defBn: "I/O সময় থ্রেড মুক্ত রাখার মডেল।", code: "await _db.Customers.ToListAsync();", q: "Why use async/await?", qBn: "কেন async/await ব্যবহার করবেন?", a: "Prevents thread starvation under heavy load.", aBn: "অতিরিক্ত ইউজার লোডে থ্রেড ফ্রী রাখতে।" },
+            { id: "c23", title: "IEnumerable vs IQueryable", priority: "high", def: "IEnumerable filters in memory; IQueryable on DB server.", defBn: "IEnumerable মেমোরিতে; IQueryable ডাটাবেজ সার্ভারে SQL বানিয়ে পাঠায়।", code: "IQueryable<Customer> q = _db.Customers;", q: "Difference between IEnumerable and IQueryable?", qBn: "IEnumerable ও IQueryable এর পার্থক্য?", a: "IEnumerable filters in app memory; IQueryable generates SQL.", aBn: "IEnumerable অ্যাপে ফিল্টার করে; IQueryable সার্ভার SQL তৈরি করে।" }
         ];
 
-        // Study Plan Hours
-        const studyPlan = [
-            { time: "08:00 – 09:30", title: "C# + Object-Oriented Programming (OOP) Deep Dive", bn: "C# এবং অবজেক্ট-ওরিয়েন্টেড প্রোগ্রামিং গভীর রিভিশন" },
-            { time: "09:30 – 11:00", title: "ASP.NET Core Architecture, Middleware & Kestrel", bn: "ASP.NET Core আর্কিটেকচার, মিডলওয়্যার এবং Kestrel সার্ভার" },
-            { time: "11:00 – 12:00", title: "REST API Design, HTTP Status Codes & Serialization", bn: "REST API ডিজাইন, HTTP স্ট্যাটাস কোড ও সিরিয়ালাইজেশন" },
-            { time: "12:00 – 13:00", title: "Database Fundamentals, SQL Tuning & Transactions", bn: "ডাটাবেজ কনসেপ্ট, SQL কুয়েরি অপ্টিমাইজেশন ও ট্রানজেকশন" },
-            { time: "14:00 – 15:00", title: "Enterprise Architecture, SOLID & Design Patterns", bn: "এন্টারপ্রাইজ আর্কিটেকচার, SOLID নীতি এবং ডিজাইন প্যাটার্ন" },
-            { time: "15:00 – 16:00", title: "Entity Framework Core & ADO.NET Revision", bn: "Entity Framework Core ও ADO.NET বিস্তারিত রিভিশন" },
-            { time: "16:00 – 17:00", title: "Redis Caching, Kafka Events & Airflow Workflows", bn: "Redis ক্যাশিং, Kafka ইভেন্ট স্ট্রিমিং এবং Airflow ওয়ার্কফ্লো" },
-            { time: "17:00 – 18:00", title: "Unit & Integration Testing (xUnit, Moq, AAA)", bn: "ইউনিট ও ইন্টিগ্রেশন টেস্টিং (xUnit, Moq এবং AAA প্যাটার্ন)" },
-            { time: "18:00 – 19:00", title: "Docker, CI/CD Pipelines & Azure DevOps", bn: "ডকার কন্টেইনার, CI/CD পাইপলাইন ও Azure DevOps" },
-            { time: "19:00 – 20:00", title: "Agile, Scrum Ceremonies & Jira Management", bn: "Agile প্রসেস, Scrum মিটিংসমূহ ও Jira প্রজেক্ট ট্র্যাকিং" },
-            { time: "20:00 – 21:00", title: "Interactive Mock Interview Practice", bn: "ইন্টারেক্টিভ মক ইন্টারভিউ প্র্যাকটিস" },
-            { time: "21:00 – 22:00", title: "Final 10-Minute Rapid Flashcard & Weak Area Review", bn: "১০-মিনিটের দ্রুত ফ্ল্যাশকার্ড ও দুর্বল বিষয়সমূহ রিভিশন" }
-        ];
-
-        // Application State Management
         let appState = {
             completedTopics: new Set(JSON.parse(localStorage.getItem("completedTopics") || "[]")),
-            studyPlanChecked: new Set(JSON.parse(localStorage.getItem("studyPlanChecked") || "[]")),
             theme: localStorage.getItem("theme") || "dark",
-            lang: localStorage.getItem("lang") || "both",
-            flashcardIndex: 0
+            lang: localStorage.getItem("lang") || "both"
         };
 
-        // DOM Initialization
         document.addEventListener("DOMContentLoaded", () => {
             applyTheme(appState.theme);
             applyLanguage(appState.lang);
-            renderStudyPlan();
-            renderCSharpAccordions();
+            renderHighAccordions();
             updateProgress();
 
-            // Event Listeners
             document.getElementById("btnThemeToggle").addEventListener("click", toggleTheme);
-            document.getElementById("btnResetProgress").addEventListener("click", resetProgress);
-            document.getElementById("btnMarkAllComplete").addEventListener("click", markAllComplete);
             
             const sidebar = document.getElementById("sidebar");
             const overlay = document.getElementById("sidebarOverlay");
             
-            function openSidebar() {
-                sidebar.classList.add("open");
-                overlay.classList.add("active");
-            }
-            function closeSidebar() {
-                sidebar.classList.remove("open");
-                overlay.classList.remove("active");
-            }
+            function openSidebar() { sidebar.classList.add("open"); overlay.classList.add("active"); }
+            function closeSidebar() { sidebar.classList.remove("open"); overlay.classList.remove("active"); }
 
             document.getElementById("mobileNavToggle").addEventListener("click", openSidebar);
             document.getElementById("floatingNavToggle").addEventListener("click", openSidebar);
             document.getElementById("sidebarCloseBtn").addEventListener("click", closeSidebar);
             overlay.addEventListener("click", closeSidebar);
 
-            // Auto-close sidebar on mobile link click
-            document.querySelectorAll(".menu-item").forEach(link => {
-                link.addEventListener("click", () => {
-                    if (window.innerWidth <= 992) {
-                        closeSidebar();
-                    }
+            document.getElementById("searchInput").addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase();
+                document.querySelectorAll(".accordion-item").forEach(item => {
+                    item.style.display = item.innerText.toLowerCase().includes(query) ? "block" : "none";
                 });
             });
-
-            // Search Filter
-            document.getElementById("searchInput").addEventListener("input", (e) => {
-                filterContent(e.target.value.toLowerCase());
-            });
-
-            // Interactive Flashcard Engine
-            initFlashcards();
-
-            // Mock Interview Engine
-            initMockInterview();
         });
 
-        // Theme Toggle
-        function applyTheme(theme) {
-            document.documentElement.setAttribute("data-theme", theme);
-            localStorage.setItem("theme", theme);
-        }
-        function toggleTheme() {
-            appState.theme = appState.theme === "dark" ? "light" : "dark";
-            applyTheme(appState.theme);
-        }
+        function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("theme", theme); }
+        function toggleTheme() { appState.theme = appState.theme === "dark" ? "light" : "dark"; applyTheme(appState.theme); }
 
-        // Language Switching
         function applyLanguage(lang) {
             appState.lang = lang;
             document.documentElement.setAttribute("data-lang", lang);
             localStorage.setItem("lang", lang);
-
             document.getElementById("btnLangBoth").classList.toggle("active", lang === "both");
             document.getElementById("btnLangEng").classList.toggle("active", lang === "eng");
             document.getElementById("btnLangBan").classList.toggle("active", lang === "ban");
         }
 
-        function setLanguage(lang) {
-            applyLanguage(lang);
-            renderStudyPlan();
-            renderCSharpAccordions();
-        }
+        function setLanguage(lang) { applyLanguage(lang); renderHighAccordions(); }
 
-        // Render Study Plan Timeline
-        function renderStudyPlan() {
-            const container = document.getElementById("timelineContainer");
-            container.innerHTML = studyPlan.map((item, index) => {
-                const isChecked = appState.studyPlanChecked.has(index) ? "checked" : "";
-                return `
-                    <div class="timeline-item">
-                        <div class="timeline-time">${item.time}</div>
-                        <div class="timeline-content">
-                            <span class="en-text">${item.title}</span>
-                            <span class="bn-sub">${item.bn}</span>
-                        </div>
-                        <input type="checkbox" class="timeline-check" ${isChecked} onchange="togglePlanCheck(${index})">
-                    </div>
-                `;
-            }).join("");
-        }
-
-        function togglePlanCheck(index) {
-            if (appState.studyPlanChecked.has(index)) {
-                appState.studyPlanChecked.delete(index);
-            } else {
-                appState.studyPlanChecked.add(index);
-            }
-            localStorage.setItem("studyPlanChecked", JSON.stringify([...appState.studyPlanChecked]));
-            updateProgress();
-        }
-
-        // Render C# Accordions
-        function renderCSharpAccordions() {
-            const container = document.getElementById("csharpAccordions");
-            container.innerHTML = csharpConcepts.map(c => {
+        function renderHighAccordions() {
+            const container = document.getElementById("csharpHighAccordions");
+            container.innerHTML = csharpHighConcepts.map(c => {
                 const isDone = appState.completedTopics.has(c.id);
                 return `
                     <div class="accordion-item ${isDone ? 'completed' : ''}" id="card-${c.id}">
@@ -2818,9 +1298,9 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                             <div class="accordion-title-area">
                                 <input type="checkbox" onclick="event.stopPropagation(); toggleTopic('${c.id}')" ${isDone ? 'checked' : ''}>
                                 <span class="accordion-title">${c.title}</span>
-                                <span class="priority-badge ${c.priority}">${c.priority === 'high' ? '★★★★★ High' : '★★★ Standard'}</span>
+                                <span class="priority-badge high">★★★★★ High</span>
                             </div>
-                            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            <svg class="accordion-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                         </div>
                         <div class="accordion-body">
                             <div class="concept-section">
@@ -2831,25 +1311,12 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                                 </div>
                             </div>
                             <div class="concept-section">
-                                <div class="concept-label">Real-World Scenario</div>
-                                <div class="concept-val">
-                                    <span class="en-text">${c.eg}</span>
-                                    <span class="bn-sub">${c.egBn}</span>
-                                </div>
-                            </div>
-                            <div class="concept-section">
                                 <div class="concept-label">C# Code Snippet</div>
                                 <pre><code>${escapeHtml(c.code)}</code></pre>
                             </div>
                             <div class="interview-q-box">
-                                <div class="interview-q">
-                                    Q: <span class="en-text">${c.q}</span>
-                                    <span class="bn-sub">${c.qBn}</span>
-                                </div>
-                                <div class="interview-a">
-                                    "<strong>Strong Answer:</strong> <span class="en-text">${c.a}</span>"
-                                    <span class="bn-sub">"<strong>বাংলা সংক্ষেপ:</strong> ${c.aBn}"</span>
-                                </div>
+                                <div class="interview-q">Q: <span class="en-text">${c.q}</span><span class="bn-sub">${c.qBn}</span></div>
+                                <div class="interview-a">"<strong>Answer:</strong> <span class="en-text">${c.a}</span>"<span class="bn-sub">"${c.aBn}"</span></div>
                             </div>
                         </div>
                     </div>
@@ -2857,156 +1324,22 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
             }).join("");
         }
 
-        function toggleAccordion(id) {
-            const item = document.getElementById(`card-${id}`);
-            item.classList.toggle("active");
-        }
+        function toggleAccordion(id) { document.getElementById(`card-${id}`).classList.toggle("active"); }
 
         function toggleTopic(id) {
-            if (appState.completedTopics.has(id)) {
-                appState.completedTopics.delete(id);
-            } else {
-                appState.completedTopics.add(id);
-            }
+            if (appState.completedTopics.has(id)) { appState.completedTopics.delete(id); } else { appState.completedTopics.add(id); }
             localStorage.setItem("completedTopics", JSON.stringify([...appState.completedTopics]));
-            renderCSharpAccordions();
+            renderHighAccordions();
             updateProgress();
         }
 
         function updateProgress() {
-            const total = csharpConcepts.length + studyPlan.length;
-            const completed = appState.completedTopics.size + appState.studyPlanChecked.size;
-            const percent = Math.round((completed / total) * 100);
-
+            const percent = Math.round((appState.completedTopics.size / csharpHighConcepts.length) * 100);
             document.getElementById("progressPercent").innerText = `${percent}%`;
             document.getElementById("progressBarFill").style.width = `${percent}%`;
         }
 
-        function markAllComplete() {
-            csharpConcepts.forEach(c => appState.completedTopics.add(c.id));
-            studyPlan.forEach((_, idx) => appState.studyPlanChecked.add(idx));
-            localStorage.setItem("completedTopics", JSON.stringify([...appState.completedTopics]));
-            localStorage.setItem("studyPlanChecked", JSON.stringify([...appState.studyPlanChecked]));
-            renderStudyPlan();
-            renderCSharpAccordions();
-            updateProgress();
-        }
-
-        function resetProgress() {
-            if (confirm("Are you sure you want to reset all revision progress?")) {
-                appState.completedTopics.clear();
-                appState.studyPlanChecked.clear();
-                localStorage.removeItem("completedTopics");
-                localStorage.removeItem("studyPlanChecked");
-                renderStudyPlan();
-                renderCSharpAccordions();
-                updateProgress();
-            }
-        }
-
-        // Live Search Filter
-        function filterContent(query) {
-            const items = document.querySelectorAll(".accordion-item");
-            items.forEach(item => {
-                const text = item.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        }
-
-        // Flashcards Engine
-        function initFlashcards() {
-            const card = document.getElementById("flashcardElement");
-            card.addEventListener("click", () => card.classList.toggle("flipped"));
-
-            document.getElementById("btnFcNext").addEventListener("click", () => {
-                appState.flashcardIndex = (appState.flashcardIndex + 1) % csharpConcepts.length;
-                updateFlashcard();
-            });
-
-            document.getElementById("btnFcPrev").addEventListener("click", () => {
-                appState.flashcardIndex = (appState.flashcardIndex - 1 + csharpConcepts.length) % csharpConcepts.length;
-                updateFlashcard();
-            });
-
-            updateFlashcard();
-        }
-
-        function updateFlashcard() {
-            const card = document.getElementById("flashcardElement");
-            card.classList.remove("flipped");
-            const c = csharpConcepts[appState.flashcardIndex];
-            document.getElementById("fcQuestion").innerHTML = `
-                <span class="en-text">${c.q}</span>
-                <span class="bn-sub" style="font-size: 14px; margin-top: 8px;">${c.qBn}</span>
-            `;
-            document.getElementById("fcAnswer").innerHTML = `
-                <span class="en-text">"${c.a}"</span>
-                <span class="bn-sub" style="font-size: 13.5px; margin-top: 10px; color: var(--text-primary);">"${c.aBn}"</span>
-            `;
-        }
-
-        // Mock Interview Engine
-        let mockState = { currentIdx: 0, score: 0, questions: [] };
-
-        function initMockInterview() {
-            document.getElementById("btnStartMock").addEventListener("click", () => {
-                mockState.questions = [...csharpConcepts].sort(() => 0.5 - Math.random()).slice(0, 10);
-                mockState.currentIdx = 0;
-                mockState.score = 0;
-                document.getElementById("mockContainer").style.display = "block";
-                renderMockQuestion();
-            });
-
-            document.getElementById("btnShowAnswer").addEventListener("click", () => {
-                document.getElementById("mockAnswerBox").style.display = "block";
-            });
-
-            document.getElementById("btnKnowIt").addEventListener("click", () => {
-                mockState.score++;
-                nextMockQuestion();
-            });
-
-            document.getElementById("btnNeedRev").addEventListener("click", () => {
-                nextMockQuestion();
-            });
-
-            document.getElementById("btnNextQ").addEventListener("click", () => {
-                nextMockQuestion();
-            });
-        }
-
-        function renderMockQuestion() {
-            const q = mockState.questions[mockState.currentIdx];
-            document.getElementById("mockCounter").innerText = `Question ${mockState.currentIdx + 1} of 10`;
-            document.getElementById("mockScore").innerText = `Score: ${mockState.score} Known`;
-            document.getElementById("mockQuestion").innerHTML = `
-                <span class="en-text">${q.q}</span>
-                <span class="bn-sub" style="font-size: 14.5px; margin-top: 6px;">${q.qBn}</span>
-            `;
-            document.getElementById("mockAnswer").innerHTML = `
-                <span class="en-text">"${q.a}"</span>
-                <span class="bn-sub" style="font-size: 13.5px; margin-top: 8px; color: var(--text-primary);">"${q.aBn}"</span>
-            `;
-            document.getElementById("mockAnswerBox").style.display = "none";
-        }
-
-        function nextMockQuestion() {
-            if (mockState.currentIdx < mockState.questions.length - 1) {
-                mockState.currentIdx++;
-                renderMockQuestion();
-            } else {
-                alert(`Mock Interview Complete! Final Score: ${mockState.score} / 10.`);
-                document.getElementById("mockContainer").style.display = "none";
-            }
-        }
-
-        function escapeHtml(text) {
-            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        }
+        function escapeHtml(text) { return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
     </script>
 </body>
 </html>
