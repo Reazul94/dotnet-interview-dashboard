@@ -144,9 +144,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 99;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 9998;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -164,7 +165,7 @@
             top: 0;
             bottom: 0;
             left: 0;
-            z-index: 100;
+            z-index: 9999;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -216,11 +217,15 @@
 
         .sidebar-close-btn {
             display: none;
-            background: none;
-            border: none;
-            color: var(--text-muted);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
             cursor: pointer;
-            padding: 4px;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .sidebar-search {
@@ -352,7 +357,7 @@
         /* Sticky Header */
         #header {
             min-height: var(--header-height);
-            background-color: rgba(19, 27, 46, 0.88);
+            background-color: rgba(19, 27, 46, 0.92);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
@@ -368,7 +373,7 @@
         }
 
         [data-theme="light"] #header {
-            background-color: rgba(255, 255, 255, 0.88);
+            background-color: rgba(255, 255, 255, 0.92);
         }
 
         .header-left {
@@ -404,8 +409,24 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+
+        /* Mobile Hamburger Toggle Button */
+        .mobile-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background-color: var(--accent-purple);
+            color: #ffffff;
+            border: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px var(--accent-purple-glow);
             flex-shrink: 0;
         }
 
@@ -419,7 +440,7 @@
         }
 
         .lang-btn {
-            padding: 5px 10px;
+            padding: 5px 9px;
             font-size: 11px;
             font-weight: 700;
             border-radius: var(--radius-sm);
@@ -441,7 +462,7 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            padding: 8px 14px;
+            padding: 8px 12px;
             border-radius: var(--radius-md);
             font-size: 12px;
             font-weight: 600;
@@ -494,8 +515,27 @@
             background-color: var(--border-color);
         }
 
-        .mobile-toggle {
+        /* Floating Mobile Floating Menu Button for Instant Access */
+        .floating-menu-btn {
             display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.5);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .floating-menu-btn:active {
+            transform: scale(0.92);
         }
 
         /* Content Container */
@@ -1092,19 +1132,24 @@
         @media (max-width: 992px) {
             #sidebar {
                 transform: translateX(-100%);
+                width: 300px;
+                max-width: 85vw;
             }
             #sidebar.open {
                 transform: translateX(0);
-                box-shadow: 10px 0 25px rgba(0, 0, 0, 0.5);
+                box-shadow: 10px 0 35px rgba(0, 0, 0, 0.6);
             }
             .sidebar-close-btn {
-                display: block;
+                display: flex;
             }
             #main {
                 margin-left: 0;
             }
             .mobile-toggle {
                 display: inline-flex;
+            }
+            .floating-menu-btn {
+                display: flex;
             }
             .pipeline-flow {
                 flex-direction: column;
@@ -1117,12 +1162,18 @@
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             #header {
                 padding: 10px 14px;
             }
+            .btn-desktop-only {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
             .header-title-group h1 {
-                font-size: 14px;
+                font-size: 13.5px;
             }
             .header-title-group p {
                 display: none;
@@ -1139,8 +1190,8 @@
                 font-size: 15px;
             }
             .btn {
-                padding: 7px 10px;
-                font-size: 11.5px;
+                padding: 6px 10px;
+                font-size: 11px;
             }
             .timeline-item {
                 flex-direction: column;
@@ -1174,6 +1225,11 @@
         <!-- Mobile Overlay Backdrop -->
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+        <!-- Floating Mobile Menu Button -->
+        <button class="floating-menu-btn" id="floatingNavToggle" aria-label="Open Navigation Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+
         <!-- Sidebar Navigation -->
         <aside id="sidebar">
             <div class="sidebar-header">
@@ -1184,7 +1240,7 @@
                         <div class="brand-subtitle">ASP.NET Core 8-10</div>
                     </div>
                 </div>
-                <button class="sidebar-close-btn" id="sidebarCloseBtn">
+                <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
             </div>
@@ -1254,17 +1310,17 @@
             <!-- Top Sticky Header -->
             <header id="header">
                 <div class="header-left">
-                    <button class="btn btn-icon mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                    <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     </button>
                     <div class="header-title-group">
                         <h1>
-                            <span class="en-text">.NET / ASP.NET Core Interview — Rapid Revision</span>
-                            <span class="bn-sub">.NET এবং ASP.NET Core ইন্টারভিউ — ১-দিনের র‍্যাপিড রিভিশন ড্যাশবোর্ড</span>
+                            <span class="en-text">.NET / ASP.NET Core Revision</span>
+                            <span class="bn-sub">.NET এবং ASP.NET Core র‍্যাপিড রিভিশন</span>
                         </h1>
                         <p>
-                            <span class="en-text">Enterprise Application Development • C# • ASP.NET Core • SQL • Architecture • DevOps</span>
-                            <span class="bn-sub">এন্টারপ্রাইজ অ্যাপ্লিকেশন ডেভেলপমেন্ট • C# • ASP.NET Core • SQL • আর্কিটেকচার • ডেভঅপ্স</span>
+                            <span class="en-text">Enterprise Application Development • C# • ASP.NET Core • SQL</span>
+                            <span class="bn-sub">এন্টারপ্রাইজ ডেভেলপমেন্ট • C# • ASP.NET Core • SQL</span>
                         </p>
                     </div>
                 </div>
@@ -1272,13 +1328,13 @@
                 <div class="header-actions">
                     <!-- Language Selection Button Group -->
                     <div class="lang-switcher">
-                        <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH (Eng + বাংলা)</button>
+                        <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH</button>
                         <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
                         <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
                     </div>
 
-                    <button class="btn btn-secondary" id="btnMarkAllComplete">Mark Topic Complete</button>
-                    <button class="btn btn-outline-danger" id="btnResetProgress">Reset Progress</button>
+                    <button class="btn btn-secondary btn-desktop-only" id="btnMarkAllComplete">Complete All</button>
+                    <button class="btn btn-outline-danger btn-desktop-only" id="btnResetProgress">Reset</button>
                     <button class="btn btn-icon" id="btnThemeToggle" title="Toggle Light/Dark Theme">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                     </button>
@@ -2150,7 +2206,7 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                 <section id="sec-self" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 4-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                             "TELL ME ABOUT YOURSELF" & PRIMARY PROJECT STORY
                         </h2>
                         <span class="priority-badge high">★ Essential Opening Script</span>
@@ -2671,6 +2727,7 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
             }
 
             document.getElementById("mobileNavToggle").addEventListener("click", openSidebar);
+            document.getElementById("floatingNavToggle").addEventListener("click", openSidebar);
             document.getElementById("sidebarCloseBtn").addEventListener("click", closeSidebar);
             overlay.addEventListener("click", closeSidebar);
 
