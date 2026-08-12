@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark" data-lang="both">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🌐 Ecosystem, Tools & Practice — .NET Interview Revision</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
             --text-secondary-light: #475569;
             --text-muted-light: #64748b;
             --border-light: #e2e8f0;
-            --card-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --card-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 
             /* Dark Theme Variables */
             --bg-primary-dark: #0b0f19;
@@ -28,11 +28,10 @@
             --text-secondary-dark: #94a3b8;
             --text-muted-dark: #64748b;
             --border-dark: #1e293b;
-            --card-shadow-dark: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --card-shadow-dark: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
 
             /* Brand Accent Colors */
             --accent-purple: #8b5cf6;
-            --accent-purple-glow: rgba(139, 92, 246, 0.25);
             --accent-blue: #3b82f6;
             --accent-cyan: #06b6d4;
             --accent-green: #10b981;
@@ -48,10 +47,8 @@
             --text-secondary: var(--text-secondary-dark);
             --text-muted: var(--text-muted-dark);
             --border-color: var(--border-dark);
-            --card-shadow: var(--card-shadow-dark);
 
             --sidebar-width: 280px;
-            --header-height: 70px;
             --radius-sm: 6px;
             --radius-md: 10px;
             --radius-lg: 16px;
@@ -66,7 +63,6 @@
             --text-secondary: var(--text-secondary-light);
             --text-muted: var(--text-muted-light);
             --border-color: var(--border-light);
-            --card-shadow: var(--card-shadow-light);
         }
 
         * {
@@ -83,7 +79,8 @@
             line-height: 1.6;
             font-size: 14px;
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .bn-sub {
@@ -99,49 +96,63 @@
         [data-lang="eng"] .bn-sub { display: none !important; }
         [data-lang="ban"] .en-text { display: none !important; }
 
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
         #app { display: flex; min-height: 100vh; position: relative; }
 
+        .sticky-top-container {
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            background-color: rgba(19, 27, 46, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        [data-theme="light"] .sticky-top-container { background-color: rgba(255, 255, 255, 0.95); }
+
         .page-switcher-bar {
+            padding: 6px 12px;
             background-color: var(--bg-tertiary);
-            padding: 8px 16px;
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .page-tab {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: var(--radius-md);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-decoration: none;
             color: var(--text-secondary);
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
             transition: var(--transition);
+            white-space: nowrap;
         }
 
         .page-tab.active {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: #ffffff;
             border-color: transparent;
-            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
         }
 
         .sidebar-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(5px);
             z-index: 9998;
             opacity: 0;
+            transition: opacity 0.3s ease;
         }
         .sidebar-overlay.active { display: block; opacity: 1; }
 
@@ -157,119 +168,114 @@
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .sidebar-header {
-            padding: 18px 16px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
+        .sidebar-header { padding: 16px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: 10px; }
         .brand-icon {
-            width: 38px; height: 38px;
+            width: 36px; height: 36px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             border-radius: var(--radius-md);
             display: flex; align-items: center; justify-content: center;
-            color: #fff; font-weight: 800; font-size: 18px;
-            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+            color: #fff; font-weight: 800; font-size: 16px; flex-shrink: 0;
         }
 
-        .sidebar-close-btn {
-            display: none;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            color: var(--text-primary);
-            cursor: pointer; padding: 6px;
-        }
+        .brand-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+        .brand-subtitle { font-size: 10px; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; }
 
-        .sidebar-search { padding: 12px 16px 8px 16px; }
+        .sidebar-close-btn { display: none; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); cursor: pointer; padding: 6px; }
+
+        .sidebar-search { padding: 10px 14px 6px 14px; }
         .search-box input {
-            width: 100%; padding: 9px 12px 9px 34px;
+            width: 100%; padding: 8px 10px 8px 30px;
             background-color: var(--bg-tertiary);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             color: var(--text-primary); font-size: 12px; outline: none;
         }
 
-        .sidebar-menu { flex: 1; overflow-y: auto; padding: 8px 12px; }
-        .menu-category { font-size: 10px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin: 14px 8px 6px 8px; }
-        .menu-item {
-            display: flex; align-items: center; gap: 10px; padding: 9px 12px;
-            color: var(--text-secondary); text-decoration: none;
-            border-radius: var(--radius-sm); font-size: 12.5px; font-weight: 500;
-        }
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 8px 10px; }
+        .menu-category { font-size: 10px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin: 12px 6px 4px 6px; }
+        .menu-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; color: var(--text-secondary); text-decoration: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; margin-bottom: 2px; }
         .menu-item.active { border-left: 3px solid var(--accent-cyan); color: var(--accent-cyan); background-color: var(--bg-tertiary); }
 
         #main { margin-left: var(--sidebar-width); flex: 1; display: flex; flex-direction: column; min-width: 0; width: 100%; }
 
-        #header {
-            min-height: var(--header-height);
-            background-color: rgba(19, 27, 46, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky; top: 0; z-index: 90;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 12px 24px; gap: 12px;
-        }
+        #header { padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
+        .header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .header-title-group h1 { font-size: 15px; font-weight: 700; color: var(--accent-cyan); line-height: 1.2; }
+        .header-title-group p { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+        .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 
         .mobile-toggle {
-            display: none; width: 40px; height: 40px;
-            border-radius: var(--radius-md);
-            background-color: var(--accent-cyan);
-            color: #ffffff; border: none; align-items: center; justify-content: center;
+            display: none; width: 36px; height: 36px;
+            border-radius: var(--radius-md); background-color: var(--accent-cyan);
+            color: #ffffff; border: none; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;
         }
 
-        .lang-switcher { display: inline-flex; background-color: var(--bg-tertiary); padding: 3px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
-        .lang-btn { padding: 5px 9px; font-size: 11px; font-weight: 700; border-radius: var(--radius-sm); border: none; background: none; color: var(--text-muted); cursor: pointer; }
+        .lang-switcher { display: inline-flex; background-color: var(--bg-tertiary); padding: 2px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .lang-btn { padding: 4px 7px; font-size: 10px; font-weight: 700; border-radius: var(--radius-sm); border: none; background: none; color: var(--text-muted); cursor: pointer; }
         .lang-btn.active { background-color: var(--accent-cyan); color: #ffffff; }
 
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 12px; border-radius: var(--radius-md); font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid transparent; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 6px 12px; border-radius: var(--radius-md); font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid transparent; }
         .btn-primary { background-color: var(--accent-purple); color: #ffffff; }
         .btn-secondary { background-color: var(--bg-tertiary); color: var(--text-primary); border-color: var(--border-color); }
-        .btn-icon { padding: 8px; width: 36px; height: 36px; border-radius: var(--radius-md); background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); }
+        .btn-icon { padding: 6px; width: 32px; height: 32px; border-radius: var(--radius-md); background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); flex-shrink: 0; }
 
         .floating-menu-btn {
-            display: none; position: fixed; bottom: 20px; right: 20px; z-index: 999;
-            width: 50px; height: 50px; border-radius: 50%;
+            display: none; position: fixed; bottom: 16px; right: 16px; z-index: 999;
+            width: 46px; height: 46px; border-radius: 50%;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: #ffffff; border: none; box-shadow: 0 6px 16px rgba(6, 182, 212, 0.5);
+            color: #ffffff; border: none; box-shadow: 0 4px 14px rgba(6, 182, 212, 0.5);
             align-items: center; justify-content: center; cursor: pointer;
         }
 
-        .content-body { padding: 24px; max-width: 1400px; margin: 0 auto; width: 100%; }
-        .card { background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 28px; }
-        .card-header-flex { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); gap: 12px; flex-wrap: wrap; }
-        .card-title { font-size: 17px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 10px; }
+        .content-body { padding: 16px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
-        .comparison-table-wrapper { overflow-x: auto; margin-top: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
-        .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; min-width: 600px; }
-        .comparison-table th { background-color: var(--bg-tertiary); color: var(--text-primary); padding: 12px 16px; border-bottom: 2px solid var(--border-color); }
-        .comparison-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
-        .comparison-table code { font-family: 'Fira Code', monospace; font-size: 12px; background-color: var(--bg-primary); padding: 2px 6px; border-radius: 4px; color: var(--accent-cyan); }
+        .card { background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+        .card-header-flex { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); gap: 10px; flex-wrap: wrap; }
+        .card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
 
-        .timeline { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-        .timeline-item { display: flex; align-items: center; gap: 14px; background-color: var(--bg-tertiary); padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
-        .timeline-time { font-family: 'Fira Code', monospace; font-weight: 600; font-size: 11.5px; color: var(--accent-cyan); background-color: var(--bg-primary); padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border-color); width: 105px; text-align: center; }
+        .comparison-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; min-width: 500px; }
+        .comparison-table th { background-color: var(--bg-tertiary); color: var(--text-primary); padding: 10px 12px; border-bottom: 2px solid var(--border-color); }
+        .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+        .comparison-table code { font-family: 'Fira Code', monospace; font-size: 11px; background-color: var(--bg-primary); padding: 2px 5px; border-radius: 4px; color: var(--accent-cyan); }
 
-        .script-box { background-color: var(--bg-tertiary); border-radius: var(--radius-md); padding: 16px; margin-top: 14px; border-left: 4px solid var(--accent-cyan); }
-        .script-quote { font-style: italic; color: var(--text-secondary); font-size: 13px; background-color: var(--bg-primary); padding: 12px; border-radius: var(--radius-sm); }
+        .timeline { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .timeline-item { display: flex; align-items: center; gap: 10px; background-color: var(--bg-tertiary); padding: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .timeline-time { font-family: 'Fira Code', monospace; font-weight: 600; font-size: 10.5px; color: var(--accent-cyan); background-color: var(--bg-primary); padding: 3px 6px; border-radius: 4px; border: 1px solid var(--border-color); width: 95px; text-align: center; flex-shrink: 0; }
 
-        .flashcard-wrapper { perspective: 1000px; width: 100%; max-width: 650px; margin: 20px auto; height: 280px; }
+        .script-box { background-color: var(--bg-tertiary); border-radius: var(--radius-md); padding: 12px; margin-top: 10px; border-left: 3px solid var(--accent-cyan); }
+        .script-quote { font-style: italic; color: var(--text-secondary); font-size: 12px; background-color: var(--bg-primary); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); }
+
+        .flashcard-wrapper { perspective: 1000px; width: 100%; max-width: 600px; margin: 14px auto; height: 240px; }
         .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
         .flashcard.flipped { transform: rotateY(180deg); }
-        .flashcard-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 1px solid var(--border-color); }
+        .flashcard-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: var(--radius-lg); padding: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 1px solid var(--border-color); }
         .flashcard-front { background-color: var(--bg-secondary); }
         .flashcard-back { background-color: var(--bg-tertiary); transform: rotateY(180deg); border-color: var(--accent-cyan); }
 
-        .section-anchor { scroll-margin-top: 120px; }
+        .section-anchor { scroll-margin-top: 110px; }
 
+        pre { background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px; font-family: 'Fira Code', monospace; font-size: 11px; color: #38bdf8; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+        /* RESPONSIVE MEDIA QUERIES FOR PHONES */
         @media (max-width: 992px) {
-            #sidebar { transform: translateX(-100%); width: 300px; max-width: 85vw; }
-            #sidebar.open { transform: translateX(0); }
+            #sidebar { transform: translateX(-100%); width: 290px; max-width: 85vw; }
+            #sidebar.open { transform: translateX(0); box-shadow: 10px 0 35px rgba(0, 0, 0, 0.6); }
             .sidebar-close-btn { display: flex; }
             #main { margin-left: 0; }
             .mobile-toggle, .floating-menu-btn { display: inline-flex; }
+        }
+
+        @media (max-width: 640px) {
+            .content-body { padding: 10px; }
+            .card { padding: 12px; border-radius: var(--radius-md); margin-bottom: 14px; }
+            .header-title-group p { display: none; }
+            .header-title-group h1 { font-size: 13px; }
+            .timeline-item { flex-direction: column; align-items: flex-start; }
+            .timeline-time { width: auto; }
         }
     </style>
 </head>
@@ -278,7 +284,7 @@
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <button class="floating-menu-btn" id="floatingNavToggle" aria-label="Open Navigation Menu">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
 
         <!-- Sidebar Navigation -->
@@ -292,14 +298,14 @@
                     </div>
                 </div>
                 <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
             </div>
 
             <div class="sidebar-search">
                 <div class="search-box">
                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    <input type="text" id="searchInput" placeholder="Search tools, ecosystem...">
+                    <input type="text" id="searchInput" placeholder="Search tools...">
                 </div>
             </div>
 
@@ -325,42 +331,45 @@
 
         <!-- Main Workspace -->
         <main id="main">
-            <!-- Global Top Page Switcher Bar -->
-            <div class="page-switcher-bar">
-                <a href="index.html" class="page-tab">🔥 HIGH PRIORITY (PAGE 1)</a>
-                <a href="ecosystem.html" class="page-tab active">🌐 ECOSYSTEM & TOOLS (PAGE 2)</a>
+            <!-- Combined Sticky Header Wrapper -->
+            <div class="sticky-top-container">
+                <!-- Global Top Page Switcher Bar -->
+                <div class="page-switcher-bar">
+                    <a href="index.html" class="page-tab">🔥 HIGH PRIORITY (PAGE 1)</a>
+                    <a href="ecosystem.html" class="page-tab active">🌐 ECOSYSTEM & TOOLS (PAGE 2)</a>
+                </div>
+
+                <!-- Header -->
+                <header id="header">
+                    <div class="header-left">
+                        <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                        </button>
+                        <div class="header-title-group">
+                            <h1>
+                                <span class="en-text">🌐 Ecosystem & Tools</span>
+                                <span class="bn-sub">🌐 ইকোসিস্টেম ও টুলস</span>
+                            </h1>
+                            <p>
+                                <span class="en-text">Kafka • Redis • Airflow • Testing • CI/CD</span>
+                                <span class="bn-sub">Kafka • Redis • Airflow • টেস্টিং</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="header-actions">
+                        <div class="lang-switcher">
+                            <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH</button>
+                            <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
+                            <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
+                        </div>
+
+                        <button class="btn-icon" id="btnThemeToggle" title="Toggle Light/Dark Theme">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        </button>
+                    </div>
+                </header>
             </div>
-
-            <!-- Sticky Header -->
-            <header id="header">
-                <div class="header-left">
-                    <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                    </button>
-                    <div class="header-title-group">
-                        <h1>
-                            <span class="en-text">🌐 Ecosystem, Tools & Practice</span>
-                            <span class="bn-sub">🌐 ইকোসিস্টেম, টুলস এবং প্র্যাকটিস</span>
-                        </h1>
-                        <p>
-                            <span class="en-text">Kafka • Redis • Airflow • Testing • CI/CD • Agile • Mock Interview</span>
-                            <span class="bn-sub">Kafka • Redis • Airflow • টেস্টিং • CI/CD • এজাইল • মক ইন্টারভিউ</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="header-actions">
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH</button>
-                        <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
-                        <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
-                    </div>
-
-                    <button class="btn btn-icon" id="btnThemeToggle" title="Toggle Light/Dark Theme">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                    </button>
-                </div>
-            </header>
 
             <!-- Dashboard Content Body -->
             <div class="content-body">
@@ -369,7 +378,7 @@
                 <section id="sec-plan" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             ONE-DAY RAPID STUDY PLAN TIMELINE
                         </h2>
                     </div>
@@ -383,7 +392,7 @@
                 <section id="sec-java-cheatsheet" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
                             JAVA / SPRING BOOT → C# / ASP.NET CORE CHEAT SHEET
                         </h2>
                     </div>
@@ -423,7 +432,7 @@
                 <section id="sec-kafka" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
                             ENTERPRISE ECOSYSTEM: KAFKA, REDIS & AIRFLOW
                         </h2>
                     </div>
@@ -442,13 +451,13 @@
                                 <tr>
                                     <td><strong>Apache Kafka</strong></td>
                                     <td>Event Streaming & Message Bus</td>
-                                    <td><code>Producer, Topic, Partition, Consumer Group, Offset</code></td>
+                                    <td><code>Producer, Topic, Partition, Consumer Group</code></td>
                                     <td>Decoupling billing event updates.</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Redis</strong></td>
                                     <td>In-Memory Cache & Key-Value Store</td>
-                                    <td><code>In-Memory, TTL, Cache Stampede, Distributed Lock</code></td>
+                                    <td><code>In-Memory, TTL, Cache Stampede</code></td>
                                     <td>Caching customer profiles and user session states.</td>
                                 </tr>
                                 <tr>
@@ -466,7 +475,7 @@
                 <section id="sec-testing" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             TESTING (xUnit / Moq) & DEVOPS CI/CD PIPELINES
                         </h2>
                     </div>
@@ -489,8 +498,8 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
 }</code></pre>
                     </div>
 
-                    <div style="margin-top: 14px;" id="sec-devops">
-                        <p><strong>CI/CD Pipeline Flow:</strong> Dev Commit → Pull Request → GitHub Actions / Azure DevOps Build → Unit Tests → SonarQube Code Analysis → Docker Container Package → Deploy to Staging/Prod.</p>
+                    <div style="margin-top: 10px;" id="sec-devops">
+                        <p style="font-size: 12.5px;"><strong>CI/CD Pipeline Flow:</strong> Dev Commit → Pull Request → Build → Unit Tests → SonarQube → Docker Package → Deploy to Staging/Prod.</p>
                     </div>
                 </section>
 
@@ -498,13 +507,13 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                 <section id="sec-incident" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
                             PRODUCTION INCIDENT TROUBLESHOOTING FRAMEWORK
                         </h2>
                     </div>
 
-                    <div style="background-color: var(--bg-tertiary); padding: 16px; border-radius: var(--radius-md);">
-                        <p>1. Understand Impact → 2. Check Exception Logs → 3. Reproduce in non-prod → 4. Check recent code deployments → 5. Inspect DB connections/deadlocks → 6. Identify Root Cause → 7. Apply safe workaround → 8. Validate fix → 9. Document RCA.</p>
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p>1. Understand Impact → 2. Check Exception Logs → 3. Reproduce in non-prod → 4. Check recent deployments → 5. Inspect DB connections/deadlocks → 6. Identify Root Cause → 7. Apply workaround → 8. Validate fix → 9. Document RCA.</p>
                     </div>
                 </section>
 
@@ -512,7 +521,7 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                 <section id="sec-idontknow" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                             "IF I DON'T KNOW" RESPONSE STRATEGY
                         </h2>
                     </div>
@@ -531,17 +540,17 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                         <button class="btn btn-primary" id="btnStartMock">Start Mock Interview</button>
                     </div>
 
-                    <div id="mockContainer" style="display: none; margin-top: 14px;">
-                        <div style="background-color: var(--bg-secondary); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--accent-cyan); font-weight: 600;">
-                                <span id="mockCounter">Question 1 of 10</span>
+                    <div id="mockContainer" style="display: none; margin-top: 10px;">
+                        <div style="background-color: var(--bg-secondary); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--accent-cyan); font-weight: 600; font-size: 12px;">
+                                <span id="mockCounter">Question 1 of 5</span>
                                 <span id="mockScore">Score: 0</span>
                             </div>
-                            <h3 id="mockQuestion" style="font-size: 15px; font-weight: 700; margin-bottom: 14px;"></h3>
-                            <div id="mockAnswerBox" style="display: none; background-color: var(--bg-tertiary); padding: 14px; border-radius: 6px; margin-bottom: 16px; border-left: 3px solid var(--accent-green);">
-                                <p id="mockAnswer"></p>
+                            <h3 id="mockQuestion" style="font-size: 14px; font-weight: 700; margin-bottom: 10px;"></h3>
+                            <div id="mockAnswerBox" style="display: none; background-color: var(--bg-tertiary); padding: 10px; border-radius: 6px; margin-bottom: 12px; border-left: 3px solid var(--accent-green);">
+                                <p id="mockAnswer" style="font-size: 12.5px;"></p>
                             </div>
-                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
                                 <button class="btn btn-secondary" id="btnShowAnswer">Show Answer</button>
                                 <button class="btn btn-primary" id="btnKnowIt" style="background-color: var(--accent-green);">I Know This (+1)</button>
                                 <button class="btn btn-secondary" id="btnNextQ">Next Question →</button>
@@ -560,7 +569,7 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                         <div class="flashcard" id="flashcardElement">
                             <div class="flashcard-face flashcard-front">
                                 <div class="flashcard-q" id="fcQuestion">What is Dependency Injection?</div>
-                                <div style="font-size: 11px; color: var(--accent-cyan); font-weight: 600;">(Click to flip answer)</div>
+                                <div style="font-size: 10px; color: var(--accent-cyan); font-weight: 600; margin-top: 6px;">(Tap card to flip answer)</div>
                             </div>
                             <div class="flashcard-face flashcard-back">
                                 <div class="flashcard-a" id="fcAnswer">"DI is a design pattern where objects receive their dependencies from an external container."</div>
@@ -568,7 +577,7 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                         </div>
                     </div>
 
-                    <div style="display: flex; justify-content: center; gap: 12px; margin-top: 16px;">
+                    <div style="display: flex; justify-content: center; gap: 8px; margin-top: 12px;">
                         <button class="btn btn-secondary" id="btnFcPrev">← Previous</button>
                         <button class="btn btn-secondary" id="btnFcNext">Next Card →</button>
                     </div>
@@ -627,6 +636,11 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
             document.getElementById("floatingNavToggle").addEventListener("click", openSidebar);
             document.getElementById("sidebarCloseBtn").addEventListener("click", closeSidebar);
             overlay.addEventListener("click", closeSidebar);
+
+            // Auto close mobile menu on menu item click
+            document.querySelectorAll(".menu-item").forEach(item => {
+                item.addEventListener("click", () => { if (window.innerWidth <= 992) closeSidebar(); });
+            });
         });
 
         function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("theme", theme); }
@@ -645,7 +659,7 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
 
         function renderStudyPlan() {
             const container = document.getElementById("timelineContainer");
-            container.innerHTML = studyPlan.map((item, index) => `
+            container.innerHTML = studyPlan.map((item) => `
                 <div class="timeline-item">
                     <div class="timeline-time">${item.time}</div>
                     <div class="timeline-content">
@@ -668,8 +682,8 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
             const card = document.getElementById("flashcardElement");
             card.classList.remove("flipped");
             const c = flashcardData[appState.flashcardIndex];
-            document.getElementById("fcQuestion").innerHTML = `<span class="en-text">${c.q}</span><span class="bn-sub" style="font-size: 14px; margin-top: 8px;">${c.qBn}</span>`;
-            document.getElementById("fcAnswer").innerHTML = `<span class="en-text">"${c.a}"</span><span class="bn-sub" style="font-size: 13.5px; margin-top: 10px; color: var(--text-primary);">"${c.aBn}"</span>`;
+            document.getElementById("fcQuestion").innerHTML = `<span class="en-text">${c.q}</span><span class="bn-sub" style="font-size: 13px; margin-top: 6px;">${c.qBn}</span>`;
+            document.getElementById("fcAnswer").innerHTML = `<span class="en-text">"${c.a}"</span><span class="bn-sub" style="font-size: 12.5px; margin-top: 8px; color: var(--text-primary);">"${c.aBn}"</span>`;
         }
 
         let mockState = { currentIdx: 0, score: 0 };
