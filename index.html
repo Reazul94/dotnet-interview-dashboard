@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-lang="both">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Light Theme Variables */
@@ -38,6 +38,7 @@
             --accent-green: #10b981;
             --accent-yellow: #f59e0b;
             --accent-red: #ef4444;
+            --accent-bn: #38bdf8;
 
             /* Priority Color Badges */
             --priority-high: #ef4444;
@@ -84,13 +85,32 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             font-size: 14px;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Bangla Subtitle Styling */
+        .bn-sub {
+            display: block;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 12.5px;
+            color: var(--accent-bn);
+            margin-top: 4px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        [data-lang="eng"] .bn-sub {
+            display: none !important;
+        }
+
+        [data-lang="ban"] .en-text {
+            display: none !important;
         }
 
         /* Scrollbar Styling */
@@ -389,6 +409,33 @@
             flex-shrink: 0;
         }
 
+        /* Language Switcher Segmented Control */
+        .lang-switcher {
+            display: inline-flex;
+            background-color: var(--bg-tertiary);
+            padding: 3px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            border: none;
+            background: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background-color: var(--accent-purple);
+            color: #ffffff;
+            box-shadow: 0 2px 6px var(--accent-purple-glow);
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -637,7 +684,7 @@
         .check-list li {
             position: relative;
             padding-left: 24px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 13px;
             color: var(--text-primary);
         }
@@ -1211,12 +1258,25 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
                     </button>
                     <div class="header-title-group">
-                        <h1>.NET / ASP.NET Core Interview — Rapid Revision</h1>
-                        <p>Enterprise Application Development • C# • ASP.NET Core • SQL • Architecture • DevOps</p>
+                        <h1>
+                            <span class="en-text">.NET / ASP.NET Core Interview — Rapid Revision</span>
+                            <span class="bn-sub">.NET এবং ASP.NET Core ইন্টারভিউ — ১-দিনের র‍্যাপিড রিভিশন ড্যাশবোর্ড</span>
+                        </h1>
+                        <p>
+                            <span class="en-text">Enterprise Application Development • C# • ASP.NET Core • SQL • Architecture • DevOps</span>
+                            <span class="bn-sub">এন্টারপ্রাইজ অ্যাপ্লিকেশন ডেভেলপমেন্ট • C# • ASP.NET Core • SQL • আর্কিটেকচার • ডেভঅপ্স</span>
+                        </p>
                     </div>
                 </div>
 
                 <div class="header-actions">
+                    <!-- Language Selection Button Group -->
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH (Eng + বাংলা)</button>
+                        <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
+                        <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
+                    </div>
+
                     <button class="btn btn-secondary" id="btnMarkAllComplete">Mark Topic Complete</button>
                     <button class="btn btn-outline-danger" id="btnResetProgress">Reset Progress</button>
                     <button class="btn btn-icon" id="btnThemeToggle" title="Toggle Light/Dark Theme">
@@ -1233,6 +1293,7 @@
                     <div class="warning-icon">⚠️</div>
                     <div class="warning-text">
                         <strong>Important Interview Strategy:</strong> Focus on understanding architectural concepts, trade-offs, and explaining them with real-world enterprise context—not memorizing verbatim definitions.
+                        <span class="bn-sub">মূল কনসেপ্ট এবং আর্কিটেকচার বোঝা ও ইন্টারভিউতে বাস্তব অভিজ্ঞতার আলোকে ব্যাখ্যা করার ওপর জোর দিন, মুখস্থ করার প্রয়োজন নেই।</span>
                     </div>
                 </div>
 
@@ -1249,43 +1310,73 @@
                     <div class="strategy-grid">
                         <div class="strategy-item">
                             <div class="strategy-number">1</div>
-                            <div class="strategy-text">Do not pretend to have 5+ years of pure ASP.NET Core experience if you don't. Honesty builds immediate candidate trust.</div>
+                            <div class="strategy-text">
+                                Do not pretend to have 5+ years of pure ASP.NET Core experience if you don't. Honesty builds immediate candidate trust.
+                                <span class="bn-sub">আপনার যদি ৫+ বছরের পিওর ASP.NET Core অভিজ্ঞতা না থাকে, তবে মিথ্যা বলবেন না। সততা ইন্টারভিউয়ারের আস্থা তৈরি করে।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">2</div>
-                            <div class="strategy-text">Connect every .NET concept directly to your Java/Spring experience (e.g., Spring DI = .NET DI, JPA = EF Core).</div>
+                            <div class="strategy-text">
+                                Connect every .NET concept directly to your Java/Spring experience (e.g., Spring DI = .NET DI, JPA = EF Core).
+                                <span class="bn-sub">প্রতিটি .NET কনসেপ্টকে আপনার Java/Spring অভিজ্ঞতার সাথে সংযুক্ত করুন (যেমন: Spring DI = .NET DI, JPA = EF Core)।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">3</div>
-                            <div class="strategy-text">Emphasize 4.5+ years of solid enterprise application development, business workflows, and production support.</div>
+                            <div class="strategy-text">
+                                Emphasize 4.5+ years of solid enterprise application development, business workflows, and production support.
+                                <span class="bn-sub">আপনার ৪.৫+ বছরের বাস্তব এন্টারপ্রাইজ অ্যাপ্লিকেশন ডেভেলপমেন্ট, বিজনেস ওয়ার্কফ্লো এবং প্রোডাকশন সাপোর্টের অভিজ্ঞতা তুলে ধরুন।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">4</div>
-                            <div class="strategy-text">Leverage your heavy database strengths (Oracle, PL/SQL, SQL Server T-SQL, query performance tuning).</div>
+                            <div class="strategy-text">
+                                Leverage your heavy database strengths (Oracle, PL/SQL, SQL Server T-SQL, query performance tuning).
+                                <span class="bn-sub">আপনার শক্তিশালী ডাটাবেজ দক্ষতাকে ইন্টারভিউতে কাজে লাগান (Oracle PL/SQL, SQL Server T-SQL, কুয়েরি টিউনিং)।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">5</div>
-                            <div class="strategy-text">Explain real production problems you solved (API latency, deadlocks, deployment issues, memory leaks).</div>
+                            <div class="strategy-text">
+                                Explain real production problems you solved (API latency, deadlocks, deployment issues, memory leaks).
+                                <span class="bn-sub">প্রোডাকশনে সমাধান করা বাস্তব সমস্যাগুলো স্পষ্ট করে ব্যাখ্যা করুন (API লেটেন্সি, ডেডলক, ডেপ্লয়মেন্ট ইস্যু)।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">6</div>
-                            <div class="strategy-text">Use your KGDCL ERP project as your anchor project story for behavioral and technical questions.</div>
+                            <div class="strategy-text">
+                                Use your KGDCL ERP project as your anchor project story for behavioral and technical questions.
+                                <span class="bn-sub">আপনার KGDCL ERP প্রজেক্টকে প্রধান প্রজেক্ট স্টোরি হিসেবে বিহেভিওরাল ও টেকনিক্যাল প্রশ্নের উত্তর দিতে ব্যবহার করুন।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">7</div>
-                            <div class="strategy-text">When answering architecture questions, start simple (Layered/Clean Architecture) before jumping to microservices.</div>
+                            <div class="strategy-text">
+                                When answering architecture questions, start simple (Layered/Clean Architecture) before jumping to microservices.
+                                <span class="bn-sub">আর্কিটেকচার প্রশ্নের উত্তর দেওয়ার সময় প্রথমে সহজ Layered/Clean Architecture দিয়ে শুরু করুন।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">8</div>
-                            <div class="strategy-text">Always explain trade-offs (e.g., EF Core productivity vs ADO.NET raw speed, Monolith vs Microservices complexity).</div>
+                            <div class="strategy-text">
+                                Always explain trade-offs (e.g., EF Core productivity vs ADO.NET raw speed, Monolith vs Microservices complexity).
+                                <span class="bn-sub">সবসময় Trade-offs বা সুবিধা-অসুবিধা ব্যাখ্যা করুন (যেমন: EF Core বনাম ADO.NET এর পারফরম্যান্স পার্থক্য)।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">9</div>
-                            <div class="strategy-text">If you don't know a specific syntax, acknowledge it and explain the underlying architectural principle clearly.</div>
+                            <div class="strategy-text">
+                                If you don't know a specific syntax, acknowledge it and explain the underlying architectural principle clearly.
+                                <span class="bn-sub">নির্দিষ্ট কোনো সিনট্যাক্স জানা না থাকলে সরাসরি স্বীকার করুন এবং মূল আর্কিটেকচারাল কনসেপ্ট বুঝিয়ে বলুন।</span>
+                            </div>
                         </div>
                         <div class="strategy-item">
                             <div class="strategy-number">10</div>
-                            <div class="strategy-text">Keep answers structured: Problem → Technical Approach → Result / Trade-off.</div>
+                            <div class="strategy-text">
+                                Keep answers structured: Problem → Technical Approach → Result / Trade-off.
+                                <span class="bn-sub">উত্তর সাজিয়ে গুছিয়ে বলুন: সমস্যা → কারিগরি সমাধান → ফলাফল ও Trade-off।</span>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1301,33 +1392,58 @@
 
                     <p style="color: var(--text-secondary); margin-bottom: 16px;">
                         Candidate Profile: 4.5+ years enterprise software experience (Java / Spring Boot / Grails, Oracle / PL/SQL, SQL Server / T-SQL, C# / .NET, REST APIs, Angular, Git, Linux deployment, Production support, ERP & billing systems).
+                        <span class="bn-sub">ক্যান্ডিডেট প্রোফাইল: ৪.৫+ বছরের এন্টারপ্রাইজ সফটওয়্যার ডেভেলপমেন্ট অভিজ্ঞতা (Java/Spring Boot, Oracle, SQL Server, C#/.NET, REST APIs, Angular, Linux, Production Support)।</span>
                     </p>
 
                     <div class="position-grid">
                         <div class="box-advantage">
                             <h4>YOUR ADVANTAGES (Highlight These!)</h4>
+                            <span class="bn-sub" style="margin-bottom: 8px;">আপনার প্রধান সুবিধাসমূহ (ইন্টারভিউতে এগুলো তুলে ধরুন)</span>
                             <ul class="check-list">
-                                <li><strong>Enterprise Application Experience:</strong> Proven track record in complex ERP, billing, and financial workflows.</li>
-                                <li><strong>Strong Database Depth:</strong> Advanced SQL, indexing, stored procedures, transactions, and execution plan tuning.</li>
-                                <li><strong>Robust Backend API Design:</strong> RESTful resource modeling, HTTP standards, status codes, and JSON DTOs.</li>
-                                <li><strong>Production Troubleshooting:</strong> Experienced in debugging live incidents, analyzing logs, and fixing root causes.</li>
-                                <li><strong>Business Alignment:</strong> Skilled in client collaboration, requirements gathering, and reporting.</li>
-                                <li><strong>Existing C# / .NET & ASP Exposure:</strong> Familiarity with C# syntax, object-oriented concepts, and ASP.NET patterns.</li>
+                                <li>
+                                    <strong>Enterprise Application Experience:</strong> Proven track record in complex ERP, billing, and financial workflows.
+                                    <span class="bn-sub">জটিল ERP, বিলিং এবং আর্থিক প্রক্রিয়ার বাস্তব এন্টারপ্রাইজ অভিজ্ঞতা।</span>
+                                </li>
+                                <li>
+                                    <strong>Strong Database Depth:</strong> Advanced SQL, indexing, stored procedures, transactions, and execution plan tuning.
+                                    <span class="bn-sub">উন্নত SQL, ইনডেক্সিং, স্টোরড প্রসিডিউর এবং কুয়েরি এক্সিকিউশন প্ল্যান টিউনিং দক্ষতা।</span>
+                                </li>
+                                <li>
+                                    <strong>Robust Backend API Design:</strong> RESTful resource modeling, HTTP standards, status codes, and JSON DTOs.
+                                    <span class="bn-sub">RESTful API ডিজাইন, HTTP স্ট্যান্ডার্ড এবং DTO প্যাটার্নে পারদর্শিতা।</span>
+                                </li>
+                                <li>
+                                    <strong>Production Troubleshooting:</strong> Experienced in debugging live incidents, analyzing logs, and fixing root causes.
+                                    <span class="bn-sub">লাইভ প্রবলেম ট্রাবলশুটিং, লগ অ্যানালাইসিস এবং প্রোডাকশন ইস্যু সমাধানের অভিজ্ঞতা।</span>
+                                </li>
+                                <li>
+                                    <strong>Business Alignment:</strong> Skilled in client collaboration, requirements gathering, and reporting.
+                                    <span class="bn-sub">ক্লায়েন্ট কোলাবরেশন এবং বিজনেস রিকোয়ারমেন্ট বোঝার দারুণ দক্ষতা।</span>
+                                </li>
+                                <li>
+                                    <strong>Existing C# / .NET & ASP Exposure:</strong> Familiarity with C# syntax, object-oriented concepts, and ASP.NET patterns.
+                                    <span class="bn-sub">C# সিনট্যাক্স, OOP কনসেপ্ট এবং ASP.NET ফ্রেমওয়ার্কের ভালো কাজের ধারণা।</span>
+                                </li>
                             </ul>
                         </div>
 
                         <div class="box-gap">
                             <h4>YOUR HIGH-PRIORITY GAP & MITIGATION</h4>
+                            <span class="bn-sub" style="margin-bottom: 8px;">আপনার মূল গ্যাপ এবং কীভাবে এর সঠিক উত্তর দেবেন</span>
                             <p style="font-size: 13px; color: var(--text-primary); margin-bottom: 12px;">
                                 <strong>The Gap:</strong> Years of production ASP.NET Core 8–10 specific framework details.
+                                <span class="bn-sub">গ্যাপ: বহু বছরের পিওর ASP.NET Core 8-10 প্রোডাকশন অভিজ্ঞতা না থাকা।</span>
                             </p>
                             <div class="script-box">
                                 <div class="script-dont">❌ DO NOT SAY:</div>
                                 <div class="script-quote">"I have 5 years of production experience in ASP.NET Core."</div>
 
-                                <div class="script-do">✅ INSTEAD SAY:</div>
+                                <div class="script-do">✅ INSTEAD SAY (উত্তর যেভাবে দেবেন):</div>
                                 <div class="script-quote">
                                     "My core enterprise background is in Java/Spring Boot and complex database systems, but I also have hands-on C#/.NET experience and ASP.NET Core training. The fundamental architecture—Dependency Injection, REST APIs, ORMs, layered architecture, database optimization, testing, and CI/CD—is completely familiar to me, and I have been actively applying my skills to the modern .NET ecosystem."
+                                    <span class="bn-sub" style="color: #94a3b8; font-style: normal; margin-top: 6px;">
+                                        "আমার মূল এন্টারপ্রাইজ ব্যাকগ্রাউন্ড হলো Java/Spring Boot এবং বড় ডাটাবেজ সিস্টেমে, তবে আমার C#/.NET এবং ASP.NET Core ট্রেনিং ও কাজের অভিজ্ঞতা রয়েছে। মূল আর্কিটেকচারাল কনসেপ্টগুলো—Dependency Injection, REST APIs, ORMs, ডাটাবেজ অপ্টিমাইজেশন—আমার পুরোপুরি জানা এবং আমি খুব দ্রুত .NET ইকোটকোসিস্টেমে কাজ করতে স্বাচ্ছন্দ্যবোধ করি।"
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -1361,6 +1477,7 @@
 
                     <p style="color: var(--text-secondary); margin-bottom: 14px;">
                         Use your existing Java/Spring Boot knowledge to rapidly master .NET concepts. Framework architectures are 90% identical!
+                        <span class="bn-sub">আপনার বিদ্যমান Java/Spring Boot অভিজ্ঞতা দিয়ে খুব দ্রুত .NET শিখুন। দুটি ফ্রেমওয়ার্কের আর্কিটেকচার ৯০% হুবহু একই!</span>
                     </p>
 
                     <div class="comparison-table-wrapper">
@@ -1502,6 +1619,7 @@
                         <div class="concept-label">What is ASP.NET Core?</div>
                         <p class="concept-val">
                             ASP.NET Core is a modern, cross-platform, open-source, high-performance web framework for building cloud-connected, internet-connected applications (RESTful Web APIs, Web Apps, Microservices). Unlike legacy .NET Framework, it runs on Windows, Linux, and macOS, and features a built-in lightweight web server (Kestrel) and native Dependency Injection.
+                            <span class="bn-sub">ASP.NET Core হলো ওপেন সোর্স, ক্রস-প্ল্যাটফর্ম ও উচ্চ পারফরম্যান্সের ওয়েব ফ্রেমওয়ার্ক। এটি Windows, Linux ও macOS সব প্ল্যাটফর্মেই রান করে।</span>
                         </p>
                     </div>
 
@@ -1510,6 +1628,7 @@
                         <p class="concept-val">
                             <strong>.NET Framework (legacy 4.x):</strong> Windows-only, tied to IIS, heavy System.Web assembly.<br>
                             <strong>Modern .NET (.NET 8/9/10):</strong> Unified, modular, cross-platform, fast, lightweight, runs natively on Linux containers.
+                            <span class="bn-sub">পুরাতন .NET Framework শুধুমাত্র Windows নির্ভর ছিল, পক্ষান্তরে আধুনিক .NET 8/9/10 সম্পূর্ণ ক্রস-প্ল্যাটফর্ম, দ্রুত ও কন্টেইনার-ফ্রেন্ডলি।</span>
                         </p>
                     </div>
 
@@ -1517,6 +1636,7 @@
                         <div class="concept-label">Kestrel Web Server</div>
                         <p class="concept-val">
                             Kestrel is the default cross-platform HTTP web server in ASP.NET Core. It is asynchronous, highly optimized for I/O performance, and handles raw HTTP requests before passing them to the middleware pipeline. In enterprise production, Kestrel is usually deployed behind a reverse proxy like NGINX, Apache, or IIS for security and SSL termination.
+                            <span class="bn-sub">Kestrel হলো ASP.NET Core এর বিল্ট-ইন ক্রস-প্ল্যাটফর্ম ওয়েব সার্ভার। প্রোডাকশনে সাধারণত NGINX বা IIS এর পেছনে Reverse Proxy হিসেবে ব্যবহৃত হয়।</span>
                         </p>
                     </div>
 
@@ -1543,6 +1663,7 @@
                         <div class="interview-q">Q: What is middleware in ASP.NET Core?</div>
                         <div class="interview-a">
                             "Middleware is software components assembled into an application pipeline to handle requests and responses. Each component can inspect, modify, or handle incoming HTTP requests and can either pass control to the next middleware in the pipeline via <code>next()</code> or short-circuit the pipeline (e.g., returning 401 Unauthorized immediately)."
+                            <span class="bn-sub">মিডলওয়্যার হলো রিকোয়েস্ট প্রসেসিং পাইপলাইনের উপাদান। প্রতিটি মিডলওয়্যার HTTP রিকোয়েস্ট ও রেসপন্স ইনসপেক্ট করে পরবর্তী মিডলওয়্যারে পাঠায় অথবা Short-circuit করে থামিয়ে দেয়।</span>
                         </div>
                     </div>
                 </section>
@@ -1559,6 +1680,7 @@
 
                     <p style="color: var(--text-secondary); margin-bottom: 14px;">
                         ASP.NET Core has a built-in IoC container. Dependencies are registered in <code>Program.cs</code> and injected via constructor injection.
+                        <span class="bn-sub">ASP.NET Core এ বিল্ট-ইন IoC কন্টেইনার রয়েছে। ডিপেন্ডেন্সি <code>Program.cs</code> এ রেজিস্টার করা হয় এবং Constructor DI দিয়ে ইনজেক্ট করা হয়।</span>
                     </p>
 
                     <div class="comparison-table-wrapper">
@@ -1594,6 +1716,7 @@
                         <div class="interview-q">Q: What is a "Captive Dependency" and what happens if you inject a Scoped service into a Singleton?</div>
                         <div class="interview-a">
                             "Injecting a Scoped service into a Singleton creates a <strong>Captive Dependency</strong> bug. The Scoped service becomes trapped inside the Singleton's application-wide lifetime. This leads to severe issues such as DbContext thread safety violations, memory leaks, and stale data because the Scoped instance is never disposed between HTTP requests!"
+                            <span class="bn-sub">Singleton এর মধ্যে Scoped সার্ভিস ইনজেক্ট করলে Captive Dependency তৈরি হয়। এর ফলে DbContext কনকারেন্সি ত্রুটি, মেমরি লিক এবং পুরোনো ডেটার বাগ তৈরি হয়।</span>
                         </div>
                     </div>
                 </section>
@@ -1756,6 +1879,7 @@
                         <div class="interview-a">
                             "By default, EF Core tracks changes for all returned entities in its Change Tracker. When <code>SaveChangesAsync()</code> is called, modified tracked entities generate UPDATE statements. <br>
                             When executing read-only queries (e.g., retrieving lists for API GET requests), using <code>.AsNoTracking()</code> bypasses change tracking overhead. This significantly speeds up query execution and reduces memory allocation."
+                            <span class="bn-sub">ডিফল্টভাবে EF Core সব এনটিটি ট্র্যাক করে। কেবল রিড-অনলি GET কুয়েরির ক্ষেত্রে <code>.AsNoTracking()</code> ব্যবহার করলে Change Tracker বাইপাস হয়, যার ফলে কুয়েরি দ্রুত এক্সিকিউট হয় এবং মেমোরি বাঁচে।</span>
                         </div>
                     </div>
 
@@ -1779,6 +1903,7 @@ var activeCustomers = await _context.Customers
 
                     <p style="color: var(--text-secondary); margin-bottom: 14px;">
                         ADO.NET is the low-level data access architecture in .NET for direct SQL execution.
+                        <span class="bn-sub">ADO.NET হলো .NET এর সরাসরি SQL এক্সিকিউশনের জন্য তৈরি লো-লেভেল ডাটা এক্সেস প্রযুক্তি।</span>
                     </p>
 
                     <div class="comparison-table-wrapper">
@@ -1825,6 +1950,7 @@ var activeCustomers = await _context.Customers
                             1. High-throughput bulk data insertions or processing where ORM tracking overhead is unacceptable.<br>
                             2. Invoking complex legacy database Stored Procedures with dynamic SQL or multiple result sets.<br>
                             3. Fine-grained performance tuning where raw SQL execution plans need strict control."
+                            <span class="bn-sub">বাল্ক ডেটা ইনসার্ট, জটিল লিগ্যাসি Stored Procedure কল করা অথবা সরাসরি হাই-পারফরম্যান্স SQL কুয়েরি টিউনিংয়ের জন্য EF Core এর বদলে ADO.NET ব্যবহৃত হয়।</span>
                         </div>
                     </div>
                 </section>
@@ -1841,19 +1967,20 @@ var activeCustomers = await _context.Customers
 
                     <div class="box-advantage" style="margin-bottom: 16px;">
                         <h4>"HOW I WOULD OPTIMIZE A SLOW PRODUCTION QUERY" (12-STEP CHECKLIST)</h4>
+                        <span class="bn-sub" style="margin-bottom: 10px;">ধীরগতির প্রোডাকশন কুয়েরি অপ্টিমাইজ করার ১২-ধাপের চেকলিস্ট</span>
                         <ol class="check-list" style="padding-left: 10px;">
-                            <li>1. Reproduce query execution in non-prod with identical database volume.</li>
-                            <li>2. Analyze Execution Plan (look for Index Scans vs Index Seeks, Key Lookups, Heavy Sorting).</li>
-                            <li>3. Verify Indexes (ensure filtering/joining columns are indexed correctly).</li>
-                            <li>4. Evaluate Covered Indexes to eliminate Key Lookups.</li>
-                            <li>5. Replace SELECT * with explicit required columns only.</li>
-                            <li>6. Check SARGability (avoid wrapping indexed columns in functions like <code>WHERE YEAR(CreatedDate) = 2026</code>).</li>
-                            <li>7. Inspect Joins (prefer INNER JOINs where possible; verify join predicates).</li>
-                            <li>8. Check for N+1 Query Patterns from ORMs (ensure eager loading via <code>Include</code>).</li>
-                            <li>9. Update Database Statistics (outdated statistics lead to wrong query optimizer plans).</li>
-                            <li>10. Evaluate Parameter Sniffing issues in Stored Procedures.</li>
-                            <li>11. Check Blocking/Locking Contention (evaluate <code>READ COMMITTED SNAPSHOT</code>).</li>
-                            <li>12. Benchmark execution time and logical reads before and after.</li>
+                            <li>1. Reproduce query execution in non-prod with identical database volume. <span class="bn-sub">নন-প্রোডাকশনে একই পরিমাণ ডেটা নিয়ে কুয়েরিটি রান করে দেখুন।</span></li>
+                            <li>2. Analyze Execution Plan (look for Index Scans vs Index Seeks, Key Lookups, Heavy Sorting). <span class="bn-sub">Execution Plan চেক করুন (Index Scan নাকি Seek হচ্ছে, Key Lookup আছে কিনা দেখুন)।</span></li>
+                            <li>3. Verify Indexes (ensure filtering/joining columns are indexed correctly). <span class="bn-sub">যেসব কলাম দিয়ে filtering/joining হচ্ছে সেগুলোতে সঠিক Index আছে কিনা নিশ্চিত করুন।</span></li>
+                            <li>4. Evaluate Covered Indexes to eliminate Key Lookups. <span class="bn-sub">Key Lookup বন্ধ করতে Covering Index যোগ করুন।</span></li>
+                            <li>5. Replace SELECT * with explicit required columns only. <span class="bn-sub">SELECT * বাদ দিয়ে প্রয়োজনীয় নির্দিষ্ট কলাম নাম দিন।</span></li>
+                            <li>6. Check SARGability (avoid wrapping indexed columns in functions). <span class="bn-sub">ইনডেক্সড কলামের ওপর ফাংশন ব্যবহার করা থেকে বিরত থাকুন (SARGability)।</span></li>
+                            <li>7. Inspect Joins (prefer INNER JOINs where possible). <span class="bn-sub">সম্ভব হলে INNER JOIN ব্যবহার করুন।</span></li>
+                            <li>8. Check for N+1 Query Patterns from ORMs (ensure eager loading via <code>Include</code>). <span class="bn-sub">ORM এ N+1 প্রবলেম এড়াতে eager loading (Include) ব্যবহার করুন।</span></li>
+                            <li>9. Update Database Statistics (outdated statistics lead to wrong query optimizer plans). <span class="bn-sub">ডাটাবেজ স্ট্যাটিস্টিক্স আপডেট করুন।</span></li>
+                            <li>10. Evaluate Parameter Sniffing issues in Stored Procedures. <span class="bn-sub">Stored Procedure এ Parameter Sniffing আছে কিনা পরীক্ষা করুন।</span></li>
+                            <li>11. Check Blocking/Locking Contention (evaluate <code>READ COMMITTED SNAPSHOT</code>). <span class="bn-sub">ব্লকিং ও লকিং এড়াতে READ COMMITTED SNAPSHOT বিবেচনা করুন।</span></li>
+                            <li>12. Benchmark execution time and logical reads before and after. <span class="bn-sub">অপ্টিমাইজেশনের আগে ও পরে পারফরম্যান্স বেঞ্চমার্ক করুন।</span></li>
                         </ol>
                     </div>
 
@@ -1861,6 +1988,7 @@ var activeCustomers = await _context.Customers
                         <div class="interview-q">Q: Oracle → SQL Server Transition (How to leverage your Oracle PL/SQL depth)</div>
                         <div class="interview-a">
                             "In Oracle PL/SQL, I worked extensively with Packages, Triggers, Sequences, and Autonomous Transactions. In SQL Server, the concepts map directly to T-SQL Stored Procedures, Schemas, IDENTITY columns, and Transactions with Savepoints. The relational engine principles—indexes, execution plan cost analysis, locks, and ACID properties—are universal across database platforms."
+                            <span class="bn-sub">Oracle PL/SQL এর অভিজ্ঞতা সরাসরি SQL Server T-SQL এ রূপান্তর করা যায়। রিলেশনাল ডাটাবেজের মূল উপাদান—ইনডেক্সিং, লকিং, এক্সিকিউশন প্ল্যান ও ACID প্রপার্টি—সব প্ল্যাটফর্মে একই।</span>
                         </div>
                     </div>
                 </section>
@@ -1880,18 +2008,23 @@ var activeCustomers = await _context.Customers
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 8px;">
                             <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
                                 <strong>S — Single Responsibility:</strong> A class should have only one reason to change.
+                                <span class="bn-sub">একটি ক্লাসের শুধুমাত্র একটি দায়িত্ব থাকা উচিত।</span>
                             </div>
                             <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
                                 <strong>O — Open/Closed:</strong> Software entities should be open for extension, but closed for modification.
+                                <span class="bn-sub">কোড এক্সটেনশনের জন্য উন্মুক্ত কিন্তু মডিফিকেশনের জন্য বন্ধ থাকা উচিত।</span>
                             </div>
                             <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
                                 <strong>L — Liskov Substitution:</strong> Derived classes must be substitutable for their base classes.
+                                <span class="bn-sub">চাইল্ড ক্লাসগুলো বেস ক্লাসের পরিবর্তে ব্যবহারযোগ্য হতে হবে।</span>
                             </div>
                             <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
                                 <strong>I — Interface Segregation:</strong> Clients shouldn't be forced to depend on methods they don't use.
+                                <span class="bn-sub">প্রয়োজনহীন মেথড ইন্টারফেসে রাখা উচিত নয়।</span>
                             </div>
                             <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: 6px; border-left: 3px solid var(--accent-purple);">
                                 <strong>D — Dependency Inversion:</strong> Depend on abstractions, not on concrete implementations.
+                                <span class="bn-sub">কনক্রিট ক্লাসের ওপর নির্ভর না করে অ্যাবস্ট্রাকশনের (Interface) ওপর নির্ভর করতে হবে।</span>
                             </div>
                         </div>
                     </div>
@@ -1904,6 +2037,7 @@ var activeCustomers = await _context.Customers
                             2. Autonomous Engineering Teams needing clear codebase isolation.<br>
                             3. Heterogeneous Technology requirements.<br>
                             For most applications, a well-structured **Modular Monolith** is simpler to build, test, monitor, and deploy."
+                            <span class="bn-sub">অহেতুক জটিলতা বাড়াতে Microservices ব্যবহার করা উচিত নয়। স্বাধীন ডেপ্লয়মেন্ট, বড় টিম ও আলাদা টেকনোলজির প্রয়োজন হলেই কেবল Microservices নির্বাচন করা উচিত।</span>
                         </div>
                     </div>
                 </section>
@@ -2007,6 +2141,7 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                             3. Secret Manager (for local development secret storage)<br>
                             4. Environment Variables / Azure Key Vault (overrides settings in production CI/CD).<br><br>
                             <strong>Golden Rule:</strong> Never hardcode database connection strings, passwords, or JWT secret keys in repository code!"
+                            <span class="bn-sub">ASP.NET Core কনফিগারেশন হায়ারার্কিক্যাল উপায়ে লোড করে। পাসওয়ার্ড বা কানেকশন স্ট্রিং কখনোই কোডে হার্ডকোড করা যাবে না; Secret Manager বা Azure Key Vault ব্যবহার করতে হবে।</span>
                         </div>
                     </div>
                 </section>
@@ -2015,7 +2150,7 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                 <section id="sec-self" class="card section-anchor">
                     <div class="card-header-flex">
                         <h2 class="card-title">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 4-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                             "TELL ME ABOUT YOURSELF" & PRIMARY PROJECT STORY
                         </h2>
                         <span class="priority-badge high">★ Essential Opening Script</span>
@@ -2027,6 +2162,9 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                             "I am a Software Engineer with over 4.5 years of enterprise application development experience. My primary background is in designing and delivering mission-critical enterprise systems—including large-scale ERP, gas billing, customer management, and financial reporting applications.<br><br>
                             Technically, my core strength lies in backend architecture, RESTful API design, complex database modeling, SQL performance tuning, and production support. While much of my recent work involved Java, Spring Boot, Grails, and Oracle, I have extensive exposure to C#, SQL Server, and object-oriented architecture.<br><br>
                             I am now transitioning my strong enterprise foundation into modern .NET 8/9/10 and ASP.NET Core, where all my architectural, database, and backend skills transfer directly."
+                            <span class="bn-sub" style="color: #94a3b8; font-style: normal; margin-top: 8px;">
+                                "আমি একজন সফটওয়্যার প্রকৌশলী যার ৪.৫+ বছরের এন্টারপ্রাইজ অ্যাপ্লিকেশন ডেভেলপমেন্ট অভিজ্ঞতা রয়েছে। আমার প্রধান কাজ ছিল বৃহৎ স্কেলের ERP, গ্যাস বিলিং এবং রির্পোটিং সিস্টেমে। ব্যাকএন্ড আর্কিটেকচার, REST API এবং ডাটাবেজ অপ্টিমাইজেশনে আমার মূল দক্ষতা। আমার Java ও Oracle অভিজ্ঞতা রয়েছে এবং C#/.NET এর মূল ধারণা দিয়ে আমি আধুনিক ASP.NET Core এ কাজ করতে পুরোপুরি প্রস্তুত।"
+                            </span>
                         </div>
                     </div>
 
@@ -2178,49 +2316,324 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
 
     <!-- JavaScript Application Logic -->
     <script>
-        // Data Bank for 30 C# Concepts
+        // Data Bank for 30 C# Concepts with English & Bangla Subtitles
         const csharpConcepts = [
-            { id: "c1", title: "Class vs Object", priority: "high", def: "A Class is a blueprint/template. An Object is an instance of a class in memory.", eg: "Car class vs myRedCar object instance.", code: "public class Car { public string Model { get; set; }; }\nCar myCar = new Car();", q: "What is the difference between a class and an object?", a: "A class defines types and structures; an object allocates memory for state at runtime." },
-            { id: "c2", title: "Interface vs Abstract Class", priority: "high", def: "Interface defines contract (what). Abstract Class provides partial implementation (how).", eg: "IDbConnection vs DbConnection base class.", code: "public interface IRepository { Task SaveAsync(); }\npublic abstract class BaseRepo { public virtual void Log() {} }", q: "When do you use an Interface over an Abstract Class?", a: "Use Interfaces for multiple inheritance of contract; use Abstract classes for sharing code implementation across related classes." },
-            { id: "c3", title: "Inheritance", priority: "standard", def: "Mechanism where a child class acquires properties and behavior of a parent class.", eg: "Customer inheriting from User base class.", code: "public class Customer : User { public int OrderCount { get; set; } }", q: "Does C# support multiple class inheritance?", a: "No, C# supports single class inheritance but multiple interface implementation." },
-            { id: "c4", title: "Encapsulation", priority: "high", def: "Bundling data and methods operating on that data into a single unit while restricting direct access.", eg: "Private fields exposed via public properties.", code: "private decimal _balance;\npublic decimal Balance { get => _balance; }", q: "How is encapsulation achieved in C#?", a: "Using access modifiers (private, protected, public) and properties with getters/setters." },
-            { id: "c5", title: "Polymorphism", priority: "high", def: "Ability of different objects to respond to the same method call in their own specific way.", eg: "Method overriding in shape rendering.", code: "public override void Draw() { Console.WriteLine(\"Circle\"); }", q: "What are compile-time vs runtime polymorphism?", a: "Compile-time is method overloading; Runtime is method overriding via virtual/override." },
-            { id: "c6", title: "Abstraction", priority: "standard", def: "Hiding internal complexity and showing only essential functionality to the user.", eg: "Calling _repository.Save() without knowing underlying SQL.", code: "public interface IEmailService { Task SendAsync(string to, string body); }", q: "How does Abstraction differ from Encapsulation?", a: "Abstraction focuses on hiding implementation complexity; Encapsulation focuses on restricting access to internal state." },
-            { id: "c7", title: "Method Overloading", priority: "standard", def: "Same method name in the same class with different parameter signatures.", eg: "CalculateInterest(decimal) vs CalculateInterest(decimal, int).", code: "public int Add(int a, int b) => a + b;\npublic double Add(double a, double b) => a + b;", q: "Does changing return type alone overload a method?", a: "No, method signature must differ in parameter types or count." },
-            { id: "c8", title: "Method Overriding", priority: "high", def: "Redefining a base class virtual method in a derived class using override keyword.", eg: "Customizing CalculateTax() for overseas customer.", code: "public override decimal CalculateTax() => BaseAmount * 0.15m;", q: "What keywords are required for method overriding?", a: "virtual in base class and override in child class." },
-            { id: "c9", title: "Virtual vs Override", priority: "high", def: "virtual allows a method to be overridden. override provides the new implementation.", eg: "Base class default processing overrideable by child.", code: "public virtual void Process() {}\npublic override void Process() {}", q: "Can you override a non-virtual method?", a: "No, methods must be explicitly marked virtual, abstract, or override." },
-            { id: "c10", title: "Sealed Keyword", priority: "standard", def: "Prevents a class from being inherited or a method from being further overridden.", eg: "Security or core framework utility classes.", code: "public sealed class SecurityProvider { }", q: "Why mark a class as sealed?", a: "To prevent unauthorized subclassing and enable runtime performance optimizations." },
-            { id: "c11", title: "Static Keyword", priority: "high", def: "Belongs to the class type itself rather than any specific object instance.", eg: "Math.Abs() utility function.", code: "public static class Logger { public static void Log(string msg) {} }", q: "When is a static constructor called?", a: "Automatically called once before the first instance is created or static member accessed." },
-            { id: "c12", title: "Readonly vs Const", priority: "high", def: "const is compile-time constant. readonly is runtime constant set in constructor.", eg: "const double Pi = 3.14 vs readonly DateTime CreatedAt.", code: "public const int MaxSize = 100;\npublic readonly string ConnectionString;", q: "Difference between readonly and const?", a: "const is resolved at compilation; readonly is resolved at runtime during object construction." },
-            { id: "c13", title: "Ref vs Out Parameters", priority: "high", def: "ref passes existing variable by reference (must be initialized). out passes uninitialized output.", eg: "int.TryParse(val, out int num).", code: "public void GetValues(out int x) { x = 10; }", q: "What is the key difference between ref and out?", a: "ref variable must be initialized before passing; out variable must be assigned before method returns." },
-            { id: "c14", title: "Value Type vs Reference Type", priority: "high", def: "Value types store data directly on Stack (int, struct). Reference types store memory address on Heap (class, string).", eg: "struct Point vs class Customer.", code: "int a = 10; // Stack\nCustomer c = new Customer(); // Heap", q: "Where are value types and reference types allocated?", a: "Value types on Stack (or inline in Heap objects); Reference types allocated on Garbage-Collected Heap." },
-            { id: "c15", title: "Nullable Types", priority: "standard", def: "Allows value types to represent null (e.g. int?).", eg: "Database NULL column mapping.", code: "int? nullableAge = null;", q: "How to safely extract a nullable value?", a: "Use .HasValue, .Value, or null-coalescing operator ??" },
-            { id: "c16", title: "Exception Handling", priority: "standard", def: "Structured error handling using try-catch-finally blocks.", eg: "Catching SqlException during DB call.", code: "try { } catch (SqlException ex) { } finally { }", q: "Difference between throw and throw ex?", a: "throw preserves original call stack trace; throw ex resets stack trace to current line." },
-            { id: "c17", title: "Delegates", priority: "high", def: "Type-safe function pointer pointing to methods with matching signature.", eg: "Event handlers and callbacks.", code: "public delegate void Notify(string msg);", q: "What is a multicast delegate?", a: "A delegate holding references to multiple methods invoked sequentially using += operator." },
-            { id: "c18", title: "Events", priority: "standard", def: "Encapsulated multicast delegate used for publisher-subscriber messaging.", eg: "Button click or order placed notification.", code: "public event EventHandler OnOrderCompleted;", q: "How do events differ from delegates?", a: "Events restrict direct invocation from outside the declaring class." },
-            { id: "c19", title: "Lambda Expressions", priority: "standard", def: "Anonymous inline function syntax using => operator.", eg: "LINQ inline filter predicate.", code: "x => x.IsActive == true", q: "What is a lambda expression?", a: "A concise syntax for writing inline anonymous methods." },
-            { id: "c20", title: "LINQ (Language Integrated Query)", priority: "high", def: "Native declarative query syntax for querying collections, DBs, XML.", eg: "Filtering active customer list.", code: "var list = customers.Where(c => c.Age > 18).ToList();", q: "What is Deferred Execution in LINQ?", a: "Execution is delayed until query is iterated over (e.g. via foreach or ToList())." },
-            { id: "c21", title: "Async / Await", priority: "high", def: "Asynchronous programming model yielding thread back to pool during I/O.", eg: "Non-blocking database query.", code: "public async Task<Customer> GetAsync(int id) => await _db.Customers.FindAsync(id);", q: "Why use async/await in Web APIs?", a: "Prevents thread starvation under heavy concurrent load by releasing request threads during I/O." },
-            { id: "c22", title: "Task & Task<T>", priority: "high", def: "Represents an ongoing asynchronous operation returning void or T.", eg: "CompletableFuture equivalent.", code: "Task<int> countTask = _db.CountAsync();", q: "Task.Wait() vs await Task?", a: "Task.Wait() blocks current thread synchronously causing deadlocks; await yields non-blockingly." },
-            { id: "c23", title: "IEnumerable vs IQueryable", priority: "high", def: "IEnumerable queries in-memory (LINQ to Objects). IQueryable executes SQL on DB server (LINQ to Entities).", eg: "InMemory list vs Database query.", code: "IQueryable<Customer> q = _db.Customers.Where(c => c.Active);", q: "Difference between IEnumerable and IQueryable?", a: "IEnumerable filters in client app memory; IQueryable translates expressions to server-side SQL." },
-            { id: "c24", title: "IDisposable & Using Statement", priority: "high", def: "IDisposable releases unmanaged resources (DB connections, files). using auto-calls Dispose().", eg: "SqlConnection cleanup.", code: "using (var conn = new SqlConnection()) { }", q: "How does the using statement work under the hood?", a: "Translates to a try-finally block where Dispose() is called in finally." },
-            { id: "c25", title: "Garbage Collection (GC)", priority: "high", def: "Automatic memory manager managing heap memory via Generations (Gen 0, 1, 2).", eg: "Reclaiming short-lived objects.", code: "// Managed automatically by CLR GC", q: "What are GC Generations 0, 1, 2?", a: "Gen 0: Short-lived objects; Gen 1: Buffer zone; Gen 2: Long-lived objects (e.g. singletons)." }
+            { 
+                id: "c1", title: "Class vs Object", priority: "high", 
+                def: "A Class is a blueprint/template. An Object is an instance of a class in memory.", 
+                defBn: "Class হলো ব্লুপ্রিন্ট/টেমপ্লেট। Object হলো মেমরিতে উক্ত ক্লাসের একটি ইনস্ট্যান্স।",
+                eg: "Car class vs myRedCar object instance.", 
+                egBn: "Car ক্লাস বনাম myRedCar অবজেক্ট ইনস্ট্যান্স।",
+                code: "public class Car { public string Model { get; set; }; }\nCar myCar = new Car();", 
+                q: "What is the difference between a class and an object?", 
+                qBn: "Class এবং Object এর মধ্যে পার্থক্য কী?",
+                a: "A class defines types and structures; an object allocates memory for state at runtime.",
+                aBn: "Class ডাটা টাইপ ও স্ট্রাকচার সংজ্ঞায়িত করে; Object রানটাইমে স্টেট সংরক্ষণের জন্য মেমোরি বরাদ্দ করে।"
+            },
+            { 
+                id: "c2", title: "Interface vs Abstract Class", priority: "high", 
+                def: "Interface defines contract (what). Abstract Class provides partial implementation (how).", 
+                defBn: "Interface কেবল কন্ট্রাক্ট (কী করবে) নির্ধারণ করে। Abstract Class আংশিক ইমপ্লিমেন্টেশন দেয়।",
+                eg: "IDbConnection vs DbConnection base class.", 
+                egBn: "IDbConnection ইন্টারফেস বনাম DbConnection বেস ক্লাস।",
+                code: "public interface IRepository { Task SaveAsync(); }\npublic abstract class BaseRepo { public virtual void Log() {} }", 
+                q: "When do you use an Interface over an Abstract Class?", 
+                qBn: "কখন Abstract Class এর বদলে Interface ব্যবহার করবেন?",
+                a: "Use Interfaces for multiple inheritance of contract; use Abstract classes for sharing code implementation across related classes.",
+                aBn: "একাধিক কন্ট্রাক্ট ইনহেরিট করার জন্য Interface; আর একাধিক ক্লাসের মধ্যে শেয়ার্ড কোড রাখার জন্য Abstract class ব্যবহার করুন।"
+            },
+            { 
+                id: "c3", title: "Inheritance", priority: "standard", 
+                def: "Mechanism where a child class acquires properties and behavior of a parent class.", 
+                defBn: "যে প্রক্রিয়ায় চাইল্ড ক্লাস প্যারেন্ট ক্লাসের প্রপার্টি ও মেথড লাভ করে।",
+                eg: "Customer inheriting from User base class.", 
+                egBn: "User বেস ক্লাস থেকে Customer ক্লাসের ইনহেরিট করা।",
+                code: "public class Customer : User { public int OrderCount { get; set; } }", 
+                q: "Does C# support multiple class inheritance?", 
+                qBn: "C# কি মাল্টিপল ক্লাস ইনহেরিটেন্স সাপোর্ট করে?",
+                a: "No, C# supports single class inheritance but multiple interface implementation.",
+                aBn: "না, C# সিঙ্গেল ক্লাস ইনহেরিটেন্স সাপোর্ট করে কিন্তু একাধিক ইন্টারফেস বাস্তবায়ন করা যায়।"
+            },
+            { 
+                id: "c4", title: "Encapsulation", priority: "high", 
+                def: "Bundling data and methods operating on that data into a single unit while restricting direct access.", 
+                defBn: "ডেটা ও মেথডকে এক ক্যাপসুলে আবৃত রাখা এবং বাইরের সরাসরি এক্সেস রুদ্ধ রাখা।",
+                eg: "Private fields exposed via public properties.", 
+                egBn: "Private ফিল্ডকে Public প্রপার্টি মাধ্যমে প্রকাশ করা।",
+                code: "private decimal _balance;\npublic decimal Balance { get => _balance; }", 
+                q: "How is encapsulation achieved in C#?", 
+                qBn: "C# এ এনক্যাপসুলেশন কীভাবে অর্জিত হয়?",
+                a: "Using access modifiers (private, protected, public) and properties with getters/setters.",
+                aBn: "Access Modifiers (private, protected) এবং Properties ব্যবহার করে।"
+            },
+            { 
+                id: "c5", title: "Polymorphism", priority: "high", 
+                def: "Ability of different objects to respond to the same method call in their own specific way.", 
+                defBn: "একই মেথড কলে বিভিন্ন অবজেক্টের নিজ নিজ উপায়ে সাড়া দেওয়ার ক্ষমতা।",
+                eg: "Method overriding in shape rendering.", 
+                egBn: "শেপ রেন্ডারিংয়ে মেথড ওভাররাইডিং।",
+                code: "public override void Draw() { Console.WriteLine(\"Circle\"); }", 
+                q: "What are compile-time vs runtime polymorphism?", 
+                qBn: "কম্পাইল-টাইম বনাম রানটাইম পলিমরফিজম কী?",
+                a: "Compile-time is method overloading; Runtime is method overriding via virtual/override.",
+                aBn: "কম্পাইল-টাইম হলো Method Overloading; আর রানটাইম হলো virtual/override দিয়ে Method Overriding।"
+            },
+            { 
+                id: "c6", title: "Abstraction", priority: "standard", 
+                def: "Hiding internal complexity and showing only essential functionality to the user.", 
+                defBn: "আভ্যন্তরীণ জটিলতা লুকিয়ে রেখে ব্যবহারকারীর সামনে কেবল প্রয়োজনীয় অংশ প্রকাশ করা।",
+                eg: "Calling _repository.Save() without knowing underlying SQL.", 
+                egBn: "ভেতরের SQL না জেনে সরাসরি _repository.Save() কল করা।",
+                code: "public interface IEmailService { Task SendAsync(string to, string body); }", 
+                q: "How does Abstraction differ from Encapsulation?", 
+                qBn: "Abstraction ও Encapsulation এর পার্থক্য কী?",
+                a: "Abstraction focuses on hiding implementation complexity; Encapsulation focuses on restricting access to internal state.",
+                aBn: "Abstraction ভেতরের জটিলতা লুকায়; Encapsulation ইন্টারনাল স্টেট সুরক্ষিত রাখে।"
+            },
+            { 
+                id: "c7", title: "Method Overloading", priority: "standard", 
+                def: "Same method name in the same class with different parameter signatures.", 
+                defBn: "একই ক্লাসে একই নামের মেথড কিন্তু প্যারামিটার সংখ্যা বা টাইপ ভিন্ন।",
+                eg: "CalculateInterest(decimal) vs CalculateInterest(decimal, int).", 
+                egBn: "CalculateInterest(decimal) বনাম CalculateInterest(decimal, int)।",
+                code: "public int Add(int a, int b) => a + b;\npublic double Add(double a, double b) => a + b;", 
+                q: "Does changing return type alone overload a method?", 
+                qBn: "শুধু রিটার্ন টাইপ পরিবর্তন করলে কি Overloading হবে?",
+                a: "No, method signature must differ in parameter types or count.",
+                aBn: "না, অবশ্যই মেথডের প্যারামিটার সংখ্যা বা টাইপে পার্থক্য থাকতে হবে।"
+            },
+            { 
+                id: "c8", title: "Method Overriding", priority: "high", 
+                def: "Redefining a base class virtual method in a derived class using override keyword.", 
+                defBn: "প্যারেন্ট ক্লাসের virtual মেথডকে চাইল্ড ক্লাসে override দিয়ে পুনঃসংজ্ঞায়িত করা।",
+                eg: "Customizing CalculateTax() for overseas customer.", 
+                egBn: "বিদেশি কাস্টমারের জন্য CalculateTax() কাস্টমাইজ করা।",
+                code: "public override decimal CalculateTax() => BaseAmount * 0.15m;", 
+                q: "What keywords are required for method overriding?", 
+                qBn: "মেথড ওভাররাইডিং এর জন্য কী কী কি-ওয়ার্ড লাগে?",
+                a: "virtual in base class and override in child class.",
+                aBn: "প্যারেন্ট ক্লাসে virtual এবং চাইল্ড ক্লাসে override কি-ওয়ার্ড।"
+            },
+            { 
+                id: "c9", title: "Virtual vs Override", priority: "high", 
+                def: "virtual allows a method to be overridden. override provides the new implementation.", 
+                defBn: "virtual মেথডকে পরিবর্তনযোগ্য করে; override নতুন কোড বাস্তবায়ন করে।",
+                eg: "Base class default processing overrideable by child.", 
+                egBn: "বেস ক্লাসের প্রসেসিং চাইল্ড ক্লাস দ্বারা পরিবর্তন করা।",
+                code: "public virtual void Process() {}\npublic override void Process() {}", 
+                q: "Can you override a non-virtual method?", 
+                qBn: "non-virtual মেথড কি ওভাররাইড করা যায়?",
+                a: "No, methods must be explicitly marked virtual, abstract, or override.",
+                aBn: "না, মেথডকে অবশ্যই virtual, abstract অথবা override হতে হবে।"
+            },
+            { 
+                id: "c10", title: "Sealed Keyword", priority: "standard", 
+                def: "Prevents a class from being inherited or a method from being further overridden.", 
+                defBn: "কোনো ক্লাসকে ইনহেরিট করা অথবা মেথডকে আর ওভাররাইড করা বন্ধ করে।",
+                eg: "Security or core framework utility classes.", 
+                egBn: "সিকিউরিটি বা ফ্রেমওয়ার্ক ইউটিলিটি ক্লাস।",
+                code: "public sealed class SecurityProvider { }", 
+                q: "Why mark a class as sealed?", 
+                qBn: "একটি ক্লাসকে sealed করার কারণ কী?",
+                a: "To prevent unauthorized subclassing and enable runtime performance optimizations.",
+                aBn: "অনাকাঙ্ক্ষিত ইনহেরিটেন্স রোধ এবং রানটাইম অপ্টিমাইজেশনের জন্য।"
+            },
+            { 
+                id: "c11", title: "Static Keyword", priority: "high", 
+                def: "Belongs to the class type itself rather than any specific object instance.", 
+                defBn: "অবজেক্ট ইনস্ট্যান্সের বদলে সরাসরি ক্লাসের সাথে সম্পর্কিত।",
+                eg: "Math.Abs() utility function.", 
+                egBn: "Math.Abs() ইউটিলিটি ফাংশন।",
+                code: "public static class Logger { public static void Log(string msg) {} }", 
+                q: "When is a static constructor called?", 
+                qBn: "Static Constructor কখন কল হয়?",
+                a: "Automatically called once before the first instance is created or static member accessed.",
+                aBn: "প্রথম অবজেক্ট তৈরি বা স্ট্যাটিক মেম্বার এক্সেস হওয়ার ঠিক পূর্বে স্বয়ংক্রিয়ভাবে একবারই কল হয়।"
+            },
+            { 
+                id: "c12", title: "Readonly vs Const", priority: "high", 
+                def: "const is compile-time constant. readonly is runtime constant set in constructor.", 
+                defBn: "const কম্পাইল-টাইমে মান পায়; readonly কনস্ট্রাক্টরে রানটাইমে মান পায়।",
+                eg: "const double Pi = 3.14 vs readonly DateTime CreatedAt.", 
+                egBn: "const double Pi = 3.14 বনাম readonly DateTime CreatedAt।",
+                code: "public const int MaxSize = 100;\npublic readonly string ConnectionString;", 
+                q: "Difference between readonly and const?", 
+                qBn: "readonly এবং const এর মধ্যে মূল পার্থক্য কী?",
+                a: "const is resolved at compilation; readonly is resolved at runtime during object construction.",
+                aBn: "const কম্পাইল টাইমে ফিক্সড হয়; readonly অবজেক্ট তৈরির সময় কনস্ট্রাক্টরে সেট করা যায়।"
+            },
+            { 
+                id: "c13", title: "Ref vs Out Parameters", priority: "high", 
+                def: "ref passes existing variable by reference (must be initialized). out passes uninitialized output.", 
+                defBn: "ref ভ্যারিয়েবল রেফারেন্স হিসেবে পাঠায় (আগে ইনিশিয়ালাইজ থাকতে হবে); out মেথড থেকে মান বের করে আনে।",
+                eg: "int.TryParse(val, out int num).", 
+                egBn: "int.TryParse(val, out int num)।",
+                code: "public void GetValues(out int x) { x = 10; }", 
+                q: "What is the key difference between ref and out?", 
+                qBn: "ref এবং out এর মধ্যে প্রধান পার্থক্য কী?",
+                a: "ref variable must be initialized before passing; out variable must be assigned before method returns.",
+                aBn: "ref ভ্যারিয়েবলে আগেই মান থাকতে হয়; out ভ্যারিয়েবলে মেথড রিটার্ন করার আগে মান অ্যাসাইন করতে হয়।"
+            },
+            { 
+                id: "c14", title: "Value Type vs Reference Type", priority: "high", 
+                def: "Value types store data directly on Stack (int, struct). Reference types store memory address on Heap (class, string).", 
+                defBn: "Value Type সরাসরি স্ট্যাকে ডেটা রাখে (int, struct); Reference Type হিফে মেমোরি এড্রেস রাখে (class, string)।",
+                eg: "struct Point vs class Customer.", 
+                egBn: "struct Point বনাম class Customer।",
+                code: "int a = 10; // Stack\nCustomer c = new Customer(); // Heap", 
+                q: "Where are value types and reference types allocated?", 
+                qBn: "Value টাইপ এবং Reference টাইপ কোথায় সংরক্ষিত হয়?",
+                a: "Value types on Stack (or inline in Heap objects); Reference types allocated on Garbage-Collected Heap.",
+                aBn: "Value Type স্ট্যাকে; আর Reference Type গারবেজ-কালেক্টেড হিফে।"
+            },
+            { 
+                id: "c15", title: "Nullable Types", priority: "standard", 
+                def: "Allows value types to represent null (e.g. int?).", 
+                defBn: "Value টাইপে null মান রাখার সুযোগ দেয় (যেমন int?)।",
+                eg: "Database NULL column mapping.", 
+                egBn: "ডাটাবেজের NULL কলাম ম্যাপিং।",
+                code: "int? nullableAge = null;", 
+                q: "How to safely extract a nullable value?", 
+                qBn: "কীভাবে নিরাপদে Nullable মান পড়া যায়?",
+                a: "Use .HasValue, .Value, or null-coalescing operator ??",
+                aBn: ".HasValue, .Value অথবা null-coalescing অপারেটর (??) ব্যবহার করে।"
+            },
+            { 
+                id: "c16", title: "Exception Handling", priority: "standard", 
+                def: "Structured error handling using try-catch-finally blocks.", 
+                defBn: "try-catch-finally ব্লক দিয়ে সুশৃঙ্খল ত্রুটি ব্যবস্থাপনা।",
+                eg: "Catching SqlException during DB call.", 
+                egBn: "DB কলের সময় SqlException ধরা।",
+                code: "try { } catch (SqlException ex) { } finally { }", 
+                q: "Difference between throw and throw ex?", 
+                qBn: "throw এবং throw ex এর পার্থক্য কী?",
+                a: "throw preserves original call stack trace; throw ex resets stack trace to current line.",
+                aBn: "throw মূল কল স্ট্যাক হুবহু বজায় রাখে; throw ex স্ট্যাক ট্রেস রিসেট করে ফেলে।"
+            },
+            { 
+                id: "c17", title: "Delegates", priority: "high", 
+                def: "Type-safe function pointer pointing to methods with matching signature.", 
+                defBn: "টাইপ-সেফ ফাংশন পয়েন্টার যা নির্দিষ্ট মেথডকে পয়েন্ট করে।",
+                eg: "Event handlers and callbacks.", 
+                egBn: "ইভেন্ট হ্যান্ডলার এবং কলব্যাক।",
+                code: "public delegate void Notify(string msg);", 
+                q: "What is a multicast delegate?", 
+                qBn: "Multicast Delegate কী?",
+                a: "A delegate holding references to multiple methods invoked sequentially using += operator.",
+                aBn: "যে ডেলিগেট একের অধিক মেথডের রেফারেন্স ধরে রাখে এবং পরপর এক্সিকিউট করে।"
+            },
+            { 
+                id: "c18", title: "Events", priority: "standard", 
+                def: "Encapsulated multicast delegate used for publisher-subscriber messaging.", 
+                defBn: "Publisher-Subscriber মেসেজিংয়ের জন্য এনক্যাপসুলেটেড ডেলিগেট।",
+                eg: "Button click or order placed notification.", 
+                egBn: "বাটন ক্লিক বা অর্ডার সম্পন্ন হওয়ার নোটিফিকেশন।",
+                code: "public event EventHandler OnOrderCompleted;", 
+                q: "How do events differ from delegates?", 
+                qBn: "Event কীভাবে Delegate থেকে আলাদা?",
+                a: "Events restrict direct invocation from outside the declaring class.",
+                aBn: "Event ক্লাসের বাইরে থেকে সরাসরি ইনভোক করা যায় না।"
+            },
+            { 
+                id: "c19", title: "Lambda Expressions", priority: "standard", 
+                def: "Anonymous inline function syntax using => operator.", 
+                defBn: "=> অপারেটর দিয়ে সংক্ষেপে ইনলাইন অ্যানোনিমাস মেথড লেখার পদ্ধতি।",
+                eg: "LINQ inline filter predicate.", 
+                egBn: "LINQ ফিল্টারিং প্রেডিকেট।",
+                code: "x => x.IsActive == true", 
+                q: "What is a lambda expression?", 
+                qBn: "Lambda Expression কী?",
+                a: "A concise syntax for writing inline anonymous methods.",
+                aBn: "ইনলাইন অ্যানোনিমাস মেথড লেখার সংক্ষিপ্ত সিনট্যাক্স।"
+            },
+            { 
+                id: "c20", title: "LINQ (Language Integrated Query)", priority: "high", 
+                def: "Native declarative query syntax for querying collections, DBs, XML.", 
+                defBn: "কলেকশন, ডাটাবেজ বা XML থেকে ডাটা কোয়েরি করার বিল্ট-ইন ল্যাঙ্গুয়েজ ফিচার।",
+                eg: "Filtering active customer list.", 
+                egBn: "সক্রিয় কাস্টমার লিস্ট ফিল্টার করা।",
+                code: "var list = customers.Where(c => c.Age > 18).ToList();", 
+                q: "What is Deferred Execution in LINQ?", 
+                qBn: "LINQ এ Deferred Execution কী?",
+                a: "Execution is delayed until query is iterated over (e.g. via foreach or ToList()).",
+                aBn: "কোয়েরি যতক্ষণ পর্যন্ত ইটারেট (যেমন ToList() বা foreach) না করা হয়, ততক্ষণ পর্যন্ত রানিং বিলম্বিত থাকে।"
+            },
+            { 
+                id: "c21", title: "Async / Await", priority: "high", 
+                def: "Asynchronous programming model yielding thread back to pool during I/O.", 
+                defBn: "I/O অপারেশনের সময় থ্রেড ফ্রি করে দিয়ে অ্যাসিনক্রোনাস কাজ সম্পাদনের মডেল।",
+                eg: "Non-blocking database query.", 
+                egBn: "নন-ব্লকিং ডাটাবেজ কোয়েরি।",
+                code: "public async Task<Customer> GetAsync(int id) => await _db.Customers.FindAsync(id);", 
+                q: "Why use async/await in Web APIs?", 
+                qBn: "Web API তে কেন async/await ব্যবহার করবেন?",
+                a: "Prevents thread starvation under heavy concurrent load by releasing request threads during I/O.",
+                aBn: "অতিরিক্ত কনকারেন্ট ইউজারের সময় I/O চলাকালে থ্রেড মুক্ত রেখে Thread Starvation প্রতিরোধ করে।"
+            },
+            { 
+                id: "c22", title: "Task & Task<T>", priority: "high", 
+                def: "Represents an ongoing asynchronous operation returning void or T.", 
+                defBn: "অ্যাসিনক্রোনাস কাজের নির্দেশক যা void বা T মান রিটার্ন করে।",
+                eg: "CompletableFuture equivalent.", 
+                egBn: "Java CompletableFuture এর সমতুল্য।",
+                code: "Task<int> countTask = _db.CountAsync();", 
+                q: "Task.Wait() vs await Task?", 
+                qBn: "Task.Wait() এবং await Task এর পার্থক্য কী?",
+                a: "Task.Wait() blocks current thread synchronously causing deadlocks; await yields non-blockingly.",
+                aBn: "Task.Wait() বর্তমান থ্রেডকে ব্লক করে ডেডলক ঘটায়; আর await থ্রেডকে মুক্ত রাখে।"
+            },
+            { 
+                id: "c23", title: "IEnumerable vs IQueryable", priority: "high", 
+                def: "IEnumerable queries in-memory (LINQ to Objects). IQueryable executes SQL on DB server (LINQ to Entities).", 
+                defBn: "IEnumerable মেমোরিতে ফিল্টার করে; IQueryable ডাটাবেজ সার্ভারে SQL বানিয়ে পাঠায়।",
+                eg: "InMemory list vs Database query.", 
+                egBn: "ইন-মেমোরি লিস্ট বনাম ডাটাবেজ কুয়েরি।",
+                code: "IQueryable<Customer> q = _db.Customers.Where(c => c.Active);", 
+                q: "Difference between IEnumerable and IQueryable?", 
+                qBn: "IEnumerable এবং IQueryable এর প্রধান পার্থক্য কী?",
+                a: "IEnumerable filters in client app memory; IQueryable translates expressions to server-side SQL.",
+                aBn: "IEnumerable অ্যাপের মেমোরিতে ফিল্টার করে; আর IQueryable সার্ভার-সাইড SQL তৈরি করে ডাটা আনে।"
+            },
+            { 
+                id: "c24", title: "IDisposable & Using Statement", priority: "high", 
+                def: "IDisposable releases unmanaged resources (DB connections, files). using auto-calls Dispose().", 
+                defBn: "IDisposable আনম্যানেজড রিসোর্স (DB সংযোগ, ফাইল) মুক্ত করে; using অটো Dispose() কল করে।",
+                eg: "SqlConnection cleanup.", 
+                egBn: "SqlConnection কানেকশন রিলিজ করা।",
+                code: "using (var conn = new SqlConnection()) { }", 
+                q: "How does the using statement work under the hood?", 
+                qBn: "using স্টেটমেন্ট কীভাবে কাজ করে?",
+                a: "Translates to a try-finally block where Dispose() is called in finally.",
+                aBn: "এটি একটি try-finally ব্লকে রূপান্তরিত হয় যেখানে finally তে Dispose() কল করা হয়।"
+            },
+            { 
+                id: "c25", title: "Garbage Collection (GC)", priority: "high", 
+                def: "Automatic memory manager managing heap memory via Generations (Gen 0, 1, 2).", 
+                defBn: "স্বয়ংক্রিয় মেমোরি ম্যানেজার যা Gen 0, 1, 2 জেনারেশনের মাধ্যমে হিফ মেমোরি পরিষ্কার করে।",
+                eg: "Reclaiming short-lived objects.", 
+                egBn: "স্বল্পমেয়াদী অবজেক্ট মুছে ফেলা।",
+                code: "// Managed automatically by CLR GC", 
+                q: "What are GC Generations 0, 1, 2?", 
+                qBn: "GC Generations 0, 1, 2 কী?",
+                a: "Gen 0: Short-lived objects; Gen 1: Buffer zone; Gen 2: Long-lived objects (e.g. singletons).",
+                aBn: "Gen 0: স্বল্পমেয়াদী অবজেক্ট; Gen 1: বাফার জোন; Gen 2: দীর্ঘমেয়াদী অবজেক্ট (যেমন Singleton)।"
+            }
         ];
 
         // Study Plan Hours
         const studyPlan = [
-            { time: "08:00 – 09:30", title: "C# + Object-Oriented Programming (OOP) Deep Dive" },
-            { time: "09:30 – 11:00", title: "ASP.NET Core Architecture, Middleware & Kestrel" },
-            { time: "11:00 – 12:00", title: "REST API Design, HTTP Status Codes & Serialization" },
-            { time: "12:00 – 13:00", title: "Database Fundamentals, SQL Tuning & Transactions" },
-            { time: "14:00 – 15:00", title: "Enterprise Architecture, SOLID & Design Patterns" },
-            { time: "15:00 – 16:00", title: "Entity Framework Core & ADO.NET Revision" },
-            { time: "16:00 – 17:00", title: "Redis Caching, Kafka Events & Airflow Workflows" },
-            { time: "17:00 – 18:00", title: "Unit & Integration Testing (xUnit, Moq, AAA)" },
-            { time: "18:00 – 19:00", title: "Docker, CI/CD Pipelines & Azure DevOps" },
-            { time: "19:00 – 20:00", title: "Agile, Scrum Ceremonies & Jira Management" },
-            { time: "20:00 – 21:00", title: "Interactive Mock Interview Practice" },
-            { time: "21:00 – 22:00", title: "Final 10-Minute Rapid Flashcard & Weak Area Review" }
+            { time: "08:00 – 09:30", title: "C# + Object-Oriented Programming (OOP) Deep Dive", bn: "C# এবং অবজেক্ট-ওরিয়েন্টেড প্রোগ্রামিং গভীর রিভিশন" },
+            { time: "09:30 – 11:00", title: "ASP.NET Core Architecture, Middleware & Kestrel", bn: "ASP.NET Core আর্কিটেকচার, মিডলওয়্যার এবং Kestrel সার্ভার" },
+            { time: "11:00 – 12:00", title: "REST API Design, HTTP Status Codes & Serialization", bn: "REST API ডিজাইন, HTTP স্ট্যাটাস কোড ও সিরিয়ালাইজেশন" },
+            { time: "12:00 – 13:00", title: "Database Fundamentals, SQL Tuning & Transactions", bn: "ডাটাবেজ কনসেপ্ট, SQL কুয়েরি অপ্টিমাইজেশন ও ট্রানজেকশন" },
+            { time: "14:00 – 15:00", title: "Enterprise Architecture, SOLID & Design Patterns", bn: "এন্টারপ্রাইজ আর্কিটেকচার, SOLID নীতি এবং ডিজাইন প্যাটার্ন" },
+            { time: "15:00 – 16:00", title: "Entity Framework Core & ADO.NET Revision", bn: "Entity Framework Core ও ADO.NET বিস্তারিত রিভিশন" },
+            { time: "16:00 – 17:00", title: "Redis Caching, Kafka Events & Airflow Workflows", bn: "Redis ক্যাশিং, Kafka ইভেন্ট স্ট্রিমিং এবং Airflow ওয়ার্কফ্লো" },
+            { time: "17:00 – 18:00", title: "Unit & Integration Testing (xUnit, Moq, AAA)", bn: "ইউনিট ও ইন্টিগ্রেশন টেস্টিং (xUnit, Moq এবং AAA প্যাটার্ন)" },
+            { time: "18:00 – 19:00", title: "Docker, CI/CD Pipelines & Azure DevOps", bn: "ডকার কন্টেইনার, CI/CD পাইপলাইন ও Azure DevOps" },
+            { time: "19:00 – 20:00", title: "Agile, Scrum Ceremonies & Jira Management", bn: "Agile প্রসেস, Scrum মিটিংসমূহ ও Jira প্রজেক্ট ট্র্যাকিং" },
+            { time: "20:00 – 21:00", title: "Interactive Mock Interview Practice", bn: "ইন্টারেক্টিভ মক ইন্টারভিউ প্র্যাকটিস" },
+            { time: "21:00 – 22:00", title: "Final 10-Minute Rapid Flashcard & Weak Area Review", bn: "১০-মিনিটের দ্রুত ফ্ল্যাশকার্ড ও দুর্বল বিষয়সমূহ রিভিশন" }
         ];
 
         // Application State Management
@@ -2228,12 +2641,14 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
             completedTopics: new Set(JSON.parse(localStorage.getItem("completedTopics") || "[]")),
             studyPlanChecked: new Set(JSON.parse(localStorage.getItem("studyPlanChecked") || "[]")),
             theme: localStorage.getItem("theme") || "dark",
+            lang: localStorage.getItem("lang") || "both",
             flashcardIndex: 0
         };
 
         // DOM Initialization
         document.addEventListener("DOMContentLoaded", () => {
             applyTheme(appState.theme);
+            applyLanguage(appState.lang);
             renderStudyPlan();
             renderCSharpAccordions();
             updateProgress();
@@ -2290,6 +2705,23 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
             applyTheme(appState.theme);
         }
 
+        // Language Switching
+        function applyLanguage(lang) {
+            appState.lang = lang;
+            document.documentElement.setAttribute("data-lang", lang);
+            localStorage.setItem("lang", lang);
+
+            document.getElementById("btnLangBoth").classList.toggle("active", lang === "both");
+            document.getElementById("btnLangEng").classList.toggle("active", lang === "eng");
+            document.getElementById("btnLangBan").classList.toggle("active", lang === "ban");
+        }
+
+        function setLanguage(lang) {
+            applyLanguage(lang);
+            renderStudyPlan();
+            renderCSharpAccordions();
+        }
+
         // Render Study Plan Timeline
         function renderStudyPlan() {
             const container = document.getElementById("timelineContainer");
@@ -2298,7 +2730,10 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                 return `
                     <div class="timeline-item">
                         <div class="timeline-time">${item.time}</div>
-                        <div class="timeline-content">${item.title}</div>
+                        <div class="timeline-content">
+                            <span class="en-text">${item.title}</span>
+                            <span class="bn-sub">${item.bn}</span>
+                        </div>
                         <input type="checkbox" class="timeline-check" ${isChecked} onchange="togglePlanCheck(${index})">
                     </div>
                 `;
@@ -2333,19 +2768,31 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
                         <div class="accordion-body">
                             <div class="concept-section">
                                 <div class="concept-label">Core Definition</div>
-                                <div class="concept-val">${c.def}</div>
+                                <div class="concept-val">
+                                    <span class="en-text">${c.def}</span>
+                                    <span class="bn-sub">${c.defBn}</span>
+                                </div>
                             </div>
                             <div class="concept-section">
                                 <div class="concept-label">Real-World Scenario</div>
-                                <div class="concept-val">${c.eg}</div>
+                                <div class="concept-val">
+                                    <span class="en-text">${c.eg}</span>
+                                    <span class="bn-sub">${c.egBn}</span>
+                                </div>
                             </div>
                             <div class="concept-section">
                                 <div class="concept-label">C# Code Snippet</div>
                                 <pre><code>${escapeHtml(c.code)}</code></pre>
                             </div>
                             <div class="interview-q-box">
-                                <div class="interview-q">Q: ${c.q}</div>
-                                <div class="interview-a">"<strong>Strong Answer:</strong> ${c.a}"</div>
+                                <div class="interview-q">
+                                    Q: <span class="en-text">${c.q}</span>
+                                    <span class="bn-sub">${c.qBn}</span>
+                                </div>
+                                <div class="interview-a">
+                                    "<strong>Strong Answer:</strong> <span class="en-text">${c.a}</span>"
+                                    <span class="bn-sub">"<strong>বাংলা সংক্ষেপ:</strong> ${c.aBn}"</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2435,8 +2882,14 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
             const card = document.getElementById("flashcardElement");
             card.classList.remove("flipped");
             const c = csharpConcepts[appState.flashcardIndex];
-            document.getElementById("fcQuestion").innerText = c.q;
-            document.getElementById("fcAnswer").innerText = c.a;
+            document.getElementById("fcQuestion").innerHTML = `
+                <span class="en-text">${c.q}</span>
+                <span class="bn-sub" style="font-size: 14px; margin-top: 8px;">${c.qBn}</span>
+            `;
+            document.getElementById("fcAnswer").innerHTML = `
+                <span class="en-text">"${c.a}"</span>
+                <span class="bn-sub" style="font-size: 13.5px; margin-top: 10px; color: var(--text-primary);">"${c.aBn}"</span>
+            `;
         }
 
         // Mock Interview Engine
@@ -2473,8 +2926,14 @@ public async Task GetCustomer_WhenExists_ReturnsOkResult()
             const q = mockState.questions[mockState.currentIdx];
             document.getElementById("mockCounter").innerText = `Question ${mockState.currentIdx + 1} of 10`;
             document.getElementById("mockScore").innerText = `Score: ${mockState.score} Known`;
-            document.getElementById("mockQuestion").innerText = q.q;
-            document.getElementById("mockAnswer").innerText = q.a;
+            document.getElementById("mockQuestion").innerHTML = `
+                <span class="en-text">${q.q}</span>
+                <span class="bn-sub" style="font-size: 14.5px; margin-top: 6px;">${q.qBn}</span>
+            `;
+            document.getElementById("mockAnswer").innerHTML = `
+                <span class="en-text">"${q.a}"</span>
+                <span class="bn-sub" style="font-size: 13.5px; margin-top: 8px; color: var(--text-primary);">"${q.aBn}"</span>
+            `;
             document.getElementById("mockAnswerBox").style.display = "none";
         }
 
