@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="both">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🛢️ Database & AI Engineering — .NET Interview Revision</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --bg-primary-light: #f8fafc;
+            --bg-secondary-light: #ffffff;
+            --bg-tertiary-light: #f1f5f9;
+            --text-primary-light: #0f172a;
+            --text-secondary-light: #475569;
+            --text-muted-light: #64748b;
+            --border-light: #e2e8f0;
+            --card-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+            /* Dark Theme Variables */
+            --bg-primary-dark: #0b0f19;
+            --bg-secondary-dark: #131b2e;
+            --bg-tertiary-dark: #1e293b;
+            --text-primary-dark: #f8fafc;
+            --text-secondary-dark: #94a3b8;
+            --text-muted-dark: #64748b;
+            --border-dark: #1e293b;
+            --card-shadow-dark: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+
+            /* Brand Accent Colors */
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-bn: #38bdf8;
+            --accent-emerald: #10b981;
+            --accent-ai: #ec4899;
+
+            /* Active Theme Defaults */
+            --bg-primary: var(--bg-primary-dark);
+            --bg-secondary: var(--bg-secondary-dark);
+            --bg-tertiary: var(--bg-tertiary-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --text-muted: var(--text-muted-dark);
+            --border-color: var(--border-dark);
+
+            --sidebar-width: 280px;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: var(--bg-primary-light);
+            --bg-secondary: var(--bg-secondary-light);
+            --bg-tertiary: var(--bg-tertiary-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --text-muted: var(--text-muted-light);
+            --border-color: var(--border-light);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 14px;
+            overflow-x: hidden;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .bn-sub {
+            display: block;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 12.5px;
+            color: var(--accent-bn);
+            margin-top: 4px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        [data-lang="eng"] .bn-sub { display: none !important; }
+        [data-lang="ban"] .en-text { display: none !important; }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+        #app { display: flex; min-height: 100vh; position: relative; }
+
+        .sticky-top-container {
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            background-color: rgba(19, 27, 46, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        [data-theme="light"] .sticky-top-container { background-color: rgba(255, 255, 255, 0.95); }
+
+        .page-switcher-bar {
+            padding: 6px 12px;
+            background-color: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .page-tab {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-secondary);
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .page-tab.active {
+            background: linear-gradient(135deg, var(--accent-emerald), var(--accent-ai));
+            color: #ffffff;
+            border-color: transparent;
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            z-index: 9998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .sidebar-overlay.active { display: block; opacity: 1; }
+
+        #sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0; bottom: 0; left: 0;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-header { padding: 16px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .brand-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--accent-emerald), var(--accent-ai));
+            border-radius: var(--radius-md);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 800; font-size: 16px; flex-shrink: 0;
+        }
+
+        .brand-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+        .brand-subtitle { font-size: 10px; color: var(--accent-emerald); font-weight: 700; text-transform: uppercase; }
+
+        .sidebar-close-btn { display: none; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); cursor: pointer; padding: 6px; }
+
+        .sidebar-search { padding: 10px 14px 6px 14px; }
+        .search-box input {
+            width: 100%; padding: 8px 10px 8px 30px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary); font-size: 12px; outline: none;
+        }
+
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 8px 10px; }
+        .menu-category { font-size: 10px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin: 12px 6px 4px 6px; }
+        .menu-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; color: var(--text-secondary); text-decoration: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+        .menu-item.active { border-left: 3px solid var(--accent-emerald); color: var(--accent-emerald); background-color: var(--bg-tertiary); }
+
+        #main { margin-left: var(--sidebar-width); flex: 1; display: flex; flex-direction: column; min-width: 0; width: 100%; }
+
+        #header { padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
+        .header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .header-title-group h1 { font-size: 15px; font-weight: 700; color: var(--accent-emerald); line-height: 1.2; }
+        .header-title-group p { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+        .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
+        .mobile-toggle {
+            display: none; width: 36px; height: 36px;
+            border-radius: var(--radius-md); background-color: var(--accent-emerald);
+            color: #ffffff; border: none; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;
+        }
+
+        .lang-switcher { display: inline-flex; background-color: var(--bg-tertiary); padding: 2px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .lang-btn { padding: 4px 7px; font-size: 10px; font-weight: 700; border-radius: var(--radius-sm); border: none; background: none; color: var(--text-muted); cursor: pointer; }
+        .lang-btn.active { background-color: var(--accent-emerald); color: #ffffff; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 6px 12px; border-radius: var(--radius-md); font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid transparent; }
+        .btn-primary { background-color: var(--accent-emerald); color: #ffffff; }
+        .btn-ai { background-color: var(--accent-ai); color: #ffffff; }
+        .btn-secondary { background-color: var(--bg-tertiary); color: var(--text-primary); border-color: var(--border-color); }
+        .btn-icon { padding: 6px; width: 32px; height: 32px; border-radius: var(--radius-md); background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); flex-shrink: 0; }
+
+        .floating-menu-btn {
+            display: none; position: fixed; bottom: 16px; right: 16px; z-index: 999;
+            width: 46px; height: 46px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-emerald), var(--accent-ai));
+            color: #ffffff; border: none; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.5);
+            align-items: center; justify-content: center; cursor: pointer;
+        }
+
+        .content-body { padding: 16px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+        .card { background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+        .card-header-flex { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); gap: 10px; flex-wrap: wrap; }
+        .card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+
+        .comparison-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; min-width: 550px; }
+        .comparison-table th { background-color: var(--bg-tertiary); color: var(--text-primary); padding: 10px 12px; border-bottom: 2px solid var(--border-color); }
+        .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+        .comparison-table code { font-family: 'Fira Code', monospace; font-size: 11px; background-color: var(--bg-primary); padding: 2px 5px; border-radius: 4px; color: var(--accent-emerald); }
+
+        .interview-q-box { background-color: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; }
+        .interview-q { font-weight: 700; color: var(--accent-emerald); font-size: 12.5px; margin-bottom: 4px; }
+        .interview-a { font-size: 12.5px; color: var(--text-primary); }
+
+        .ai-q-box { background-color: rgba(236, 72, 153, 0.08); border: 1px solid rgba(236, 72, 153, 0.25); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; }
+        .ai-q { font-weight: 700; color: var(--accent-ai); font-size: 12.5px; margin-bottom: 4px; }
+
+        .section-anchor { scroll-margin-top: 110px; }
+
+        pre { background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px; font-family: 'Fira Code', monospace; font-size: 11px; color: #38bdf8; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+        /* RESPONSIVE MEDIA QUERIES FOR PHONES */
+        @media (max-width: 992px) {
+            #sidebar { transform: translateX(-100%); width: 290px; max-width: 85vw; }
+            #sidebar.open { transform: translateX(0); box-shadow: 10px 0 35px rgba(0, 0, 0, 0.6); }
+            .sidebar-close-btn { display: flex; }
+            #main { margin-left: 0; }
+            .mobile-toggle, .floating-menu-btn { display: inline-flex; }
+        }
+
+        @media (max-width: 640px) {
+            .content-body { padding: 10px; }
+            .card { padding: 12px; border-radius: var(--radius-md); margin-bottom: 14px; }
+            .header-title-group p { display: none; }
+            .header-title-group h1 { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <button class="floating-menu-btn" id="floatingNavToggle" aria-label="Open Navigation Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-icon">🛢️</div>
+                    <div>
+                        <div class="brand-title">DATABASE & AI</div>
+                        <div class="brand-subtitle">Master Hub</div>
+                    </div>
+                </div>
+                <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="sidebar-search">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <input type="text" id="searchInput" placeholder="Search database & AI...">
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-category">Database Engineering</div>
+                <a href="#sec-oracle-sql" class="menu-item active">Oracle PL/SQL vs SQL Server T-SQL</a>
+                <a href="#sec-execution-plan" class="menu-item">Execution Plans & Index Seeks vs Scans</a>
+                <a href="#sec-sargable" class="menu-item">SARGability & Covered Indexes</a>
+                <a href="#sec-deadlocks" class="menu-item">Transactions & Isolation Levels (RCSI)</a>
+                <a href="#sec-orm-comparison" class="menu-item">EF Core vs ADO.NET vs Dapper</a>
+
+                <div class="menu-category">AI Engineering in .NET</div>
+                <a href="#sec-net-ai" class="menu-item">.NET 8/9/10 AI & Semantic Kernel</a>
+                <a href="#sec-rag" class="menu-item">RAG Architecture & Vector DBs</a>
+                <a href="#sec-ai-qa" class="menu-item">Top 10 AI Interview Q&A</a>
+            </nav>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main id="main">
+            <!-- Combined Sticky Header Wrapper -->
+            <div class="sticky-top-container">
+                <!-- Global Top Page Switcher Bar -->
+                <div class="page-switcher-bar">
+                    <a href="index.html" class="page-tab">🔥 HIGH PRIORITY (PAGE 1)</a>
+                    <a href="ecosystem.html" class="page-tab">🌐 ECOSYSTEM & TOOLS (PAGE 2)</a>
+                    <a href="database-ai.html" class="page-tab active">🛢️ DATABASE & AI (PAGE 3)</a>
+                </div>
+
+                <!-- Header -->
+                <header id="header">
+                    <div class="header-left">
+                        <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                        </button>
+                        <div class="header-title-group">
+                            <h1>
+                                <span class="en-text">🛢️ Database & AI Engineering</span>
+                                <span class="bn-sub">🛢️ ডাটাবেজ এবং এআই ইঞ্জিনিয়ারিং</span>
+                            </h1>
+                            <p>
+                                <span class="en-text">Oracle vs T-SQL • SQL Tuning • Semantic Kernel • RAG • Vector DBs</span>
+                                <span class="bn-sub">Oracle বনাম T-SQL • SQL টিউনিং • Semantic Kernel • RAG</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="header-actions">
+                        <div class="lang-switcher">
+                            <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH</button>
+                            <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
+                            <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
+                        </div>
+
+                        <button class="btn-icon" id="btnThemeToggle" title="Toggle Light/Dark Theme">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        </button>
+                    </div>
+                </header>
+            </div>
+
+            <!-- Dashboard Content Body -->
+            <div class="content-body">
+
+                <!-- SECTION 1: ORACLE VS T-SQL -->
+                <section id="sec-oracle-sql" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            ORACLE PL/SQL vs SQL SERVER T-SQL TRANSITION
+                        </h2>
+                    </div>
+
+                    <p style="font-size: 12.5px; margin-bottom: 10px;">
+                        <span class="en-text">Leverage your heavy Oracle PL/SQL enterprise experience by explaining equivalent SQL Server T-SQL concepts.</span>
+                        <span class="bn-sub">আপনার Oracle PL/SQL অভিজ্ঞতার সুবিধা নিয়ে SQL Server T-SQL এর সমতুল্য কনসেপ্টগুলো ব্যাখ্যা করুন।</span>
+                    </p>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Concept Domain</th>
+                                    <th>Oracle Database (PL/SQL)</th>
+                                    <th>Microsoft SQL Server (T-SQL)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Variable Types</strong></td><td><code>VARCHAR2, NUMBER, DATE</code></td><td><code>VARCHAR, NVARCHAR, DECIMAL, DATETIME2</code></td></tr>
+                                <tr><td><strong>Auto-Increment</strong></td><td><code>CREATE SEQUENCE + TRIGGER</code></td><td><code>IDENTITY(1,1)</code> column property</td></tr>
+                                <tr><td><strong>Pagination</strong></td><td><code>ROWNUM <= 10</code> or <code>OFFSET/FETCH</code></td><td><code>OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY</code></td></tr>
+                                <tr><td><strong>Packages / Scope</strong></td><td><code>CREATE OR REPLACE PACKAGE BODY</code></td><td>Schemas (e.g. <code>dbo</code>, <code>billing</code>) + Modules</td></tr>
+                                <tr><td><strong>String Concatenation</strong></td><td><code>str1 || str2</code> or <code>CONCAT()</code></td><td><code>str1 + str2</code> or <code>CONCAT()</code></td></tr>
+                                <tr><td><strong>Exception Handling</strong></td><td><code>EXCEPTION WHEN OTHERS THEN</code></td><td><code>BEGIN TRY ... END TRY BEGIN CATCH ... END CATCH</code></td></tr>
+                                <tr><td><strong>Date Math</strong></td><td><code>SYSDATE + 7</code></td><td><code>DATEADD(day, 7, GETDATE())</code></td></tr>
+                                <tr><td><strong>String Length</strong></td><td><code>LENGTH(str)</code></td><td><code>LEN(str)</code></td></tr>
+                                <tr><td><strong>Null Value Check</strong></td><td><code>NVL(col, default)</code></td><td><code>ISNULL(col, default)</code> or <code>COALESCE()</code></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: EXECUTION PLANS & INDEX TUNING -->
+                <section id="sec-execution-plan" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                            EXECUTION PLAN OPERATORS: INDEX SEEK vs INDEX SCAN
+                        </h2>
+                    </div>
+
+                    <div class="interview-q-box">
+                        <div class="interview-q">Q: What is the difference between Index Seek and Index Scan in SQL Execution Plans?</div>
+                        <div class="interview-a">
+                            "<strong>Index Seek</strong> uses the B-Tree structure of an index to navigate directly to the exact matching rows (O(log N) fast binary lookup). <strong>Index Scan</strong> reads through all pages of the index from top to bottom (O(N) full table/index traversal). You should optimize queries to perform Index Seeks wherever possible!"
+                            <span class="bn-sub">Index Seek বি-ট্রি ব্যবহার করে সরাসরি নির্দিষ্ট সারিতে যায় (খুব দ্রুত O(log N))। Index Scan পুরো ইনডেক্স স্ক্যান করে (ধীরগতির O(N))।</span>
+                        </div>
+                    </div>
+
+                    <div class="interview-q-box" id="sec-sargable" style="margin-top: 10px;">
+                        <div class="interview-q">Q: What is SARGability and Covered Index?</div>
+                        <div class="interview-a">
+                            "<strong>SARGable (Search Argument Able)</strong> means a query condition can utilize an index. Wrapping an indexed column inside a SQL function like <code>WHERE YEAR(OrderDate) = 2024</code> makes it non-SARGable (causing Index Scan). Rewrite it as <code>WHERE OrderDate >= '2024-01-01' AND OrderDate < '2025-01-01'</code>. A <strong>Covering Index</strong> includes all requested columns in its leaf nodes via <code>INCLUDE (Col1, Col2)</code> to eliminate Key Lookups."
+                            <span class="bn-sub">SARGable কুয়েরি ইনডেক্স ব্যবহার করতে পারে। কলামের উপর ফাংশন দিলে ইনডেক্স কাজ করে না। Covered Index `INCLUDE` কি-ওয়ার্ড দিয়ে Key Lookup দূর করে।</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: TRANSACTIONS & LOCKING ISOLATION -->
+                <section id="sec-deadlocks" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            TRANSACTIONS, LOCKING & SNAPSHOT ISOLATION (RCSI)
+                        </h2>
+                    </div>
+
+                    <div class="interview-q-box">
+                        <div class="interview-q">Q: How do you resolve Database Deadlocks and Blocking in enterprise applications?</div>
+                        <div class="interview-a">
+                            "1. Access database tables in identical chronological order across all Stored Procedures.<br>
+                            2. Keep transactions short and focused; never execute external REST API HTTP calls inside a database transaction block.<br>
+                            3. Enable <strong>READ_COMMITTED_SNAPSHOT (RCSI)</strong> in SQL Server. RCSI uses Row Versioning in tempdb so readers do not block writers and writers do not block readers!"
+                            <span class="bn-sub">১. টেবিল একই ক্রমানুসারে অ্যাক্সেস করুন। ২. ডাটাবেজ ট্রানজেকশনের ভেতরে REST API কল করবেন না। ৩. RCSI অন করলে রিডার ও রাইটার একজন অন্যজনকে ব্লক করে না।</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 4: DATA ACCESS COMPARISON -->
+                <section id="sec-orm-comparison" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">DATA ACCESS ARCHITECTURE: ADO.NET vs EF CORE vs DAPPER</h2>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Criteria</th>
+                                    <th>ADO.NET (Raw SQL)</th>
+                                    <th>Entity Framework Core</th>
+                                    <th>Dapper Micro-ORM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Type</strong></td><td>Low-Level ADO Provider</td><td>Full-featured ORM</td><td>Micro-ORM Mapper</td></tr>
+                                <tr><td><strong>Execution Speed</strong></td><td>Maximum (Baseline)</td><td>Fast with <code>.AsNoTracking()</code></td><td>Near raw ADO.NET speed</td></tr>
+                                <tr><td><strong>Developer Productivity</strong></td><td>Manual Mapping required</td><td>High (LINQ, Migrations)</td><td>High (SQL to Object map)</td></tr>
+                                <tr><td><strong>Change Tracking</strong></td><td>None</td><td>Built-in Change Tracker</td><td>None</td></tr>
+                                <tr><td><strong>Best Use Case</strong></td><td>High-volume bulk inserts, raw SPs</td><td>Standard CRUD REST APIs</td><td>High-performance reporting APIs</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SECTION 5: AI & MACHINE LEARNING IN .NET -->
+                <section id="sec-net-ai" class="card section-anchor" style="border-color: var(--accent-ai);">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-ai);">
+                            🤖 .NET 8 / 9 / 10 AI ARCHITECTURE & SEMANTIC KERNEL
+                        </h2>
+                    </div>
+
+                    <div class="concept-section">
+                        <div class="concept-label" style="color: var(--accent-ai);">What is Microsoft Semantic Kernel?</div>
+                        <div class="concept-val">
+                            Microsoft Semantic Kernel is an open-source SDK that enables .NET developers to easily integrate OpenAI, Azure OpenAI, HuggingFace, and custom LLM models into C# enterprise applications. It orchestrates AI Plugins, Native Functions, Prompt Templates, and Vector Memory.
+                            <span class="bn-sub">Semantic Kernel হলো মাইক্রোসফটের C# SDK যা OpenAI/Azure OpenAI মডেলকে এন্টারপ্রাইজ অ্যাপে প্লাগইন ও মেমরির সাহায্যে যুক্ত করতে ব্যবহৃত হয়।</span>
+                        </div>
+                    </div>
+
+                    <div class="script-box" style="border-left-color: var(--accent-ai);">
+                        <div class="script-do" style="color: var(--accent-ai);">C# SEMANTIC KERNEL INITIALIZATION SNIPPET</div>
+<pre><code>using Microsoft.SemanticKernel;
+
+var builder = Kernel.CreateBuilder();
+builder.AddOpenAIChatCompletion(
+    modelId: "gpt-4o",
+    apiKey: builder.Configuration["OpenAI:ApiKey"]
+);
+
+Kernel kernel = builder.Build();
+var result = await kernel.InvokePromptAsync("Summarize ERP gas billing anomaly for Customer ID #9481");
+Console.WriteLine(result.GetValue&lt;string&gt;());</code></pre>
+                    </div>
+                </section>
+
+                <!-- SECTION 6: RAG & VECTOR DATABASES -->
+                <section id="sec-rag" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-ai);">
+                            🧠 RAG (RETRIEVAL-AUGMENTED GENERATION) & VECTOR DATABASES
+                        </h2>
+                    </div>
+
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p><strong>1. Document Ingestion:</strong> Extract text from PDFs, database logs, or enterprise policies.</p>
+                        <p style="margin-top: 4px;"><strong>2. Text Chunking:</strong> Split content into semantic blocks (e.g. 500 tokens with 50-token overlap).</p>
+                        <p style="margin-top: 4px;"><strong>3. Vector Embeddings:</strong> Generate numeric floating-point vectors via embedding models (e.g. <code>text-embedding-3-small</code>).</p>
+                        <p style="margin-top: 4px;"><strong>4. Vector Store Search:</strong> Query vector databases (pgvector, Azure AI Search, Qdrant) using Cosine Similarity / HNSW index.</p>
+                        <p style="margin-top: 4px;"><strong>5. Contextual Completion:</strong> Inject retrieved chunks into LLM system prompt to generate grounded, hallucination-free answers.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 7: TOP 10 AI INTERVIEW QUESTIONS -->
+                <section id="sec-ai-qa" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-ai);">
+                            TOP 10 AI-RELATED .NET INTERVIEW QUESTIONS & MODEL ANSWERS
+                        </h2>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q1: How do you integrate OpenAI / LLM APIs securely in ASP.NET Core without leaking API keys?</div>
+                        <div class="interview-a">
+                            "Never hardcode API keys in code or appsettings.json. Store keys in Azure Key Vault or Environment Variables. Inject <code>IHttpClientFactory</code> or Microsoft's unified <code>IChatClient</code> interface in .NET 9 with proper resilience policies (Polly retry & rate limiting)."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q2: What is the difference between Fine-Tuning an LLM vs using RAG for enterprise search?</div>
+                        <div class="interview-a">
+                            "Fine-tuning retrains model weights to learn specific style or domain terminology, but is expensive and cannot handle rapidly changing real-time data. RAG retrieves fresh context dynamically from enterprise databases or Vector Stores and passes it into the prompt, making it ideal for ERP & billing documentation."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q3: How do you handle Prompt Injection and SQL Injection when using AI agents to generate database queries?</div>
+                        <div class="interview-a">
+                            "Never execute raw SQL generated by LLMs directly with admin privileges! Validate LLM-generated SQL against a strict read-only parser, execute using a restricted read-only database user account, enforce parameterization, and wrap AI tools in safe C# native functions."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q4: What is Function Calling / Tool Calling in Semantic Kernel?</div>
+                        <div class="interview-a">
+                            "Function Calling allows an LLM to decide when to invoke a native C# method (e.g. <code>[KernelFunction] get_customer_balance(int id)</code>). The LLM returns structured JSON arguments, the C# runtime executes the method against SQL/Oracle, and returns the result back to the LLM."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q5: How do you handle streaming responses from LLM APIs in ASP.NET Core?</div>
+                        <div class="interview-a">
+                            "Use C# 8+ <code>IAsyncEnumerable&lt;string&gt;</code> with Server-Sent Events (SSE) or WebSockets in ASP.NET Core controllers so tokens are streamed incrementally to the client as generated by the LLM without waiting for the full response payload."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q6: What is pgvector and how does it fit into relational SQL databases?</div>
+                        <div class="interview-a">
+                            "pgvector is an open-source extension for PostgreSQL that enables storing vector embeddings alongside traditional relational table columns, allowing hybrid search (combining SQL WHERE clauses with vector semantic similarity search)."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q7: How do you monitor and track LLM token usage and latency in .NET?</div>
+                        <div class="interview-a">
+                            "Use OpenTelemetry instrumentation built into .NET 9 AI extensions. Monitor prompt tokens, completion tokens, and HTTP request latency using Application Insights or Prometheus/Grafana dashboards."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q8: How can AI be applied to automatically detect database performance bottlenecks?</div>
+                        <div class="interview-a">
+                            "AI agents can analyze SQL Server Query Store DMV data, identify high-reads or missing index recommendations, and draft optimized index DDLs or execution plan rewrites for DBA review."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q9: What is Microsoft's new <code>Microsoft.Extensions.AI</code> package in .NET 9?</div>
+                        <div class="interview-a">
+                            "It is a standard unified set of C# abstractions (e.g. <code>IChatClient</code>, <code>IEmbeddingGenerator</code>) provided by Microsoft so .NET applications can switch between OpenAI, Azure AI, Ollama, or local Llama models with zero code rewrite."
+                        </div>
+                    </div>
+
+                    <div class="ai-q-box">
+                        <div class="ai-q">Q10: What is your response strategy if asked about AI experience in a technical interview?</div>
+                        <div class="interview-a">
+                            "Say: 'My primary enterprise foundation is in robust backend API engineering, SQL tuning, and ERP workflows, but I actively leverage modern AI tooling in .NET—such as Semantic Kernel, RAG patterns, vector embeddings, and LLM tool calling—to build intelligent enterprise applications.'"
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let appState = {
+            theme: localStorage.getItem("theme") || "dark",
+            lang: localStorage.getItem("lang") || "both"
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            applyTheme(appState.theme);
+            applyLanguage(appState.lang);
+
+            document.getElementById("btnThemeToggle").addEventListener("click", toggleTheme);
+
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebarOverlay");
+            
+            function openSidebar() { sidebar.classList.add("open"); overlay.classList.add("active"); }
+            function closeSidebar() { sidebar.classList.remove("open"); overlay.classList.remove("active"); }
+
+            document.getElementById("mobileNavToggle").addEventListener("click", openSidebar);
+            document.getElementById("floatingNavToggle").addEventListener("click", openSidebar);
+            document.getElementById("sidebarCloseBtn").addEventListener("click", closeSidebar);
+            overlay.addEventListener("click", closeSidebar);
+
+            document.querySelectorAll(".menu-item").forEach(item => {
+                item.addEventListener("click", () => { if (window.innerWidth <= 992) closeSidebar(); });
+            });
+        });
+
+        function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("theme", theme); }
+        function toggleTheme() { appState.theme = appState.theme === "dark" ? "light" : "dark"; applyTheme(appState.theme); }
+
+        function applyLanguage(lang) {
+            appState.lang = lang;
+            document.documentElement.setAttribute("data-lang", lang);
+            localStorage.setItem("lang", lang);
+            document.getElementById("btnLangBoth").classList.toggle("active", lang === "both");
+            document.getElementById("btnLangEng").classList.toggle("active", lang === "eng");
+            document.getElementById("btnLangBan").classList.toggle("active", lang === "ban");
+        }
+
+        function setLanguage(lang) { applyLanguage(lang); }
+    </script>
+</body>
+</html>
