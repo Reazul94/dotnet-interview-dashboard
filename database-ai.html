@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🛢️ Database & AI Engineering — .NET Interview Revision</title>
+    <title>🛢️ DATABASE MASTER REVISION — .NET & SQL Interview Preparation</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,6 +40,10 @@
             --accent-bn: #38bdf8;
             --accent-emerald: #10b981;
             --accent-ai: #ec4899;
+
+            /* Priority Badges */
+            --priority-high: #ef4444;
+            --priority-high-bg: rgba(239, 68, 68, 0.12);
 
             /* Active Theme Defaults */
             --bg-primary: var(--bg-primary-dark);
@@ -197,7 +201,7 @@
 
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 8px 10px; }
         .menu-category { font-size: 10px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin: 12px 6px 4px 6px; }
-        .menu-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; color: var(--text-secondary); text-decoration: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+        .menu-item { display: flex; align-items: center; gap: 8px; padding: 7px 10px; color: var(--text-secondary); text-decoration: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; margin-bottom: 2px; }
         .menu-item.active { border-left: 3px solid var(--accent-emerald); color: var(--accent-emerald); background-color: var(--bg-tertiary); }
 
         #main { margin-left: var(--sidebar-width); flex: 1; display: flex; flex-direction: column; min-width: 0; width: 100%; }
@@ -240,11 +244,24 @@
         .card-header-flex { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); gap: 10px; flex-wrap: wrap; }
         .card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
 
+        .priority-badge {
+            display: inline-flex; align-items: center; padding: 3px 8px;
+            border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase;
+        }
+        .priority-badge.high { background-color: var(--priority-high-bg); color: var(--priority-high); border: 1px solid rgba(239, 68, 68, 0.3); }
+
         .comparison-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
         .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; min-width: 550px; }
         .comparison-table th { background-color: var(--bg-tertiary); color: var(--text-primary); padding: 10px 12px; border-bottom: 2px solid var(--border-color); }
         .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
         .comparison-table code { font-family: 'Fira Code', monospace; font-size: 11px; background-color: var(--bg-primary); padding: 2px 5px; border-radius: 4px; color: var(--accent-emerald); }
+
+        .accordion-group { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .accordion-item { background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; }
+        .accordion-header { padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 8px; }
+        .accordion-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+        .accordion-body { display: none; padding: 14px; border-top: 1px solid var(--border-color); background-color: var(--bg-secondary); }
+        .accordion-item.active .accordion-body { display: block; }
 
         .interview-q-box { background-color: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; }
         .interview-q { font-weight: 700; color: var(--accent-emerald); font-size: 12.5px; margin-bottom: 4px; }
@@ -252,6 +269,9 @@
 
         .ai-q-box { background-color: rgba(236, 72, 153, 0.08); border: 1px solid rgba(236, 72, 153, 0.25); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; }
         .ai-q { font-weight: 700; color: var(--accent-ai); font-size: 12.5px; margin-bottom: 4px; }
+
+        .script-box { background-color: var(--bg-tertiary); border-radius: var(--radius-md); padding: 12px; margin-top: 10px; border-left: 3px solid var(--accent-emerald); }
+        .script-quote { font-style: italic; color: var(--text-secondary); font-size: 12px; background-color: var(--bg-primary); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); }
 
         .section-anchor { scroll-margin-top: 110px; }
 
@@ -288,8 +308,8 @@
                 <div class="brand">
                     <div class="brand-icon">🛢️</div>
                     <div>
-                        <div class="brand-title">DATABASE & AI</div>
-                        <div class="brand-subtitle">Master Hub</div>
+                        <div class="brand-title">DATABASE MASTER</div>
+                        <div class="brand-subtitle">SQL & AI Revision</div>
                     </div>
                 </div>
                 <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
@@ -305,17 +325,32 @@
             </div>
 
             <nav class="sidebar-menu">
-                <div class="menu-category">Database Engineering</div>
-                <a href="#sec-oracle-sql" class="menu-item active">Oracle PL/SQL vs SQL Server T-SQL</a>
-                <a href="#sec-execution-plan" class="menu-item">Execution Plans & Index Seeks vs Scans</a>
-                <a href="#sec-sargable" class="menu-item">SARGability & Covered Indexes</a>
-                <a href="#sec-deadlocks" class="menu-item">Transactions & Isolation Levels (RCSI)</a>
-                <a href="#sec-orm-comparison" class="menu-item">EF Core vs ADO.NET vs Dapper</a>
-
-                <div class="menu-category">AI Engineering in .NET</div>
-                <a href="#sec-net-ai" class="menu-item">.NET 8/9/10 AI & Semantic Kernel</a>
-                <a href="#sec-rag" class="menu-item">RAG Architecture & Vector DBs</a>
-                <a href="#sec-ai-qa" class="menu-item">Top 10 AI Interview Q&A</a>
+                <div class="menu-category">DATABASE</div>
+                <a href="#sec-db-fundamentals" class="menu-item active">├── Fundamentals</a>
+                <a href="#sec-db-normalization" class="menu-item">├── Normalization</a>
+                <a href="#sec-db-indexing" class="menu-item">├── Indexing ★★★★★</a>
+                <a href="#sec-db-composite" class="menu-item">├── Composite Index</a>
+                <a href="#sec-db-covering" class="menu-item">├── Covering Index</a>
+                <a href="#sec-db-noindex" class="menu-item">├── Why Index Not Used</a>
+                <a href="#sec-db-query-opt" class="menu-item">├── Query Optimization ★★★★★</a>
+                <a href="#sec-db-execution-plan" class="menu-item">├── Execution Plans</a>
+                <a href="#sec-db-opt-examples" class="menu-item">├── Optimization Examples</a>
+                <a href="#sec-db-joins" class="menu-item">├── Joins Optimization</a>
+                <a href="#sec-db-nplusone" class="menu-item">├── N+1 Query Problem</a>
+                <a href="#sec-db-transactions" class="menu-item">├── Transactions (ACID)</a>
+                <a href="#sec-db-isolation" class="menu-item">├── Isolation Levels</a>
+                <a href="#sec-db-deadlocks" class="menu-item">├── Deadlocks</a>
+                <a href="#sec-db-sp-func-view" class="menu-item">├── Stored Proc / Func / View</a>
+                <a href="#sec-db-cte" class="menu-item">├── CTE (Common Table Expr)</a>
+                <a href="#sec-db-window" class="menu-item">├── Window Functions</a>
+                <a href="#sec-db-scenarios" class="menu-item">├── SQL Challenges / Scenarios</a>
+                <a href="#sec-db-design" class="menu-item">├── Database Design Exercise</a>
+                <a href="#sec-db-ai-sql" class="menu-item">├── AI + SQL ★★★★★</a>
+                <a href="#sec-db-ai-prompts" class="menu-item">├── AI Prompt Templates</a>
+                <a href="#sec-db-ai-safety" class="menu-item">├── AI Safety & Hallucination</a>
+                <a href="#sec-db-ai-qa" class="menu-item">├── AI Interview Questions</a>
+                <a href="#sec-db-rapid-fire" class="menu-item">├── 40 Rapid-Fire Q&A</a>
+                <a href="#sec-db-cheatsheet" class="menu-item">└── Database Cheat Sheet</a>
             </nav>
         </aside>
 
@@ -327,7 +362,7 @@
                 <div class="page-switcher-bar">
                     <a href="index.html" class="page-tab">🔥 HIGH PRIORITY (PAGE 1)</a>
                     <a href="ecosystem.html" class="page-tab">🌐 ECOSYSTEM & TOOLS (PAGE 2)</a>
-                    <a href="database-ai.html" class="page-tab active">🛢️ DATABASE & AI (PAGE 3)</a>
+                    <a href="database-ai.html" class="page-tab active">🛢️ DATABASE MASTER (PAGE 3)</a>
                 </div>
 
                 <!-- Header -->
@@ -338,12 +373,12 @@
                         </button>
                         <div class="header-title-group">
                             <h1>
-                                <span class="en-text">🛢️ Database & AI Engineering</span>
-                                <span class="bn-sub">🛢️ ডাটাবেজ এবং এআই ইঞ্জিনিয়ারিং</span>
+                                <span class="en-text">🛢️ DATABASE MASTER REVISION</span>
+                                <span class="bn-sub">🛢️ ডাটাবেজ মাস্টার রিভিশন এবং এআই এস কিউ এল</span>
                             </h1>
                             <p>
-                                <span class="en-text">Oracle vs T-SQL • SQL Tuning • Semantic Kernel • RAG • Vector DBs</span>
-                                <span class="bn-sub">Oracle বনাম T-SQL • SQL টিউনিং • Semantic Kernel • RAG</span>
+                                <span class="en-text">SQL • Indexing • Query Optimization • Database Design • AI-Assisted SQL</span>
+                                <span class="bn-sub">এস কিউ এল • ইনডেক্সিং • কুয়েরি অপ্টিমাইজেশন • ডাটাবেজ ডিজাইন • এআই</span>
                             </p>
                         </div>
                     </div>
@@ -365,242 +400,458 @@
             <!-- Dashboard Content Body -->
             <div class="content-body">
 
-                <!-- SECTION 1: ORACLE VS T-SQL -->
-                <section id="sec-oracle-sql" class="card section-anchor">
+                <!-- 1. DATABASE FUNDAMENTALS -->
+                <section id="sec-db-fundamentals" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                            ORACLE PL/SQL vs SQL SERVER T-SQL TRANSITION
-                        </h2>
+                        <h2 class="card-title">1. DATABASE FUNDAMENTALS</h2>
+                        <span class="priority-badge high">Core Concepts</span>
                     </div>
 
                     <p style="font-size: 12.5px; margin-bottom: 10px;">
-                        <span class="en-text">Leverage your heavy Oracle PL/SQL enterprise experience by explaining equivalent SQL Server T-SQL concepts.</span>
-                        <span class="bn-sub">আপনার Oracle PL/SQL অভিজ্ঞতার সুবিধা নিয়ে SQL Server T-SQL এর সমতুল্য কনসেপ্টগুলো ব্যাখ্যা করুন।</span>
+                        <span class="en-text">Expandable revision cards for fundamental relational database building blocks.</span>
+                        <span class="bn-sub">রিলেশনাল ডাটাবেজের মৌলিক উপাদানগুলোর বিস্তারিত কার্ড।</span>
                     </p>
 
-                    <div class="comparison-table-wrapper">
-                        <table class="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>Concept Domain</th>
-                                    <th>Oracle Database (PL/SQL)</th>
-                                    <th>Microsoft SQL Server (T-SQL)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><strong>Variable Types</strong></td><td><code>VARCHAR2, NUMBER, DATE</code></td><td><code>VARCHAR, NVARCHAR, DECIMAL, DATETIME2</code></td></tr>
-                                <tr><td><strong>Auto-Increment</strong></td><td><code>CREATE SEQUENCE + TRIGGER</code></td><td><code>IDENTITY(1,1)</code> column property</td></tr>
-                                <tr><td><strong>Pagination</strong></td><td><code>ROWNUM <= 10</code> or <code>OFFSET/FETCH</code></td><td><code>OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY</code></td></tr>
-                                <tr><td><strong>Packages / Scope</strong></td><td><code>CREATE OR REPLACE PACKAGE BODY</code></td><td>Schemas (e.g. <code>dbo</code>, <code>billing</code>) + Modules</td></tr>
-                                <tr><td><strong>String Concatenation</strong></td><td><code>str1 || str2</code> or <code>CONCAT()</code></td><td><code>str1 + str2</code> or <code>CONCAT()</code></td></tr>
-                                <tr><td><strong>Exception Handling</strong></td><td><code>EXCEPTION WHEN OTHERS THEN</code></td><td><code>BEGIN TRY ... END TRY BEGIN CATCH ... END CATCH</code></td></tr>
-                                <tr><td><strong>Date Math</strong></td><td><code>SYSDATE + 7</code></td><td><code>DATEADD(day, 7, GETDATE())</code></td></tr>
-                                <tr><td><strong>String Length</strong></td><td><code>LENGTH(str)</code></td><td><code>LEN(str)</code></td></tr>
-                                <tr><td><strong>Null Value Check</strong></td><td><code>NVL(col, default)</code></td><td><code>ISNULL(col, default)</code> or <code>COALESCE()</code></td></tr>
-                            </tbody>
-                        </table>
+                    <div class="accordion-group" id="fundamentalsAccordionGroup">
+                        <!-- Rendered by JS -->
                     </div>
                 </section>
 
-                <!-- SECTION 2: EXECUTION PLANS & INDEX TUNING -->
-                <section id="sec-execution-plan" class="card section-anchor">
+                <!-- 2. DATABASE NORMALIZATION -->
+                <section id="sec-db-normalization" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                            EXECUTION PLAN OPERATORS: INDEX SEEK vs INDEX SCAN
-                        </h2>
-                    </div>
-
-                    <div class="interview-q-box">
-                        <div class="interview-q">Q: What is the difference between Index Seek and Index Scan in SQL Execution Plans?</div>
-                        <div class="interview-a">
-                            "<strong>Index Seek</strong> uses the B-Tree structure of an index to navigate directly to the exact matching rows (O(log N) fast binary lookup). <strong>Index Scan</strong> reads through all pages of the index from top to bottom (O(N) full table/index traversal). You should optimize queries to perform Index Seeks wherever possible!"
-                            <span class="bn-sub">Index Seek বি-ট্রি ব্যবহার করে সরাসরি নির্দিষ্ট সারিতে যায় (খুব দ্রুত O(log N))। Index Scan পুরো ইনডেক্স স্ক্যান করে (ধীরগতির O(N))।</span>
-                        </div>
-                    </div>
-
-                    <div class="interview-q-box" id="sec-sargable" style="margin-top: 10px;">
-                        <div class="interview-q">Q: What is SARGability and Covered Index?</div>
-                        <div class="interview-a">
-                            "<strong>SARGable (Search Argument Able)</strong> means a query condition can utilize an index. Wrapping an indexed column inside a SQL function like <code>WHERE YEAR(OrderDate) = 2024</code> makes it non-SARGable (causing Index Scan). Rewrite it as <code>WHERE OrderDate >= '2024-01-01' AND OrderDate < '2025-01-01'</code>. A <strong>Covering Index</strong> includes all requested columns in its leaf nodes via <code>INCLUDE (Col1, Col2)</code> to eliminate Key Lookups."
-                            <span class="bn-sub">SARGable কুয়েরি ইনডেক্স ব্যবহার করতে পারে। কলামের উপর ফাংশন দিলে ইনডেক্স কাজ করে না। Covered Index `INCLUDE` কি-ওয়ার্ড দিয়ে Key Lookup দূর করে।</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECTION 3: TRANSACTIONS & LOCKING ISOLATION -->
-                <section id="sec-deadlocks" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            TRANSACTIONS, LOCKING & SNAPSHOT ISOLATION (RCSI)
-                        </h2>
-                    </div>
-
-                    <div class="interview-q-box">
-                        <div class="interview-q">Q: How do you resolve Database Deadlocks and Blocking in enterprise applications?</div>
-                        <div class="interview-a">
-                            "1. Access database tables in identical chronological order across all Stored Procedures.<br>
-                            2. Keep transactions short and focused; never execute external REST API HTTP calls inside a database transaction block.<br>
-                            3. Enable <strong>READ_COMMITTED_SNAPSHOT (RCSI)</strong> in SQL Server. RCSI uses Row Versioning in tempdb so readers do not block writers and writers do not block readers!"
-                            <span class="bn-sub">১. টেবিল একই ক্রমানুসারে অ্যাক্সেস করুন। ২. ডাটাবেজ ট্রানজেকশনের ভেতরে REST API কল করবেন না। ৩. RCSI অন করলে রিডার ও রাইটার একজন অন্যজনকে ব্লক করে না।</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECTION 4: DATA ACCESS COMPARISON -->
-                <section id="sec-orm-comparison" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">DATA ACCESS ARCHITECTURE: ADO.NET vs EF CORE vs DAPPER</h2>
-                    </div>
-
-                    <div class="comparison-table-wrapper">
-                        <table class="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>Criteria</th>
-                                    <th>ADO.NET (Raw SQL)</th>
-                                    <th>Entity Framework Core</th>
-                                    <th>Dapper Micro-ORM</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><strong>Type</strong></td><td>Low-Level ADO Provider</td><td>Full-featured ORM</td><td>Micro-ORM Mapper</td></tr>
-                                <tr><td><strong>Execution Speed</strong></td><td>Maximum (Baseline)</td><td>Fast with <code>.AsNoTracking()</code></td><td>Near raw ADO.NET speed</td></tr>
-                                <tr><td><strong>Developer Productivity</strong></td><td>Manual Mapping required</td><td>High (LINQ, Migrations)</td><td>High (SQL to Object map)</td></tr>
-                                <tr><td><strong>Change Tracking</strong></td><td>None</td><td>Built-in Change Tracker</td><td>None</td></tr>
-                                <tr><td><strong>Best Use Case</strong></td><td>High-volume bulk inserts, raw SPs</td><td>Standard CRUD REST APIs</td><td>High-performance reporting APIs</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- SECTION 5: AI & MACHINE LEARNING IN .NET -->
-                <section id="sec-net-ai" class="card section-anchor" style="border-color: var(--accent-ai);">
-                    <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-ai);">
-                            🤖 .NET 8 / 9 / 10 AI ARCHITECTURE & SEMANTIC KERNEL
-                        </h2>
-                    </div>
-
-                    <div class="concept-section">
-                        <div class="concept-label" style="color: var(--accent-ai);">What is Microsoft Semantic Kernel?</div>
-                        <div class="concept-val">
-                            Microsoft Semantic Kernel is an open-source SDK that enables .NET developers to easily integrate OpenAI, Azure OpenAI, HuggingFace, and custom LLM models into C# enterprise applications. It orchestrates AI Plugins, Native Functions, Prompt Templates, and Vector Memory.
-                            <span class="bn-sub">Semantic Kernel হলো মাইক্রোসফটের C# SDK যা OpenAI/Azure OpenAI মডেলকে এন্টারপ্রাইজ অ্যাপে প্লাগইন ও মেমরির সাহায্যে যুক্ত করতে ব্যবহৃত হয়।</span>
-                        </div>
-                    </div>
-
-                    <div class="script-box" style="border-left-color: var(--accent-ai);">
-                        <div class="script-do" style="color: var(--accent-ai);">C# SEMANTIC KERNEL INITIALIZATION SNIPPET</div>
-<pre><code>using Microsoft.SemanticKernel;
-
-var builder = Kernel.CreateBuilder();
-builder.AddOpenAIChatCompletion(
-    modelId: "gpt-4o",
-    apiKey: builder.Configuration["OpenAI:ApiKey"]
-);
-
-Kernel kernel = builder.Build();
-var result = await kernel.InvokePromptAsync("Summarize ERP gas billing anomaly for Customer ID #9481");
-Console.WriteLine(result.GetValue&lt;string&gt;());</code></pre>
-                    </div>
-                </section>
-
-                <!-- SECTION 6: RAG & VECTOR DATABASES -->
-                <section id="sec-rag" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-ai);">
-                            🧠 RAG (RETRIEVAL-AUGMENTED GENERATION) & VECTOR DATABASES
-                        </h2>
+                        <h2 class="card-title">2. DATABASE NORMALIZATION & DENORMALIZATION</h2>
                     </div>
 
                     <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
-                        <p><strong>1. Document Ingestion:</strong> Extract text from PDFs, database logs, or enterprise policies.</p>
-                        <p style="margin-top: 4px;"><strong>2. Text Chunking:</strong> Split content into semantic blocks (e.g. 500 tokens with 50-token overlap).</p>
-                        <p style="margin-top: 4px;"><strong>3. Vector Embeddings:</strong> Generate numeric floating-point vectors via embedding models (e.g. <code>text-embedding-3-small</code>).</p>
-                        <p style="margin-top: 4px;"><strong>4. Vector Store Search:</strong> Query vector databases (pgvector, Azure AI Search, Qdrant) using Cosine Similarity / HNSW index.</p>
-                        <p style="margin-top: 4px;"><strong>5. Contextual Completion:</strong> Inject retrieved chunks into LLM system prompt to generate grounded, hallucination-free answers.</p>
+                        <p><strong>1NF (First Normal Form):</strong> Atomic values per cell (no multi-valued columns or repeating groups).</p>
+                        <p style="margin-top: 4px;"><strong>2NF (Second Normal Form):</strong> In 1NF + No partial dependencies (all non-key columns fully dependent on whole primary key).</p>
+                        <p style="margin-top: 4px;"><strong>3NF (Third Normal Form):</strong> In 2NF + No transitive dependencies (non-key columns depend ONLY on primary key, not on other non-key columns).</p>
+                        <p style="margin-top: 4px;"><strong>BCNF (Boyce-Codd Normal Form):</strong> Strict 3NF variant where every determinant is a candidate key.</p>
+                    </div>
+
+                    <div style="margin-top: 12px;">
+                        <h4 style="font-size: 13px; font-weight: 700; color: var(--accent-red);">❌ Bad Design (Unnormalized):</h4>
+                        <pre><code>CustomerID | CustomerName | Product1 | Product2 | Product3</code></pre>
+
+                        <h4 style="font-size: 13px; font-weight: 700; color: var(--accent-green); margin-top: 10px;">✅ Normalized Design:</h4>
+                        <pre><code>Customer   (CustomerID, CustomerName, Email)
+Order      (OrderID, CustomerID, OrderDate)
+OrderItem  (OrderItemID, OrderID, ProductID, Quantity, Price)
+Product    (ProductID, ProductName, Price)</code></pre>
+                    </div>
+
+                    <div class="interview-q-box" style="margin-top: 12px;">
+                        <div class="interview-q">Q: Why normalization helps & when would you intentionally denormalize?</div>
+                        <div class="interview-a">
+                            "Normalization reduces data duplication, maintains consistency, makes updates easier, and enforces data integrity.<br><br>
+                            <strong>Intentionally Denormalize:</strong> In read-heavy systems, reporting data marts, analytics, or performance-critical APIs to reduce expensive multi-table JOINs.<br>
+                            <strong>Trade-off:</strong> Duplicated data can lead to data consistency problems and requires update triggers/synchronization code."
+                        </div>
                     </div>
                 </section>
 
-                <!-- SECTION 7: TOP 10 AI INTERVIEW QUESTIONS -->
-                <section id="sec-ai-qa" class="card section-anchor">
+                <!-- 3. INDEXING MASTER CLASS -->
+                <section id="sec-db-indexing" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-ai);">
-                            TOP 10 AI-RELATED .NET INTERVIEW QUESTIONS & MODEL ANSWERS
-                        </h2>
+                        <h2 class="card-title">3. INDEXING MASTER CLASS</h2>
+                        <span class="priority-badge high">★★★★★ HIGH PRIORITY</span>
                     </div>
 
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q1: How do you integrate OpenAI / LLM APIs securely in ASP.NET Core without leaking API keys?</div>
+                    <div class="interview-q-box">
+                        <div class="interview-q">Analogy: How does a Database Index work?</div>
                         <div class="interview-a">
-                            "Never hardcode API keys in code or appsettings.json. Store keys in Azure Key Vault or Environment Variables. Inject <code>IHttpClientFactory</code> or Microsoft's unified <code>IChatClient</code> interface in .NET 9 with proper resilience policies (Polly retry & rate limiting)."
+                            "<strong>Without Index:</strong> Reading an unindexed table is like searching for a phrase in a 1,000-page book by scanning every single line page-by-page (Table Scan).<br>
+                            <strong>With Index:</strong> Using a B-Tree index is like turning directly to the alphabetical index at the back of the book to jump directly to page 412 (Index Seek)."
                         </div>
                     </div>
 
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q2: What is the difference between Fine-Tuning an LLM vs using RAG for enterprise search?</div>
+                    <div class="comparison-table-wrapper" style="margin-top: 12px;">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Index Type</th>
+                                    <th>Concept & Mechanism</th>
+                                    <th>Key Characteristic</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Clustered Index</strong></td><td>Physically sorts and stores table data rows on disk in index order.</td><td>Only ONE per table (Primary Key by default).</td></tr>
+                                <tr><td><strong>Non-Clustered Index</strong></td><td>Separate index structure containing key values + row pointers (RID/Clustered Key).</td><td>Can have multiple (e.g. 249 per table).</td></tr>
+                                <tr><td><strong>Composite Index</strong></td><td>Index created on multiple columns e.g. <code>(Name, Status)</code>.</td><td>Column ordering matters (Leftmost prefix).</td></tr>
+                                <tr><td><strong>Unique Index</strong></td><td>Enforces unique value constraint while indexing.</td><td>Prevents duplicate key entries.</td></tr>
+                                <tr><td><strong>Covering Index</strong></td><td>Index containing all requested query columns in leaf nodes.</td><td>Avoids base table Key Lookups.</td></tr>
+                                <tr><td><strong>Filtered / Partial Index</strong></td><td>Index with a <code>WHERE</code> clause indexing subset of rows.</td><td>Saves disk space (e.g. <code>WHERE IsActive = 1</code>).</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="script-box" style="margin-top: 12px; border-left-color: var(--accent-red);">
+                        <div class="script-dont">⚠️ IMPORTANT: INDEXES ARE NOT ALWAYS BENEFICIAL!</div>
+                        <div class="script-quote">
+                            "Indexes speed up SELECT queries, BUT they slow down INSERT, UPDATE, and DELETE operations because every write must also modify the B-Tree index pages. They also consume disk storage and increase maintenance/fragmentation rebuild costs."
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. COMPOSITE INDEX -->
+                <section id="sec-db-composite" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">4. COMPOSITE INDEX & LEFTMOST PREFIX</h2>
+                    </div>
+
+                    <pre><code>CREATE INDEX IX_Customer_Name_Status ON Customer(Name, Status);</code></pre>
+
+                    <div class="interview-q-box" style="margin-top: 10px;">
+                        <div class="interview-q">Q: Does an index on (A, B) automatically make filtering by B efficient?</div>
                         <div class="interview-a">
-                            "Fine-tuning retrains model weights to learn specific style or domain terminology, but is expensive and cannot handle rapidly changing real-time data. RAG retrieves fresh context dynamically from enterprise databases or Vector Stores and passes it into the prompt, making it ideal for ERP & billing documentation."
+                            "<strong>Not necessarily.</strong> A B-tree composite index is ordered primarily by column A, then secondary by column B (like a phonebook ordered by Last Name, then First Name). Filtering by <code>A</code> or <code>A + B</code> naturally utilizes the index seek. Filtering only by <code>B</code> forces a scan unless the optimizer chooses a full index scan or skip scan."
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. COVERING INDEX -->
+                <section id="sec-db-covering" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">5. COVERING INDEX</h2>
+                    </div>
+
+                    <p style="font-size: 12.5px;">
+                        A covering index contains enough indexed/included data for a query so the database can answer the query directly from the index leaf nodes, avoiding going back to the base table (eliminating Key / RID Lookups).
+                    </p>
+
+                    <pre><code>-- Query:
+SELECT CustomerId, Name FROM Customer WHERE Email = 'user@example.com';
+
+-- Covering Index Definition:
+CREATE NONCLUSTERED INDEX IX_Customer_Email
+ON Customer(Email) INCLUDE (Name);</code></pre>
+                </section>
+
+                <!-- 6. WHY IS MY INDEX NOT BEING USED? -->
+                <section id="sec-db-noindex" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-red);">6. WHY IS MY INDEX NOT BEING USED? (10 REASONS)</h2>
+                    </div>
+
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md);">
+                        <ol class="check-list" style="padding-left: 10px; font-size: 12.5px;">
+                            <li>1. <strong>Function applied to indexed column:</strong> <code>WHERE LOWER(Name) = 'john'</code> (Non-SARGable).</li>
+                            <li>2. <strong>Poor selectivity:</strong> Column has very few unique values (e.g., Boolean <code>Gender</code>).</li>
+                            <li>3. <strong>Small table:</strong> Database optimizer decides a Table Scan is faster than Index Seek + Lookup.</li>
+                            <li>4. <strong>Outdated statistics:</strong> Query optimizer generates a poor execution plan based on stale stats.</li>
+                            <li>5. <strong>Implicit type conversion:</strong> Passing <code>VARCHAR</code> literal to an <code>NVARCHAR</code> indexed column.</li>
+                            <li>6. <strong>Leading wildcard in LIKE:</strong> <code>WHERE Name LIKE '%John'</code> forces full scan.</li>
+                            <li>7. <strong>Query returns large percentage of table:</strong> Optimizer chooses scan over millions of key lookups.</li>
+                            <li>8. <strong>Incorrect composite index column order:</strong> Filtering by non-leading composite column.</li>
+                            <li>9. <strong>Optimizer estimates scan is cheaper:</strong> Hardware/memory statistics suggest scan cost is lower.</li>
+                            <li>10. <strong>Query structure issues:</strong> Complex <code>OR</code> conditions across unindexed columns.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- 7. QUERY OPTIMIZATION WORKFLOW -->
+                <section id="sec-db-query-opt" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">7. SLOW QUERY INVESTIGATION WORKFLOW (13 STEPS)</h2>
+                        <span class="priority-badge high">★★★★★ HIGH PRIORITY</span>
+                    </div>
+
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p>1. Reproduce Query → 2. Measure Execution Time → 3. Check Execution Plan → 4. Check Table Size → 5. Check Indexes → 6. Check Joins → 7. Check WHERE Conditions → 8. Check Returned Row Count → 9. Check Sorting/Grouping → 10. Check Blocking/Locking → 11. Check Statistics → 12. Apply Optimization → 13. Measure Again!</p>
+                    </div>
+
+                    <div class="script-box" style="margin-top: 10px; border-left-color: var(--accent-yellow);">
+                        <strong>⚡ Golden Rule:</strong> "Never optimize based only on assumptions. Measure execution time and IO reads before and after."
+                    </div>
+                </section>
+
+                <!-- 8. EXECUTION PLAN OPERATORS -->
+                <section id="sec-db-execution-plan" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">8. EXECUTION PLAN OPERATORS</h2>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Operator</th>
+                                    <th>Mechanism</th>
+                                    <th>Is It Bad?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Index Seek</strong></td><td>Navigates B-Tree directly to specific rows.</td><td>Usually Best (Targeted lookup)</td></tr>
+                                <tr><td><strong>Index Scan</strong></td><td>Traverses all pages of the index.</td><td>Can be inefficient for large tables</td></tr>
+                                <tr><td><strong>Table Scan</strong></td><td>Reads all rows of a heap table.</td><td>Not bad for small tables (< 1,000 rows)</td></tr>
+                                <tr><td><strong>Nested Loop</strong></td><td>Outer loop executes inner loop for each row.</td><td>Best for small row sets</td></tr>
+                                <tr><td><strong>Hash Join</strong></td><td>Builds hash table in memory for large joins.</td><td>Good for large unindexed datasets</td></tr>
+                                <tr><td><strong>Merge Join</strong></td><td>Joins two sorted inputs.</td><td>Very fast if inputs are pre-sorted</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 9. QUERY OPTIMIZATION EXAMPLES -->
+                <section id="sec-db-opt-examples" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">9. QUERY OPTIMIZATION PRACTICAL EXAMPLES</h2>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <h4 style="font-size: 12px; color: var(--accent-red);">❌ Bad (SELECT *):</h4>
+                            <pre><code>SELECT * FROM Customer;</code></pre>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 12px; color: var(--accent-green);">✅ Better (Specific Columns):</h4>
+                            <pre><code>SELECT CustomerId, Name, Email FROM Customer;</code></pre>
                         </div>
                     </div>
 
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q3: How do you handle Prompt Injection and SQL Injection when using AI agents to generate database queries?</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                        <div>
+                            <h4 style="font-size: 12px; color: var(--accent-red);">❌ Bad (SARGable violation):</h4>
+                            <pre><code>WHERE YEAR(OrderDate) = 2024</code></pre>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 12px; color: var(--accent-green);">✅ Better (Index Seekable):</h4>
+                            <pre><code>WHERE OrderDate >= '2024-01-01' AND OrderDate < '2025-01-01'</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 10. JOIN OPTIMIZATION -->
+                <section id="sec-db-joins" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">10. JOIN OPTIMIZATION & INTERVIEW FRAMEWORK</h2>
+                    </div>
+
+                    <div class="interview-q-box">
+                        <div class="interview-q">Q: "Why is my JOIN query slow?" (8-Step Framework)</div>
                         <div class="interview-a">
-                            "Never execute raw SQL generated by LLMs directly with admin privileges! Validate LLM-generated SQL against a strict read-only parser, execute using a restricted read-only database user account, enforce parameterization, and wrap AI tools in safe C# native functions."
+                            "1. Check Execution Plan → 2. Check Join Columns for Indexes → 3. Check Join Cardinality → 4. Verify Row Counts → 5. Check if Filtering occurs BEFORE Joining → 6. Update Statistics → 7. Check Join Algorithm (Nested Loop vs Hash vs Merge) → 8. Eliminate Unnecessary Joins."
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 11. N+1 QUERY PROBLEM -->
+                <section id="sec-db-nplusone" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">11. N+1 QUERY PROBLEM IN ORMs</h2>
+                    </div>
+
+                    <div class="interview-q-box">
+                        <div class="interview-q">Q: What is the N+1 Query Problem?</div>
+                        <div class="interview-a">
+                            "N+1 occurs when an ORM (EF Core / Hibernate) executes 1 query to fetch a parent list of N items (e.g., 100 Customers), then executes N separate database queries inside a loop to fetch child records for each customer. Total queries executed: 1 + 100 = 101 queries!<br><br>
+                            <strong>Solutions:</strong> Eager Loading (<code>.Include()</code> in EF Core / <code>JOIN FETCH</code> in JPA), Projections, Explicit JOINs, or Batch Loading."
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 12. TRANSACTIONS & ACID -->
+                <section id="sec-db-transactions" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">12. TRANSACTIONS & ACID PROPERTIES</h2>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);"><strong>A — Atomicity:</strong> All operations succeed or all fail.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);"><strong>C — Consistency:</strong> Database transitions from one valid state to another.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);"><strong>I — Isolation:</strong> Concurrent transactions do not interfere with each other.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);"><strong>D — Durability:</strong> Committed data persists permanently even after power failure.</div>
+                    </div>
+                </section>
+
+                <!-- 13. ISOLATION LEVELS -->
+                <section id="sec-db-isolation" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">13. TRANSACTION ISOLATION LEVELS</h2>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Isolation Level</th>
+                                    <th>Dirty Read</th>
+                                    <th>Non-Repeatable Read</th>
+                                    <th>Phantom Read</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Read Uncommitted</strong></td><td>Possible</td><td>Possible</td><td>Possible</td></tr>
+                                <tr><td><strong>Read Committed</strong></td><td>Prevented</td><td>Possible</td><td>Possible</td></tr>
+                                <tr><td><strong>Repeatable Read</strong></td><td>Prevented</td><td>Prevented</td><td>Possible</td></tr>
+                                <tr><td><strong>Serializable</strong></td><td>Prevented</td><td>Prevented</td><td>Prevented</td></tr>
+                                <tr><td><strong>Snapshot (RCSI)</strong></td><td>Prevented</td><td>Prevented</td><td>Prevented (Row Versioning)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 14. DEADLOCKS -->
+                <section id="sec-db-deadlocks" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">14. DEADLOCK PREVENTION</h2>
+                    </div>
+
+                    <div class="interview-q-box">
+                        <div class="interview-q">Q: How do you prevent and handle deadlocks?</div>
+                        <div class="interview-a">
+                            "1. Access tables in consistent chronological order across all transactions.<br>
+                            2. Keep transactions short; do not make external HTTP API calls inside a transaction.<br>
+                            3. Use appropriate indexes to minimize scan lock duration.<br>
+                            4. Enable Read Committed Snapshot Isolation (RCSI) in SQL Server.<br>
+                            5. Implement retry logic for transient deadlock errors (Error 1205)."
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 15. STORED PROC VS FUNC VS VIEW -->
+                <section id="sec-db-sp-func-view" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">15. STORED PROCEDURE vs FUNCTION vs VIEW</h2>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Stored Procedure</th>
+                                    <th>User-Defined Function</th>
+                                    <th>View / Materialized View</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Parameters</strong></td><td>Input & Output parameters</td><td>Input parameters only</td><td>None</td></tr>
+                                <tr><td><strong>DML Statements</strong></td><td>Allows INSERT/UPDATE/DELETE</td><td>Read-only (No DML)</td><td>Query virtual table</td></tr>
+                                <tr><td><strong>In SELECT clause</strong></td><td>Cannot call in SELECT</td><td>Can call in SELECT</td><td>Can query directly</td></tr>
+                                <tr><td><strong>Execution Plan</strong></td><td>Pre-compiled & cached</td><td>Compiled on invocation</td><td>Sub-query expansion</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 16. CTE -->
+                <section id="sec-db-cte" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">16. COMMON TABLE EXPRESSION (CTE)</h2>
+                    </div>
+
+                    <pre><code>WITH CustomerOrders AS (
+    SELECT CustomerId, COUNT(*) AS OrderCount
+    FROM Orders
+    GROUP BY CustomerId
+)
+SELECT * FROM CustomerOrders WHERE OrderCount > 5;</code></pre>
+                </section>
+
+                <!-- 17. WINDOW FUNCTIONS -->
+                <section id="sec-db-window" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">17. WINDOW FUNCTIONS (ROW_NUMBER, RANK, LAG, LEAD)</h2>
+                    </div>
+
+                    <pre><code>SELECT CustomerId, OrderDate, TotalAmount,
+       ROW_NUMBER() OVER (PARTITION BY CustomerId ORDER BY OrderDate DESC) AS RowNum
+FROM Orders;</code></pre>
+                </section>
+
+                <!-- 18. SQL SCENARIOS -->
+                <section id="sec-db-scenarios" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">18. 8 TOP SQL INTERVIEW SCENARIOS</h2>
+                    </div>
+
+                    <div class="accordion-group" id="sqlScenariosAccordionGroup">
+                        <!-- Rendered by JS -->
+                    </div>
+                </section>
+
+                <!-- 19. DATABASE DESIGN EXERCISE -->
+                <section id="sec-db-design" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">19. ENTERPRISE BILLING DATABASE DESIGN EXERCISE</h2>
+                    </div>
+
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p><strong>Entities:</strong> Customer (PK CustomerId) → Account (PK AccountId, FK CustomerId) → Meter (PK MeterId, FK AccountId) → Bill (PK BillId, FK AccountId) → Payment (PK PaymentId, FK BillId).</p>
+                    </div>
+                </section>
+
+                <!-- 20-34. AI + SQL MASTER SECTION -->
+                <section id="sec-db-ai-sql" class="card section-anchor" style="border-color: var(--accent-ai);">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-ai);">20 - 34. AI + SQL — MODERN INTERVIEW MASTERCLASS</h2>
+                        <span class="priority-badge high">★★★★★ HIGH PRIORITY</span>
+                    </div>
+
+                    <div class="script-box" style="border-left-color: var(--accent-ai);">
+                        <div class="script-do" style="color: var(--accent-ai);">🤖 BEST AI PROMPT FORMULA FOR SQL:</div>
+                        <div class="script-quote">
+                            DATABASE + SCHEMA + REQUIREMENT + CONSTRAINTS + CURRENT QUERY + EVIDENCE + EXPECTED RESULT
                         </div>
                     </div>
 
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q4: What is Function Calling / Tool Calling in Semantic Kernel?</div>
-                        <div class="interview-a">
-                            "Function Calling allows an LLM to decide when to invoke a native C# method (e.g. <code>[KernelFunction] get_customer_balance(int id)</code>). The LLM returns structured JSON arguments, the C# runtime executes the method against SQL/Oracle, and returns the result back to the LLM."
+                    <div id="sec-db-ai-prompts" style="margin-top: 14px;">
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-ai);">Reusable AI Prompt Templates:</h3>
+                        
+                        <div style="margin-top: 8px;">
+                            <strong>1. Query Optimization Prompt:</strong>
+                            <pre><code>Act as a senior database performance engineer. Optimize the following SQL query:
+[QUERY]
+Database: [SQL Server / Oracle / PostgreSQL]
+Schema: [SCHEMA]
+Execution Plan: [PLAN]
+Identify the bottleneck, check joins/indexes, and provide an optimized query with trade-offs explained.</code></pre>
+                        </div>
+
+                        <div style="margin-top: 8px;">
+                            <strong>2. Oracle to SQL Server Conversion Prompt:</strong>
+                            <pre><code>Convert this Oracle PL/SQL query to SQL Server T-SQL:
+[ORACLE SQL]
+Do not perform a direct syntax conversion only. Identify differences in date functions, pagination, sequences/identity, string functions, NULL handling, procedures, and database-specific features.</code></pre>
                         </div>
                     </div>
 
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q5: How do you handle streaming responses from LLM APIs in ASP.NET Core?</div>
-                        <div class="interview-a">
-                            "Use C# 8+ <code>IAsyncEnumerable&lt;string&gt;</code> with Server-Sent Events (SSE) or WebSockets in ASP.NET Core controllers so tokens are streamed incrementally to the client as generated by the LLM without waiting for the full response payload."
-                        </div>
+                    <div id="sec-db-ai-safety" class="script-box" style="margin-top: 14px; border-left-color: var(--accent-red);">
+                        <div class="script-dont">⚠️ AI SAFETY & HALLUCINATION CHECKLIST:</div>
+                        <p style="font-size: 12px; margin-top: 4px;">1. Never blindly execute AI-generated SQL.<br>2. Verify table and column names against actual DDL.<br>3. Review execution plan before running on large tables.<br>4. AI can generate syntactically valid SQL that is logically wrong!</p>
+                    </div>
+                </section>
+
+                <!-- 35. 40 RAPID FIRE QUESTIONS -->
+                <section id="sec-db-rapid-fire" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">35. 40 DATABASE RAPID-FIRE QUESTIONS & ANSWERS</h2>
                     </div>
 
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q6: What is pgvector and how does it fit into relational SQL databases?</div>
-                        <div class="interview-a">
-                            "pgvector is an open-source extension for PostgreSQL that enables storing vector embeddings alongside traditional relational table columns, allowing hybrid search (combining SQL WHERE clauses with vector semantic similarity search)."
-                        </div>
+                    <div class="accordion-group" id="rapidFireAccordionGroup">
+                        <!-- Rendered by JS -->
+                    </div>
+                </section>
+
+                <!-- 36. CHEAT SHEET -->
+                <section id="sec-db-cheatsheet" class="card section-anchor" style="border-color: var(--accent-emerald);">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-emerald);">36. FINAL DATABASE INTERVIEW CHEAT SHEET</h2>
                     </div>
 
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q7: How do you monitor and track LLM token usage and latency in .NET?</div>
-                        <div class="interview-a">
-                            "Use OpenTelemetry instrumentation built into .NET 9 AI extensions. Monitor prompt tokens, completion tokens, and HTTP request latency using Application Insights or Prometheus/Grafana dashboards."
-                        </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; font-size: 12px;">
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>INDEX:</strong> Faster reads, extra write/storage cost.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>COMPOSITE INDEX:</strong> Column order matters (Leftmost prefix).</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>COVERING INDEX:</strong> Avoids table lookups via INCLUDE.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>N+1 PROBLEM:</strong> 1 query + N child queries. Fix via .Include().</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>ACID:</strong> Atomicity, Consistency, Isolation, Durability.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>DEADLOCK:</strong> Tx order mismatch. Fix via consistent access order.</div>
                     </div>
 
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q8: How can AI be applied to automatically detect database performance bottlenecks?</div>
-                        <div class="interview-a">
-                            "AI agents can analyze SQL Server Query Store DMV data, identify high-reads or missing index recommendations, and draft optimized index DDLs or execution plan rewrites for DBA review."
-                        </div>
-                    </div>
-
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q9: What is Microsoft's new <code>Microsoft.Extensions.AI</code> package in .NET 9?</div>
-                        <div class="interview-a">
-                            "It is a standard unified set of C# abstractions (e.g. <code>IChatClient</code>, <code>IEmbeddingGenerator</code>) provided by Microsoft so .NET applications can switch between OpenAI, Azure AI, Ollama, or local Llama models with zero code rewrite."
-                        </div>
-                    </div>
-
-                    <div class="ai-q-box">
-                        <div class="ai-q">Q10: What is your response strategy if asked about AI experience in a technical interview?</div>
-                        <div class="interview-a">
-                            "Say: 'My primary enterprise foundation is in robust backend API engineering, SQL tuning, and ERP workflows, but I actively leverage modern AI tooling in .NET—such as Semantic Kernel, RAG patterns, vector embeddings, and LLM tool calling—to build intelligent enterprise applications.'"
-                        </div>
+                    <div class="script-box" style="margin-top: 10px; border-left-color: var(--accent-emerald);">
+                        <strong>🏆 MOST IMPORTANT RULE:</strong> "Never accept an AI-generated SQL query simply because it runs successfully. Validate correctness, security and performance against the actual database."
                     </div>
                 </section>
 
@@ -609,6 +860,41 @@ Console.WriteLine(result.GetValue&lt;string&gt;());</code></pre>
     </div>
 
     <script>
+        const fundamentalsData = [
+            { id: "f1", title: "Database", def: "An organized collection of structured data stored electronically.", ent: "Gas Utility Billing Master Database.", sql: "CREATE DATABASE BillingDB;", q: "What is a Database?", a: "An organized electronic collection of structured data allowing rapid access and transactions." },
+            { id: "f2", title: "Relational Database (RDBMS)", def: "A database storing data in tables with predefined schema relationships.", ent: "SQL Server / Oracle managing accounts and meters.", sql: "SELECT * FROM Customer c JOIN Order o ON c.Id = o.CustomerId;", q: "What is RDBMS?", a: "A database based on relational model using tables, primary/foreign keys, and ACID compliance." },
+            { id: "f3", title: "Table", def: "A collection of related data entries organized in rows and columns.", ent: "Customer Table.", sql: "CREATE TABLE Customer (Id INT PRIMARY KEY, Name VARCHAR(100));", q: "What is a Table?", a: "A two-dimensional grid of rows and columns storing instances of an entity." },
+            { id: "f4", title: "Row (Tuple / Record)", def: "A single horizontal data item record in a table.", ent: "Single Customer Record.", sql: "INSERT INTO Customer VALUES (1, 'Reazul');", q: "What is a Row?", a: "A single data record representing one instance of the entity." },
+            { id: "f5", title: "Column (Field / Attribute)", def: "A vertical set of data values of a specific data type.", ent: "Customer Email column.", sql: "Email VARCHAR(255) NOT NULL", q: "What is a Column?", a: "A specific attribute of data shared across all rows in a table." },
+            { id: "f6", title: "Primary Key (PK)", def: "A column or set of columns uniquely identifying each row in a table.", ent: "CustomerID.", sql: "CONSTRAINT PK_Customer PRIMARY KEY (CustomerId)", q: "What is a Primary Key?", a: "A column enforcing uniqueness and non-nullability to uniquely identify each row." },
+            { id: "f7", title: "Foreign Key (FK)", def: "A column linking rows in one table to the primary key of another table.", ent: "Orders.CustomerId pointing to Customer.CustomerId.", sql: "FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId)", q: "What is a Foreign Key?", a: "A field establishing referential integrity between child and parent tables." },
+            { id: "f8", title: "Unique Key", def: "Enforces unique values across non-PK columns, allowing one NULL.", ent: "Customer Email Address.", sql: "CONSTRAINT UQ_Email UNIQUE (Email)", q: "PK vs Unique Key?", a: "PK allows NO NULLs (1 per table); Unique Key allows 1 NULL (multiple per table)." },
+            { id: "f9", title: "Composite Key", def: "A primary key composed of two or more columns.", ent: "OrderItem (OrderId, ProductId).", sql: "PRIMARY KEY (OrderId, ProductId)", q: "What is a Composite Key?", a: "A multi-column key required when single column is insufficient for uniqueness." },
+            { id: "f10", title: "Candidate Key", def: "Any column or set of columns capable of acting as a Primary Key.", ent: "NID Number or Passport Number.", sql: "Candidate keys evaluate to PK selection.", q: "What is a Candidate Key?", a: "A superkey with no redundant attributes capable of uniquely identifying rows." },
+            { id: "f11", title: "Constraints", def: "Rules enforced on data columns to ensure data integrity.", ent: "NOT NULL, UNIQUE, CHECK, DEFAULT.", sql: "CHECK (Age >= 18)", q: "What are Constraints?", a: "Rules enforced by RDBMS to restrict data inserted or updated." },
+            { id: "f12", title: "Referential Integrity", def: "Ensures foreign key relationships between tables remain valid and consistent.", ent: "Preventing orphan Order records if Customer is deleted.", sql: "ON DELETE CASCADE / RESTRICT", q: "What is Referential Integrity?", a: "Ensures child foreign key values always match a valid parent primary key." }
+        ];
+
+        const sqlScenarios = [
+            { id: "s1", q: "Find the 2nd Highest Salary", sql: "SELECT MAX(Salary) FROM Employee WHERE Salary < (SELECT MAX(Salary) FROM Employee);", alt: "SELECT Salary FROM Employee ORDER BY Salary DESC OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;" },
+            { id: "s2", q: "Find Duplicate Customers by Email", sql: "SELECT Email, COUNT(*) FROM Customer GROUP BY Email HAVING COUNT(*) > 1;", alt: "Using ROW_NUMBER() OVER(PARTITION BY Email ORDER BY Id)." },
+            { id: "s3", q: "Find Customers with No Orders", sql: "SELECT c.CustomerId FROM Customer c LEFT JOIN Orders o ON c.CustomerId = o.CustomerId WHERE o.OrderId IS NULL;", alt: "SELECT CustomerId FROM Customer WHERE CustomerId NOT IN (SELECT CustomerId FROM Orders);" },
+            { id: "s4", q: "Find Latest Order per Customer", sql: "WITH RankedOrders AS (SELECT *, ROW_NUMBER() OVER(PARTITION BY CustomerId ORDER BY OrderDate DESC) AS rn FROM Orders) SELECT * FROM RankedOrders WHERE rn = 1;", alt: "Subquery with MAX(OrderDate)." }
+        ];
+
+        const rapidFireData = [
+            { q: "1. What is an index?", a: "A B-Tree data structure that speeds up data retrieval SELECT queries." },
+            { q: "2. Why does an index improve SELECT performance?", a: "It provides O(log N) binary lookup instead of O(N) full table scan." },
+            { q: "3. Why can indexes hurt INSERT performance?", a: "Every INSERT must also write and update B-Tree index leaf pages." },
+            { q: "4. Clustered vs non-clustered index?", a: "Clustered physically orders table rows (1 per table); Non-clustered is a separate structure (many per table)." },
+            { q: "5. What is a composite index?", a: "An index created on two or more columns." },
+            { q: "6. Why does column order matter?", a: "B-Tree indexes sort by leading column first (Leftmost prefix rule)." },
+            { q: "7. What is a covering index?", a: "An index containing all required query columns, eliminating base table lookups." },
+            { q: "8. What is index selectivity?", a: "The ratio of unique key values to total rows. High selectivity = efficient index." },
+            { q: "9. What is index fragmentation?", a: "Logical page ordering not matching physical disk ordering due to page splits." },
+            { q: "10. When might an index not be used?", a: "Functions on columns, poor selectivity, small table, leading wildcard LIKE '%abc'." }
+        ];
+
         let appState = {
             theme: localStorage.getItem("theme") || "dark",
             lang: localStorage.getItem("lang") || "both"
@@ -617,6 +903,9 @@ Console.WriteLine(result.GetValue&lt;string&gt;());</code></pre>
         document.addEventListener("DOMContentLoaded", () => {
             applyTheme(appState.theme);
             applyLanguage(appState.lang);
+            renderFundamentals();
+            renderScenarios();
+            renderRapidFire();
 
             document.getElementById("btnThemeToggle").addEventListener("click", toggleTheme);
 
@@ -649,6 +938,58 @@ Console.WriteLine(result.GetValue&lt;string&gt;());</code></pre>
         }
 
         function setLanguage(lang) { applyLanguage(lang); }
+
+        function renderFundamentals() {
+            const container = document.getElementById("fundamentalsAccordionGroup");
+            container.innerHTML = fundamentalsData.map(f => `
+                <div class="accordion-item" id="fcard-${f.id}">
+                    <div class="accordion-header" onclick="document.getElementById('fcard-${f.id}').classList.toggle('active')">
+                        <span class="accordion-title">${f.title}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-body">
+                        <p><strong>Simple Definition:</strong> ${f.def}</p>
+                        <p style="margin-top:4px;"><strong>Enterprise Example:</strong> ${f.ent}</p>
+                        <pre><code>${f.sql}</code></pre>
+                        <div class="interview-q-box">
+                            <div class="interview-q">Q: ${f.q}</div>
+                            <div class="interview-a">"<strong>Answer:</strong> ${f.a}"</div>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function renderScenarios() {
+            const container = document.getElementById("sqlScenariosAccordionGroup");
+            container.innerHTML = sqlScenarios.map(s => `
+                <div class="accordion-item" id="scard-${s.id}">
+                    <div class="accordion-header" onclick="document.getElementById('scard-${s.id}').classList.toggle('active')">
+                        <span class="accordion-title">Scenario: ${s.q}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-body">
+                        <pre><code>${s.sql}</code></pre>
+                        <p style="margin-top:6px; font-size:12px; color:var(--text-secondary);"><strong>Alternative Approach:</strong> ${s.alt}</p>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function renderRapidFire() {
+            const container = document.getElementById("rapidFireAccordionGroup");
+            container.innerHTML = rapidFireData.map((rf, idx) => `
+                <div class="accordion-item" id="rfcard-${idx}">
+                    <div class="accordion-header" onclick="document.getElementById('rfcard-${idx}').classList.toggle('active')">
+                        <span class="accordion-title">${rf.q}</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-body">
+                        <p style="font-size:12.5px;">"<strong>Answer:</strong> ${rf.a}"</p>
+                    </div>
+                </div>
+            `).join("");
+        }
     </script>
 </body>
 </html>
