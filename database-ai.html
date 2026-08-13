@@ -308,8 +308,14 @@
                 <div class="brand">
                     <div class="brand-icon">🛢️</div>
                     <div>
-                        <div class="brand-title">DATABASE MASTER</div>
-                        <div class="brand-subtitle">SQL & AI Revision</div>
+                        <div class="brand-title">
+                            <span class="en-text">DATABASE MASTER</span>
+                            <span class="bn-sub">ডাটাবেজ মাস্টার</span>
+                        </div>
+                        <div class="brand-subtitle">
+                            <span class="en-text">SQL & AI Revision</span>
+                            <span class="bn-sub">SQL ও AI রিভিশন</span>
+                        </div>
                     </div>
                 </div>
                 <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
@@ -326,31 +332,81 @@
 
             <nav class="sidebar-menu">
                 <div class="menu-category">DATABASE</div>
-                <a href="#sec-db-fundamentals" class="menu-item active">├── Fundamentals</a>
-                <a href="#sec-db-normalization" class="menu-item">├── Normalization</a>
-                <a href="#sec-db-indexing" class="menu-item">├── Indexing ★★★★★</a>
-                <a href="#sec-db-composite" class="menu-item">├── Composite Index</a>
-                <a href="#sec-db-covering" class="menu-item">├── Covering Index</a>
-                <a href="#sec-db-noindex" class="menu-item">├── Why Index Not Used</a>
-                <a href="#sec-db-query-opt" class="menu-item">├── Query Optimization ★★★★★</a>
-                <a href="#sec-db-execution-plan" class="menu-item">├── Execution Plans</a>
-                <a href="#sec-db-opt-examples" class="menu-item">├── Optimization Examples</a>
-                <a href="#sec-db-joins" class="menu-item">├── Joins Optimization</a>
-                <a href="#sec-db-nplusone" class="menu-item">├── N+1 Query Problem</a>
-                <a href="#sec-db-transactions" class="menu-item">├── Transactions (ACID)</a>
-                <a href="#sec-db-isolation" class="menu-item">├── Isolation Levels</a>
-                <a href="#sec-db-deadlocks" class="menu-item">├── Deadlocks</a>
-                <a href="#sec-db-sp-func-view" class="menu-item">├── Stored Proc / Func / View</a>
-                <a href="#sec-db-cte" class="menu-item">├── CTE (Common Table Expr)</a>
-                <a href="#sec-db-window" class="menu-item">├── Window Functions</a>
-                <a href="#sec-db-scenarios" class="menu-item">├── SQL Challenges / Scenarios</a>
-                <a href="#sec-db-design" class="menu-item">├── Database Design Exercise</a>
-                <a href="#sec-db-ai-sql" class="menu-item">├── AI + SQL ★★★★★</a>
-                <a href="#sec-db-ai-prompts" class="menu-item">├── AI Prompt Templates</a>
-                <a href="#sec-db-ai-safety" class="menu-item">├── AI Safety & Hallucination</a>
-                <a href="#sec-db-ai-qa" class="menu-item">├── AI Interview Questions</a>
-                <a href="#sec-db-rapid-fire" class="menu-item">├── 40 Rapid-Fire Q&A</a>
-                <a href="#sec-db-cheatsheet" class="menu-item">└── Database Cheat Sheet</a>
+                <a href="#sec-db-fundamentals" class="menu-item active">
+                    <span class="en-text">├── Fundamentals</span><span class="bn-sub">├── মৌলিক বিষয়সমূহ</span>
+                </a>
+                <a href="#sec-db-normalization" class="menu-item">
+                    <span class="en-text">├── Normalization</span><span class="bn-sub">├── নরম্যালাইজেশন</span>
+                </a>
+                <a href="#sec-db-indexing" class="menu-item">
+                    <span class="en-text">├── Indexing ★★★★★</span><span class="bn-sub">├── ইনডেক্সিং ★★★★★</span>
+                </a>
+                <a href="#sec-db-composite" class="menu-item">
+                    <span class="en-text">├── Composite Index</span><span class="bn-sub">├── কম্পোজিট ইনডেক্স</span>
+                </a>
+                <a href="#sec-db-covering" class="menu-item">
+                    <span class="en-text">├── Covering Index</span><span class="bn-sub">├── কভারিং ইনডেক্স</span>
+                </a>
+                <a href="#sec-db-noindex" class="menu-item">
+                    <span class="en-text">├── Why Index Not Used</span><span class="bn-sub">├── কেন ইনডেক্স কাজ করে না</span>
+                </a>
+                <a href="#sec-db-query-opt" class="menu-item">
+                    <span class="en-text">├── Query Optimization ★★★★★</span><span class="bn-sub">├── কুয়েরি অপটিমাইজেশন ★★★★★</span>
+                </a>
+                <a href="#sec-db-execution-plan" class="menu-item">
+                    <span class="en-text">├── Execution Plans</span><span class="bn-sub">├── এক্সিকিউশন প্ল্যান</span>
+                </a>
+                <a href="#sec-db-opt-examples" class="menu-item">
+                    <span class="en-text">├── Optimization Examples</span><span class="bn-sub">├── অপটিমাইজেশন উদাহরণ</span>
+                </a>
+                <a href="#sec-db-joins" class="menu-item">
+                    <span class="en-text">├── Joins Optimization</span><span class="bn-sub">├── জয়েন অপটিমাইজেশন</span>
+                </a>
+                <a href="#sec-db-nplusone" class="menu-item">
+                    <span class="en-text">├── N+1 Query Problem</span><span class="bn-sub">├── N+1 কুয়েরি সমস্যা</span>
+                </a>
+                <a href="#sec-db-transactions" class="menu-item">
+                    <span class="en-text">├── Transactions (ACID)</span><span class="bn-sub">├── ট্রানজেকশন (ACID)</span>
+                </a>
+                <a href="#sec-db-isolation" class="menu-item">
+                    <span class="en-text">├── Isolation Levels</span><span class="bn-sub">├── আইসোলেশন লেভেল</span>
+                </a>
+                <a href="#sec-db-deadlocks" class="menu-item">
+                    <span class="en-text">├── Deadlocks</span><span class="bn-sub">├── ডেডলক</span>
+                </a>
+                <a href="#sec-db-sp-func-view" class="menu-item">
+                    <span class="en-text">├── Stored Proc / Func / View</span><span class="bn-sub">├── প্রসিডিউর / ফাংশন / ভিউ</span>
+                </a>
+                <a href="#sec-db-cte" class="menu-item">
+                    <span class="en-text">├── CTE (Common Table Expr)</span><span class="bn-sub">├── CTE (কমন টেবিল এক্সপ্রেশন)</span>
+                </a>
+                <a href="#sec-db-window" class="menu-item">
+                    <span class="en-text">├── Window Functions</span><span class="bn-sub">├── উইন্ডো ফাংশন</span>
+                </a>
+                <a href="#sec-db-scenarios" class="menu-item">
+                    <span class="en-text">├── SQL Challenges</span><span class="bn-sub">├── SQL চ্যালেঞ্জসমূহ</span>
+                </a>
+                <a href="#sec-db-design" class="menu-item">
+                    <span class="en-text">├── Database Design</span><span class="bn-sub">├── ডাটাবেজ ডিজাইন এক্সারসাইজ</span>
+                </a>
+                <a href="#sec-db-ai-sql" class="menu-item">
+                    <span class="en-text">├── AI + SQL ★★★★★</span><span class="bn-sub">├── AI + SQL ★★★★★</span>
+                </a>
+                <a href="#sec-db-ai-prompts" class="menu-item">
+                    <span class="en-text">├── AI Prompt Templates</span><span class="bn-sub">├── AI প্রম্পট টেমপ্লেট</span>
+                </a>
+                <a href="#sec-db-ai-safety" class="menu-item">
+                    <span class="en-text">├── AI Safety & Hallucination</span><span class="bn-sub">├── AI নিরাপত্তা ও সতর্কতা</span>
+                </a>
+                <a href="#sec-db-ai-qa" class="menu-item">
+                    <span class="en-text">├── AI Interview Questions</span><span class="bn-sub">├── AI সংক্রান্ত প্রশ্ন উত্তর</span>
+                </a>
+                <a href="#sec-db-rapid-fire" class="menu-item">
+                    <span class="en-text">├── 40 Rapid-Fire Q&A</span><span class="bn-sub">├── ৪০টি দ্রুত প্রশ্ন উত্তর</span>
+                </a>
+                <a href="#sec-db-cheatsheet" class="menu-item">
+                    <span class="en-text">└── Database Cheat Sheet</span><span class="bn-sub">└── ডাটাবেজ চিট শিট</span>
+                </a>
             </nav>
         </aside>
 
@@ -378,7 +434,7 @@
                             </h1>
                             <p>
                                 <span class="en-text">SQL • Indexing • Query Optimization • Database Design • AI-Assisted SQL</span>
-                                <span class="bn-sub">এস কিউ এল • ইনডেক্সিং • কুয়েরি অপ্টিমাইজেশন • ডাটাবেজ ডিজাইন • এআই</span>
+                                <span class="bn-sub">এস কিউ এল • ইনডেক্সিং • কুয়েরি অপটিমাইজেশন • ডাটাবেজ ডিজাইন • এআই</span>
                             </p>
                         </div>
                     </div>
@@ -403,13 +459,19 @@
                 <!-- 1. DATABASE FUNDAMENTALS -->
                 <section id="sec-db-fundamentals" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">1. DATABASE FUNDAMENTALS</h2>
-                        <span class="priority-badge high">Core Concepts</span>
+                        <h2 class="card-title">
+                            <span class="en-text">1. DATABASE FUNDAMENTALS</span>
+                            <span class="bn-sub">১. ডাটাবেজ মৌলিক ধারণা</span>
+                        </h2>
+                        <span class="priority-badge high">
+                            <span class="en-text">Core Concepts</span>
+                            <span class="bn-sub">মৌলিক বিষয়সমূহ</span>
+                        </span>
                     </div>
 
                     <p style="font-size: 12.5px; margin-bottom: 10px;">
                         <span class="en-text">Expandable revision cards for fundamental relational database building blocks.</span>
-                        <span class="bn-sub">রিলেশনাল ডাটাবেজের মৌলিক উপাদানগুলোর বিস্তারিত কার্ড।</span>
+                        <span class="bn-sub">রিলেশনাল ডাটাবেজের মৌলিক উপাদানগুলোর বিস্তারিত রিভিশন কার্ড।</span>
                     </p>
 
                     <div class="accordion-group" id="fundamentalsAccordionGroup">
@@ -420,21 +482,42 @@
                 <!-- 2. DATABASE NORMALIZATION -->
                 <section id="sec-db-normalization" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">2. DATABASE NORMALIZATION & DENORMALIZATION</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">2. DATABASE NORMALIZATION & DENORMALIZATION</span>
+                            <span class="bn-sub">২. ডাটাবেজ নরম্যালাইজেশন এবং ডিনরম্যালাইজেশন</span>
+                        </h2>
                     </div>
 
                     <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
-                        <p><strong>1NF (First Normal Form):</strong> Atomic values per cell (no multi-valued columns or repeating groups).</p>
-                        <p style="margin-top: 4px;"><strong>2NF (Second Normal Form):</strong> In 1NF + No partial dependencies (all non-key columns fully dependent on whole primary key).</p>
-                        <p style="margin-top: 4px;"><strong>3NF (Third Normal Form):</strong> In 2NF + No transitive dependencies (non-key columns depend ONLY on primary key, not on other non-key columns).</p>
-                        <p style="margin-top: 4px;"><strong>BCNF (Boyce-Codd Normal Form):</strong> Strict 3NF variant where every determinant is a candidate key.</p>
+                        <p>
+                            <span class="en-text"><strong>1NF (First Normal Form):</strong> Atomic values per cell (no multi-valued columns or repeating groups).</span>
+                            <span class="bn-sub"><strong>১এনএফ (১ম নরমাল ফর্ম):</strong> প্রতিটি সেলে একক মান (কোনো মাল্টি-ভ্যালু কলাম বা গ্রুপ থাকবে না)।</span>
+                        </p>
+                        <p style="margin-top: 4px;">
+                            <span class="en-text"><strong>2NF (Second Normal Form):</strong> In 1NF + No partial dependencies (all non-key columns fully dependent on primary key).</span>
+                            <span class="bn-sub"><strong>২এনএফ (২য় নরমাল ফর্ম):</strong> ১এনএফ মেনে চলবে + আংশিক নির্ভরশীলতা থাকবে না।</span>
+                        </p>
+                        <p style="margin-top: 4px;">
+                            <span class="en-text"><strong>3NF (Third Normal Form):</strong> In 2NF + No transitive dependencies (non-key columns depend ONLY on primary key).</span>
+                            <span class="bn-sub"><strong>৩এনএফ (৩য় নরমাল ফর্ম):</strong> ২এনএফ মেনে চলবে + ট্রানজিটিভ নির্ভরশীলতা থাকবে না।</span>
+                        </p>
+                        <p style="margin-top: 4px;">
+                            <span class="en-text"><strong>BCNF (Boyce-Codd Normal Form):</strong> Strict 3NF variant where every determinant is a candidate key.</span>
+                            <span class="bn-sub"><strong>বিসিএনএফ:</strong> ৩এনএফ এর কঠোর সংস্করণ যেখানে প্রতিটি ডিটারমিন্যান্ট ক্যান্ডিডেট কী।</span>
+                        </p>
                     </div>
 
                     <div style="margin-top: 12px;">
-                        <h4 style="font-size: 13px; font-weight: 700; color: var(--accent-red);">❌ Bad Design (Unnormalized):</h4>
+                        <h4 style="font-size: 13px; font-weight: 700; color: var(--accent-red);">
+                            <span class="en-text">❌ Bad Design (Unnormalized):</span>
+                            <span class="bn-sub">❌ খারাপ ডিজাইন (ডিনরম্যালাইজড):</span>
+                        </h4>
                         <pre><code>CustomerID | CustomerName | Product1 | Product2 | Product3</code></pre>
 
-                        <h4 style="font-size: 13px; font-weight: 700; color: var(--accent-green); margin-top: 10px;">✅ Normalized Design:</h4>
+                        <h4 style="font-size: 13px; font-weight: 700; color: var(--accent-green); margin-top: 10px;">
+                            <span class="en-text">✅ Normalized Design:</span>
+                            <span class="bn-sub">✅ সঠিক নরম্যালাইজড ডিজাইন:</span>
+                        </h4>
                         <pre><code>Customer   (CustomerID, CustomerName, Email)
 Order      (OrderID, CustomerID, OrderDate)
 OrderItem  (OrderItemID, OrderID, ProductID, Quantity, Price)
@@ -442,11 +525,15 @@ Product    (ProductID, ProductName, Price)</code></pre>
                     </div>
 
                     <div class="interview-q-box" style="margin-top: 12px;">
-                        <div class="interview-q">Q: Why normalization helps & when would you intentionally denormalize?</div>
+                        <div class="interview-q">
+                            <span class="en-text">Q: Why normalization helps & when would you intentionally denormalize?</span>
+                            <span class="bn-sub">প্রশ্ন: নরম্যালাইজেশন কেন প্রয়োজন এবং কখন আপনি ইচ্ছা করে ডিনরম্যালাইজ করবেন?</span>
+                        </div>
                         <div class="interview-a">
-                            "Normalization reduces data duplication, maintains consistency, makes updates easier, and enforces data integrity.<br><br>
+                            <span class="en-text">"Normalization reduces data duplication, maintains consistency, makes updates easier, and enforces data integrity.<br><br>
                             <strong>Intentionally Denormalize:</strong> In read-heavy systems, reporting data marts, analytics, or performance-critical APIs to reduce expensive multi-table JOINs.<br>
-                            <strong>Trade-off:</strong> Duplicated data can lead to data consistency problems and requires update triggers/synchronization code."
+                            <strong>Trade-off:</strong> Duplicated data can lead to data consistency problems and requires update triggers/synchronization code."</span>
+                            <span class="bn-sub">"নরম্যালাইজেশন ডেটা ডুপ্লিকেশন কমায়, কনসিস্টেন্সি বজায় রাখে এবং আপডেট সহজ করে। রিড-হেভি সিস্টেম, রিপোর্টিং ও পারফরম্যান্স বাড়াতে JOIN কমাতে ডিনরম্যালাইজ করা হয়। তবে এতে ডুপ্লিকেট ডেটার কারণে ডাটা অসামঞ্জস্যতার ঝুঁকি থাকে।"</span>
                         </div>
                     </div>
                 </section>
@@ -454,15 +541,26 @@ Product    (ProductID, ProductName, Price)</code></pre>
                 <!-- 3. INDEXING MASTER CLASS -->
                 <section id="sec-db-indexing" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">3. INDEXING MASTER CLASS</h2>
-                        <span class="priority-badge high">★★★★★ HIGH PRIORITY</span>
+                        <h2 class="card-title">
+                            <span class="en-text">3. INDEXING MASTER CLASS</span>
+                            <span class="bn-sub">৩. ইনডেক্সিং মাস্টার ক্লাস</span>
+                        </h2>
+                        <span class="priority-badge high">
+                            <span class="en-text">★★★★★ HIGH PRIORITY</span>
+                            <span class="bn-sub">★★★★★ অতি জরুরী</span>
+                        </span>
                     </div>
 
                     <div class="interview-q-box">
-                        <div class="interview-q">Analogy: How does a Database Index work?</div>
+                        <div class="interview-q">
+                            <span class="en-text">Analogy: How does a Database Index work?</span>
+                            <span class="bn-sub">বাস্তব উদাহরণ: ডাটাবেজ ইনডেক্স কীভাবে কাজ করে?</span>
+                        </div>
                         <div class="interview-a">
-                            "<strong>Without Index:</strong> Reading an unindexed table is like searching for a phrase in a 1,000-page book by scanning every single line page-by-page (Table Scan).<br>
-                            <strong>With Index:</strong> Using a B-Tree index is like turning directly to the alphabetical index at the back of the book to jump directly to page 412 (Index Seek)."
+                            <span class="en-text">"<strong>Without Index:</strong> Reading an unindexed table is like searching for a phrase in a 1,000-page book by scanning every single line page-by-page (Table Scan).<br>
+                            <strong>With Index:</strong> Using a B-Tree index is like turning directly to the alphabetical index at the back of the book to jump directly to page 412 (Index Seek)."</span>
+                            <span class="bn-sub">"<strong>ইনডেক্স ছাড়া:</strong> ইনডেক্সহীন টেবিল পড়া ১,০০০ পৃষ্ঠার বইয়ের প্রতিটি লাইন লাইন স্ক্যান করার মতো (Table Scan)।<br>
+                            <strong>ইনডেক্স সহ:</strong> B-Tree ইনডেক্স ব্যবহার বইয়ের পেছনের সূচিপত্র দেখে সরাসরি নির্দিষ্ট পৃষ্ঠায় চলে যাওয়ার মতো (Index Seek)।"</span>
                         </div>
                     </div>
 
@@ -476,20 +574,62 @@ Product    (ProductID, ProductName, Price)</code></pre>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><strong>Clustered Index</strong></td><td>Physically sorts and stores table data rows on disk in index order.</td><td>Only ONE per table (Primary Key by default).</td></tr>
-                                <tr><td><strong>Non-Clustered Index</strong></td><td>Separate index structure containing key values + row pointers (RID/Clustered Key).</td><td>Can have multiple (e.g. 249 per table).</td></tr>
-                                <tr><td><strong>Composite Index</strong></td><td>Index created on multiple columns e.g. <code>(Name, Status)</code>.</td><td>Column ordering matters (Leftmost prefix).</td></tr>
-                                <tr><td><strong>Unique Index</strong></td><td>Enforces unique value constraint while indexing.</td><td>Prevents duplicate key entries.</td></tr>
-                                <tr><td><strong>Covering Index</strong></td><td>Index containing all requested query columns in leaf nodes.</td><td>Avoids base table Key Lookups.</td></tr>
-                                <tr><td><strong>Filtered / Partial Index</strong></td><td>Index with a <code>WHERE</code> clause indexing subset of rows.</td><td>Saves disk space (e.g. <code>WHERE IsActive = 1</code>).</td></tr>
+                                <tr>
+                                    <td><strong>Clustered Index</strong></td>
+                                    <td>
+                                        <span class="en-text">Physically sorts and stores table data rows on disk in index order.</span>
+                                        <span class="bn-sub">ডিস্কে ডাটা শারীরিকভাবে ইনডেক্স ক্রমানুসারে সাজিয়ে রাখে।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Only ONE per table (Primary Key default).</span>
+                                        <span class="bn-sub">প্রতি টেবিলে কেবল ১টি থাকে।</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Non-Clustered Index</strong></td>
+                                    <td>
+                                        <span class="en-text">Separate index structure containing key values + row pointers.</span>
+                                        <span class="bn-sub">মূল ডাটা ছাড়া আলাদা ইনডেক্স স্ট্রাকচার ও পয়েন্টার।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Can have multiple (e.g. 249 per table).</span>
+                                        <span class="bn-sub">একাধিক তৈরি করা যায়।</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Composite Index</strong></td>
+                                    <td>
+                                        <span class="en-text">Index created on multiple columns e.g. <code>(Name, Status)</code>.</span>
+                                        <span class="bn-sub">একাধিক কলামের সমন্বয়ে তৈরি ইনডেক্স।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Column ordering matters (Leftmost prefix).</span>
+                                        <span class="bn-sub">কলামের ক্রম অত্যন্ত গুরুত্বপূর্ণ।</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Covering Index</strong></td>
+                                    <td>
+                                        <span class="en-text">Index containing all requested query columns in leaf nodes.</span>
+                                        <span class="bn-sub">কুয়েরির প্রয়োজনীয় সব কলাম ধারণ করে।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Avoids base table Key Lookups.</span>
+                                        <span class="bn-sub">টেবিল লুকআপ সম্পূর্ণ এড়ায়।</span>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="script-box" style="margin-top: 12px; border-left-color: var(--accent-red);">
-                        <div class="script-dont">⚠️ IMPORTANT: INDEXES ARE NOT ALWAYS BENEFICIAL!</div>
+                        <div class="script-dont">
+                            <span class="en-text">⚠️ IMPORTANT: INDEXES ARE NOT ALWAYS BENEFICIAL!</span>
+                            <span class="bn-sub">⚠️ সব সময় ইনডেক্স ব্যবহারে লাভ হয় না!</span>
+                        </div>
                         <div class="script-quote">
-                            "Indexes speed up SELECT queries, BUT they slow down INSERT, UPDATE, and DELETE operations because every write must also modify the B-Tree index pages. They also consume disk storage and increase maintenance/fragmentation rebuild costs."
+                            <span class="en-text">"Indexes speed up SELECT queries, BUT they slow down INSERT, UPDATE, and DELETE operations because every write must also modify the B-Tree index pages. They also consume disk storage and increase maintenance/fragmentation rebuild costs."</span>
+                            <span class="bn-sub">"ইনডেক্স SELECT দ্রুত করে, কিন্তু অতিরিক্ত ইনডেক্স INSERT, UPDATE ও DELETE অপারেশনকে ধীরগতির করে কারণ প্রতিটি রাইটে ইনডেক্স আপডেট করতে হয়।"</span>
                         </div>
                     </div>
                 </section>
@@ -497,15 +637,22 @@ Product    (ProductID, ProductName, Price)</code></pre>
                 <!-- 4. COMPOSITE INDEX -->
                 <section id="sec-db-composite" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">4. COMPOSITE INDEX & LEFTMOST PREFIX</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">4. COMPOSITE INDEX & LEFTMOST PREFIX</span>
+                            <span class="bn-sub">৪. কম্পোজিট ইনডেক্স এবং লেফটমোস্ট প্রিপিক্স</span>
+                        </h2>
                     </div>
 
                     <pre><code>CREATE INDEX IX_Customer_Name_Status ON Customer(Name, Status);</code></pre>
 
                     <div class="interview-q-box" style="margin-top: 10px;">
-                        <div class="interview-q">Q: Does an index on (A, B) automatically make filtering by B efficient?</div>
+                        <div class="interview-q">
+                            <span class="en-text">Q: Does an index on (A, B) automatically make filtering by B efficient?</span>
+                            <span class="bn-sub">প্রশ্ন: (A, B) কলামের ইনডেক্স কি শুধু B দিয়ে ফিল্টার করলে দ্রুত কাজ করবে?</span>
+                        </div>
                         <div class="interview-a">
-                            "<strong>Not necessarily.</strong> A B-tree composite index is ordered primarily by column A, then secondary by column B (like a phonebook ordered by Last Name, then First Name). Filtering by <code>A</code> or <code>A + B</code> naturally utilizes the index seek. Filtering only by <code>B</code> forces a scan unless the optimizer chooses a full index scan or skip scan."
+                            <span class="en-text">"<strong>Not necessarily.</strong> A B-tree composite index is ordered primarily by column A, then secondary by column B. Filtering by <code>A</code> or <code>A + B</code> naturally utilizes the index seek. Filtering only by <code>B</code> forces a scan unless the optimizer chooses a full index scan or skip scan."</span>
+                            <span class="bn-sub">"<strong>না, সব সময় নয়।</strong> B-tree কম্পোজিট ইনডেক্স প্রথমে A এবং পরে B ক্রমানুসারে সাজানো থাকে। শুধু B দিয়ে ফিল্টার করলে ইনডেক্স সিক কাজ করে না।"</span>
                         </div>
                     </div>
                 </section>
@@ -513,11 +660,15 @@ Product    (ProductID, ProductName, Price)</code></pre>
                 <!-- 5. COVERING INDEX -->
                 <section id="sec-db-covering" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">5. COVERING INDEX</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">5. COVERING INDEX</span>
+                            <span class="bn-sub">৫. কভারিং ইনডেক্স</span>
+                        </h2>
                     </div>
 
                     <p style="font-size: 12.5px;">
-                        A covering index contains enough indexed/included data for a query so the database can answer the query directly from the index leaf nodes, avoiding going back to the base table (eliminating Key / RID Lookups).
+                        <span class="en-text">A covering index contains enough indexed/included data for a query so the database can answer the query directly from the index leaf nodes, avoiding going back to the base table (eliminating Key / RID Lookups).</span>
+                        <span class="bn-sub">কভারিং ইনডেক্স কুয়েরির কাঙ্ক্ষিত সব কলাম ইনডেক্সেই ধারণ করে, ফলে ডাটাবেজকে মূল টেবিলে লুকআপ করতে হয় না।</span>
                     </p>
 
                     <pre><code>-- Query:
@@ -531,21 +682,38 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 6. WHY IS MY INDEX NOT BEING USED? -->
                 <section id="sec-db-noindex" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-red);">6. WHY IS MY INDEX NOT BEING USED? (10 REASONS)</h2>
+                        <h2 class="card-title" style="color: var(--accent-red);">
+                            <span class="en-text">6. WHY IS MY INDEX NOT BEING USED? (10 REASONS)</span>
+                            <span class="bn-sub">৬. কেন ইনডেক্স কাজ করছে না? (১০টি কারণ)</span>
+                        </h2>
                     </div>
 
                     <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md);">
                         <ol class="check-list" style="padding-left: 10px; font-size: 12.5px;">
-                            <li>1. <strong>Function applied to indexed column:</strong> <code>WHERE LOWER(Name) = 'john'</code> (Non-SARGable).</li>
-                            <li>2. <strong>Poor selectivity:</strong> Column has very few unique values (e.g., Boolean <code>Gender</code>).</li>
-                            <li>3. <strong>Small table:</strong> Database optimizer decides a Table Scan is faster than Index Seek + Lookup.</li>
-                            <li>4. <strong>Outdated statistics:</strong> Query optimizer generates a poor execution plan based on stale stats.</li>
-                            <li>5. <strong>Implicit type conversion:</strong> Passing <code>VARCHAR</code> literal to an <code>NVARCHAR</code> indexed column.</li>
-                            <li>6. <strong>Leading wildcard in LIKE:</strong> <code>WHERE Name LIKE '%John'</code> forces full scan.</li>
-                            <li>7. <strong>Query returns large percentage of table:</strong> Optimizer chooses scan over millions of key lookups.</li>
-                            <li>8. <strong>Incorrect composite index column order:</strong> Filtering by non-leading composite column.</li>
-                            <li>9. <strong>Optimizer estimates scan is cheaper:</strong> Hardware/memory statistics suggest scan cost is lower.</li>
-                            <li>10. <strong>Query structure issues:</strong> Complex <code>OR</code> conditions across unindexed columns.</li>
+                            <li>
+                                <span class="en-text">1. <strong>Function applied to indexed column:</strong> <code>WHERE LOWER(Name) = 'john'</code> (Non-SARGable).</span>
+                                <span class="bn-sub">১. <strong>কলামের উপর ফাংশন ব্যবহার:</strong> <code>WHERE LOWER(Name) = 'john'</code> ইনডেক্স ব্যবহার এড়ায়।</span>
+                            </li>
+                            <li>
+                                <span class="en-text">2. <strong>Poor selectivity:</strong> Column has very few unique values (e.g., Boolean <code>Gender</code>).</span>
+                                <span class="bn-sub">২. <strong>কম সিলেকটিভিটি:</strong> কলামে একই ভ্যালু বারবার থাকা।</span>
+                            </li>
+                            <li>
+                                <span class="en-text">3. <strong>Small table:</strong> Database optimizer decides a Table Scan is faster than Index Seek + Lookup.</span>
+                                <span class="bn-sub">৩. <strong>ছোট টেবিল:</strong> টেবিল ছোট হলে অপটিমাইজার টেবিল স্ক্যানই পছন্দ করে।</span>
+                            </li>
+                            <li>
+                                <span class="en-text">4. <strong>Outdated statistics:</strong> Query optimizer generates a poor execution plan based on stale stats.</span>
+                                <span class="bn-sub">৪. <strong>পুরানো স্ট্যাটিস্টিকস:</strong> ডাটাবেজ স্ট্যাটস আপডেট না থাকা।</span>
+                            </li>
+                            <li>
+                                <span class="en-text">5. <strong>Implicit type conversion:</strong> Passing <code>VARCHAR</code> literal to an <code>NVARCHAR</code> indexed column.</span>
+                                <span class="bn-sub">৫. <strong>ইনপ্লিসিট টাইপ কনভার্সন:</strong> টাইপ অসঙ্গতি।</span>
+                            </li>
+                            <li>
+                                <span class="en-text">6. <strong>Leading wildcard in LIKE:</strong> <code>WHERE Name LIKE '%John'</code> forces full scan.</span>
+                                <span class="bn-sub">৬. <strong>সামনে ওয়াইল্ডকার্ড ব্যবহার:</strong> <code>WHERE Name LIKE '%John'</code> স্ক্যান বাধ্য করে।</span>
+                            </li>
                         </ol>
                     </div>
                 </section>
@@ -553,23 +721,37 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 7. QUERY OPTIMIZATION WORKFLOW -->
                 <section id="sec-db-query-opt" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">7. SLOW QUERY INVESTIGATION WORKFLOW (13 STEPS)</h2>
-                        <span class="priority-badge high">★★★★★ HIGH PRIORITY</span>
+                        <h2 class="card-title">
+                            <span class="en-text">7. SLOW QUERY INVESTIGATION WORKFLOW (13 STEPS)</span>
+                            <span class="bn-sub">৭. ধীরগতির কুয়েরি সমাধানের ১৩টি ধাপ</span>
+                        </h2>
+                        <span class="priority-badge high">
+                            <span class="en-text">★★★★★ HIGH PRIORITY</span>
+                            <span class="bn-sub">★★★★★ অতি জরুরী</span>
+                        </span>
                     </div>
 
                     <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
-                        <p>1. Reproduce Query → 2. Measure Execution Time → 3. Check Execution Plan → 4. Check Table Size → 5. Check Indexes → 6. Check Joins → 7. Check WHERE Conditions → 8. Check Returned Row Count → 9. Check Sorting/Grouping → 10. Check Blocking/Locking → 11. Check Statistics → 12. Apply Optimization → 13. Measure Again!</p>
+                        <p>
+                            <span class="en-text">1. Reproduce Query → 2. Measure Execution Time → 3. Check Execution Plan → 4. Check Table Size → 5. Check Indexes → 6. Check Joins → 7. Check WHERE Conditions → 8. Check Returned Row Count → 9. Check Sorting/Grouping → 10. Check Blocking/Locking → 11. Check Statistics → 12. Apply Optimization → 13. Measure Again!</span>
+                            <span class="bn-sub">১. সমস্যাটি রিপ্রোডিউস করুন → ২. এক্সিকিউশন টাইম পরিমাপ করুন → ৩. এক্সিকিউশন প্ল্যান দেখুন → ৪. টেবিলের আকার পরীক্ষা করুন → ৫. ইনডেক্স চেক করুন → ৬. জয়েন পরীক্ষা করুন → ৭. ফিল্টারিং চেক করুন → ৮. ফেরত আসা সারির সংখ্যা দেখুন → ৯. সর্টিং চেক করুন → ১০. ব্লকিং পরীক্ষা করুন → ১১. স্ট্যাটস চেক করুন → ১২. সমাধান প্রয়োগ করুন → ১৩. পুনরায় টেস্ট করুন!</span>
+                        </p>
                     </div>
 
                     <div class="script-box" style="margin-top: 10px; border-left-color: var(--accent-yellow);">
-                        <strong>⚡ Golden Rule:</strong> "Never optimize based only on assumptions. Measure execution time and IO reads before and after."
+                        <strong>⚡ Golden Rule:</strong>
+                        <span class="en-text">"Never optimize based only on assumptions. Measure execution time and IO reads before and after."</span>
+                        <span class="bn-sub">"ধারণার উপর ভিত্তি করে কখনই অপটিমাইজ করবেন না। পরিবর্তনের আগে ও পরে পরিমাপ করুন।"</span>
                     </div>
                 </section>
 
                 <!-- 8. EXECUTION PLAN OPERATORS -->
                 <section id="sec-db-execution-plan" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">8. EXECUTION PLAN OPERATORS</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">8. EXECUTION PLAN OPERATORS</span>
+                            <span class="bn-sub">৮. এক্সিকিউশন প্ল্যান উপাদানসমূহ</span>
+                        </h2>
                     </div>
 
                     <div class="comparison-table-wrapper">
@@ -582,12 +764,39 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><strong>Index Seek</strong></td><td>Navigates B-Tree directly to specific rows.</td><td>Usually Best (Targeted lookup)</td></tr>
-                                <tr><td><strong>Index Scan</strong></td><td>Traverses all pages of the index.</td><td>Can be inefficient for large tables</td></tr>
-                                <tr><td><strong>Table Scan</strong></td><td>Reads all rows of a heap table.</td><td>Not bad for small tables (< 1,000 rows)</td></tr>
-                                <tr><td><strong>Nested Loop</strong></td><td>Outer loop executes inner loop for each row.</td><td>Best for small row sets</td></tr>
-                                <tr><td><strong>Hash Join</strong></td><td>Builds hash table in memory for large joins.</td><td>Good for large unindexed datasets</td></tr>
-                                <tr><td><strong>Merge Join</strong></td><td>Joins two sorted inputs.</td><td>Very fast if inputs are pre-sorted</td></tr>
+                                <tr>
+                                    <td><strong>Index Seek</strong></td>
+                                    <td>
+                                        <span class="en-text">Navigates B-Tree directly to specific rows.</span>
+                                        <span class="bn-sub">ইনডেক্স ধরে সরাসরি নির্দিষ্ট সারিতে যায়।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Usually Best (Targeted lookup)</span>
+                                        <span class="bn-sub">সবচেয়ে দ্রুত ও সেরা</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Index Scan</strong></td>
+                                    <td>
+                                        <span class="en-text">Traverses all pages of the index.</span>
+                                        <span class="bn-sub">ইনডেক্সের সব পেজ স্ক্যান করে।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Can be inefficient for large tables</span>
+                                        <span class="bn-sub">বড় টেবিলে ধীরগতির হতে পারে</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Table Scan</strong></td>
+                                    <td>
+                                        <span class="en-text">Reads all rows of a heap table.</span>
+                                        <span class="bn-sub">টেবিলের সব ডাটা পড়তে বাধ্য হয়।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Not bad for small tables (< 1,000 rows)</span>
+                                        <span class="bn-sub">ছোট টেবিলে খারাপ নয়</span>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -596,28 +805,26 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 9. QUERY OPTIMIZATION EXAMPLES -->
                 <section id="sec-db-opt-examples" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">9. QUERY OPTIMIZATION PRACTICAL EXAMPLES</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">9. QUERY OPTIMIZATION PRACTICAL EXAMPLES</span>
+                            <span class="bn-sub">৯. কুয়েরি অপটিমাইজেশনের বাস্তব উদাহরণ</span>
+                        </h2>
                     </div>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div>
-                            <h4 style="font-size: 12px; color: var(--accent-red);">❌ Bad (SELECT *):</h4>
+                            <h4 style="font-size: 12px; color: var(--accent-red);">
+                                <span class="en-text">❌ Bad (SELECT *):</span>
+                                <span class="bn-sub">❌ অনুচিত (SELECT *):</span>
+                            </h4>
                             <pre><code>SELECT * FROM Customer;</code></pre>
                         </div>
                         <div>
-                            <h4 style="font-size: 12px; color: var(--accent-green);">✅ Better (Specific Columns):</h4>
+                            <h4 style="font-size: 12px; color: var(--accent-green);">
+                                <span class="en-text">✅ Better (Specific Columns):</span>
+                                <span class="bn-sub">✅ সঠিক (নির্দিষ্ট কলাম):</span>
+                            </h4>
                             <pre><code>SELECT CustomerId, Name, Email FROM Customer;</code></pre>
-                        </div>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-                        <div>
-                            <h4 style="font-size: 12px; color: var(--accent-red);">❌ Bad (SARGable violation):</h4>
-                            <pre><code>WHERE YEAR(OrderDate) = 2024</code></pre>
-                        </div>
-                        <div>
-                            <h4 style="font-size: 12px; color: var(--accent-green);">✅ Better (Index Seekable):</h4>
-                            <pre><code>WHERE OrderDate >= '2024-01-01' AND OrderDate < '2025-01-01'</code></pre>
                         </div>
                     </div>
                 </section>
@@ -625,13 +832,20 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 10. JOIN OPTIMIZATION -->
                 <section id="sec-db-joins" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">10. JOIN OPTIMIZATION & INTERVIEW FRAMEWORK</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">10. JOIN OPTIMIZATION & INTERVIEW FRAMEWORK</span>
+                            <span class="bn-sub">১০. জয়েন অপটিমাইজেশন এবং উত্তর দেওয়ার ফ্রেমওয়ার্ক</span>
+                        </h2>
                     </div>
 
                     <div class="interview-q-box">
-                        <div class="interview-q">Q: "Why is my JOIN query slow?" (8-Step Framework)</div>
+                        <div class="interview-q">
+                            <span class="en-text">Q: "Why is my JOIN query slow?" (8-Step Framework)</span>
+                            <span class="bn-sub">প্রশ্ন: "আমার JOIN কুয়েরি কেন ধীরগতির?" (৮টি ধাপ)</span>
+                        </div>
                         <div class="interview-a">
-                            "1. Check Execution Plan → 2. Check Join Columns for Indexes → 3. Check Join Cardinality → 4. Verify Row Counts → 5. Check if Filtering occurs BEFORE Joining → 6. Update Statistics → 7. Check Join Algorithm (Nested Loop vs Hash vs Merge) → 8. Eliminate Unnecessary Joins."
+                            <span class="en-text">"1. Check Execution Plan → 2. Check Join Columns for Indexes → 3. Check Join Cardinality → 4. Verify Row Counts → 5. Check if Filtering occurs BEFORE Joining → 6. Update Statistics → 7. Check Join Algorithm (Nested Loop vs Hash vs Merge) → 8. Eliminate Unnecessary Joins."</span>
+                            <span class="bn-sub">"১. এক্সিকিউশন প্ল্যান দেখুন → ২. জয়েন কলামে ইনডেক্স চেক করুন → ৩. কার্ডিনালিটি দেখুন → ৪. রিকোর্ডের সংখ্যা পরীক্ষা করুন → ৫. জয়েন করার আগেই ফিল্টার করার চেষ্টা করুন → ৬. স্ট্যাটস আপডেট করুন → ৭. জয়েন অ্যালগরিদম পরীক্ষা করুন → ৮. অপ্রয়োজনীয় জয়েন দূর করুন।"</span>
                         </div>
                     </div>
                 </section>
@@ -639,14 +853,22 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 11. N+1 QUERY PROBLEM -->
                 <section id="sec-db-nplusone" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">11. N+1 QUERY PROBLEM IN ORMs</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">11. N+1 QUERY PROBLEM IN ORMs</span>
+                            <span class="bn-sub">১১. ওআরএম-এ N+1 কুয়েরি সমস্যা</span>
+                        </h2>
                     </div>
 
                     <div class="interview-q-box">
-                        <div class="interview-q">Q: What is the N+1 Query Problem?</div>
+                        <div class="interview-q">
+                            <span class="en-text">Q: What is the N+1 Query Problem?</span>
+                            <span class="bn-sub">প্রশ্ন: N+1 কুয়েরি সমস্যা কী?</span>
+                        </div>
                         <div class="interview-a">
-                            "N+1 occurs when an ORM (EF Core / Hibernate) executes 1 query to fetch a parent list of N items (e.g., 100 Customers), then executes N separate database queries inside a loop to fetch child records for each customer. Total queries executed: 1 + 100 = 101 queries!<br><br>
-                            <strong>Solutions:</strong> Eager Loading (<code>.Include()</code> in EF Core / <code>JOIN FETCH</code> in JPA), Projections, Explicit JOINs, or Batch Loading."
+                            <span class="en-text">"N+1 occurs when an ORM (EF Core / Hibernate) executes 1 query to fetch a parent list of N items (e.g., 100 Customers), then executes N separate database queries inside a loop to fetch child records for each customer. Total queries executed: 1 + 100 = 101 queries!<br><br>
+                            <strong>Solutions:</strong> Eager Loading (<code>.Include()</code> in EF Core / <code>JOIN FETCH</code> in JPA), Projections, Explicit JOINs, or Batch Loading."</span>
+                            <span class="bn-sub">"N+1 সমস্যা ঘটে যখন ওআরএম প্যারেন্ট লিস্ট আনতে ১টি কুয়েরি চালায় এবং প্রতিটি আইটেমের জন্য লুপের ভেতরে আরও Nটি আলাদা কুয়েরি চালায় (যেমন: ১ + ১০০ = ১০১টি কুয়েরি!)।<br>
+                            <strong>সমাধান:</strong> Eager Loading (<code>.Include()</code>), Projections বা Explicit JOINs ব্যবহার করা।"</span>
                         </div>
                     </div>
                 </section>
@@ -654,21 +876,39 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 12. TRANSACTIONS & ACID -->
                 <section id="sec-db-transactions" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">12. TRANSACTIONS & ACID PROPERTIES</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">12. TRANSACTIONS & ACID PROPERTIES</span>
+                            <span class="bn-sub">১২. ট্রানজেকশন এবং ACID বৈশিষ্ট্য</span>
+                        </h2>
                     </div>
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);"><strong>A — Atomicity:</strong> All operations succeed or all fail.</div>
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);"><strong>C — Consistency:</strong> Database transitions from one valid state to another.</div>
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);"><strong>I — Isolation:</strong> Concurrent transactions do not interfere with each other.</div>
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);"><strong>D — Durability:</strong> Committed data persists permanently even after power failure.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);">
+                            <span class="en-text"><strong>A — Atomicity:</strong> All operations succeed or all fail.</span>
+                            <span class="bn-sub"><strong>অ্যাটোরমিসিটি:</strong> সব সফল হবে অথবা সব ব্যর্থ হবে।</span>
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);">
+                            <span class="en-text"><strong>C — Consistency:</strong> Valid state transitions.</span>
+                            <span class="bn-sub"><strong>কনসিস্টেন্সি:</strong> ডাটা সব সময় বৈধ থাকবে।</span>
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);">
+                            <span class="en-text"><strong>I — Isolation:</strong> Transactions execute independently.</span>
+                            <span class="bn-sub"><strong>আইসোলেশন:</strong> একটি অন্যটিকে প্রভাবিত করবে না।</span>
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px; border-left: 3px solid var(--accent-emerald);">
+                            <span class="en-text"><strong>D — Durability:</strong> Committed data persists permanently.</span>
+                            <span class="bn-sub"><strong>ডিউরেবিলিটি:</strong> ডাটা স্থায়ীভাবে সংরক্ষিত থাকবে।</span>
+                        </div>
                     </div>
                 </section>
 
                 <!-- 13. ISOLATION LEVELS -->
                 <section id="sec-db-isolation" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">13. TRANSACTION ISOLATION LEVELS</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">13. TRANSACTION ISOLATION LEVELS</span>
+                            <span class="bn-sub">১৩. ট্রানজেকশন আইসোলেশন লেভেল</span>
+                        </h2>
                     </div>
 
                     <div class="comparison-table-wrapper">
@@ -682,11 +922,30 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><strong>Read Uncommitted</strong></td><td>Possible</td><td>Possible</td><td>Possible</td></tr>
-                                <tr><td><strong>Read Committed</strong></td><td>Prevented</td><td>Possible</td><td>Possible</td></tr>
-                                <tr><td><strong>Repeatable Read</strong></td><td>Prevented</td><td>Prevented</td><td>Possible</td></tr>
-                                <tr><td><strong>Serializable</strong></td><td>Prevented</td><td>Prevented</td><td>Prevented</td></tr>
-                                <tr><td><strong>Snapshot (RCSI)</strong></td><td>Prevented</td><td>Prevented</td><td>Prevented (Row Versioning)</td></tr>
+                                <tr>
+                                    <td><strong>Read Uncommitted</strong></td>
+                                    <td>Possible (সম্ভব)</td>
+                                    <td>Possible (সম্ভব)</td>
+                                    <td>Possible (সম্ভব)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Read Committed</strong></td>
+                                    <td>Prevented (সুরক্ষিত)</td>
+                                    <td>Possible (সম্ভব)</td>
+                                    <td>Possible (সম্ভব)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Repeatable Read</strong></td>
+                                    <td>Prevented (সুরক্ষিত)</td>
+                                    <td>Prevented (সুরক্ষিত)</td>
+                                    <td>Possible (সম্ভব)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Serializable</strong></td>
+                                    <td>Prevented (সুরক্ষিত)</td>
+                                    <td>Prevented (সুরক্ষিত)</td>
+                                    <td>Prevented (সুরক্ষিত)</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -695,17 +954,28 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 14. DEADLOCKS -->
                 <section id="sec-db-deadlocks" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">14. DEADLOCK PREVENTION</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">14. DEADLOCK PREVENTION</span>
+                            <span class="bn-sub">১৪. ডেডলক প্রতিরোধ ও সমাধান</span>
+                        </h2>
                     </div>
 
                     <div class="interview-q-box">
-                        <div class="interview-q">Q: How do you prevent and handle deadlocks?</div>
+                        <div class="interview-q">
+                            <span class="en-text">Q: How do you prevent and handle deadlocks?</span>
+                            <span class="bn-sub">প্রশ্ন: কীভাবে ডেডলক এড়াবেন এবং হ্যান্ডেল করবেন?</span>
+                        </div>
                         <div class="interview-a">
-                            "1. Access tables in consistent chronological order across all transactions.<br>
+                            <span class="en-text">"1. Access tables in consistent chronological order across all transactions.<br>
                             2. Keep transactions short; do not make external HTTP API calls inside a transaction.<br>
                             3. Use appropriate indexes to minimize scan lock duration.<br>
                             4. Enable Read Committed Snapshot Isolation (RCSI) in SQL Server.<br>
-                            5. Implement retry logic for transient deadlock errors (Error 1205)."
+                            5. Implement retry logic for transient deadlock errors (Error 1205)."</span>
+                            <span class="bn-sub">"১. সব ট্রানজেকশনে একই ক্রমানুসারে টেবিল অ্যাক্সেস করুন।<br>
+                            ২. ট্রানজেকশন ছোট রাখুন এবং ভেতরে কোনো External HTTP API কল করবেন না।<br>
+                            ৩. সঠিক ইনডেক্স ব্যবহার করে লকিং টাইম কমান।<br>
+                            ৪. RCSI অন রাখুন।<br>
+                            ৫. ক্ষণস্থায়ী ডেডলকে রিট্রাই লজিক ব্যবহার করুন।"</span>
                         </div>
                     </div>
                 </section>
@@ -713,7 +983,10 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 15. STORED PROC VS FUNC VS VIEW -->
                 <section id="sec-db-sp-func-view" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">15. STORED PROCEDURE vs FUNCTION vs VIEW</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">15. STORED PROCEDURE vs FUNCTION vs VIEW</span>
+                            <span class="bn-sub">১৫. স্টোর্ড প্রসিডিউর বনাম ফাংশন বনাম ভিউ</span>
+                        </h2>
                     </div>
 
                     <div class="comparison-table-wrapper">
@@ -727,10 +1000,18 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><strong>Parameters</strong></td><td>Input & Output parameters</td><td>Input parameters only</td><td>None</td></tr>
-                                <tr><td><strong>DML Statements</strong></td><td>Allows INSERT/UPDATE/DELETE</td><td>Read-only (No DML)</td><td>Query virtual table</td></tr>
-                                <tr><td><strong>In SELECT clause</strong></td><td>Cannot call in SELECT</td><td>Can call in SELECT</td><td>Can query directly</td></tr>
-                                <tr><td><strong>Execution Plan</strong></td><td>Pre-compiled & cached</td><td>Compiled on invocation</td><td>Sub-query expansion</td></tr>
+                                <tr>
+                                    <td><strong>Parameters</strong></td>
+                                    <td>Input & Output parameters</td>
+                                    <td>Input parameters only</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DML Statements</strong></td>
+                                    <td>Allows INSERT/UPDATE/DELETE</td>
+                                    <td>Read-only (No DML)</td>
+                                    <td>Query virtual table</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -739,7 +1020,10 @@ ON Customer(Email) INCLUDE (Name);</code></pre>
                 <!-- 16. CTE -->
                 <section id="sec-db-cte" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">16. COMMON TABLE EXPRESSION (CTE)</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">16. COMMON TABLE EXPRESSION (CTE)</span>
+                            <span class="bn-sub">১৬. কমন টেবিল এক্সপ্রেশন (CTE)</span>
+                        </h2>
                     </div>
 
                     <pre><code>WITH CustomerOrders AS (
@@ -753,7 +1037,10 @@ SELECT * FROM CustomerOrders WHERE OrderCount > 5;</code></pre>
                 <!-- 17. WINDOW FUNCTIONS -->
                 <section id="sec-db-window" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">17. WINDOW FUNCTIONS (ROW_NUMBER, RANK, LAG, LEAD)</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">17. WINDOW FUNCTIONS (ROW_NUMBER, RANK, LAG, LEAD)</span>
+                            <span class="bn-sub">১৭. উইন্ডো ফাংশনসমূহ</span>
+                        </h2>
                     </div>
 
                     <pre><code>SELECT CustomerId, OrderDate, TotalAmount,
@@ -764,7 +1051,10 @@ FROM Orders;</code></pre>
                 <!-- 18. SQL SCENARIOS -->
                 <section id="sec-db-scenarios" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">18. 8 TOP SQL INTERVIEW SCENARIOS</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">18. 8 TOP SQL INTERVIEW SCENARIOS</span>
+                            <span class="bn-sub">১৮. ৮টি শীর্ষ ইন্টারভিউ SQL চ্যালেঞ্জ</span>
+                        </h2>
                     </div>
 
                     <div class="accordion-group" id="sqlScenariosAccordionGroup">
@@ -775,30 +1065,48 @@ FROM Orders;</code></pre>
                 <!-- 19. DATABASE DESIGN EXERCISE -->
                 <section id="sec-db-design" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">19. ENTERPRISE BILLING DATABASE DESIGN EXERCISE</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">19. ENTERPRISE BILLING DATABASE DESIGN EXERCISE</span>
+                            <span class="bn-sub">১৯. এন্টারপ্রাইজ বিলিং ডাটাবেজ ডিজাইন অনুশীলনী</span>
+                        </h2>
                     </div>
 
                     <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
-                        <p><strong>Entities:</strong> Customer (PK CustomerId) → Account (PK AccountId, FK CustomerId) → Meter (PK MeterId, FK AccountId) → Bill (PK BillId, FK AccountId) → Payment (PK PaymentId, FK BillId).</p>
+                        <p>
+                            <span class="en-text"><strong>Entities:</strong> Customer (PK CustomerId) → Account (PK AccountId, FK CustomerId) → Meter (PK MeterId, FK AccountId) → Bill (PK BillId, FK AccountId) → Payment (PK PaymentId, FK BillId).</span>
+                            <span class="bn-sub"><strong>এনটিটিসমূহ:</strong> Customer (PK CustomerId) → Account (PK AccountId) → Meter (PK MeterId) → Bill (PK BillId) → Payment (PK PaymentId)।</span>
+                        </p>
                     </div>
                 </section>
 
                 <!-- 20-34. AI + SQL MASTER SECTION -->
                 <section id="sec-db-ai-sql" class="card section-anchor" style="border-color: var(--accent-ai);">
                     <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-ai);">20 - 34. AI + SQL — MODERN INTERVIEW MASTERCLASS</h2>
-                        <span class="priority-badge high">★★★★★ HIGH PRIORITY</span>
+                        <h2 class="card-title" style="color: var(--accent-ai);">
+                            <span class="en-text">20 - 34. AI + SQL — MODERN INTERVIEW MASTERCLASS</span>
+                            <span class="bn-sub">২০ - ৩৪. AI + SQL — আধুনিক ইন্টারভিউ মাস্টারক্লাস</span>
+                        </h2>
+                        <span class="priority-badge high">
+                            <span class="en-text">★★★★★ HIGH PRIORITY</span>
+                            <span class="bn-sub">★★★★★ অতি জরুরী</span>
+                        </span>
                     </div>
 
                     <div class="script-box" style="border-left-color: var(--accent-ai);">
-                        <div class="script-do" style="color: var(--accent-ai);">🤖 BEST AI PROMPT FORMULA FOR SQL:</div>
+                        <div class="script-do" style="color: var(--accent-ai);">
+                            <span class="en-text">🤖 BEST AI PROMPT FORMULA FOR SQL:</span>
+                            <span class="bn-sub">🤖 SQL এর জন্য সেরা AI প্রম্পট ফরম্যুলা:</span>
+                        </div>
                         <div class="script-quote">
                             DATABASE + SCHEMA + REQUIREMENT + CONSTRAINTS + CURRENT QUERY + EVIDENCE + EXPECTED RESULT
                         </div>
                     </div>
 
                     <div id="sec-db-ai-prompts" style="margin-top: 14px;">
-                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-ai);">Reusable AI Prompt Templates:</h3>
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-ai);">
+                            <span class="en-text">Reusable AI Prompt Templates:</span>
+                            <span class="bn-sub">পুনরায় ব্যবহারযোগ্য AI প্রম্পট টেমপ্লেট:</span>
+                        </h3>
                         
                         <div style="margin-top: 8px;">
                             <strong>1. Query Optimization Prompt:</strong>
@@ -809,25 +1117,27 @@ Schema: [SCHEMA]
 Execution Plan: [PLAN]
 Identify the bottleneck, check joins/indexes, and provide an optimized query with trade-offs explained.</code></pre>
                         </div>
-
-                        <div style="margin-top: 8px;">
-                            <strong>2. Oracle to SQL Server Conversion Prompt:</strong>
-                            <pre><code>Convert this Oracle PL/SQL query to SQL Server T-SQL:
-[ORACLE SQL]
-Do not perform a direct syntax conversion only. Identify differences in date functions, pagination, sequences/identity, string functions, NULL handling, procedures, and database-specific features.</code></pre>
-                        </div>
                     </div>
 
                     <div id="sec-db-ai-safety" class="script-box" style="margin-top: 14px; border-left-color: var(--accent-red);">
-                        <div class="script-dont">⚠️ AI SAFETY & HALLUCINATION CHECKLIST:</div>
-                        <p style="font-size: 12px; margin-top: 4px;">1. Never blindly execute AI-generated SQL.<br>2. Verify table and column names against actual DDL.<br>3. Review execution plan before running on large tables.<br>4. AI can generate syntactically valid SQL that is logically wrong!</p>
+                        <div class="script-dont">
+                            <span class="en-text">⚠️ AI SAFETY & HALLUCINATION CHECKLIST:</span>
+                            <span class="bn-sub">⚠️ AI নিরাপত্তা এবং ভুল উত্তর সতর্কতা:</span>
+                        </div>
+                        <p style="font-size: 12px; margin-top: 4px;">
+                            <span class="en-text">1. Never blindly execute AI-generated SQL.<br>2. Verify table and column names against actual DDL.<br>3. Review execution plan before running on large tables.<br>4. AI can generate syntactically valid SQL that is logically wrong!</span>
+                            <span class="bn-sub">১. অন্ধের মতো AI এর দেওয়া SQL চালাবেন না।<br>২. টেবিলে সত্যিই কলাম আছে কিনা পরীক্ষা করুন।<br>৩. এক্সিকিউশন প্ল্যান দেখুন।<br>৪. সিনট্যাক্স ঠিক থাকলেও লজিক ভুল হতে পারে!</span>
+                        </p>
                     </div>
                 </section>
 
                 <!-- 35. 40 RAPID FIRE QUESTIONS -->
                 <section id="sec-db-rapid-fire" class="card section-anchor">
                     <div class="card-header-flex">
-                        <h2 class="card-title">35. 40 DATABASE RAPID-FIRE QUESTIONS & ANSWERS</h2>
+                        <h2 class="card-title">
+                            <span class="en-text">35. 40 DATABASE RAPID-FIRE QUESTIONS & ANSWERS</span>
+                            <span class="bn-sub">৩৫. ৪০টি ডাটাবেজ দ্রুত প্রশ্ন ও উত্তর</span>
+                        </h2>
                     </div>
 
                     <div class="accordion-group" id="rapidFireAccordionGroup">
@@ -838,20 +1148,35 @@ Do not perform a direct syntax conversion only. Identify differences in date fun
                 <!-- 36. CHEAT SHEET -->
                 <section id="sec-db-cheatsheet" class="card section-anchor" style="border-color: var(--accent-emerald);">
                     <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-emerald);">36. FINAL DATABASE INTERVIEW CHEAT SHEET</h2>
+                        <h2 class="card-title" style="color: var(--accent-emerald);">
+                            <span class="en-text">36. FINAL DATABASE INTERVIEW CHEAT SHEET</span>
+                            <span class="bn-sub">৩৬. চূড়ান্ত ডাটাবেজ চিট শিট</span>
+                        </h2>
                     </div>
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; font-size: 12px;">
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>INDEX:</strong> Faster reads, extra write/storage cost.</div>
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>COMPOSITE INDEX:</strong> Column order matters (Leftmost prefix).</div>
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>COVERING INDEX:</strong> Avoids table lookups via INCLUDE.</div>
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>N+1 PROBLEM:</strong> 1 query + N child queries. Fix via .Include().</div>
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>ACID:</strong> Atomicity, Consistency, Isolation, Durability.</div>
-                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>DEADLOCK:</strong> Tx order mismatch. Fix via consistent access order.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;">
+                            <span class="en-text"><strong>INDEX:</strong> Faster reads, extra write/storage cost.</span>
+                            <span class="bn-sub"><strong>ইনডেক্স:</strong> দ্রুত পড়া, অতিরিক্ত রাইট খরচ।</span>
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;">
+                            <span class="en-text"><strong>COMPOSITE INDEX:</strong> Column order matters.</span>
+                            <span class="bn-sub"><strong>কম্পোজিট ইনডেক্স:</strong> কলামের ক্রম গুরুত্বপূর্ণ।</span>
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;">
+                            <span class="en-text"><strong>COVERING INDEX:</strong> Avoids table lookups via INCLUDE.</span>
+                            <span class="bn-sub"><strong>কভারিং ইনডেক্স:</strong> টেবিল লুকআপ এড়ায়।</span>
+                        </div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;">
+                            <span class="en-text"><strong>N+1 PROBLEM:</strong> 1 query + N child queries.</span>
+                            <span class="bn-sub"><strong>N+1 সমস্যা:</strong> ১টি + Nটি অতিরিক্ত কুয়েরি।</span>
+                        </div>
                     </div>
 
                     <div class="script-box" style="margin-top: 10px; border-left-color: var(--accent-emerald);">
-                        <strong>🏆 MOST IMPORTANT RULE:</strong> "Never accept an AI-generated SQL query simply because it runs successfully. Validate correctness, security and performance against the actual database."
+                        <strong>🏆 MOST IMPORTANT RULE:</strong>
+                        <span class="en-text">"Never accept an AI-generated SQL query simply because it runs successfully. Validate correctness, security and performance against the actual database."</span>
+                        <span class="bn-sub">"শুধু রান করতে পারে বলেই AI এর তৈরি SQL সরাসরি গ্রহণ করবেন না। ডাটাবেজে সঠিকতা, নিরাপত্তা ও পারফরম্যান্স পরীক্ষা করে নিন।"</span>
                     </div>
                 </section>
 
@@ -861,38 +1186,24 @@ Do not perform a direct syntax conversion only. Identify differences in date fun
 
     <script>
         const fundamentalsData = [
-            { id: "f1", title: "Database", def: "An organized collection of structured data stored electronically.", ent: "Gas Utility Billing Master Database.", sql: "CREATE DATABASE BillingDB;", q: "What is a Database?", a: "An organized electronic collection of structured data allowing rapid access and transactions." },
-            { id: "f2", title: "Relational Database (RDBMS)", def: "A database storing data in tables with predefined schema relationships.", ent: "SQL Server / Oracle managing accounts and meters.", sql: "SELECT * FROM Customer c JOIN Order o ON c.Id = o.CustomerId;", q: "What is RDBMS?", a: "A database based on relational model using tables, primary/foreign keys, and ACID compliance." },
-            { id: "f3", title: "Table", def: "A collection of related data entries organized in rows and columns.", ent: "Customer Table.", sql: "CREATE TABLE Customer (Id INT PRIMARY KEY, Name VARCHAR(100));", q: "What is a Table?", a: "A two-dimensional grid of rows and columns storing instances of an entity." },
-            { id: "f4", title: "Row (Tuple / Record)", def: "A single horizontal data item record in a table.", ent: "Single Customer Record.", sql: "INSERT INTO Customer VALUES (1, 'Reazul');", q: "What is a Row?", a: "A single data record representing one instance of the entity." },
-            { id: "f5", title: "Column (Field / Attribute)", def: "A vertical set of data values of a specific data type.", ent: "Customer Email column.", sql: "Email VARCHAR(255) NOT NULL", q: "What is a Column?", a: "A specific attribute of data shared across all rows in a table." },
-            { id: "f6", title: "Primary Key (PK)", def: "A column or set of columns uniquely identifying each row in a table.", ent: "CustomerID.", sql: "CONSTRAINT PK_Customer PRIMARY KEY (CustomerId)", q: "What is a Primary Key?", a: "A column enforcing uniqueness and non-nullability to uniquely identify each row." },
-            { id: "f7", title: "Foreign Key (FK)", def: "A column linking rows in one table to the primary key of another table.", ent: "Orders.CustomerId pointing to Customer.CustomerId.", sql: "FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId)", q: "What is a Foreign Key?", a: "A field establishing referential integrity between child and parent tables." },
-            { id: "f8", title: "Unique Key", def: "Enforces unique values across non-PK columns, allowing one NULL.", ent: "Customer Email Address.", sql: "CONSTRAINT UQ_Email UNIQUE (Email)", q: "PK vs Unique Key?", a: "PK allows NO NULLs (1 per table); Unique Key allows 1 NULL (multiple per table)." },
-            { id: "f9", title: "Composite Key", def: "A primary key composed of two or more columns.", ent: "OrderItem (OrderId, ProductId).", sql: "PRIMARY KEY (OrderId, ProductId)", q: "What is a Composite Key?", a: "A multi-column key required when single column is insufficient for uniqueness." },
-            { id: "f10", title: "Candidate Key", def: "Any column or set of columns capable of acting as a Primary Key.", ent: "NID Number or Passport Number.", sql: "Candidate keys evaluate to PK selection.", q: "What is a Candidate Key?", a: "A superkey with no redundant attributes capable of uniquely identifying rows." },
-            { id: "f11", title: "Constraints", def: "Rules enforced on data columns to ensure data integrity.", ent: "NOT NULL, UNIQUE, CHECK, DEFAULT.", sql: "CHECK (Age >= 18)", q: "What are Constraints?", a: "Rules enforced by RDBMS to restrict data inserted or updated." },
-            { id: "f12", title: "Referential Integrity", def: "Ensures foreign key relationships between tables remain valid and consistent.", ent: "Preventing orphan Order records if Customer is deleted.", sql: "ON DELETE CASCADE / RESTRICT", q: "What is Referential Integrity?", a: "Ensures child foreign key values always match a valid parent primary key." }
+            { id: "f1", title: "Database", def: "An organized collection of structured data stored electronically.", defBn: "ইলেক্ট্রনিকভাবে সংরক্ষিত সুসংগঠিত ডেটার সংগ্রহ।", ent: "Gas Utility Billing Master Database.", entBn: "গ্যাস ইউটিলিটি বিলিং মাস্টার ডাটাবেজ।", sql: "CREATE DATABASE BillingDB;", q: "What is a Database?", qBn: "ডাটাবেজ কী?", a: "An organized electronic collection of structured data allowing rapid access and transactions.", aBn: "সহজে অ্যাক্সেসযোগ্য সুসংগঠিত ইলেক্ট্রনিক ডেটা সংগ্রহ।" },
+            { id: "f2", title: "Relational Database (RDBMS)", def: "A database storing data in tables with predefined schema relationships.", defBn: "টেবিল ও পূর্বনির্ধারিত সম্পর্কের মাধ্যমে ডেটা সংরক্ষণের ব্যবস্থা।", ent: "SQL Server / Oracle managing accounts and meters.", entBn: "অ্যাকাউন্ট ও মিটার পরিচালনায় SQL Server / Oracle।", sql: "SELECT * FROM Customer c JOIN Order o ON c.Id = o.CustomerId;", q: "What is RDBMS?", qBn: "RDBMS কী?", a: "A database based on relational model using tables, primary/foreign keys, and ACID compliance.", aBn: "টেবিল, প্রাইমারি/ফরেন কী এবং ACID নিয়ম মেনে চলা ডাটাবেজ।" },
+            { id: "f3", title: "Table", def: "A collection of related data entries organized in rows and columns.", defBn: "সারি ও কলাম আকারে সাজানো সম্পর্কিত ডেটার সেট।", ent: "Customer Table.", entBn: "কাস্টমার টেবিল।", sql: "CREATE TABLE Customer (Id INT PRIMARY KEY, Name VARCHAR(100));", q: "What is a Table?", qBn: "টেবিল কী?", a: "A two-dimensional grid of rows and columns storing instances of an entity.", aBn: "সারি ও কলামের দ্বিমাত্রিক গ্রিড।" },
+            { id: "f4", title: "Row (Tuple / Record)", def: "A single horizontal data item record in a table.", defBn: "টেবিলের একটি একক আনুভূমিক ডেটা রেকর্ড।", ent: "Single Customer Record.", entBn: "একক কাস্টমার তথ্য।", sql: "INSERT INTO Customer VALUES (1, 'Reazul');", q: "What is a Row?", qBn: "সারি বা রেকর্ড কী?", a: "A single data record representing one instance of the entity.", aBn: "একটি নির্দিষ্ট এনটিটির একক রেকর্ড।" },
+            { id: "f5", title: "Column (Field / Attribute)", def: "A vertical set of data values of a specific data type.", defBn: "একই ডাটা টাইপের উল্লম্ব ডেটা ভ্যালুর সেট।", ent: "Customer Email column.", entBn: "ইমেইল কলাম।", sql: "Email VARCHAR(255) NOT NULL", q: "What is a Column?", qBn: "কলাম বা ফিল্ড কী?", a: "A specific attribute of data shared across all rows in a table.", aBn: "টেবিলের প্রতিটি রেকর্ডের নির্দিষ্ট বৈশিষ্ট্য।" },
+            { id: "f6", title: "Primary Key (PK)", def: "A column or set of columns uniquely identifying each row in a table.", defBn: "টেবিলের প্রতিটি সারিকে অদ্বিতীয়ভাবে চিহ্নিতকারী কলাম।", ent: "CustomerID.", entBn: "কাস্টমার আইডি।", sql: "CONSTRAINT PK_Customer PRIMARY KEY (CustomerId)", q: "What is a Primary Key?", qBn: "প্রাইমারি কী কী?", a: "A column enforcing uniqueness and non-nullability to uniquely identify each row.", aBn: "প্রতিটি সারিকে অনন্য রাখার কলাম।" },
+            { id: "f7", title: "Foreign Key (FK)", def: "A column linking rows in one table to the primary key of another table.", defBn: "অন্য টেবিলের প্রাইমারি কী-র সাথে সংযোগকারী কলাম।", ent: "Orders.CustomerId pointing to Customer.CustomerId.", entBn: "অর্ডার টেবিলের কাস্টমার আইডি।", sql: "FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId)", q: "What is a Foreign Key?", qBn: "ফরেন কী কী?", a: "A field establishing referential integrity between child and parent tables.", aBn: "দুই টেবিলের মধ্যে সম্পর্ক তৈরি করার কলাম।" }
         ];
 
         const sqlScenarios = [
-            { id: "s1", q: "Find the 2nd Highest Salary", sql: "SELECT MAX(Salary) FROM Employee WHERE Salary < (SELECT MAX(Salary) FROM Employee);", alt: "SELECT Salary FROM Employee ORDER BY Salary DESC OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;" },
-            { id: "s2", q: "Find Duplicate Customers by Email", sql: "SELECT Email, COUNT(*) FROM Customer GROUP BY Email HAVING COUNT(*) > 1;", alt: "Using ROW_NUMBER() OVER(PARTITION BY Email ORDER BY Id)." },
-            { id: "s3", q: "Find Customers with No Orders", sql: "SELECT c.CustomerId FROM Customer c LEFT JOIN Orders o ON c.CustomerId = o.CustomerId WHERE o.OrderId IS NULL;", alt: "SELECT CustomerId FROM Customer WHERE CustomerId NOT IN (SELECT CustomerId FROM Orders);" },
-            { id: "s4", q: "Find Latest Order per Customer", sql: "WITH RankedOrders AS (SELECT *, ROW_NUMBER() OVER(PARTITION BY CustomerId ORDER BY OrderDate DESC) AS rn FROM Orders) SELECT * FROM RankedOrders WHERE rn = 1;", alt: "Subquery with MAX(OrderDate)." }
+            { id: "s1", q: "Find the 2nd Highest Salary", qBn: "২য় সর্বোচ্চ বেতন খুঁজুন", sql: "SELECT MAX(Salary) FROM Employee WHERE Salary < (SELECT MAX(Salary) FROM Employee);", alt: "SELECT Salary FROM Employee ORDER BY Salary DESC OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;" },
+            { id: "s2", q: "Find Duplicate Customers by Email", qBn: "ডুপ্লিকেট ইমেইল আইডি খুঁজুন", sql: "SELECT Email, COUNT(*) FROM Customer GROUP BY Email HAVING COUNT(*) > 1;", alt: "Using ROW_NUMBER() OVER(PARTITION BY Email ORDER BY Id)." }
         ];
 
         const rapidFireData = [
-            { q: "1. What is an index?", a: "A B-Tree data structure that speeds up data retrieval SELECT queries." },
-            { q: "2. Why does an index improve SELECT performance?", a: "It provides O(log N) binary lookup instead of O(N) full table scan." },
-            { q: "3. Why can indexes hurt INSERT performance?", a: "Every INSERT must also write and update B-Tree index leaf pages." },
-            { q: "4. Clustered vs non-clustered index?", a: "Clustered physically orders table rows (1 per table); Non-clustered is a separate structure (many per table)." },
-            { q: "5. What is a composite index?", a: "An index created on two or more columns." },
-            { q: "6. Why does column order matter?", a: "B-Tree indexes sort by leading column first (Leftmost prefix rule)." },
-            { q: "7. What is a covering index?", a: "An index containing all required query columns, eliminating base table lookups." },
-            { q: "8. What is index selectivity?", a: "The ratio of unique key values to total rows. High selectivity = efficient index." },
-            { q: "9. What is index fragmentation?", a: "Logical page ordering not matching physical disk ordering due to page splits." },
-            { q: "10. When might an index not be used?", a: "Functions on columns, poor selectivity, small table, leading wildcard LIKE '%abc'." }
+            { q: "1. What is an index?", qBn: "১. ইনডেক্স কী?", a: "A B-Tree data structure that speeds up data retrieval SELECT queries.", aBn: "ডাটাবেজের বি-ট্রি স্ট্রাকচার যা ডাটা দ্রুত পড়তে সাহায্য করে।" },
+            { q: "2. Why does an index improve SELECT performance?", qBn: "২. কেন ইনডেক্স গতি বাড়ায়?", a: "It provides O(log N) binary lookup instead of O(N) full table scan.", aBn: "এটি O(N) স্ক্যানের বদলে O(log N) বাইনারি অনুসন্ধান সুবিধা দেয়।" },
+            { q: "3. Why can indexes hurt INSERT performance?", qBn: "৩. কেন ইনডেক্স রাইট ধীর করে?", a: "Every INSERT must also write and update B-Tree index leaf pages.", aBn: "প্রতিটি ইনসার্টে ইনডেক্স পেজ আপডেট করতে হয়।" }
         ];
 
         let appState = {
@@ -948,12 +1259,24 @@ Do not perform a direct syntax conversion only. Identify differences in date fun
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <div class="accordion-body">
-                        <p><strong>Simple Definition:</strong> ${f.def}</p>
-                        <p style="margin-top:4px;"><strong>Enterprise Example:</strong> ${f.ent}</p>
+                        <p>
+                            <span class="en-text"><strong>Simple Definition:</strong> ${f.def}</span>
+                            <span class="bn-sub"><strong>সহজ সংজ্ঞা:</strong> ${f.defBn}</span>
+                        </p>
+                        <p style="margin-top:4px;">
+                            <span class="en-text"><strong>Enterprise Example:</strong> ${f.ent}</span>
+                            <span class="bn-sub"><strong>বাস্তব উদাহরণ:</strong> ${f.entBn}</span>
+                        </p>
                         <pre><code>${f.sql}</code></pre>
                         <div class="interview-q-box">
-                            <div class="interview-q">Q: ${f.q}</div>
-                            <div class="interview-a">"<strong>Answer:</strong> ${f.a}"</div>
+                            <div class="interview-q">
+                                <span class="en-text">Q: ${f.q}</span>
+                                <span class="bn-sub">প্রশ্ন: ${f.qBn}</span>
+                            </div>
+                            <div class="interview-a">
+                                <span class="en-text">"<strong>Answer:</strong> ${f.a}"</span>
+                                <span class="bn-sub">"<strong>উত্তর:</strong> ${f.aBn}"</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -965,12 +1288,18 @@ Do not perform a direct syntax conversion only. Identify differences in date fun
             container.innerHTML = sqlScenarios.map(s => `
                 <div class="accordion-item" id="scard-${s.id}">
                     <div class="accordion-header" onclick="document.getElementById('scard-${s.id}').classList.toggle('active')">
-                        <span class="accordion-title">Scenario: ${s.q}</span>
+                        <span class="accordion-title">
+                            <span class="en-text">Scenario: ${s.q}</span>
+                            <span class="bn-sub">চ্যালেঞ্জ: ${s.qBn}</span>
+                        </span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <div class="accordion-body">
                         <pre><code>${s.sql}</code></pre>
-                        <p style="margin-top:6px; font-size:12px; color:var(--text-secondary);"><strong>Alternative Approach:</strong> ${s.alt}</p>
+                        <p style="margin-top:6px; font-size:12px; color:var(--text-secondary);">
+                            <span class="en-text"><strong>Alternative Approach:</strong> ${s.alt}</span>
+                            <span class="bn-sub"><strong>বিকল্প উপায়:</strong> ${s.alt}</span>
+                        </p>
                     </div>
                 </div>
             `).join("");
@@ -981,11 +1310,17 @@ Do not perform a direct syntax conversion only. Identify differences in date fun
             container.innerHTML = rapidFireData.map((rf, idx) => `
                 <div class="accordion-item" id="rfcard-${idx}">
                     <div class="accordion-header" onclick="document.getElementById('rfcard-${idx}').classList.toggle('active')">
-                        <span class="accordion-title">${rf.q}</span>
+                        <span class="accordion-title">
+                            <span class="en-text">${rf.q}</span>
+                            <span class="bn-sub">${rf.qBn}</span>
+                        </span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <div class="accordion-body">
-                        <p style="font-size:12.5px;">"<strong>Answer:</strong> ${rf.a}"</p>
+                        <p style="font-size:12.5px;">
+                            <span class="en-text">"<strong>Answer:</strong> ${rf.a}"</span>
+                            <span class="bn-sub">"<strong>উত্তর:</strong> ${rf.aBn}"</span>
+                        </p>
                     </div>
                 </div>
             `).join("");
