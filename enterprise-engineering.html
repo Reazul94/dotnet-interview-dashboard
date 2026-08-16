@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="both">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🚀 REAL-WORLD ENTERPRISE ENGINEERING — Final Interview Revision</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --bg-primary-light: #f8fafc;
+            --bg-secondary-light: #ffffff;
+            --bg-tertiary-light: #f1f5f9;
+            --text-primary-light: #0f172a;
+            --text-secondary-light: #475569;
+            --text-muted-light: #64748b;
+            --border-light: #e2e8f0;
+            --card-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+            /* Dark Theme Variables */
+            --bg-primary-dark: #0b0f19;
+            --bg-secondary-dark: #131b2e;
+            --bg-tertiary-dark: #1e293b;
+            --text-primary-dark: #f8fafc;
+            --text-secondary-dark: #94a3b8;
+            --text-muted-dark: #64748b;
+            --border-dark: #1e293b;
+            --card-shadow-dark: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+
+            /* Brand Accent Colors */
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-bn: #38bdf8;
+            --accent-orange: #f97316;
+
+            /* Priority Badges */
+            --priority-high: #ef4444;
+            --priority-high-bg: rgba(239, 68, 68, 0.12);
+
+            /* Active Theme Defaults */
+            --bg-primary: var(--bg-primary-dark);
+            --bg-secondary: var(--bg-secondary-dark);
+            --bg-tertiary: var(--bg-tertiary-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --text-muted: var(--text-muted-dark);
+            --border-color: var(--border-dark);
+
+            --sidebar-width: 280px;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: var(--bg-primary-light);
+            --bg-secondary: var(--bg-secondary-light);
+            --bg-tertiary: var(--bg-tertiary-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --text-muted: var(--text-muted-light);
+            --border-color: var(--border-light);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 14px;
+            overflow-x: hidden;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .bn-sub {
+            display: block;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 12.5px;
+            color: var(--accent-bn);
+            margin-top: 4px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        [data-lang="eng"] .bn-sub { display: none !important; }
+        [data-lang="ban"] .en-text { display: none !important; }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+        #app { display: flex; min-height: 100vh; position: relative; }
+
+        .sticky-top-container {
+            position: sticky; top: 0; z-index: 90;
+            background-color: rgba(19, 27, 46, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        [data-theme="light"] .sticky-top-container { background-color: rgba(255, 255, 255, 0.95); }
+
+        .page-switcher-bar {
+            padding: 6px 12px;
+            background-color: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; flex-wrap: wrap;
+        }
+
+        .page-tab {
+            display: inline-flex; align-items: center;
+            padding: 6px 12px; border-radius: var(--radius-md);
+            font-size: 12px; font-weight: 700; text-decoration: none;
+            color: var(--text-secondary); background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color); transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .page-tab.active {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            color: #ffffff; border-color: transparent;
+        }
+
+        .sidebar-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px);
+            z-index: 9998; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .sidebar-overlay.active { display: block; opacity: 1; }
+
+        #sidebar {
+            width: var(--sidebar-width); background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color); position: fixed;
+            top: 0; bottom: 0; left: 0; z-index: 9999;
+            display: flex; flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-header { padding: 16px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .brand-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            border-radius: var(--radius-md); display: flex; align-items: center;
+            justify-content: center; color: #fff; font-weight: 800; font-size: 16px; flex-shrink: 0;
+        }
+
+        .brand-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+        .brand-subtitle { font-size: 10px; color: var(--accent-orange); font-weight: 700; text-transform: uppercase; }
+
+        .sidebar-close-btn { display: none; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); cursor: pointer; padding: 6px; }
+        .sidebar-search { padding: 10px 14px 6px 14px; }
+        .search-box input { width: 100%; padding: 8px 10px 8px 30px; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); font-size: 12px; outline: none; }
+
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 8px 10px; }
+        .menu-category { font-size: 10px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin: 12px 6px 4px 6px; }
+        .menu-item { display: flex; align-items: center; gap: 8px; padding: 7px 10px; color: var(--text-secondary); text-decoration: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+        .menu-item.active { border-left: 3px solid var(--accent-orange); color: var(--accent-orange); background-color: var(--bg-tertiary); }
+
+        #main { margin-left: var(--sidebar-width); flex: 1; display: flex; flex-direction: column; min-width: 0; width: 100%; }
+        #header { padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
+        .header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .header-title-group h1 { font-size: 15px; font-weight: 700; color: var(--accent-orange); line-height: 1.2; }
+        .header-title-group p { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+        .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+        .mobile-toggle { display: none; width: 36px; height: 36px; border-radius: var(--radius-md); background-color: var(--accent-orange); color: #ffffff; border: none; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
+
+        .lang-switcher { display: inline-flex; background-color: var(--bg-tertiary); padding: 2px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .lang-btn { padding: 4px 7px; font-size: 10px; font-weight: 700; border-radius: var(--radius-sm); border: none; background: none; color: var(--text-muted); cursor: pointer; }
+        .lang-btn.active { background-color: var(--accent-orange); color: #ffffff; }
+
+        .btn-icon { padding: 6px; width: 32px; height: 32px; border-radius: var(--radius-md); background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); flex-shrink: 0; }
+
+        .floating-menu-btn {
+            display: none; position: fixed; bottom: 16px; right: 16px; z-index: 999;
+            width: 46px; height: 46px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            color: #ffffff; border: none; box-shadow: 0 4px 14px rgba(249, 115, 22, 0.5);
+            align-items: center; justify-content: center; cursor: pointer;
+        }
+
+        .content-body { padding: 16px; max-width: 1400px; margin: 0 auto; width: 100%; }
+        .card { background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+        .card-header-flex { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); gap: 10px; flex-wrap: wrap; }
+        .card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+
+        .priority-badge { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+        .priority-badge.high { background-color: var(--priority-high-bg); color: var(--priority-high); border: 1px solid rgba(239, 68, 68, 0.3); }
+
+        .comparison-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; min-width: 550px; }
+        .comparison-table th { background-color: var(--bg-tertiary); color: var(--text-primary); padding: 10px 12px; border-bottom: 2px solid var(--border-color); }
+        .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+        .comparison-table code { font-family: 'Fira Code', monospace; font-size: 11px; background-color: var(--bg-primary); padding: 2px 5px; border-radius: 4px; color: var(--accent-orange); }
+
+        .interview-q-box { background-color: rgba(249, 115, 22, 0.08); border: 1px solid rgba(249, 115, 22, 0.25); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; }
+        .interview-q { font-weight: 700; color: var(--accent-orange); font-size: 12.5px; margin-bottom: 4px; }
+        .interview-a { font-size: 12.5px; color: var(--text-primary); }
+
+        .script-box { background-color: var(--bg-tertiary); border-radius: var(--radius-md); padding: 12px; margin-top: 10px; border-left: 3px solid var(--accent-orange); }
+        .script-quote { font-style: italic; color: var(--text-secondary); font-size: 12px; background-color: var(--bg-primary); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); }
+
+        .section-anchor { scroll-margin-top: 110px; }
+        pre { background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px; font-family: 'Fira Code', monospace; font-size: 11px; color: #38bdf8; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+        @media (max-width: 992px) {
+            #sidebar { transform: translateX(-100%); width: 290px; max-width: 85vw; }
+            #sidebar.open { transform: translateX(0); box-shadow: 10px 0 35px rgba(0, 0, 0, 0.6); }
+            .sidebar-close-btn { display: flex; }
+            #main { margin-left: 0; }
+            .mobile-toggle, .floating-menu-btn { display: inline-flex; }
+        }
+
+        @media (max-width: 640px) {
+            .content-body { padding: 10px; }
+            .card { padding: 12px; border-radius: var(--radius-md); margin-bottom: 14px; }
+            .header-title-group p { display: none; }
+            .header-title-group h1 { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <button class="floating-menu-btn" id="floatingNavToggle" aria-label="Open Navigation Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-icon">🚀</div>
+                    <div>
+                        <div class="brand-title">
+                            <span class="en-text">ENTERPRISE ENG</span>
+                            <span class="bn-sub">এন্টারপ্রাইজ ইঞ্জিনিয়ারিং</span>
+                        </div>
+                        <div class="brand-subtitle">
+                            <span class="en-text">Real-World Interview</span>
+                            <span class="bn-sub">বাস্তব ইন্টারভিউ রিভিশন</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="sidebar-search">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <input type="text" id="searchInput" placeholder="Search enterprise topics...">
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-category">ENTERPRISE CHAPTERS</div>
+                <a href="#sec-a1-linux" class="menu-item active">├── A1. Linux Server Commands</a>
+                <a href="#sec-a2-deploy" class="menu-item">├── A2. Linux App Deployment Flow</a>
+                <a href="#sec-a3-cicd" class="menu-item">├── A3. CI/CD Pipeline Build</a>
+                <a href="#sec-a4-strats" class="menu-item">├── A4. Enterprise Deployment Strats</a>
+                <a href="#sec-a5-concurrency" class="menu-item">├── A5. High Concurrency Scaling ★★★</a>
+                <a href="#sec-a6-lb" class="menu-item">├── A6. Load Balancing & Failover</a>
+                <a href="#sec-a7-scale" class="menu-item">├── A7. Scalability Bottlenecks</a>
+                <a href="#sec-a8-sysarch" class="menu-item">├── A8. System Architecture Script</a>
+                <a href="#sec-a9-dbperf" class="menu-item">├── A9. Database Performance Scenarios</a>
+                <a href="#sec-a10-logging" class="menu-item">├── A10. Observability & Monitoring</a>
+                <a href="#sec-a11-incidents" class="menu-item">├── A11. Incident Response Playbook</a>
+                <a href="#sec-a12-resume" class="menu-item">├── A12. Resume Tech Defense</a>
+                <a href="#sec-a13-proj" class="menu-item">├── A13. Project User-to-DB Flow</a>
+                <a href="#sec-rapid60" class="menu-item">└── FINAL 60-MIN REVISION ★★★</a>
+            </nav>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main id="main">
+            <!-- Combined Sticky Header Wrapper -->
+            <div class="sticky-top-container">
+                <!-- Global Top Page Switcher Bar -->
+                <div class="page-switcher-bar">
+                    <a href="index.html" class="page-tab">🔥 HIGH PRIORITY (PAGE 1)</a>
+                    <a href="ecosystem.html" class="page-tab">🌐 ECOSYSTEM & TOOLS (PAGE 2)</a>
+                    <a href="database-ai.html" class="page-tab">🛢️ DATABASE MASTER (PAGE 3)</a>
+                    <a href="enterprise-engineering.html" class="page-tab active">🚀 REAL-WORLD ENTERPRISE (PAGE 4)</a>
+                    <a href="mastery-module.html" class="page-tab">🎓 SE MASTERY MODULE (PAGE 5)</a>
+                </div>
+
+                <!-- Header -->
+                <header id="header">
+                    <div class="header-left">
+                        <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                        </button>
+                        <div class="header-title-group">
+                            <h1>
+                                <span class="en-text">🚀 REAL-WORLD ENTERPRISE ENGINEERING</span>
+                                <span class="bn-sub">🚀 বাস্তব এন্টারপ্রাইজ ইঞ্জিনিয়ারিং এবং ইন্টারভিউ গাইড</span>
+                            </h1>
+                            <p>
+                                <span class="en-text">Linux • CI/CD • High Concurrency • Load Balancing • Incident Troubleshooting</span>
+                                <span class="bn-sub">লিঅ্যাক্স • CI/CD • হাই কনকারেন্সি • লোড ব্যালান্সিং • প্রোডাকশন সমস্যা</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="header-actions">
+                        <div class="lang-switcher">
+                            <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH</button>
+                            <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
+                            <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
+                        </div>
+
+                        <button class="btn-icon" id="btnThemeToggle" title="Toggle Light/Dark Theme">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        </button>
+                    </div>
+                </header>
+            </div>
+
+            <!-- Dashboard Content Body -->
+            <div class="content-body">
+
+                <!-- A1. LINUX SERVER FUNDAMENTALS -->
+                <section id="sec-a1-linux" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A1. LINUX SERVER FUNDAMENTALS & ESSENTIAL COMMANDS</span>
+                            <span class="bn-sub">এ১. লিনাক্স সার্ভার ফান্ডামেন্টালস এবং আবশ্যিক কমান্ডসমূহ</span>
+                        </h2>
+                    </div>
+
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Command</th>
+                                    <th>Purpose & When to Use</th>
+                                    <th>Practical Enterprise Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>top / htop</code></td>
+                                    <td>
+                                        <span class="en-text">Monitor live process CPU and memory utilization.</span>
+                                        <span class="bn-sub">লাইভ প্রসেস CPU এবং মেমোরি ব্যবহার মনিটর করা।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Identify rogue Java/ASP.NET thread spiking CPU to 100%.</span>
+                                        <span class="bn-sub">CPU ১০০% করা হাই-প্রসেস সনাক্ত করা।</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>df -h / du -sh</code></td>
+                                    <td>
+                                        <span class="en-text">Check disk space available and folder directory sizes.</span>
+                                        <span class="bn-sub">ডিস্ক স্পেস এবং ফোল্ডারের আকার পরীক্ষা করা।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Diagnose full disk error caused by unrotated log files.</span>
+                                        <span class="bn-sub">লগ ফাইলের কারণে ডিস্ক ফুল হওয়া সমস্যা চিহ্নিত করা।</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>ss -tulpn / netstat</code></td>
+                                    <td>
+                                        <span class="en-text">Inspect listening ports and active socket connections.</span>
+                                        <span class="bn-sub">লিসেনিং পোর্ট এবং সকেট কানেকশন চেক করা।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Verify if Kestrel (port 5000) or Tomcat (8080) is listening.</span>
+                                        <span class="bn-sub">পোর্ট ৫০০০ বা ৮০৮০ এ সার্ভার চালু আছে কিনা দেখা।</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>journalctl -u app.service -f</code></td>
+                                    <td>
+                                        <span class="en-text">Stream systemd service logs in real time.</span>
+                                        <span class="bn-sub">সিস্টেমডি সার্ভিসের লগ রিয়েল-টাইমে স্ট্রিম করা।</span>
+                                    </td>
+                                    <td>
+                                        <span class="en-text">Trace unhandled exceptions during live production deployment.</span>
+                                        <span class="bn-sub">প্রোডাকশন ডেপ্লয়মেন্ট এক্সেকিউশন ট্রেস করা।</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="interview-q-box">
+                        <div class="interview-q">
+                            <span class="en-text">Q: How do you investigate a Linux server when disk space is 100% full?</span>
+                            <span class="bn-sub">প্রশ্ন: লিনাক্স সার্ভারে ডিস্ক ১০০% ফুল হলে কীভাবে ইনভেস্টিগেট করবেন?</span>
+                        </div>
+                        <div class="interview-a">
+                            <span class="en-text">"1. Run <code>df -h</code> to identify the filled filesystem partition.<br>
+                            2. Run <code>du -sh /* | sort -h</code> to locate the largest offending directory (usually <code>/var/log</code> or temp folders).<br>
+                            3. Safely truncate large unrotated application logs using <code>> app.log</code> instead of <code>rm</code> to preserve active file descriptors."</span>
+                            <span class="bn-sub">"১. `df -h` দিয়ে মূল ফুল পার্টিশন খুঁজুন। ২. `du -sh /*` দিয়ে সবচেয়ে বড় ফোল্ডার বের করুন। ৩. অ্যাপের অ্যাক্টিভ ফাইল ডেসক্রিপটর বজায় রেখে `> app.log` দিয়ে বড় লগ ফাইল রিসেট করুন।"</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- A2. APPLICATION DEPLOYMENT ON LINUX -->
+                <section id="sec-a2-deploy" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A2. APPLICATION DEPLOYMENT ARCHITECTURE ON LINUX</span>
+                            <span class="bn-sub">এ২. লিনাক্সে অ্যাপ্লিকেশন ডেপ্লয়মেন্ট আর্কিটেকচার</span>
+                        </h2>
+                    </div>
+
+                    <pre><code>Developer → Git Repository → Build & Test → Artifact (.jar/.dll) → Linux Server → systemd Service → Kestrel/Tomcat → Nginx Reverse Proxy → Load Balancer → Users</code></pre>
+                </section>
+
+                <!-- A3. CI/CD PIPELINE -->
+                <section id="sec-a3-cicd" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A3. CI/CD PIPELINE FOR ASP.NET CORE / JAVA</span>
+                            <span class="bn-sub">এ৩. ASP.NET Core ও Java এর জন্য CI/CD পাইপলাইন</span>
+                        </h2>
+                    </div>
+
+                    <pre><code>name: Enterprise ASP.NET Core CI/CD
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+    - name: Publish
+      run: dotnet publish -c Release -o ./publish
+    - name: Deploy to Linux Server via SSH
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        source: "./publish/*"
+        target: "/var/www/myapi"
+    - name: Restart systemd Service
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        command: sudo systemctl restart myapi.service</code></pre>
+                </section>
+
+                <!-- A5. HIGH CONCURRENCY -->
+                <section id="sec-a5-concurrency" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A5. HOW TO BUILD SYSTEMS FOR HIGH CONCURRENCY</span>
+                            <span class="bn-sub">এ৫. হাই কনকারেন্সি ও লাখ লাখ ইউজারের সিস্টেম স্কেলিং</span>
+                        </h2>
+                        <span class="priority-badge high">
+                            <span class="en-text">★★★★★ HIGH PRIORITY</span>
+                            <span class="bn-sub">★★★★★ অতি জরুরী</span>
+                        </span>
+                    </div>
+
+                    <pre><code>Users → Nginx Load Balancer → [API Server 1, API Server 2, API Server 3] → Redis Distributed Cache → Database (Read Replicas + Write Master)</code></pre>
+
+                    <div class="interview-q-box" style="margin-top: 10px;">
+                        <div class="interview-q">
+                            <span class="en-text">Q: Why does this architecture scale to millions of concurrent users?</span>
+                            <span class="bn-sub">প্রশ্ন: এই আর্কিটেকচার কেন লাখ লাখ ইউজারের সিস্টেমে স্কেল করে?</span>
+                        </div>
+                        <div class="interview-a">
+                            <span class="en-text">"1. <strong>Stateless APIs:</strong> User sessions stored in Redis allowing horizontal scaling of API nodes.<br>
+                            2. <strong>Redis Caching:</strong> 80%+ of read requests served in-memory (< 2ms response time), protecting DB from overload.<br>
+                            3. <strong>Connection Pooling:</strong> Reuses SQL connections to prevent expensive handshake bottlenecks.<br>
+                            4. <strong>Read Replicas:</strong> Offloads reporting and search queries away from the primary write master."</span>
+                            <span class="bn-sub">"১. <strong>স্টেটলেস API:</strong> সেশন ডাটা Redis-এ থাকায় সহজে নতুন API সার্ভার যোগ করা যায়। ২. <strong>Redis ক্যাশিং:</strong> ৮০% এর বেশি পড়া সরাসরি মেমোরি থেকে করায় DB রক্ষা পায়। ৩. <strong>কানেকশন পুলিং:</strong> হ্যান্ডশেক খরচ কমায়।"</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- A11. PRODUCTION TROUBLESHOOTING PLAYBOOK -->
+                <section id="sec-a11-incidents" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A11. PRODUCTION INCIDENT TROUBLESHOOTING PLAYBOOK</span>
+                            <span class="bn-sub">এ১১. প্রোডাকশন ইনসিডেন্ট ট্রাবলশুটিং প্লেবুক</span>
+                        </h2>
+                    </div>
+
+                    <div class="script-box" style="border-left-color: var(--accent-red);">
+                        <div class="script-dont">
+                            <span class="en-text">🔥 INCIDENT RESPONSE FLOW:</span>
+                            <span class="bn-sub">🔥 ইনসিডেন্ট রেসপন্স ফ্লো:</span>
+                        </div>
+                        <div class="script-quote">
+                            PROBLEM → IMPACT ASSESSMENT → APP & SYSTEM LOGS → METRICS SPIKE → RECENT DEPLOYMENT CHECK → DATABASE LOCKS → NETWORK / DEPENDENCY → ROOT CAUSE IDENTIFICATION → APPLY HOTFIX / ROLLBACK → VERIFY → RCA REPORT
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FINAL 60-MINUTE REVISION -->
+                <section id="sec-rapid60" class="card section-anchor" style="border-color: var(--accent-orange);">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-orange);">
+                            <span class="en-text">⚡ FINAL INTERVIEW — 60 MINUTE RAPID REVISION</span>
+                            <span class="bn-sub">⚡ চূড়ান্ত ইন্টারভিউ — ৬০ মিনিটের দ্রুত রিভিশন</span>
+                        </h2>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 12px;">
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>Linux Health:</strong> <code>top</code> (CPU), <code>free -m</code> (RAM), <code>df -h</code> (Disk).</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>High Concurrency:</strong> Stateless APIs + Redis Cache + Load Balancer + DB Pool.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>Blue/Green Deploy:</strong> Zero-downtime deployment with instant traffic flip.</div>
+                        <div style="background-color: var(--bg-tertiary); padding: 8px; border-radius: 6px;"><strong>Observability:</strong> Logs + Metrics + Traces (OpenTelemetry).</div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let appState = {
+            theme: localStorage.getItem("theme") || "dark",
+            lang: localStorage.getItem("lang") || "both"
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            applyTheme(appState.theme);
+            applyLanguage(appState.lang);
+
+            document.getElementById("btnThemeToggle").addEventListener("click", toggleTheme);
+
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebarOverlay");
+            
+            function openSidebar() { sidebar.classList.add("open"); overlay.classList.add("active"); }
+            function closeSidebar() { sidebar.classList.remove("open"); overlay.classList.remove("active"); }
+
+            document.getElementById("mobileNavToggle").addEventListener("click", openSidebar);
+            document.getElementById("floatingNavToggle").addEventListener("click", openSidebar);
+            document.getElementById("sidebarCloseBtn").addEventListener("click", closeSidebar);
+            overlay.addEventListener("click", closeSidebar);
+
+            document.querySelectorAll(".menu-item").forEach(item => {
+                item.addEventListener("click", () => { if (window.innerWidth <= 992) closeSidebar(); });
+            });
+        });
+
+        function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("theme", theme); }
+        function toggleTheme() { appState.theme = appState.theme === "dark" ? "light" : "dark"; applyTheme(appState.theme); }
+
+        function applyLanguage(lang) {
+            appState.lang = lang;
+            document.documentElement.setAttribute("data-lang", lang);
+            localStorage.setItem("lang", lang);
+            document.getElementById("btnLangBoth").classList.toggle("active", lang === "both");
+            document.getElementById("btnLangEng").classList.toggle("active", lang === "eng");
+            document.getElementById("btnLangBan").classList.toggle("active", lang === "ban");
+        }
+
+        function setLanguage(lang) { applyLanguage(lang); }
+    </script>
+</body>
+</html>

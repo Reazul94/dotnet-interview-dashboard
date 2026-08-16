@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="both">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎓 Software Engineering Mastery — Fundamentals to Production</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --bg-primary-light: #f8fafc;
+            --bg-secondary-light: #ffffff;
+            --bg-tertiary-light: #f1f5f9;
+            --text-primary-light: #0f172a;
+            --text-secondary-light: #475569;
+            --text-muted-light: #64748b;
+            --border-light: #e2e8f0;
+            --card-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+            /* Dark Theme Variables */
+            --bg-primary-dark: #0b0f19;
+            --bg-secondary-dark: #131b2e;
+            --bg-tertiary-dark: #1e293b;
+            --text-primary-dark: #f8fafc;
+            --text-secondary-dark: #94a3b8;
+            --text-muted-dark: #64748b;
+            --border-dark: #1e293b;
+            --card-shadow-dark: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+
+            /* Brand Accent Colors */
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-bn: #38bdf8;
+            --accent-mastery: #6366f1;
+
+            /* Active Theme Defaults */
+            --bg-primary: var(--bg-primary-dark);
+            --bg-secondary: var(--bg-secondary-dark);
+            --bg-tertiary: var(--bg-tertiary-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --text-muted: var(--text-muted-dark);
+            --border-color: var(--border-dark);
+
+            --sidebar-width: 280px;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: var(--bg-primary-light);
+            --bg-secondary: var(--bg-secondary-light);
+            --bg-tertiary: var(--bg-tertiary-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --text-muted: var(--text-muted-light);
+            --border-color: var(--border-light);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 14px;
+            overflow-x: hidden;
+            word-break: break-word;
+            overflow-wrap: break-wrap;
+        }
+
+        .bn-sub {
+            display: block;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 12.5px;
+            color: var(--accent-bn);
+            margin-top: 4px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        [data-lang="eng"] .bn-sub { display: none !important; }
+        [data-lang="ban"] .en-text { display: none !important; }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+        #app { display: flex; min-height: 100vh; position: relative; }
+
+        .sticky-top-container {
+            position: sticky; top: 0; z-index: 90;
+            background-color: rgba(19, 27, 46, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        [data-theme="light"] .sticky-top-container { background-color: rgba(255, 255, 255, 0.95); }
+
+        .page-switcher-bar {
+            padding: 6px 12px;
+            background-color: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; flex-wrap: wrap;
+        }
+
+        .page-tab {
+            display: inline-flex; align-items: center;
+            padding: 6px 12px; border-radius: var(--radius-md);
+            font-size: 12px; font-weight: 700; text-decoration: none;
+            color: var(--text-secondary); background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color); transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .page-tab.active {
+            background: linear-gradient(135deg, var(--accent-mastery), var(--accent-purple));
+            color: #ffffff; border-color: transparent;
+        }
+
+        .sidebar-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px);
+            z-index: 9998; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .sidebar-overlay.active { display: block; opacity: 1; }
+
+        #sidebar {
+            width: var(--sidebar-width); background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color); position: fixed;
+            top: 0; bottom: 0; left: 0; z-index: 9999;
+            display: flex; flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-header { padding: 16px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .brand-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--accent-mastery), var(--accent-purple));
+            border-radius: var(--radius-md); display: flex; align-items: center;
+            justify-content: center; color: #fff; font-weight: 800; font-size: 16px; flex-shrink: 0;
+        }
+
+        .brand-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+        .brand-subtitle { font-size: 10px; color: var(--accent-mastery); font-weight: 700; text-transform: uppercase; }
+
+        .sidebar-close-btn { display: none; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); cursor: pointer; padding: 6px; }
+        .sidebar-search { padding: 10px 14px 6px 14px; }
+        .search-box input { width: 100%; padding: 8px 10px 8px 30px; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); font-size: 12px; outline: none; }
+
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 8px 10px; }
+        .menu-category { font-size: 10px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin: 12px 6px 4px 6px; }
+        .menu-item { display: flex; align-items: center; gap: 8px; padding: 7px 10px; color: var(--text-secondary); text-decoration: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+        .menu-item.active { border-left: 3px solid var(--accent-mastery); color: var(--accent-mastery); background-color: var(--bg-tertiary); }
+
+        #main { margin-left: var(--sidebar-width); flex: 1; display: flex; flex-direction: column; min-width: 0; width: 100%; }
+        #header { padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
+        .header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .header-title-group h1 { font-size: 15px; font-weight: 700; color: var(--accent-mastery); line-height: 1.2; }
+        .header-title-group p { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+        .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+        .mobile-toggle { display: none; width: 36px; height: 36px; border-radius: var(--radius-md); background-color: var(--accent-mastery); color: #ffffff; border: none; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
+
+        .lang-switcher { display: inline-flex; background-color: var(--bg-tertiary); padding: 2px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .lang-btn { padding: 4px 7px; font-size: 10px; font-weight: 700; border-radius: var(--radius-sm); border: none; background: none; color: var(--text-muted); cursor: pointer; }
+        .lang-btn.active { background-color: var(--accent-mastery); color: #ffffff; }
+
+        .btn-icon { padding: 6px; width: 32px; height: 32px; border-radius: var(--radius-md); background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); flex-shrink: 0; }
+
+        .floating-menu-btn {
+            display: none; position: fixed; bottom: 16px; right: 16px; z-index: 999;
+            width: 46px; height: 46px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-mastery), var(--accent-purple));
+            color: #ffffff; border: none; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.5);
+            align-items: center; justify-content: center; cursor: pointer;
+        }
+
+        .content-body { padding: 16px; max-width: 1400px; margin: 0 auto; width: 100%; }
+        .card { background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+        .card-header-flex { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); gap: 10px; flex-wrap: wrap; }
+        .card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+
+        .priority-badge { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+        .priority-badge.high { background-color: var(--priority-high-bg); color: var(--priority-high); border: 1px solid rgba(239, 68, 68, 0.3); }
+
+        .comparison-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
+        .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; min-width: 550px; }
+        .comparison-table th { background-color: var(--bg-tertiary); color: var(--text-primary); padding: 10px 12px; border-bottom: 2px solid var(--border-color); }
+        .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
+        .comparison-table code { font-family: 'Fira Code', monospace; font-size: 11px; background-color: var(--bg-primary); padding: 2px 5px; border-radius: 4px; color: var(--accent-mastery); }
+
+        .interview-q-box { background-color: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; }
+        .interview-q { font-weight: 700; color: var(--accent-mastery); font-size: 12.5px; margin-bottom: 4px; }
+        .interview-a { font-size: 12.5px; color: var(--text-primary); }
+
+        .script-box { background-color: var(--bg-tertiary); border-radius: var(--radius-md); padding: 12px; margin-top: 10px; border-left: 3px solid var(--accent-mastery); }
+        .script-quote { font-style: italic; color: var(--text-secondary); font-size: 12px; background-color: var(--bg-primary); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); }
+
+        .section-anchor { scroll-margin-top: 110px; }
+        pre { background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px; font-family: 'Fira Code', monospace; font-size: 11px; color: #38bdf8; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+        @media (max-width: 992px) {
+            #sidebar { transform: translateX(-100%); width: 290px; max-width: 85vw; }
+            #sidebar.open { transform: translateX(0); box-shadow: 10px 0 35px rgba(0, 0, 0, 0.6); }
+            .sidebar-close-btn { display: flex; }
+            #main { margin-left: 0; }
+            .mobile-toggle, .floating-menu-btn { display: inline-flex; }
+        }
+
+        @media (max-width: 640px) {
+            .content-body { padding: 10px; }
+            .card { padding: 12px; border-radius: var(--radius-md); margin-bottom: 14px; }
+            .header-title-group p { display: none; }
+            .header-title-group h1 { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <button class="floating-menu-btn" id="floatingNavToggle" aria-label="Open Navigation Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-icon">🎓</div>
+                    <div>
+                        <div class="brand-title">
+                            <span class="en-text">SE MASTERY</span>
+                            <span class="bn-sub">সফ্টওয়্যার ইঞ্জিনিয়ারিং</span>
+                        </div>
+                        <div class="brand-subtitle">
+                            <span class="en-text">40 Mastery Chapters</span>
+                            <span class="bn-sub">৪০টি মাস্টার চ্যাপ্টার</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Sidebar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="sidebar-search">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <input type="text" id="searchInput" placeholder="Search 40 mastery chapters...">
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-category">FOUNDATION (1-6)</div>
+                <a href="#chap-1" class="menu-item active">├── Ch 1. CS Foundations</a>
+                <a href="#chap-2" class="menu-item">├── Ch 2. Prog Fundamentals & Big O</a>
+                <a href="#chap-3" class="menu-item">├── Ch 3. C# Mastery & Threading</a>
+                <a href="#chap-4" class="menu-item">├── Ch 4. OOP, SOLID & Code Smells</a>
+                <a href="#chap-5" class="menu-item">├── Ch 5. Design Patterns</a>
+                <a href="#chap-6" class="menu-item">├── Ch 6. Data Structures & Algo</a>
+
+                <div class="menu-category">DATABASE & BACKEND (7-11)</div>
+                <a href="#chap-7" class="menu-item">├── Ch 7. SQL & Database Mastery</a>
+                <a href="#chap-8" class="menu-item">├── Ch 8. ADO.NET Deep Dive</a>
+                <a href="#chap-9" class="menu-item">├── Ch 9. EF Core Performance</a>
+                <a href="#chap-10" class="menu-item">├── Ch 10. ASP.NET Core Production</a>
+                <a href="#chap-11" class="menu-item">├── Ch 11. API Engineering & REST</a>
+
+                <div class="menu-category">INFRA & DEVOPS (12-20)</div>
+                <a href="#chap-12" class="menu-item">├── Ch 12. Security & OAuth/JWT</a>
+                <a href="#chap-13" class="menu-item">├── Ch 13. Performance Tuning</a>
+                <a href="#chap-14" class="menu-item">├── Ch 14. Caching & Redis</a>
+                <a href="#chap-15" class="menu-item">├── Ch 15. Message Brokers & Kafka</a>
+                <a href="#chap-16" class="menu-item">├── Ch 16. Background Workers & Airflow</a>
+                <a href="#chap-17" class="menu-item">├── Ch 17. Linux System Admin</a>
+                <a href="#chap-18" class="menu-item">├── Ch 18. Networking for SE</a>
+                <a href="#chap-19" class="menu-item">├── Ch 19. Nginx & Reverse Proxy</a>
+                <a href="#chap-20" class="menu-item">├── Ch 20. Load Balancing Hands-On</a>
+
+                <div class="menu-category">ARCHITECTURE & SYSTEM DESIGN (21-30)</div>
+                <a href="#chap-21" class="menu-item">├── Ch 21. System Scalability</a>
+                <a href="#chap-22" class="menu-item">├── Ch 22. System Design Projects</a>
+                <a href="#chap-23" class="menu-item">├── Ch 23. Software Architecture</a>
+                <a href="#chap-24" class="menu-item">├── Ch 24. Microservices & Saga</a>
+                <a href="#chap-25" class="menu-item">├── Ch 25. Unit & E2E Testing</a>
+                <a href="#chap-26" class="menu-item">├── Ch 26. DevOps & CI/CD</a>
+                <a href="#chap-27" class="menu-item">├── Ch 27. Docker & Compose</a>
+                <a href="#chap-28" class="menu-item">├── Ch 28. Kubernetes Concepts</a>
+                <a href="#chap-29" class="menu-item">├── Ch 29. Cloud & Azure</a>
+                <a href="#chap-30" class="menu-item">├── Ch 30. Observability & Tracing</a>
+
+                <div class="menu-category">PRODUCTION & PRACTICE (31-40)</div>
+                <a href="#chap-31" class="menu-item">├── Ch 31. Production Troubleshooting</a>
+                <a href="#chap-32" class="menu-item">├── Ch 32. SE Best Practices</a>
+                <a href="#chap-33" class="menu-item">├── Ch 33. Agile & Teamwork</a>
+                <a href="#chap-34" class="menu-item">├── Ch 34. AI for SE & Prompts</a>
+                <a href="#chap-35" class="menu-item">├── Ch 35. Enterprise Capstone Project</a>
+                <a href="#chap-36" class="menu-item">├── Ch 36. Production Hardening</a>
+                <a href="#chap-37" class="menu-item">├── Ch 37. Chapter Interview Q&A</a>
+                <a href="#chap-38" class="menu-item">├── Ch 38. Hands-On Lab System</a>
+                <a href="#chap-39" class="menu-item">├── Ch 39. Engineering Notebook</a>
+                <a href="#chap-40" class="menu-item">└── Ch 40. Competency Matrix (L1-L6)</a>
+            </nav>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main id="main">
+            <!-- Combined Sticky Header Wrapper -->
+            <div class="sticky-top-container">
+                <!-- Global Top Page Switcher Bar -->
+                <div class="page-switcher-bar">
+                    <a href="index.html" class="page-tab">🔥 HIGH PRIORITY (PAGE 1)</a>
+                    <a href="ecosystem.html" class="page-tab">🌐 ECOSYSTEM & TOOLS (PAGE 2)</a>
+                    <a href="database-ai.html" class="page-tab">🛢️ DATABASE MASTER (PAGE 3)</a>
+                    <a href="enterprise-engineering.html" class="page-tab">🚀 REAL-WORLD ENTERPRISE (PAGE 4)</a>
+                    <a href="mastery-module.html" class="page-tab active">🎓 SE MASTERY MODULE (PAGE 5)</a>
+                </div>
+
+                <!-- Header -->
+                <header id="header">
+                    <div class="header-left">
+                        <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                        </button>
+                        <div class="header-title-group">
+                            <h1>
+                                <span class="en-text">🎓 SOFTWARE ENGINEERING MASTERY</span>
+                                <span class="bn-sub">🎓 সফ্টওয়্যার ইঞ্জিনিয়ারিং মাস্টারি — ফান্ডামেন্টালস থেকে প্রোডাকশন</span>
+                            </h1>
+                            <p>
+                                <span class="en-text">Fundamentals → Advanced → Production → Architecture → System Design (40 Chapters)</span>
+                                <span class="bn-sub">মৌলিক জ্ঞান → অ্যাডভান্সড → প্রোডাকশন → আর্কিটেকচার → সিস্টেম ডিজাইন</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="header-actions">
+                        <div class="lang-switcher">
+                            <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH</button>
+                            <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
+                            <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
+                        </div>
+
+                        <button class="btn-icon" id="btnThemeToggle" title="Toggle Light/Dark Theme">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        </button>
+                    </div>
+                </header>
+            </div>
+
+            <!-- Dashboard Content Body -->
+            <div class="content-body">
+
+                <!-- CHAPTER 1: CS FOUNDATIONS -->
+                <section id="chap-1" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">CHAPTER 1 — COMPUTER SCIENCE FOUNDATIONS</span>
+                            <span class="bn-sub">চ্যাপ্টার ১ — কম্পিউটার সায়েন্স ফান্ডামেন্টালস</span>
+                        </h2>
+                    </div>
+                    <p style="font-size: 12.5px;">
+                        <span class="en-text">CPU registers, RAM allocation, Stack vs Heap memory, process threads, and operating system scheduling.</span>
+                        <span class="bn-sub">সিপিইউ রেজিস্টার, র‍্যাম বরাদ্দ, স্ট্যাক বনাম হিফ মেমোরি এবং প্রসেস থ্রেড শিডিউলিং।</span>
+                    </p>
+                </section>
+
+                <!-- CHAPTER 3: C# MASTERY -->
+                <section id="chap-3" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">CHAPTER 3 — ADVANCED C# & THREADING MASTERY</span>
+                            <span class="bn-sub">চ্যাপ্টার ৩ — অ্যাডভান্সড C# এবং থ্রেডিং মাস্টারি</span>
+                        </h2>
+                    </div>
+                    <p style="font-size: 12.5px;">
+                        <span class="en-text">Delegates, Events, LINQ execution, async/await internals, Task Yielding, IDisposable, Memory allocation, Garbage Collection, Locks, Race Conditions & Deadlocks.</span>
+                        <span class="bn-sub"> ডেলিগেট, ইভেন্ট, LINQ এক্সিকিউশন, async/await ইন্টারনালস, গার্বেজ কালেকশন ও ডেডলক হ্যান্ডলিং।</span>
+                    </p>
+                </section>
+
+                <!-- CHAPTER 22: SYSTEM DESIGN -->
+                <section id="chap-22" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">CHAPTER 22 — SYSTEM DESIGN METHODOLOGY & PROJECTS</span>
+                            <span class="bn-sub">চ্যাপ্টার ২২ — সিস্টেম ডিজাইন মেথডোলজি ও প্রজেক্টসমূহ</span>
+                        </h2>
+                    </div>
+                    <pre><code>Functional Specs → Non-Functional Specs → Capacity Estimation → API Design → Data Model → Architecture → Scaling → Caching → Messaging → Security → Observability → Trade-offs</code></pre>
+                </section>
+
+                <!-- CHAPTER 35: CAPSTONE PROJECT -->
+                <section id="chap-35" class="card section-anchor" style="border-color: var(--accent-mastery);">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-mastery);">
+                            <span class="en-text">CHAPTER 35 — REAL ENTERPRISE CAPSTONE PROJECT</span>
+                            <span class="bn-sub">চ্যাপ্টার ৩৫ — বাস্তব এন্টারপ্রাইজ ক্যাপস্টোন প্রজেক্ট</span>
+                        </h2>
+                    </div>
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p><strong>Enterprise Billing Platform:</strong> ASP.NET Core API + EF Core + SQL Server + Redis Cache + Kafka Event Bus + Docker Containers + CI/CD Pipeline + Health Observability Dashboards.</p>
+                    </div>
+                </section>
+
+                <!-- CHAPTER 40: COMPETENCY MATRIX -->
+                <section id="chap-40" class="card section-anchor" style="border-color: var(--accent-green);">
+                    <div class="card-header-flex">
+                        <h2 class="card-title" style="color: var(--accent-green);">
+                            <span class="en-text">CHAPTER 40 — ENGINEER COMPETENCY MATRIX (LEVELS 1 TO 6)</span>
+                            <span class="bn-sub">চ্যাপ্টার ৪০ — ইঞ্জিনিয়ার যোগ্যতা ম্যাট্রিক্স (লেভেল ১ থেকে ৬)</span>
+                        </h2>
+                    </div>
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p><strong>Level 1:</strong> Can Explain → <strong>Level 2:</strong> Can Implement → <strong>Level 3:</strong> Can Troubleshoot → <strong>Level 4:</strong> Can Optimize → <strong>Level 5:</strong> Can Design → <strong>Level 6:</strong> Can Lead Enterprise Systems.</p>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let appState = {
+            theme: localStorage.getItem("theme") || "dark",
+            lang: localStorage.getItem("lang") || "both"
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            applyTheme(appState.theme);
+            applyLanguage(appState.lang);
+
+            document.getElementById("btnThemeToggle").addEventListener("click", toggleTheme);
+
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebarOverlay");
+            
+            function openSidebar() { sidebar.classList.add("open"); overlay.classList.add("active"); }
+            function closeSidebar() { sidebar.classList.remove("open"); overlay.classList.remove("active"); }
+
+            document.getElementById("mobileNavToggle").addEventListener("click", openSidebar);
+            document.getElementById("floatingNavToggle").addEventListener("click", openSidebar);
+            document.getElementById("sidebarCloseBtn").addEventListener("click", closeSidebar);
+            overlay.addEventListener("click", closeSidebar);
+
+            document.querySelectorAll(".menu-item").forEach(item => {
+                item.addEventListener("click", () => { if (window.innerWidth <= 992) closeSidebar(); });
+            });
+        });
+
+        function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("theme", theme); }
+        function toggleTheme() { appState.theme = appState.theme === "dark" ? "light" : "dark"; applyTheme(appState.theme); }
+
+        function applyLanguage(lang) {
+            appState.lang = lang;
+            document.documentElement.setAttribute("data-lang", lang);
+            localStorage.setItem("lang", lang);
+            document.getElementById("btnLangBoth").classList.toggle("active", lang === "both");
+            document.getElementById("btnLangEng").classList.toggle("active", lang === "eng");
+            document.getElementById("btnLangBan").classList.toggle("active", lang === "ban");
+        }
+
+        function setLanguage(lang) { applyLanguage(lang); }
+    </script>
+</body>
+</html>
