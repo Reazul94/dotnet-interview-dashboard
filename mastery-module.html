@@ -76,7 +76,7 @@
             font-size: 14px;
             overflow-x: hidden;
             word-break: break-word;
-            overflow-wrap: break-wrap;
+            overflow-wrap: break-word;
         }
 
         .bn-sub {
@@ -193,22 +193,6 @@
         .card-header-flex { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); gap: 10px; flex-wrap: wrap; }
         .card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
 
-        .priority-badge { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
-        .priority-badge.high { background-color: var(--priority-high-bg); color: var(--priority-high); border: 1px solid rgba(239, 68, 68, 0.3); }
-
-        .comparison-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; border-radius: var(--radius-md); border: 1px solid var(--border-color); }
-        .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; min-width: 550px; }
-        .comparison-table th { background-color: var(--bg-tertiary); color: var(--text-primary); padding: 10px 12px; border-bottom: 2px solid var(--border-color); }
-        .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); }
-        .comparison-table code { font-family: 'Fira Code', monospace; font-size: 11px; background-color: var(--bg-primary); padding: 2px 5px; border-radius: 4px; color: var(--accent-mastery); }
-
-        .interview-q-box { background-color: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; }
-        .interview-q { font-weight: 700; color: var(--accent-mastery); font-size: 12.5px; margin-bottom: 4px; }
-        .interview-a { font-size: 12.5px; color: var(--text-primary); }
-
-        .script-box { background-color: var(--bg-tertiary); border-radius: var(--radius-md); padding: 12px; margin-top: 10px; border-left: 3px solid var(--accent-mastery); }
-        .script-quote { font-style: italic; color: var(--text-secondary); font-size: 12px; background-color: var(--bg-primary); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); }
-
         .section-anchor { scroll-margin-top: 110px; }
         pre { background-color: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px; font-family: 'Fira Code', monospace; font-size: 11px; color: #38bdf8; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
@@ -264,56 +248,8 @@
                 </div>
             </div>
 
-            <nav class="sidebar-menu">
-                <div class="menu-category">FOUNDATION (1-6)</div>
-                <a href="#chap-1" class="menu-item active">├── Ch 1. CS Foundations</a>
-                <a href="#chap-2" class="menu-item">├── Ch 2. Prog Fundamentals & Big O</a>
-                <a href="#chap-3" class="menu-item">├── Ch 3. C# Mastery & Threading</a>
-                <a href="#chap-4" class="menu-item">├── Ch 4. OOP, SOLID & Code Smells</a>
-                <a href="#chap-5" class="menu-item">├── Ch 5. Design Patterns</a>
-                <a href="#chap-6" class="menu-item">├── Ch 6. Data Structures & Algo</a>
-
-                <div class="menu-category">DATABASE & BACKEND (7-11)</div>
-                <a href="#chap-7" class="menu-item">├── Ch 7. SQL & Database Mastery</a>
-                <a href="#chap-8" class="menu-item">├── Ch 8. ADO.NET Deep Dive</a>
-                <a href="#chap-9" class="menu-item">├── Ch 9. EF Core Performance</a>
-                <a href="#chap-10" class="menu-item">├── Ch 10. ASP.NET Core Production</a>
-                <a href="#chap-11" class="menu-item">├── Ch 11. API Engineering & REST</a>
-
-                <div class="menu-category">INFRA & DEVOPS (12-20)</div>
-                <a href="#chap-12" class="menu-item">├── Ch 12. Security & OAuth/JWT</a>
-                <a href="#chap-13" class="menu-item">├── Ch 13. Performance Tuning</a>
-                <a href="#chap-14" class="menu-item">├── Ch 14. Caching & Redis</a>
-                <a href="#chap-15" class="menu-item">├── Ch 15. Message Brokers & Kafka</a>
-                <a href="#chap-16" class="menu-item">├── Ch 16. Background Workers & Airflow</a>
-                <a href="#chap-17" class="menu-item">├── Ch 17. Linux System Admin</a>
-                <a href="#chap-18" class="menu-item">├── Ch 18. Networking for SE</a>
-                <a href="#chap-19" class="menu-item">├── Ch 19. Nginx & Reverse Proxy</a>
-                <a href="#chap-20" class="menu-item">├── Ch 20. Load Balancing Hands-On</a>
-
-                <div class="menu-category">ARCHITECTURE & SYSTEM DESIGN (21-30)</div>
-                <a href="#chap-21" class="menu-item">├── Ch 21. System Scalability</a>
-                <a href="#chap-22" class="menu-item">├── Ch 22. System Design Projects</a>
-                <a href="#chap-23" class="menu-item">├── Ch 23. Software Architecture</a>
-                <a href="#chap-24" class="menu-item">├── Ch 24. Microservices & Saga</a>
-                <a href="#chap-25" class="menu-item">├── Ch 25. Unit & E2E Testing</a>
-                <a href="#chap-26" class="menu-item">├── Ch 26. DevOps & CI/CD</a>
-                <a href="#chap-27" class="menu-item">├── Ch 27. Docker & Compose</a>
-                <a href="#chap-28" class="menu-item">├── Ch 28. Kubernetes Concepts</a>
-                <a href="#chap-29" class="menu-item">├── Ch 29. Cloud & Azure</a>
-                <a href="#chap-30" class="menu-item">├── Ch 30. Observability & Tracing</a>
-
-                <div class="menu-category">PRODUCTION & PRACTICE (31-40)</div>
-                <a href="#chap-31" class="menu-item">├── Ch 31. Production Troubleshooting</a>
-                <a href="#chap-32" class="menu-item">├── Ch 32. SE Best Practices</a>
-                <a href="#chap-33" class="menu-item">├── Ch 33. Agile & Teamwork</a>
-                <a href="#chap-34" class="menu-item">├── Ch 34. AI for SE & Prompts</a>
-                <a href="#chap-35" class="menu-item">├── Ch 35. Enterprise Capstone Project</a>
-                <a href="#chap-36" class="menu-item">├── Ch 36. Production Hardening</a>
-                <a href="#chap-37" class="menu-item">├── Ch 37. Chapter Interview Q&A</a>
-                <a href="#chap-38" class="menu-item">├── Ch 38. Hands-On Lab System</a>
-                <a href="#chap-39" class="menu-item">├── Ch 39. Engineering Notebook</a>
-                <a href="#chap-40" class="menu-item">└── Ch 40. Competency Matrix (L1-L6)</a>
+            <nav class="sidebar-menu" id="masterySidebarMenu">
+                <!-- Dynamically generated menu items -->
             </nav>
         </aside>
 
@@ -328,6 +264,7 @@
                     <a href="database-ai.html" class="page-tab">🛢️ DATABASE MASTER (PAGE 3)</a>
                     <a href="enterprise-engineering.html" class="page-tab">🚀 REAL-WORLD ENTERPRISE (PAGE 4)</a>
                     <a href="mastery-module.html" class="page-tab active">🎓 SE MASTERY MODULE (PAGE 5)</a>
+                    <a href="all-in-one.html" class="page-tab" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan)); color:#fff;">📑 ALL-IN-ONE SINGLE LINK</a>
                 </div>
 
                 <!-- Header -->
@@ -363,78 +300,56 @@
             </div>
 
             <!-- Dashboard Content Body -->
-            <div class="content-body">
-
-                <!-- CHAPTER 1: CS FOUNDATIONS -->
-                <section id="chap-1" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <span class="en-text">CHAPTER 1 — COMPUTER SCIENCE FOUNDATIONS</span>
-                            <span class="bn-sub">চ্যাপ্টার ১ — কম্পিউটার সায়েন্স ফান্ডামেন্টালস</span>
-                        </h2>
-                    </div>
-                    <p style="font-size: 12.5px;">
-                        <span class="en-text">CPU registers, RAM allocation, Stack vs Heap memory, process threads, and operating system scheduling.</span>
-                        <span class="bn-sub">সিপিইউ রেজিস্টার, র‍্যাম বরাদ্দ, স্ট্যাক বনাম হিফ মেমোরি এবং প্রসেস থ্রেড শিডিউলিং।</span>
-                    </p>
-                </section>
-
-                <!-- CHAPTER 3: C# MASTERY -->
-                <section id="chap-3" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <span class="en-text">CHAPTER 3 — ADVANCED C# & THREADING MASTERY</span>
-                            <span class="bn-sub">চ্যাপ্টার ৩ — অ্যাডভান্সড C# এবং থ্রেডিং মাস্টারি</span>
-                        </h2>
-                    </div>
-                    <p style="font-size: 12.5px;">
-                        <span class="en-text">Delegates, Events, LINQ execution, async/await internals, Task Yielding, IDisposable, Memory allocation, Garbage Collection, Locks, Race Conditions & Deadlocks.</span>
-                        <span class="bn-sub"> ডেলিগেট, ইভেন্ট, LINQ এক্সিকিউশন, async/await ইন্টারনালস, গার্বেজ কালেকশন ও ডেডলক হ্যান্ডলিং।</span>
-                    </p>
-                </section>
-
-                <!-- CHAPTER 22: SYSTEM DESIGN -->
-                <section id="chap-22" class="card section-anchor">
-                    <div class="card-header-flex">
-                        <h2 class="card-title">
-                            <span class="en-text">CHAPTER 22 — SYSTEM DESIGN METHODOLOGY & PROJECTS</span>
-                            <span class="bn-sub">চ্যাপ্টার ২২ — সিস্টেম ডিজাইন মেথডোলজি ও প্রজেক্টসমূহ</span>
-                        </h2>
-                    </div>
-                    <pre><code>Functional Specs → Non-Functional Specs → Capacity Estimation → API Design → Data Model → Architecture → Scaling → Caching → Messaging → Security → Observability → Trade-offs</code></pre>
-                </section>
-
-                <!-- CHAPTER 35: CAPSTONE PROJECT -->
-                <section id="chap-35" class="card section-anchor" style="border-color: var(--accent-mastery);">
-                    <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-mastery);">
-                            <span class="en-text">CHAPTER 35 — REAL ENTERPRISE CAPSTONE PROJECT</span>
-                            <span class="bn-sub">চ্যাপ্টার ৩৫ — বাস্তব এন্টারপ্রাইজ ক্যাপস্টোন প্রজেক্ট</span>
-                        </h2>
-                    </div>
-                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
-                        <p><strong>Enterprise Billing Platform:</strong> ASP.NET Core API + EF Core + SQL Server + Redis Cache + Kafka Event Bus + Docker Containers + CI/CD Pipeline + Health Observability Dashboards.</p>
-                    </div>
-                </section>
-
-                <!-- CHAPTER 40: COMPETENCY MATRIX -->
-                <section id="chap-40" class="card section-anchor" style="border-color: var(--accent-green);">
-                    <div class="card-header-flex">
-                        <h2 class="card-title" style="color: var(--accent-green);">
-                            <span class="en-text">CHAPTER 40 — ENGINEER COMPETENCY MATRIX (LEVELS 1 TO 6)</span>
-                            <span class="bn-sub">চ্যাপ্টার ৪০ — ইঞ্জিনিয়ার যোগ্যতা ম্যাট্রিক্স (লেভেল ১ থেকে ৬)</span>
-                        </h2>
-                    </div>
-                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
-                        <p><strong>Level 1:</strong> Can Explain → <strong>Level 2:</strong> Can Implement → <strong>Level 3:</strong> Can Troubleshoot → <strong>Level 4:</strong> Can Optimize → <strong>Level 5:</strong> Can Design → <strong>Level 6:</strong> Can Lead Enterprise Systems.</p>
-                    </div>
-                </section>
-
+            <div class="content-body" id="masteryContentBody">
+                <!-- Dynamically rendered 40 chapters -->
             </div>
         </main>
     </div>
 
     <script>
+        const masteryChapters = [
+            { num: 1, title: "Computer Science Foundations", bn: "কম্পিউটার সায়েন্স ফান্ডামেন্টালস", desc: "CPU registers, RAM allocation, Stack vs Heap memory, process threads, OS scheduling.", descBn: "সিপিইউ রেজিস্টার, র‍্যাম বরাদ্দ, স্ট্যাক বনাম হিফ মেমোরি এবং প্রসেস থ্রেড শিডিউলিং।" },
+            { num: 2, title: "Programming Fundamentals & Big O", bn: "প্রোগ্রামিং ফান্ডামেন্টালস ও বিগ ও", desc: "Data structures, search, sort, Hash maps, Trees, and Time/Space complexity.", descBn: "ডেটা স্ট্রাকচার, অ্যালগরিদম জটিলতা ও বিগ ও নোটেশন।" },
+            { num: 3, title: "C# Mastery & Threading", bn: "C# মাস্টারি ও থ্রেডিং", desc: "LINQ execution, async/await internals, Task, Garbage Collection, Locks & Deadlocks.", descBn: "LINQ, async/await, থ্রেডিং, লকিং এবং মেমোরি ম্যানেজমেন্ট।" },
+            { num: 4, title: "OOP and SOLID Principles", bn: "OOP এবং SOLID নীতিসমূহ", desc: "Encapsulation, Abstraction, Inheritance, Polymorphism, SRP, OCP, LSP, ISP, DIP, Code smells.", descBn: "অবজেক্ট ওরিয়েন্টেড ডিজাইন এবং কোড স্মেল সমাধান।" },
+            { num: 5, title: "Design Patterns in C#", bn: "ডিজাইন প্যাটার্নস", desc: "Factory, Strategy, Builder, Adapter, Decorator, Observer, Facade, Repository, Unit of Work.", descBn: "বাস্তব ডিজাইনে বহুল ব্যবহৃত আর্কিটেকচারাল ডিজাইন প্যাটার্ন।" },
+            { num: 6, title: "Data Structures and Algorithms", bn: "ডেটা স্ট্রাকচার ও অ্যালগরিদম", desc: "Arrays, Stacks, Queues, Hash Tables, Trees, Graphs, BFS/DFS, Binary Search.", descBn: "প্র্যাকটিকাল অ্যালগরিদম ও ডাটা স্ট্রাকচার সমাধান।" },
+            { num: 7, title: "SQL and Database Mastery", bn: "SQL এবং ডাটাবেজ মাস্টারি", desc: "Data modeling, Normalization, Joins, CTE, Window Functions, Transactions, Indexing.", descBn: "এডভান্সড SQL কুয়েরি এবং ডাটাবেজ অপটিমাইজেশন।" },
+            { num: 8, title: "ADO.NET Deep Dive", bn: "ADO.NET বিস্তারিত", desc: "SqlConnection, SqlCommand, SqlDataReader, Connection Pooling, Bulk Inserts.", descBn: "হাই-পারফরম্যান্স র ডাটাবেজ এক্সেস।" },
+            { num: 9, title: "Entity Framework Core", bn: "Entity Framework Core", desc: "DbContext, AsNoTracking, Change Tracker, Migrations, Projections, Performance tuning.", descBn: "EF Core পারফরম্যান্স টিউনিং এবং মাইগ্রেশন।" },
+            { num: 10, title: "ASP.NET Core Production", bn: "ASP.NET Core প্রোডাকশন", desc: "Hosting, Kestrel, Middleware pipeline, Routing, Filters, Exception handling.", descBn: "বিল্ট-ইন মিডলওয়্যার এবং সার্ভিস পাইপলাইন।" },
+            { num: 11, title: "API Engineering & REST", bn: "API ইঞ্জিনিয়ারিং ও REST", desc: "HTTP Status Codes, DTOs, Versioning, Idempotency, Rate Limiting, OpenAPI.", descBn: "এন্টারপ্রাইজ গ্রেড RESTful API ডিজাইন।" },
+            { num: 12, title: "Security & OAuth/JWT", bn: "সিকিউরিটি এবং OAuth/JWT", desc: "Authentication, Authorization, Claims, JWT, CORS, CSRF, XSS, SQL Injection prevention.", descBn: "অ্যাপ্লিকেশন সিকিউরিটি এবং টোকেন প্রমাণীকরণ।" },
+            { num: 13, title: "Performance Engineering", bn: "পারফরম্যান্স ইঞ্জিনিয়ারিং", desc: "Latency, Throughput, Memory allocation, Async I/O, Profiling slow code.", descBn: "লেটেন্সি কমানো এবং অ্যাপ প্রোফাইলিং।" },
+            { num: 14, title: "Caching / Redis", bn: "ক্যাশিং এবং Redis", desc: "Cache-aside, Write-through, TTL, Eviction, Distributed Locks, Rate limiting.", descBn: "ডিস্ট্রিবিউটেড ইন-মেমোরি ক্যাশিং।" },
+            { num: 15, title: "Message Brokers / Kafka", bn: "মেসেজ ব্রোকার এবং Kafka", desc: "Producers, Consumers, Topics, Partitions, Offsets, Consumer Groups, Lag monitoring.", descBn: "ইভেন্ট ড্রাইভেন আর্কিটেকচার ও কাফকা।" },
+            { num: 16, title: "Background Processing & Airflow", bn: "ব্যাকগ্রাউন্ড প্রসেসিং ও Airflow", desc: "BackgroundService, Worker Queues, Retries, Cron Jobs, Apache Airflow DAGs.", descBn: "ব্যাকগ্রাউন্ড টাস্ক এবং এয়ারফ্লো ওয়ার্কফ্লো।" },
+            { num: 17, title: "Linux System Administration", bn: "লিনাক্স সিস্টেম এডমিনিস্ট্রেশন", desc: "Processes, Permissions, systemd, Shell Scripting, Memory, Disk, CPU monitoring.", descBn: "প্রোডাকশন লিনাক্স সার্ভার পরিচালনা।" },
+            { num: 18, title: "Networking for Software Engineers", bn: "সফ্টওয়্যার ইঞ্জিনিয়ারদের জন্য নেটওয়ার্কিং", desc: "TCP/IP, UDP, DNS, HTTP/S, TLS, Sockets, Reverse Proxy, Firewalls.", descBn: "নেটওয়ার্কিং প্রটোকল ও ডাটা ফ্লো।" },
+            { num: 19, title: "Nginx / Reverse Proxy", bn: "Nginx ও রিভার্স প্রক্সি", desc: "Reverse proxy, TLS termination, Routing, Compression, Caching, Upstream blocks.", descBn: "এনজিনেক্স প্রক্সি ওয়েব সার্ভার কনফিগারেশন।" },
+            { num: 20, title: "Load Balancing Hands-On", bn: "লোড ব্যালান্সিং প্র্যাকটিস", desc: "Algorithms, Health checks, Failover, Sticky sessions, High availability.", descBn: "লোড ব্যালান্সার ও ডিস্ট্রিবিউটেড ট্রাফিক।" },
+            { num: 21, title: "System Scalability", bn: "সিস্টেম স্কেলেবিলিটি", desc: "Vertical vs Horizontal scaling, Caching, DB Replicas, Partitioning, CDN.", descBn: "১০ হাজার থেকে ১০ লাখ ইউজার স্কেলিং।" },
+            { num: 22, title: "System Design Methodology", bn: "সিস্টেম ডিজাইন মেথডোলজি", desc: "Capacity estimation, API design, Data model, Scaling, Failure handling.", descBn: "এন্টারপ্রাইজ সিস্টেম ডিজাইন গাইড।" },
+            { num: 23, title: "Software Architecture", bn: "সফ্টওয়্যার আর্কিটেকচার", desc: "Layered, Clean, Onion, Hexagonal, Modular Monolith, Microservices.", descBn: "আর্কিটেকচারাল প্যাটার্ন ও Trade-offs।" },
+            { num: 24, title: "Microservices & Distributed Systems", bn: "মাইক্রোসার্ভিসেস ও ডিস্ট্রিবিউটেড সিস্টেম", desc: "Service boundaries, API Gateway, Saga Pattern, Circuit Breakers, Retries.", descBn: "মাইক্রোসার্ভিসেস আর্কিটেকচার।" },
+            { num: 25, title: "Testing (Unit, Integration, E2E)", bn: "টেস্টিং (ইউনিট, ইন্টিগ্রেশন, E2E)", desc: "xUnit, NUnit, Moq, Testability, Mocking, Fixtures, Coverage.", descBn: "অটোমেটেড টেস্ট সুইট।" },
+            { num: 26, title: "DevOps & CI/CD Pipelines", bn: "DevOps এবং CI/CD পাইপলাইন", desc: "GitHub Actions, Azure DevOps, Git flow, Artifacts, Environments, Secrets.", descBn: "স্বয়ংক্রিয় বিল্ড ও ডেপ্লয়মেন্ট।" },
+            { num: 27, title: "Containers & Docker", bn: "কন্টেইনার ও Docker", desc: "Images, Containers, Dockerfile, Volumes, Networks, Docker Compose.", descBn: "ডকার কন্টেইনারাইজেশন।" },
+            { num: 28, title: "Kubernetes Concepts", bn: "Kubernetes কনসেপ্টসমূহ", desc: "Pods, Deployments, Services, ConfigMaps, Secrets, Ingress, Scaling.", descBn: "কন্টেইনার অর্কেস্ট্রেশন।" },
+            { num: 29, title: "Cloud / Azure Concepts", bn: "ক্লাউড ও Azure কনসেপ্টস", desc: "App Services, Azure SQL, Blob Storage, Key Vault, Service Bus.", descBn: "এন্টারপ্রাইজ ক্লাউড আর্কিটেকচার।" },
+            { num: 30, title: "Observability & OpenTelemetry", bn: "অবজারভেবিলিটি ও ওপেনটেলিমেট্রি", desc: "Logs, Metrics, Traces, Correlation IDs, OpenTelemetry instrumentation.", descBn: "সিস্টেম ট্রেসিং ও মনিটরিং।" },
+            { num: 31, title: "Production Troubleshooting Playbook", bn: "প্রোডাকশন ট্রাবলশুটিং প্লেবুক", desc: "500 errors, CPU 100%, Memory leak, DB timeouts, Disk full incidents.", descBn: "বাস্তব প্রোডাকশন সমস্যা সমাধান।" },
+            { num: 32, title: "Software Engineering Practices", bn: "সফ্টওয়্যার ইঞ্জিনিয়ারিং প্র্যাকটিস", desc: "Clean code, Code reviews, Refactoring, Technical debt, Naming conventions.", descBn: "ক্লিন কোড ও রিফ্যাক্টরিং।" },
+            { num: 33, title: "Agile & Team Engineering", bn: "এজাইল ও টিম ইঞ্জিনিয়ারিং", desc: "Scrum ceremonies, Backlog refinement, Code reviews, Estimation.", descBn: "টিম ওয়ার্কফ্লো ও এজাইল পদ্ধতি।" },
+            { num: 34, title: "AI for Software Engineers", bn: "সফ্টওয়্যার ইঞ্জিনিয়ারদের জন্য AI", desc: "Prompt engineering, SQL optimization, Refactoring, Test generation, Limitations.", descBn: "এআই প্রম্পট ইঞ্জিনিয়ারিং।" },
+            { num: 35, title: "Real Enterprise Capstone Project", bn: "বাস্তব এন্টারপ্রাইজ ক্যাপস্টোন প্রজেক্ট", desc: "Enterprise Billing Platform using ASP.NET Core, EF Core, SQL, Redis, Kafka.", descBn: "সম্পূর্ণ এন্টারপ্রাইজ বিলিং প্লাটফর্ম।" },
+            { num: 36, title: "Production Hardening & Chaos Eng", bn: "প্রোডাকশন হার্ডেনিং ও কেওস ইঞ্জিনিয়ারিং", desc: "Deliberately breaking Redis, Kafka, DB to test system resiliency.", descBn: "সিস্টেম স্থিতিস্থাপকতা পরীক্ষা।" },
+            { num: 37, title: "Chapter Interview Q&A System", bn: "চ্যাপ্টারওয়াইজ ইন্টারভিউ প্রশ্নোত্তর", desc: "Beginner to Advanced interview questions and detailed answers.", descBn: "ধাপভিত্তিক ইন্টারভিউ প্রশ্ন ও উত্তর।" },
+            { num: 38, title: "Hands-On Lab System", bn: "হ্যান্ডস-অন ল্যাব সিস্টেম", desc: "Learn -> Code -> Break -> Debug -> Optimize -> Explain workflow.", descBn: "ব্যবহারিক কোডিং ও ল্যাব অনুশীলনী।" },
+            { num: 39, title: "Engineering Notebook", bn: "ইঞ্জিনিয়ারিং নোটবুক", desc: "Personal logs for architecture diagrams, SQL patterns, and production lessons.", descBn: "ব্যক্তিগত টেকনিক্যাল নোটবুক।" },
+            { num: 40, title: "Competency Matrix (Levels 1 to 6)", bn: "ইঞ্জিনিয়ার যোগ্যতা ম্যাট্রিক্স (লেভেল ১-৬)", desc: "Self-assessment across 23 technical categories from Beginner to Enterprise Lead.", descBn: "লেভেল ১ থেকে লেভেল ৬ টেকনিক্যাল স্কিল ম্যাট্রিক্স।" }
+        ];
+
         let appState = {
             theme: localStorage.getItem("theme") || "dark",
             lang: localStorage.getItem("lang") || "both"
@@ -443,6 +358,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             applyTheme(appState.theme);
             applyLanguage(appState.lang);
+            renderMasteryChapters();
 
             document.getElementById("btnThemeToggle").addEventListener("click", toggleTheme);
 
@@ -457,8 +373,11 @@
             document.getElementById("sidebarCloseBtn").addEventListener("click", closeSidebar);
             overlay.addEventListener("click", closeSidebar);
 
-            document.querySelectorAll(".menu-item").forEach(item => {
-                item.addEventListener("click", () => { if (window.innerWidth <= 992) closeSidebar(); });
+            document.getElementById("searchInput").addEventListener("input", (e) => {
+                const query = e.target.value.toLowerCase();
+                document.querySelectorAll(".card.section-anchor").forEach(card => {
+                    card.style.display = card.innerText.toLowerCase().includes(query) ? "block" : "none";
+                });
             });
         });
 
@@ -475,6 +394,43 @@
         }
 
         function setLanguage(lang) { applyLanguage(lang); }
+
+        function renderMasteryChapters() {
+            const menuContainer = document.getElementById("masterySidebarMenu");
+            const bodyContainer = document.getElementById("masteryContentBody");
+
+            menuContainer.innerHTML = masteryChapters.map((c, i) => `
+                <a href="#chap-${c.num}" class="menu-item ${i === 0 ? 'active' : ''}">
+                    <span class="en-text">├── Ch ${c.num}. ${c.title}</span>
+                    <span class="bn-sub">├── চ্যাপ্টার ${c.num}. ${c.bn}</span>
+                </a>
+            `).join("");
+
+            bodyContainer.innerHTML = masteryChapters.map(c => `
+                <section id="chap-${c.num}" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">CHAPTER ${c.num} — ${c.title.toUpperCase()}</span>
+                            <span class="bn-sub">চ্যাপ্টার ${c.num} — ${c.bn}</span>
+                        </h2>
+                    </div>
+                    <p style="font-size: 12.5px;">
+                        <span class="en-text">${c.desc}</span>
+                        <span class="bn-sub">${c.descBn}</span>
+                    </p>
+                    <div class="interview-q-box" style="margin-top: 10px;">
+                        <div class="interview-q">
+                            <span class="en-text">Core Learning Objective & Production Relevance</span>
+                            <span class="bn-sub">মূল শিক্ষা ও প্রোডাকশন ব্যবহার</span>
+                        </div>
+                        <div class="interview-a">
+                            <span class="en-text">"Understand the internal mechanics, practical C# code implementation, common design errors, performance considerations, and real-world production debugging for ${c.title}."</span>
+                            <span class="bn-sub">"${c.title} এর ইন্টারনাল কৌশল, ব্যবহারিক কোড, সাধারণ ভুল এবং প্রোডাকশন সমাধান বিস্তারিতভাবে অনুশীলন করুন।"</span>
+                        </div>
+                    </div>
+                </section>
+            `).join("");
+        }
     </script>
 </body>
 </html>

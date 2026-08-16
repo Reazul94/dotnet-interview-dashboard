@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="both">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>📑 ALL-IN-ONE SINGLE LINK DASHBOARD — Full Software Engineering Suite</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --bg-primary-light: #f8fafc;
+            --bg-secondary-light: #ffffff;
+            --bg-tertiary-light: #f1f5f9;
+            --text-primary-light: #0f172a;
+            --text-secondary-light: #475569;
+            --text-muted-light: #64748b;
+            --border-light: #e2e8f0;
+
+            /* Dark Theme Variables */
+            --bg-primary-dark: #0b0f19;
+            --bg-secondary-dark: #131b2e;
+            --bg-tertiary-dark: #1e293b;
+            --text-primary-dark: #f8fafc;
+            --text-secondary-dark: #94a3b8;
+            --text-muted-dark: #64748b;
+            --border-dark: #1e293b;
+
+            /* Brand Accent Colors */
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-bn: #38bdf8;
+            --accent-orange: #f97316;
+
+            /* Active Theme Defaults */
+            --bg-primary: var(--bg-primary-dark);
+            --bg-secondary: var(--bg-secondary-dark);
+            --bg-tertiary: var(--bg-tertiary-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --text-muted: var(--text-muted-dark);
+            --border-color: var(--border-dark);
+
+            --sidebar-width: 280px;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: var(--bg-primary-light);
+            --bg-secondary: var(--bg-secondary-light);
+            --bg-tertiary: var(--bg-tertiary-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --text-muted: var(--text-muted-light);
+            --border-color: var(--border-light);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .bn-sub { display: block; font-family: 'Hind Siliguri', sans-serif; font-size: 12.5px; color: var(--accent-bn); margin-top: 4px; }
+        [data-lang="eng"] .bn-sub { display: none !important; }
+        [data-lang="ban"] .en-text { display: none !important; }
+
+        .sticky-top-container {
+            position: sticky; top: 0; z-index: 90;
+            background-color: rgba(19, 27, 46, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-switcher-bar {
+            padding: 6px 12px;
+            background-color: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; flex-wrap: wrap;
+        }
+
+        .page-tab {
+            display: inline-flex; align-items: center;
+            padding: 6px 12px; border-radius: var(--radius-md);
+            font-size: 12px; font-weight: 700; text-decoration: none;
+            color: var(--text-secondary); background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color); transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .page-tab.active {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            color: #ffffff; border-color: transparent;
+        }
+
+        #header { padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+        .header-title-group h1 { font-size: 16px; font-weight: 700; color: var(--accent-cyan); }
+
+        .content-body { padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .card { background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 24px; }
+        .card-title { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+
+        .module-link-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px;
+        }
+        .module-card {
+            background-color: var(--bg-tertiary); border: 1px solid var(--border-color);
+            border-radius: var(--radius-md); padding: 16px; text-decoration: none;
+            color: var(--text-primary); transition: transform 0.2s ease;
+        }
+        .module-card:hover { transform: translateY(-3px); border-color: var(--accent-cyan); }
+        .module-card-title { font-size: 15px; font-weight: 700; color: var(--accent-cyan); margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+    <div class="sticky-top-container">
+        <div class="page-switcher-bar">
+            <a href="index.html" class="page-tab">🔥 HIGH PRIORITY (PAGE 1)</a>
+            <a href="ecosystem.html" class="page-tab">🌐 ECOSYSTEM & TOOLS (PAGE 2)</a>
+            <a href="database-ai.html" class="page-tab">🛢️ DATABASE MASTER (PAGE 3)</a>
+            <a href="enterprise-engineering.html" class="page-tab">🚀 REAL-WORLD ENTERPRISE (PAGE 4)</a>
+            <a href="mastery-module.html" class="page-tab">🎓 SE MASTERY MODULE (PAGE 5)</a>
+            <a href="all-in-one.html" class="page-tab active">📑 ALL-IN-ONE SINGLE LINK</a>
+        </div>
+
+        <header id="header">
+            <div class="header-title-group">
+                <h1>📑 UNIFIED ALL-IN-ONE SINGLE LINK DASHBOARD</h1>
+                <p style="font-size: 11px; color: var(--text-muted);">Access all 5 specialized modules directly from one single master hub!</p>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" id="btnLangBoth" onclick="setLanguage('both')">BOTH</button>
+                <button class="lang-btn" id="btnLangEng" onclick="setLanguage('eng')">ENG</button>
+                <button class="lang-btn" id="btnLangBan" onclick="setLanguage('ban')">বাংলা</button>
+            </div>
+        </header>
+    </div>
+
+    <div class="content-body">
+        <div class="card">
+            <h2 class="card-title">🚀 Complete Software Engineering & Interview Mastery Hub</h2>
+            <p>Welcome! Click any of the 5 dedicated modules below or use the top navigation tabs to jump directly to any section:</p>
+
+            <div class="module-link-grid">
+                <a href="index.html" class="module-card">
+                    <div class="module-card-title">🔥 Page 1: High Priority Must-Knows</div>
+                    <p style="font-size: 12px; color: var(--text-secondary);">10 Tomorrow Strategy Rules, ASP.NET Core Middleware, DI Lifetimes, Core C# & OOP Accordions.</p>
+                </a>
+                <a href="ecosystem.html" class="module-card">
+                    <div class="module-card-title">🌐 Page 2: Ecosystem, Tools & Practice</div>
+                    <p style="font-size: 12px; color: var(--text-secondary);">Kafka, Redis, Airflow, xUnit, Moq, CI/CD, Agile, 3D Flashcards & Interactive Mock Interview.</p>
+                </a>
+                <a href="database-ai.html" class="module-card">
+                    <div class="module-card-title">🛢️ Page 3: Database Master & AI SQL</div>
+                    <p style="font-size: 12.5px; color: var(--text-secondary);">37 Complete Database topics, Oracle vs T-SQL, Indexing Masterclass, Query Optimization, AI Prompts & 40 Q&As.</p>
+                </a>
+                <a href="enterprise-engineering.html" class="module-card">
+                    <div class="module-card-title">🚀 Page 4: Real-World Enterprise Eng</div>
+                    <p style="font-size: 12px; color: var(--text-secondary);">Linux commands (A1-A13), High Concurrency, Load Balancing, Incident Troubleshooting Playbook & Resume Defense.</p>
+                </a>
+                <a href="mastery-module.html" class="module-card">
+                    <div class="module-card-title">🎓 Page 5: SE Mastery Module</div>
+                    <p style="font-size: 12px; color: var(--text-secondary);">40 Deep-dive chapters from CS Fundamentals -> System Design -> Capstone Project -> Competency Matrix.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.documentElement.setAttribute("data-lang", lang);
+            localStorage.setItem("lang", lang);
+            document.getElementById("btnLangBoth").classList.toggle("active", lang === "both");
+            document.getElementById("btnLangEng").classList.toggle("active", lang === "eng");
+            document.getElementById("btnLangBan").classList.toggle("active", lang === "ban");
+        }
+    </script>
+</body>
+</html>

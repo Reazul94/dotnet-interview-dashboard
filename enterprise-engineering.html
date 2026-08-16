@@ -273,12 +273,12 @@
                 <a href="#sec-a1-linux" class="menu-item active">├── A1. Linux Server Commands</a>
                 <a href="#sec-a2-deploy" class="menu-item">├── A2. Linux App Deployment Flow</a>
                 <a href="#sec-a3-cicd" class="menu-item">├── A3. CI/CD Pipeline Build</a>
-                <a href="#sec-a4-strats" class="menu-item">├── A4. Enterprise Deployment Strats</a>
-                <a href="#sec-a5-concurrency" class="menu-item">├── A5. High Concurrency Scaling ★★★</a>
+                <a href="#sec-a4-strats" class="menu-item">├── A4. Deployment Strategies</a>
+                <a href="#sec-a5-concurrency" class="menu-item">├── A5. High Concurrency ★★★</a>
                 <a href="#sec-a6-lb" class="menu-item">├── A6. Load Balancing & Failover</a>
                 <a href="#sec-a7-scale" class="menu-item">├── A7. Scalability Bottlenecks</a>
                 <a href="#sec-a8-sysarch" class="menu-item">├── A8. System Architecture Script</a>
-                <a href="#sec-a9-dbperf" class="menu-item">├── A9. Database Performance Scenarios</a>
+                <a href="#sec-a9-dbperf" class="menu-item">├── A9. DB Performance Scenarios</a>
                 <a href="#sec-a10-logging" class="menu-item">├── A10. Observability & Monitoring</a>
                 <a href="#sec-a11-incidents" class="menu-item">├── A11. Incident Response Playbook</a>
                 <a href="#sec-a12-resume" class="menu-item">├── A12. Resume Tech Defense</a>
@@ -298,6 +298,7 @@
                     <a href="database-ai.html" class="page-tab">🛢️ DATABASE MASTER (PAGE 3)</a>
                     <a href="enterprise-engineering.html" class="page-tab active">🚀 REAL-WORLD ENTERPRISE (PAGE 4)</a>
                     <a href="mastery-module.html" class="page-tab">🎓 SE MASTERY MODULE (PAGE 5)</a>
+                    <a href="all-in-one.html" class="page-tab" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan)); color:#fff;">📑 ALL-IN-ONE SINGLE LINK</a>
                 </div>
 
                 <!-- Header -->
@@ -424,7 +425,10 @@
                             <span class="bn-sub">এ২. লিনাক্সে অ্যাপ্লিকেশন ডেপ্লয়মেন্ট আর্কিটেকচার</span>
                         </h2>
                     </div>
-
+                    <p style="font-size: 12.5px; margin-bottom: 8px;">
+                        <span class="en-text">Conceptual deployment flow from developer commit to live production users:</span>
+                        <span class="bn-sub">ডেভেলপারের কোড সাবমিট থেকে প্রোডাকশন ইউজার পর্যন্ত ডেপ্লয়মেন্ট প্রবাহ:</span>
+                    </p>
                     <pre><code>Developer → Git Repository → Build & Test → Artifact (.jar/.dll) → Linux Server → systemd Service → Kestrel/Tomcat → Nginx Reverse Proxy → Load Balancer → Users</code></pre>
                 </section>
 
@@ -436,7 +440,6 @@
                             <span class="bn-sub">এ৩. ASP.NET Core ও Java এর জন্য CI/CD পাইপলাইন</span>
                         </h2>
                     </div>
-
                     <pre><code>name: Enterprise ASP.NET Core CI/CD
 on:
   push:
@@ -473,6 +476,44 @@ jobs:
         command: sudo systemctl restart myapi.service</code></pre>
                 </section>
 
+                <!-- A4. ENTERPRISE DEPLOYMENT STRATEGIES -->
+                <section id="sec-a4-strats" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A4. ENTERPRISE DEPLOYMENT STRATEGIES</span>
+                            <span class="bn-sub">এ৪. এন্টারপ্রাইজ ডেপ্লয়মেন্ট স্ট্র্যাটেজিসমূহ</span>
+                        </h2>
+                    </div>
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Strategy</th>
+                                    <th>Mechanism</th>
+                                    <th>Downtime / Risk</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Rolling Deployment</strong></td>
+                                    <td>Updates nodes incrementally in small batches.</td>
+                                    <td>Zero downtime; Low risk</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Blue/Green Deployment</strong></td>
+                                    <td>Two identical environments (Blue active, Green new). Traffic flipped instantly at router.</td>
+                                    <td>Zero downtime; Instant rollback</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Canary Deployment</strong></td>
+                                    <td>Routes 5% of live traffic to new version to test performance before full rollout.</td>
+                                    <td>Zero downtime; Minimum impact</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
                 <!-- A5. HIGH CONCURRENCY -->
                 <section id="sec-a5-concurrency" class="card section-anchor">
                     <div class="card-header-flex">
@@ -503,6 +544,98 @@ jobs:
                     </div>
                 </section>
 
+                <!-- A6. LOAD BALANCING & FAILOVER -->
+                <section id="sec-a6-lb" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A6. LOAD BALANCING ALGORITHMS & FAILOVER</span>
+                            <span class="bn-sub">এ৬. লোড ব্যালান্সিং অ্যালগরিদম ও ফেলওভার</span>
+                        </h2>
+                    </div>
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p><strong>Round Robin:</strong> Distributes requests sequentially across servers.</p>
+                        <p style="margin-top:4px;"><strong>Least Connections:</strong> Routes incoming request to server with fewest active connections.</p>
+                        <p style="margin-top:4px;"><strong>IP Hash:</strong> Maps client IP to specific server for session consistency.</p>
+                        <p style="margin-top:4px;"><strong>Health Checks & Failover:</strong> Load balancer continuously probes health endpoints (`/healthz`). If Server A crashes, load balancer immediately stops routing traffic to Server A!</p>
+                    </div>
+                </section>
+
+                <!-- A7. SCALABILITY BOTTLENECKS -->
+                <section id="sec-a7-scale" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A7. SCALABILITY BOTTLENECKS & DIAGNOSIS EXERCISE</span>
+                            <span class="bn-sub">এ৭. সিস্টেম স্কেলেবিলিটির বাধা ও ডায়াগনোসিস অনুশীলনী</span>
+                        </h2>
+                    </div>
+                    <div class="interview-q-box">
+                        <div class="interview-q">
+                            <span class="en-text">Exercise: 10,000 concurrent users cause response time to jump from 200ms to 5 seconds. Diagnose!</span>
+                            <span class="bn-sub">অনুশীলনী: ১০,০০০ ইউজার বাড়ায় রেসপন্স টাইম ২০০ms থেকে ৫ সেকেন্ড হয়েছে। সমস্যা নির্ণয় করুন!</span>
+                        </div>
+                        <div class="interview-a">
+                            <span class="en-text">"1. Check CPU/Memory on API servers (Is thread pool exhausted?).<br>
+                            2. Check Database Active Connections & Lock Wait Duration (Is DB connection pool exhausted?).<br>
+                            3. Check for missing indexes or table scans triggered under heavy concurrency.<br>
+                            4. Check Cache Hit Ratio on Redis."</span>
+                            <span class="bn-sub">"১. সার্ভারের থ্রেড পুল ফুল কিনা চেক করুন। ২. ডাটাবেজের কানেকশন পুল ও লক ওয়ায়েট টাইম দেখুন। ৩. ইনডেক্সিং মিসিং কিনা চেক করুন।"</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- A8. SYSTEM ARCHITECTURE SCRIPT -->
+                <section id="sec-a8-sysarch" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A8. HOW TO EXPLAIN MY CURRENT PROJECT ARCHITECTURE</span>
+                            <span class="bn-sub">এ৮. আমার বর্তমান প্রজেক্ট আর্কিটেকচার ব্যাখ্যা করার নিয়ম</span>
+                        </h2>
+                    </div>
+                    <div class="script-box">
+                        <div class="script-quote">
+                            "The client browser/mobile app sends an HTTPS request to our Nginx Load Balancer. Nginx terminates TLS and routes the traffic across 3 ASP.NET Core API nodes. The API validates the request, queries Redis for cached user data, and executes business logic. Data access uses EF Core / ADO.NET against a Primary SQL Master database with async messaging via Kafka for background billing tasks."
+                        </div>
+                    </div>
+                </section>
+
+                <!-- A9. DATABASE PERFORMANCE SCENARIOS -->
+                <section id="sec-a9-dbperf" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A9. DATABASE PERFORMANCE REALISTIC SCENARIOS</span>
+                            <span class="bn-sub">এ৯. ডাটাবেজ পারফরম্যান্স বাস্তবমুখী ঘটনা</span>
+                        </h2>
+                    </div>
+                    <div class="interview-q-box">
+                        <div class="interview-q">
+                            <span class="en-text">Scenario: Customer report takes 40s in Production but 1s in Development. Why?</span>
+                            <span class="bn-sub">ঘটনা: কাস্টমার রিপোর্ট লোকাল ডেভে ১ সেকেন্ড কিন্তু প্রোডাকশনে ৪০ সেকেন্ড নেয়। কেন?</span>
+                        </div>
+                        <div class="interview-a">
+                            <span class="en-text">"1. <strong>Data Volume Difference:</strong> Dev DB has 1,000 rows (causing instant scan), while Prod DB has 10,000,000 rows (forcing expensive table scan due to missing index).<br>
+                            2. <strong>Parameter Sniffing:</strong> Stored Procedure cached an execution plan for a non-representative parameter in Prod.<br>
+                            3. <strong>Stale Statistics / Index Fragmentation:</strong> Prod indexes require rebuild/reorganize."</span>
+                            <span class="bn-sub">"১. ডাটার আকারের বিশাল পার্থক্য (লোকালে ১ হাজার, প্রোডাকশনে ১ কোটি সারি)। ২. প্রসিডিউরে প্যারামিটার স্নিফিং এর সমস্যা। ৩. ইনডেক্স ফ্র্যাগমেন্টেশন।"</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- A10. MONITORING AND LOGGING -->
+                <section id="sec-a10-logging" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A10. OBSERVABILITY: LOGS, METRICS & TRACES</span>
+                            <span class="bn-sub">এ১০. অবজারভেবিলিটি: লগ, মেট্রিক্স এবং ট্রেস</span>
+                        </h2>
+                    </div>
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p><strong>Observability Pillars = Logs + Metrics + Traces</strong></p>
+                        <p style="margin-top:4px;">• <strong>Logs:</strong> Discrete events with context timestamp (e.g. Serilog / NLog).</p>
+                        <p style="margin-top:4px;">• <strong>Metrics:</strong> Numeric aggregations over time (CPU %, RPS, Memory MB, Error Rates via Prometheus/Grafana).</p>
+                        <p style="margin-top:4px;">• <strong>Traces:</strong> End-to-end request flow tracking using Correlation IDs across microservices (via OpenTelemetry / Jaeger).</p>
+                    </div>
+                </section>
+
                 <!-- A11. PRODUCTION TROUBLESHOOTING PLAYBOOK -->
                 <section id="sec-a11-incidents" class="card section-anchor">
                     <div class="card-header-flex">
@@ -521,6 +654,31 @@ jobs:
                             PROBLEM → IMPACT ASSESSMENT → APP & SYSTEM LOGS → METRICS SPIKE → RECENT DEPLOYMENT CHECK → DATABASE LOCKS → NETWORK / DEPENDENCY → ROOT CAUSE IDENTIFICATION → APPLY HOTFIX / ROLLBACK → VERIFY → RCA REPORT
                         </div>
                     </div>
+                </section>
+
+                <!-- A12. RESUME-BASED INTERVIEW DEFENSE -->
+                <section id="sec-a12-resume" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A12. RESUME-BASED INTERVIEW DEFENSE</span>
+                            <span class="bn-sub">এ১২. সিভি বা রেজুমে কেন্দ্রিক টেকনিক্যাল ডিফেন্স</span>
+                        </h2>
+                    </div>
+                    <div style="background-color: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); font-size: 12.5px;">
+                        <p><strong>Anchored Technologies:</strong> Java, Spring Boot, Grails, Hibernate, GORM, JPA, Oracle, PL/SQL, SQL Server, C#, .NET 8, REST APIs, Angular, Git, Linux, WAR deployment.</p>
+                        <p style="margin-top:6px;">For every technology on your resume, be prepared to explain: <em>What is it? Why did we use it? How did it work? What problems did it solve? How did you troubleshoot it in production?</em></p>
+                    </div>
+                </section>
+
+                <!-- A13. PROJECT DEEP-DIVE -->
+                <section id="sec-a13-proj" class="card section-anchor">
+                    <div class="card-header-flex">
+                        <h2 class="card-title">
+                            <span class="en-text">A13. PROJECT DEEP-DIVE (USER-TO-DATABASE FLOW)</span>
+                            <span class="bn-sub">এ১৩. প্রজেক্টের ইউজার থেকে ডাটাবেজ সম্পূর্ণ প্রবাহ</span>
+                        </h2>
+                    </div>
+                    <pre><code>Business Requirement → User Action → Angular Frontend → REST API Request → Controller → Business Logic → Database Procedure → Audit Logging → API Response</code></pre>
                 </section>
 
                 <!-- FINAL 60-MINUTE REVISION -->
